@@ -22,10 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('photo')->default('avatar.jpg');
 
             //            status = active or not
-            $table->string('status')->default('active')->change();
+            $table->string('status')->default('active');
 
             //           type = admin or superadmin or user or vip
-            $table->string('type')->default('user')->change();
+            $table->string('type')->default('user');
 
 
             $table->string('location')->nullable();
