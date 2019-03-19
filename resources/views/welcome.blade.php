@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="icon" href="{{asset('images/welcomeimages/icon.png')}}">
 
-    <title>Recycler-(Rec)</title>
+
+    <title style="font-weight: bold">Recycler </title>
+    <link rel="icon" href="{{asset('images/welcomeimages/icon2.png')}}">
 {{--<link rel="stylesheet" href="{{asset('css/welcome.css')}}" type="text/css">--}}
 <!-- Fonts -->
     {{--<link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">--}}
@@ -74,17 +77,20 @@
                             <a href="#contact">Contact</a>
                         </li>
                         @if (Route::has('login'))
-                            <li class="top-right links">
                                 @auth
+                                    <li>
                                     <a href="{{ url('/home') }}">Home</a>
+                                    </li>
                                 @else
+                                    <li>
                                     <a href="{{ route('login') }}">Login</a>
-
+                                    </li>
                                     @if (Route::has('register'))
+                                        <li>
                                         <a href="{{ route('register') }}">Register</a>
+                                        </li>
                                     @endif
                                 @endauth
-                            </li>
                         @endif
                     </ul>
                 </nav>
