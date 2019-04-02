@@ -1,17 +1,8 @@
-/*@import url("css/clear.css");*/
-/*@import url("css/font-awesome.min.css");*/
-@import url("css/sm-clean.css");
-@import url("css/prettyPhoto.css");
-@import url("css/owl.carousel.min.css");
-@import url("css/owl.theme.default.min.css");
-@import url("css/shader.css");
-/*@import url("css/common.css");*/
-
 
 
 
 /* ===================================
-    1. Global CSS
+   *******************************   Global CSS  ***********************88
 ====================================== */
 body {
     font-family: 'Poppins', sans-serif;
@@ -459,7 +450,7 @@ body .sm-clean li.current_page_item > a {
 }
 
 #home .content-header {
-    z-index: 10000 !important;
+    z-index: 1 !important;
 }
 
 #home .content-header .header {
@@ -973,19 +964,19 @@ body .sm-clean li.current_page_item > a {
     display: block;
 }
 
-.close-icon {
-    background-image: url(images/close-left-arrow.png);
-    background-repeat: no-repeat;
-    width: 70px;
-    height: 70px;
-    display: inline-block;
-    background-color: rgba(191, 191, 191, 0.22);
-    border-radius: 5px;
-    margin-bottom: 20px;
-    background-size: 70px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
+/*.close-icon {*/
+    /*background-image: url(images/close-left-arrow.png);*/
+    /*background-repeat: no-repeat;*/
+    /*width: 70px;*/
+    /*height: 70px;*/
+    /*display: inline-block;*/
+    /*background-color: rgba(191, 191, 191, 0.22);*/
+    /*border-radius: 5px;*/
+    /*margin-bottom: 20px;*/
+    /*background-size: 70px;*/
+    /*transition: all 0.3s ease;*/
+    /*cursor: pointer;*/
+/*}*/
 
 .close-icon:hover {
     background-position: -5px 0;
@@ -2313,7 +2304,7 @@ body .social a:hover
 }
 
 /* ===================================
-    8. Image PopUp (PreetyPhoto) CSS
+    Image PopUp (PreetyPhoto) CSS
 ====================================== */
 
 div.pp_default .pp_loaderIcon
@@ -2321,70 +2312,6 @@ div.pp_default .pp_loaderIcon
     display: none !important;
 }
 
-div.pp_default a.pp_arrow_previous
-{
-    background-image: url(../images/nav_left.png);
-    background-size: 20px 20px;    
-    width: 20px;
-    height: 20px;
-    margin-top: 5px;
-    font-size: 0;
-    line-height: 0;
-    text-indent: -99999999px;
-    transition: transform .3s ease;
-}
-
-div.pp_default a.pp_arrow_next
-{
-    background-image: url(../images/nav_right.png);
-    background-size: 20px 20px;    
-    width: 20px;
-    height: 20px;
-    margin-top: 5px;
-    margin-left: 10px;
-    font-size: 0;
-    line-height: 0;
-    text-indent: -99999999px;
-    transition: transform .3s ease;
-}
-
-div.pp_default a.pp_arrow_previous:hover 
-{
-    transform: translateX(-5px);
-}
-
-div.pp_default a.pp_arrow_next:hover 
-{
-    transform: translateX(5px);
-}
-
-div.pp_default .pp_close
-{
-    background-image: url(../images/close.png);
-    background-size: 30px 30px;
-    margin-top: 5px;
-    text-indent: -99999999px;
-    font-size: 0;
-    line-height: 0;    
-}
-
-div.pp_default .pp_next:hover 
-{
-    background: url(../images/nav_right.png);
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: 95% 50%;
-    background-size: 20px;
-}
-
-div.pp_default .pp_previous:hover
-{
-    background: url(../images/nav_left.png);
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-position: 5% 50%;
-    background-size: 20px;    
-}
 
 div.pp_default .pp_nav .currentTextHolder
 {
@@ -2427,17 +2354,17 @@ a.video-popup-holder .thumb
     width: 100%;
 }
 
-img.popup-play 
-{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    top: calc(50% - 45px);
-    left: calc(50% - 45px);    
-    transition: opacity .2s linear;
-    width: 90px !important;
-    height: 90px !important;
-}
+/*img.popup-play */
+/*{*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*top: calc(50% - 45px);*/
+    /*left: calc(50% - 45px);    */
+    /*transition: opacity .2s linear;*/
+    /*width: 90px !important;*/
+    /*height: 90px !important;*/
+/*}*/
 
 a.video-popup-holder:hover:after
 {

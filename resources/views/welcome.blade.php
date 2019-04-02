@@ -36,7 +36,7 @@
     <header class="header-holder">
         <div class="menu-wrapper center-relative relative">
             <div class="header-logo">
-                <a href="index.html">
+                <a href="../">
 
                     <p class="in-small-screens">Recycler</p>
                     <img src="{{asset('images/welcomeimages/logo-image.png')}}" alt="Recycler">
