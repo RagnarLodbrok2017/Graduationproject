@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.9"
     },
     "dependencies": {
-        "bootstrap-vue": "^2.0.0-rc.15"
+        "bootstrap-vue": "^2.0.0-rc.15",
+        "video.js": "^7.4.1",
+        "videojs-youtube": "^2.6.0"
     }
 }

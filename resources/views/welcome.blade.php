@@ -256,7 +256,7 @@
                                 <div class="grid-sizer"></div>
 
                                 <div id="p-item-1" class="grid-item element-item p_one">
-                                    <a class="item-link ajax-posts" href="posts-1.html" data-id="1">
+                                    <a class="item-link ajax-posts" href="../" data-id="1">
                                         <img src="{{asset('images/welcomeimages/img_01s.jpg')}}" alt="">
                                         <div class="posts-text-holder">
                                             <p class="posts-title">Ahmed Ortega</p>
@@ -301,7 +301,7 @@
                                        data-rel="prettyPhoto[posts]">
                                         <img src="{{asset('images/welcomeimages/img_12s.jpg')}}" alt="">
                                         <div class="posts-text-holder">
-                                            <p class="posts-title">Omar Hamza</p>
+                                            <p class="posts-title">Yasser Ibrahim</p>
                                             <p class="posts-desc">PAPERS</p>
                                         </div>
                                     </a>
@@ -336,15 +336,32 @@
                                     <div class="section-content-holder float-left">
                                         <div class="content-wrapper">
                                             <p>&nbsp;</p>
-                                            <a class="video-popup-holder"
-                                               href="https://www.youtube.com/watch?v=15cpIHjEsWI"
-                                               data-rel="prettyPhoto[gallery-video1]">
-                                                <img class="thumb" src="{{asset('images/welcomeimages/chair1.jpg')}}"
-                                                     alt="">
-                                                <img class="popup-play"
-                                                     src="{{asset('images/welcomeimages/play_btn.png')}}" alt="Play">
-                                            </a>
-                                            <p>&nbsp;</p>
+                                            <video
+                                                id="my-player"
+                                                class="video-js col-lg-6"
+                                                controls
+                                                preload="auto"
+                                                width="700" height="400"
+                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"
+                                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'
+                                            >
+                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>
+                                                <source src="https://www.youtube.com/watch?v=xjS6SftYQaQ" type="video/youtube"></source>
+                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/webm"></source>
+                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/ogg"></source>
+                                                <p class="vjs-no-js">
+                                                    To view this video please enable JavaScript, and consider upgrading to a
+                                                    web browser that
+                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">
+                                                        supports HTML5 video
+                                                    </a>
+                                                </p>
+                                            </video>
+{{--                                            <a class="video-popup-holder" href="https://www.youtube.com/watch?v=15cpIHjEsWI" data-rel="prettyPhoto[gallery-video1]">--}}
+{{--                                                <img class="thumb" src="images/video_img.jpg" alt="">--}}
+{{--                                                <img class="popup-play" src="images/play_btn.png" alt="Play">--}}
+{{--                                            </a>--}}
+{{--                                            <p>&nbsp;</p>--}}
 
                                             <div class="clear"></div>
                                         </div>
@@ -367,15 +384,32 @@
                                     <div class="section-content-holder float-left">
                                         <div class="content-wrapper">
                                             <p>&nbsp;</p>
-                                            <a class="video-popup-holder"
-                                               href="https://www.youtube.com/watch?v=15cpIHjEsWI"
-                                               data-rel="prettyPhoto[gallery-video1]">
-                                                <img class="thumb" src="{{asset('images/welcomeimages/paper1.jpg')}}"
-                                                     alt="">
-                                                <img class="popup-play"
-                                                     src="{{asset('images/welcomeimages/play_btn.png')}}" alt="Play">
-                                            </a>
-                                            <p>&nbsp;</p>
+                                            <video
+                                                id="my-player"
+                                                class="video-js col-lg-6"
+                                                controls
+                                                preload="auto"
+                                                width="700" height="400"
+                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"
+                                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'
+                                            >
+                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>
+                                                <source src="https://www.youtube.com/watch?v=xjS6SftYQaQ" type="video/youtube"></source>
+                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/webm"></source>
+                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/ogg"></source>
+                                                <p class="vjs-no-js">
+                                                    To view this video please enable JavaScript, and consider upgrading to a
+                                                    web browser that
+                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">
+                                                        supports HTML5 video
+                                                    </a>
+                                                </p>
+                                            </video>
+{{--                                            <a class="video-popup-holder" href="https://www.youtube.com/watch?v=15cpIHjEsWI" data-rel="prettyPhoto[gallery-video1]">--}}
+{{--                                                <img class="thumb" src="images/video_img.jpg" alt="">--}}
+{{--                                                <img class="popup-play" src="images/play_btn.png" alt="Play">--}}
+{{--                                            </a>--}}
+{{--                                            <p>&nbsp;</p>--}}
 
                                             <div class="clear"></div>
                                         </div>
@@ -383,9 +417,9 @@
                                     <div class="section-content-holder2">
                                         <div class="content-wrapper">
                                             <p>&nbsp;</p>
-                                            <h3> PAPERS </h3>
-                                            <p><span>Posted By : </span>Hazem Emam</p>
-                                            <p>this is a paper you<br> can restore it in our website</p>
+                                            <h3> PLASTIC TABLE</h3>
+                                            <p><span>Posted By : </span>Emad Ashraf</p>
+                                            <p>this is a plastic chair you<br> can restore it in our website</p>
                                             <p>&nbsp;</p>
 
                                             <div class="clear"></div>
@@ -398,15 +432,32 @@
                                     <div class="section-content-holder float-left">
                                         <div class="content-wrapper">
                                             <p>&nbsp;</p>
-                                            <a class="video-popup-holder"
-                                               href="https://www.youtube.com/watch?v=15cpIHjEsWI"
-                                               data-rel="prettyPhoto[gallery-video1]">
-                                                <img class="thumb" src="{{asset('images/welcomeimages/chair2.jpg')}}"
-                                                     alt="">
-                                                <img class="popup-play"
-                                                     src="{{asset('images/welcomeimages/play_btn.png')}}" alt="Play">
-                                            </a>
-                                            <p>&nbsp;</p>
+                                            <video
+                                                id="my-player"
+                                                class="video-js col-lg-6"
+                                                controls
+                                                preload="auto"
+                                                width="700" height="400"
+                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"
+                                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'
+                                            >
+                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>
+                                                <source src="https://www.youtube.com/watch?v=xjS6SftYQaQ" type="video/youtube"></source>
+                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/webm"></source>
+                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/ogg"></source>
+                                                <p class="vjs-no-js">
+                                                    To view this video please enable JavaScript, and consider upgrading to a
+                                                    web browser that
+                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">
+                                                        supports HTML5 video
+                                                    </a>
+                                                </p>
+                                            </video>
+{{--                                            <a class="video-popup-holder" href="https://www.youtube.com/watch?v=15cpIHjEsWI" data-rel="prettyPhoto[gallery-video1]">--}}
+{{--                                                <img class="thumb" src="images/video_img.jpg" alt="">--}}
+{{--                                                <img class="popup-play" src="images/play_btn.png" alt="Play">--}}
+{{--                                            </a>--}}
+{{--                                            <p>&nbsp;</p>--}}
 
                                             <div class="clear"></div>
                                         </div>
@@ -414,8 +465,8 @@
                                     <div class="section-content-holder2">
                                         <div class="content-wrapper">
                                             <p>&nbsp;</p>
-                                            <h3> PLASTIC Chair</h3>
-                                            <p><span>Posted By : </span>Hazem Emam</p>
+                                            <h3> PAPERS</h3>
+                                            <p><span>Posted By : </span>Mazen Ali</p>
                                             <p>this is a plastic chair you<br> can restore it in our website</p>
                                             <p>&nbsp;</p>
 

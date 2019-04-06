@@ -325,12 +325,15 @@ body:hover .form-content .header h1{
     width: auto;
 }
 
-.form-content input[type="checkbox"]:not(:checked), .form-content input[type="checkbox"]:checked, .form-content input[type="radio"]:not(:checked), .form-content input[type="radio"]:checked {
+.form-content input[type="checkbox"]:not(:checked), .form-content input[type="checkbox"]:checked,
+.form-content input[type="radio"]:not(:checked), .form-content input[type="radio"]:checked {
     position: absolute;
     left: -9999px;
 }
 
-.form-content input[type="checkbox"]:not(:checked) + label, .form-content input[type="checkbox"]:checked + label, .form-content input[type="radio"]:not(:checked) + label, .form-content input[type="radio"]:checked + label {
+.form-content input[type="checkbox"]:not(:checked) + label, .form-content input[type="checkbox"]:checked + label,
+.form-content input[type="radio"]:not(:checked) + label,
+.form-content input[type="radio"]:checked + label {
     position: relative;
     padding-left: 23px;
     cursor: pointer;
@@ -353,7 +356,8 @@ body:hover .form-content .header h1{
     color: #fff;
 }
 
-.form-content input[type="checkbox"]:checked + label:before, .form-content input[type="radio"]:checked + label:before {
+.form-content input[type="checkbox"]:checked + label:before,
+.form-content input[type="radio"]:checked + label:before {
     content: '';
     position: absolute;
     left: 0;
@@ -367,7 +371,8 @@ body:hover .form-content .header h1{
     transition: all 0.3s ease;
 }
 
-.form-content input[type="checkbox"]:not(:checked) + label:before, .form-content input[type="radio"]:not(:checked) + label:before {
+.form-content input[type="checkbox"]:not(:checked) + label:before,
+.form-content input[type="radio"]:not(:checked) + label:before {
     content: '';
     position: absolute;
     left: 0;
@@ -381,7 +386,8 @@ body:hover .form-content .header h1{
     transition: all 0.3s ease;
 }
 
-.form-content input[type="checkbox"]:not(:checked) + label:after, .form-content input[type="radio"]:not(:checked) + label:after {
+.form-content input[type="checkbox"]:not(:checked) + label:after,
+.form-content input[type="radio"]:not(:checked) + label:after {
     opacity: 0;
     -webkit-transform: scale(0);
     -moz-transform: scale(0);
@@ -389,7 +395,8 @@ body:hover .form-content .header h1{
     transform: scale(0);
 }
 
-.form-content input[type="checkbox"]:checked + label:after, .form-content input[type="checkbox"]:not(:checked) + label:after {
+.form-content input[type="checkbox"]:checked + label:after,
+.form-content input[type="checkbox"]:not(:checked) + label:after {
     content: '\f00c';
     font-family: "Font Awesome 5 Free";
     font-style: normal;
@@ -412,7 +419,8 @@ body:hover .form-content .header h1{
     border-radius: 4px;
 }
 
-.form-content input[type="radio"]:checked + label:after, .form-content input[type="radio"]:not(:checked) + label:after {
+.form-content input[type="radio"]:checked + label:after,
+.form-content input[type="radio"]:not(:checked) + label:after {
     content: "";
     position: absolute;
     top: 7px;
