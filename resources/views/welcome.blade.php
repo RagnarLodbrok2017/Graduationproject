@@ -65,9 +65,6 @@
                             <a href="#posts">Posts</a>
                         </li>
                         <li>
-                            <a href="#posts_carousel">More Posts</a>
-                        </li>
-                        <li>
                             <a href="#team">Team</a>
                         </li>
                         <li>
@@ -115,7 +112,7 @@
         </div>
         <!--            End Back groud Header -->
 
-        <!-- ********************************************* Services **************************************************-->
+        <!-- ********************************************* 1. Services **************************************************-->
         <div id="services" class="section page-split">
             <div class="section-wrapper block content-1170 center-relative">
                 <div class="bg-holder float-left">
@@ -227,7 +224,7 @@
         </div>
         <!--            End Services -->
 
-        <!-- *********************************  Posts ******************************* -->
+        <!-- ********************************* 2. Posts ******************************* -->
         <div id="posts" class="section page-split">
             <div class="section-wrapper block content-1170 center-relative">
                 <div class="bg-holder float-left">
@@ -320,7 +317,7 @@
             </div>
         </div>
 
-        <!-- ******************************* posts_carousel ************************************ -->
+        <!-- ******************************* 3. posts_carousel ************************************ -->
         <div id="posts_carousel" class="section full-screen full-width">
             <div class="section-wrapper block content-1170 center-relative">
                 <div class="content-wrapper">
@@ -357,12 +354,6 @@
                                                     </a>
                                                 </p>
                                             </video>
-{{--                                            <a class="video-popup-holder" href="https://www.youtube.com/watch?v=15cpIHjEsWI" data-rel="prettyPhoto[gallery-video1]">--}}
-{{--                                                <img class="thumb" src="images/video_img.jpg" alt="">--}}
-{{--                                                <img class="popup-play" src="images/play_btn.png" alt="Play">--}}
-{{--                                            </a>--}}
-{{--                                            <p>&nbsp;</p>--}}
-
                                             <div class="clear"></div>
                                         </div>
                                     </div>
@@ -379,102 +370,81 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="owl-item">
-                                <a href="#services" class="scroll">
-                                    <div class="section-content-holder float-left">
-                                        <div class="content-wrapper">
-                                            <p>&nbsp;</p>
-                                            <video
-                                                id="my-player"
-                                                class="video-js col-lg-6"
-                                                controls
-                                                preload="auto"
-                                                width="700" height="400"
-                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"
-                                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'
-                                            >
-                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>
-                                                <source src="https://www.youtube.com/watch?v=xjS6SftYQaQ" type="video/youtube"></source>
-                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/webm"></source>
-                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/ogg"></source>
-                                                <p class="vjs-no-js">
-                                                    To view this video please enable JavaScript, and consider upgrading to a
-                                                    web browser that
-                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">
-                                                        supports HTML5 video
-                                                    </a>
-                                                </p>
-                                            </video>
-{{--                                            <a class="video-popup-holder" href="https://www.youtube.com/watch?v=15cpIHjEsWI" data-rel="prettyPhoto[gallery-video1]">--}}
-{{--                                                <img class="thumb" src="images/video_img.jpg" alt="">--}}
-{{--                                                <img class="popup-play" src="images/play_btn.png" alt="Play">--}}
-{{--                                            </a>--}}
+{{--                            <div class="owl-item">--}}
+{{--                                <a href="#services" class="scroll">--}}
+{{--                                    <div class="section-content-holder float-left">--}}
+{{--                                        <div class="content-wrapper">--}}
+{{--                                            <p>&nbsp;</p>--}}
+{{--                                            <video--}}
+{{--                                                id="my-player"--}}
+{{--                                                class="video-js col-lg-6"--}}
+{{--                                                controls--}}
+{{--                                                preload="auto"--}}
+{{--                                                width="700" height="400"--}}
+{{--                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}">--}}
+{{--                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>--}}
+{{--                                                <p class="vjs-no-js">--}}
+{{--                                                    To view this video please enable JavaScript, and consider upgrading to a--}}
+{{--                                                    web browser that--}}
+{{--                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">--}}
+{{--                                                        supports HTML5 video--}}
+{{--                                                    </a>--}}
+{{--                                                </p>--}}
+{{--                                            </video>--}}
+{{--                                            <div class="clear"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="section-content-holder2">--}}
+{{--                                        <div class="content-wrapper">--}}
+{{--                                            <p>&nbsp;</p>--}}
+{{--                                            <h3> PLASTIC TABLE</h3>--}}
+{{--                                            <p><span>Posted By : </span>Emad Ashraf</p>--}}
+{{--                                            <p>this is a plastic chair you<br> can restore it in our website</p>--}}
 {{--                                            <p>&nbsp;</p>--}}
 
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                    <div class="section-content-holder2">
-                                        <div class="content-wrapper">
-                                            <p>&nbsp;</p>
-                                            <h3> PLASTIC TABLE</h3>
-                                            <p><span>Posted By : </span>Emad Ashraf</p>
-                                            <p>this is a plastic chair you<br> can restore it in our website</p>
-                                            <p>&nbsp;</p>
-
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="owl-item">
-                                <a href="#services" class="scroll">
-                                    <div class="section-content-holder float-left">
-                                        <div class="content-wrapper">
-                                            <p>&nbsp;</p>
-                                            <video
-                                                id="my-player"
-                                                class="video-js col-lg-6"
-                                                controls
-                                                preload="auto"
-                                                width="700" height="400"
-                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"
-                                                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'
-                                            >
-                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>
-                                                <source src="https://www.youtube.com/watch?v=xjS6SftYQaQ" type="video/youtube"></source>
-                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/webm"></source>
-                                                <source src="//www.youtube.com/watch?v=xjS6SftYQaQ" type="video/ogg"></source>
-                                                <p class="vjs-no-js">
-                                                    To view this video please enable JavaScript, and consider upgrading to a
-                                                    web browser that
-                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">
-                                                        supports HTML5 video
-                                                    </a>
-                                                </p>
-                                            </video>
-{{--                                            <a class="video-popup-holder" href="https://www.youtube.com/watch?v=15cpIHjEsWI" data-rel="prettyPhoto[gallery-video1]">--}}
-{{--                                                <img class="thumb" src="images/video_img.jpg" alt="">--}}
-{{--                                                <img class="popup-play" src="images/play_btn.png" alt="Play">--}}
-{{--                                            </a>--}}
+{{--                                            <div class="clear"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+{{--                            <div class="owl-item">--}}
+{{--                                <a href="#services" class="scroll">--}}
+{{--                                    <div class="section-content-holder float-left">--}}
+{{--                                        <div class="content-wrapper">--}}
+{{--                                            <p>&nbsp;</p>--}}
+{{--                                            <video--}}
+{{--                                                id="my-player"--}}
+{{--                                                class="video-js col-lg-6"--}}
+{{--                                                controls--}}
+{{--                                                preload="auto"--}}
+{{--                                                width="700" height="400"--}}
+{{--                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"--}}
+{{--                                            >--}}
+{{--                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>--}}
+{{--                                                <p class="vjs-no-js">--}}
+{{--                                                    To view this video please enable JavaScript, and consider upgrading to a--}}
+{{--                                                    web browser that--}}
+{{--                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">--}}
+{{--                                                        supports HTML5 video--}}
+{{--                                                    </a>--}}
+{{--                                                </p>--}}
+{{--                                            </video>--}}
+{{--                                            <div class="clear"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="section-content-holder2">--}}
+{{--                                        <div class="content-wrapper">--}}
+{{--                                            <p>&nbsp;</p>--}}
+{{--                                            <h3> PAPERS</h3>--}}
+{{--                                            <p><span>Posted By : </span>Mazen Ali</p>--}}
+{{--                                            <p>this is a plastic chair you<br> can restore it in our website</p>--}}
 {{--                                            <p>&nbsp;</p>--}}
 
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                    <div class="section-content-holder2">
-                                        <div class="content-wrapper">
-                                            <p>&nbsp;</p>
-                                            <h3> PAPERS</h3>
-                                            <p><span>Posted By : </span>Mazen Ali</p>
-                                            <p>this is a plastic chair you<br> can restore it in our website</p>
-                                            <p>&nbsp;</p>
-
-                                            <div class="clear"></div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+{{--                                            <div class="clear"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -818,12 +788,14 @@
 {{--</div>--}}
 {{--</div>--}}
 {{--</div>--}}
+
 {{--<div class="content" id="app">--}}
 {{--<b-alert variant="success" show>Success Alert</b-alert>--}}
 {{--<b-alert show>Hello</b-alert>--}}
 {{--<example-component></example-component>--}}
-
 {{--</div>--}}
+
+
 <!--Load JavaScript-->
 <script src="{{asset('js/welcomejs/jquery.js')}}"></script>
 <script src="{{asset('js/welcomejs/jquery.sticky.js')}}"></script>

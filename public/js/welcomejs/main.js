@@ -444,7 +444,7 @@ function isValidEmailAddress(emailAddress) {
     return pattern.test(emailAddress);
 }
 
-var SendMail = function () {
+/*var SendMail = function () {
 
     var emailVal = jQuery('#contact-email').val();
 
@@ -499,6 +499,8 @@ var SendMail = function () {
         alert('Your email is not in valid format');
     }
 };
+*/
+
 
 function is_touch_device() {
     return !!('ontouchstart' in window);
