@@ -56,7 +56,7 @@
                 <nav id="header-main-menu">
                     <ul class="main-menu sm sm-clean">
                         <li>
-                            <a href="#home">Home</a>
+                            <a href="#home">Welcome</a>
                         </li>
                         <li>
                             <a href="#services">Services</a>
@@ -105,12 +105,26 @@
                 <h1 class="header"><span>Rec</span>ycler </h1>
                 <p>Website</p>
             </div>
+            <div class="button-video text-center">
+                <button class="btn btn-danger">Watch Video</button>
+            </div>
             <div id="background-container" class="background-container">
                 <div id="background-output" class="background-output"></div>
             </div>
+            <div class="fullscreen-video">
+                <div class="fullscreen-video-wrap">
+                    <video src="{{asset('images/welcomeimages/The Paper Recycling Process Cut.mp4')}}" loop="" controls id="myVideo">
+                    </video>
+                </div>
+                <div class="header-overlay"></div>
+                <div class="header-content text-md-center">
+                    {{--                <h3>Welcome Everyone to Recycler</h3>--}}
+                    <button class="close-button btn btn-danger"> close Video </button>
+                </div>
+            </div>
 
         </div>
-        <!--            End Back groud Header -->
+        <!--            End Background Header -->
 
         <!-- ********************************************* 1. Services **************************************************-->
         <div id="services" class="section page-split">

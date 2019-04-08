@@ -2,6 +2,31 @@
 
 jQuery(document).on('ready', function () {
 
+    // ********************* Video Button in Background Header
+    $('.button-video button').on('click', function () {
+       $('.fullscreen-video').css({
+           "display":"block",
+           "opacity": 1,
+       });
+        $('.button-video button').css("display","none");
+        $('.fullscreen-video .fullscreen-video-wrap video').attr("autoplay");
+        let video = document.getElementById("myVideo");
+        video.play();
+    });
+    $('.header-content .close-button').on('click', function () {
+        $('.fullscreen-video').css({
+            "display":"none",
+            "opacity": 0,
+        });
+        $('.button-video button').css("display","block");
+        let vid = $('.fullscreen-video .fullscreen-video-wrap video');
+        vid.removeAttr("autoplay");
+        let video = document.getElementById("myVideo");
+        video.pause();
+    });
+
+
+
     jQuery(window).on('scroll', function () {
         animateElement();
     });
@@ -505,3 +530,5 @@ function isValidEmailAddress(emailAddress) {
 function is_touch_device() {
     return !!('ontouchstart' in window);
 }
+
+
