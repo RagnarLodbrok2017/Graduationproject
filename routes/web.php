@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Route::get('/userdashboard/user', function () {
+//    return view('UserDashboard.user.user');
+//});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin-dashboard/users', 'UserController@initial')->name('Dashboard');
+Route::resource('/admin-dashboard/user', 'UserController');
+Route::get('/admin-dashboard', function () {
+    return view('AdminDashboard.home');
+});
