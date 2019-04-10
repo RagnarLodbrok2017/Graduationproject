@@ -1,0 +1,400 @@
+
+/* notify */
+.notify {
+    position: relative;
+    top: -18px;
+    right: -11px
+}
+
+.notify .heartbit {
+    position: absolute;
+    top: -20px;
+    right: -4px;
+    height: 25px;
+    width: 25px;
+    z-index: 10;
+    border: 5px solid #f62d51;
+    border-radius: 70px;
+    -moz-animation: heartbit 1s ease-out;
+    -moz-animation-iteration-count: infinite;
+    -o-animation: heartbit 1s ease-out;
+    -o-animation-iteration-count: infinite;
+    -webkit-animation: heartbit 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite
+}
+
+.notify .point {
+    width: 6px;
+    height: 6px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: #f62d51;
+    position: absolute;
+    right: 6px;
+    top: -10px
+}
+
+@-moz-keyframes heartbit {
+    0% {
+        -moz-transform: scale(0);
+        opacity: 0
+    }
+
+    25% {
+        -moz-transform: scale(.1);
+        opacity: .1
+    }
+
+    50% {
+        -moz-transform: scale(.5);
+        opacity: .3
+    }
+
+    75% {
+        -moz-transform: scale(.8);
+        opacity: .5
+    }
+
+    100% {
+        -moz-transform: scale(1);
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes heartbit {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0
+    }
+
+    25% {
+        -webkit-transform: scale(.1);
+        opacity: .1
+    }
+
+    50% {
+        -webkit-transform: scale(.5);
+        opacity: .3
+    }
+
+    75% {
+        -webkit-transform: scale(.8);
+        opacity: .5
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 0
+    }
+}
+
+
+/* waves */
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 1;
+    will-change: opacity, transform;
+    -webkit-transition: all .1s ease-out;
+    -moz-transition: all .1s ease-out;
+    -o-transition: all .1s ease-out;
+    -ms-transition: all .1s ease-out;
+    transition: all .1s ease-out
+}
+
+.waves-effect .waves-ripple {
+    position: absolute;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    opacity: 0;
+    background: rgba(0, 0, 0, .2);
+    -webkit-transition: all .7s ease-out;
+    -moz-transition: all .7s ease-out;
+    -o-transition: all .7s ease-out;
+    -ms-transition: all .7s ease-out;
+    transition: all .7s ease-out;
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property: -moz-transform, opacity;
+    -o-transition-property: -o-transform, opacity;
+    transition-property: transform, opacity;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0)
+}
+
+.waves-effect.waves-light .waves-ripple {
+    background-color: rgba(255, 255, 255, .45)
+}
+
+.waves-effect.waves-red .waves-ripple {
+    background-color: rgba(244, 67, 54, .7)
+}
+
+.waves-effect.waves-yellow .waves-ripple {
+    background-color: rgba(255, 235, 59, .7)
+}
+
+.waves-effect.waves-orange .waves-ripple {
+    background-color: rgba(255, 152, 0, .7)
+}
+
+.waves-effect.waves-purple .waves-ripple {
+    background-color: rgba(156, 39, 176, .7)
+}
+
+.waves-effect.waves-green .waves-ripple {
+    background-color: rgba(76, 175, 80, .7)
+}
+
+.waves-effect.waves-teal .waves-ripple {
+    background-color: rgba(0, 150, 136, .7)
+}
+
+html body .waves-notransition {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+    transition: none
+}
+
+.waves-circle {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    text-align: center;
+    width: 2.5em;
+    height: 2.5em;
+    line-height: 2.5em;
+    border-radius: 50%;
+    -webkit-mask-image: none
+}
+
+.waves-input-wrapper {
+    border-radius: .2em;
+    vertical-align: bottom
+}
+
+.waves-input-wrapper .waves-button-input {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1
+}
+
+.waves-block {
+    display: block
+}
+
+/* Main Wrapper */
+
+#main-wrapper[data-layout=horizontal][data-header-position=fixed] .left-sidebar {
+    padding-top: 64px
+}
+
+#main-wrapper[data-layout=horizontal][data-sidebar-position=fixed] .left-sidebar {
+    padding-top: 64px;
+    position: fixed
+}
+
+#main-wrapper[data-layout=horizontal][data-sidebar-position=fixed] .page-wrapper {
+    padding-top: 78px
+}
+
+@media (min-width:768px) {
+    #main-wrapper[data-layout=horizontal] {
+        background: #eef5f9
+    }
+
+    #main-wrapper[data-layout=horizontal] .topbar {
+        transition: 0s
+    }
+
+    #main-wrapper[data-layout=horizontal][data-boxed-layout=boxed] .page-wrapper,
+    #main-wrapper[data-layout=horizontal][data-boxed-layout=boxed] .scroll-sidebar,
+    #main-wrapper[data-layout=horizontal][data-boxed-layout=boxed] .top-navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative
+    }
+
+    #main-wrapper[data-layout=horizontal][data-boxed-layout=boxed] .sidebar-nav #sidebarnav {
+        flex-wrap: wrap
+    }
+
+    #main-wrapper[data-layout=horizontal][data-boxed-layout=boxed] .sidebar-nav #sidebarnav > .sidebar-item > .has-arrow:after {
+        display: block
+    }
+
+    #main-wrapper[data-layout=horizontal][data-boxed-layout=boxed] .sidebar-nav .sidebar-item {
+        flex: 1 1 0
+    }
+
+    #main-wrapper[data-layout=horizontal][data-sidebar-position=fixed] .page-wrapper {
+        padding-top: 128px
+    }
+
+    #main-wrapper[data-layout=horizontal] .topbar .top-navbar .navbar-header {
+        width: 200px;
+        border-right: 1px solid rgba(0, 0, 0, .1)
+    }
+
+    #main-wrapper[data-layout=horizontal] .topbar .sidebartoggler {
+        display: none
+    }
+
+    #main-wrapper[data-layout=horizontal] .left-sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-top: 0;
+        z-index: 45;
+        transition: 0s
+    }
+
+    #main-wrapper[data-layout=horizontal] .left-sidebar .scroll-sidebar {
+        height: 54px
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav ul {
+        display: flex
+    }
+
+    #main-wrapper[data-layout=horizontal] .scroll-sidebar {
+        height: auto
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav {
+        display: flex;
+        width: 100%
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav .sidebar-item {
+        position: relative;
+        width: auto
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item {
+        border-right: 1px solid rgba(0, 0, 0, .1)
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item > .has-arrow:after {
+        transform: rotate(-135deg) translate(0, -50%)
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item:last-child > .first-level {
+        right: 0;
+        left: auto
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item > .two-column + .first-level {
+        width: 400px
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item > .two-column + .first-level > .sidebar-item {
+        float: left;
+        width: 50%;
+        vertical-align: top
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item ul {
+        position: absolute;
+        left: 0;
+        top: auto;
+        width: 220px;
+        padding-bottom: 0;
+        z-index: 100;
+        display: none;
+        box-shadow: 5px 10px 20px rgba(0, 0, 0, .1)
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav ul.first-level > .sidebar-item:hover ul.second-level,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item:hover ul.first-level,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item:hover ul.first-level.collapse {
+        display: block
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .mega-dropdown {
+        position: static
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .mega-dropdown .first-level {
+        width: 100%
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .mega-dropdown .first-level > li {
+        width: 25%;
+        float: left
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item:hover {
+        background: rgba(0, 0, 0, .025)
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item:hover ul.first-level.collapse:after,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item:hover ul.first-level:after {
+        position: absolute;
+        content: "";
+        background: rgba(0, 0, 0, .025);
+        top: 0;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        z-index: -1
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item ul.second-level {
+        left: 220px;
+        top: 0
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item .first-level .right-side-dd ul.second-level,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item:last-child > .first-level ul.second-level {
+        right: 220px;
+        top: 0;
+        left: auto
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav .badge,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav .nav-small-cap,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav .sidebar-footer,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav .user-pro,
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item > .has-arrow:after {
+        display: none
+    }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+    #main-wrapper[data-layout=horizontal] .sidebar-nav > ul > .sidebar-item > .sidebar-link i {
+        display: none
+    }
+
+    #main-wrapper[data-layout=horizontal] .sidebar-nav #sidebarnav > .sidebar-item {
+        flex: auto
+    }
+
+    [data-sidebar-position=fixed] .left-sidebar {
+        overflow: auto
+    }
+}
+
+@media (min-width:768px) {
+    .bc-content {
+        justify-content: flex-end
+    }
+}
