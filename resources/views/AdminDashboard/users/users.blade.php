@@ -1,8 +1,6 @@
 @extends('layouts.AdminDashboardFunction')
 
 @section('content')
-
-    <h1>Hello World</h1>
     <section class="content-of-vue">
         <div class="app" id="app">
             <div class="container">
