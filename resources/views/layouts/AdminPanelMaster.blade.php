@@ -13,7 +13,7 @@
     <link rel="icon" type="icon" sizes="16x16" href="{{asset('images/AdminDashboardImages/images/icon.png')}}">
     <title>Recycler</title>
     <!-- Custom CSS -->
-{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{asset('libraries/AdminDashboardLibs/libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{asset('libraries/AdminDashboardLibs/libs/css-chart/css-chart.css')}}" rel="stylesheet">
     <link href="{{asset('libraries/AdminDashboardLibs/libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
