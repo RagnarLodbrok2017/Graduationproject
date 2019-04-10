@@ -70,11 +70,10 @@
                         @endguest
                     </ul>
                 </div>
-                <h1>app.blade.php Layout </h1>
+                <h1>Fucntions.blade.php Layout </h1>
             </div>
         </nav>
 {{--        <section class="content-of-vue">--}}
-{{--            <div class="adsda" id="sdas">--}}
 {{--                <div class="container">--}}
 {{--                    <div class="row">--}}
 {{--                        @if ((Request::path() == 'admin-dashboard/users'))--}}
@@ -84,11 +83,8 @@
 {{--                        @endif--}}
 {{--                    </div>--}}
 {{--                </div>--}}
-{{--            </div>--}}
 {{--        </section>--}}
         @yield('content')
-        <main class="py-4">
-        </main>
     </div>
 
 </body>

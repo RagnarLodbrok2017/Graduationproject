@@ -53,11 +53,11 @@
         methods: {
             fetchUsers:function() {
                 {
-                    axios.get('/admin-dashboard/user').then(response => {
+                    axios.get('../api/admin-dashboard/users').then(response => {
                         this.users = response.data.users;
-                        // console.log("************* This.users *****************");
-                        // console.log(this.users);
-                        // console.log(JSON.stringify(this.users[0]));
+                        console.log("************* This.users *****************");
+                        console.log(this.users);
+                        console.log(JSON.stringify(this.users[0]));
                     });
                     // this.users = [{
                     //     age: null,

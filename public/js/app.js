@@ -1818,10 +1818,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       {
-        axios.get('/admin-dashboard/user').then(function (response) {
-          _this.users = response.data.users; // console.log("************* This.users *****************");
-          // console.log(this.users);
-          // console.log(JSON.stringify(this.users[0]));
+        axios.get('../api/admin-dashboard/users').then(function (response) {
+          _this.users = response.data.users;
+          console.log("************* This.users *****************");
+          console.log(_this.users);
+          console.log(JSON.stringify(_this.users[0]));
         }); // this.users = [{
         //     age: null,
         //     created_at: "2019-04-06 23:20:15",

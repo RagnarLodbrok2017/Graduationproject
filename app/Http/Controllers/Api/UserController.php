@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -12,16 +13,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function initial()
-//    {
-//        return view('AdminDashboard.users.users');
-//    }
     public function index()
     {
-        return view('AdminDashboard.users.users');
-//        return response()->json(['users' => $users = User::all()]);
-//        return view('user.user');
-//        return view('AdminDashboard.user.user', compact($users = User::all()));
+        return response()->json(['users' => $users = User::all()]);
     }
 
     /**
