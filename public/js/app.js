@@ -1887,8 +1887,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   mounted: function mounted() {
-    console.log('Component fired.');
-    this.totalRows = this.items.length;
+    console.log('Component fired.'); // this.totalRows = this.items.length;
   },
   data: function data() {
     return {

@@ -1,7 +1,6 @@
 @extends('layouts.AdminDashboardFunction')
 
 @section('content')
-    <section class="content-of-vue">
         <div class="app" id="app">
             <div class="container">
                 <div class="row">
@@ -13,7 +12,6 @@
                 </div>
             </div>
         </div>
-    </section>
 {{--        <example-component></example-component>--}}
 {{--    <user-component></user-component>--}}
 {{--    <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>--}}

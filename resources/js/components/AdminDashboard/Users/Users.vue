@@ -124,7 +124,7 @@
         props: {},
         mounted: function () {
             console.log('Component fired.');
-            this.totalRows = this.items.length;
+            // this.totalRows = this.items.length;
         },
         data() {
             return {
