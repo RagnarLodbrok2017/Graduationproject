@@ -399,7 +399,8 @@ body {
   top: 0;
   z-index: 10;
   padding-top: 64px;
-  background: #fff
+  background: #fff;
+    overflow: hidden;
 }
 
 .scroll-sidebar,
@@ -943,4 +944,10 @@ body {
   to{
     background-color: #000;
   }
+}
+/* Login and register */
+.auth-wrapper{
+    overflow: hidden;
+    background-size: cover !important;
+    max-height: 100vh;
 }

@@ -1,4 +1,4 @@
-@extends('layouts.AdminPanelMaster')
+@extends('layouts.AdminPanelMasterLayout')
 
 @section('content')
     <!-- Page wrapper  -->

@@ -16,9 +16,10 @@ class User
      */
     public function handle($request, Closure $next , $guard =null)
     {
-        if (Auth::guard($guard)->check() && Auth::user()->type !== 'admin'){
-            return abort(404);
+        if (Auth::check() && Auth::user()->type == 'user')
+        {
+            return $next($request);
         }
-        return $next($request);
+        return abort(404);
     }
 }

@@ -1884,6 +1884,645 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   mounted: function mounted() {
@@ -1928,7 +2567,8 @@ __webpack_require__.r(__webpack_exports__);
       users: [],
       user: [],
       user_id: 0,
-      filter: null
+      filter: null,
+      image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg'
     };
   },
   created: function created() {
@@ -28691,7 +29331,7 @@ function isSlowBuffer (obj) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * jQuery JavaScript Library v3.3.1
+ * jQuery JavaScript Library v3.4.0
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -28701,7 +29341,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2018-01-20T17:24Z
+ * Date: 2019-04-10T19:48Z
  */
 ( function( global, factory ) {
 
@@ -28783,20 +29423,33 @@ var isWindow = function isWindow( obj ) {
 	var preservedScriptAttributes = {
 		type: true,
 		src: true,
+		nonce: true,
 		noModule: true
 	};
 
-	function DOMEval( code, doc, node ) {
+	function DOMEval( code, node, doc ) {
 		doc = doc || document;
 
-		var i,
+		var i, val,
 			script = doc.createElement( "script" );
 
 		script.text = code;
 		if ( node ) {
 			for ( i in preservedScriptAttributes ) {
-				if ( node[ i ] ) {
-					script[ i ] = node[ i ];
+
+				// Support: Firefox 64+, Edge 18+
+				// Some browsers don't support the "nonce" property on scripts.
+				// On the other hand, just using `getAttribute` is not enough as
+				// the `nonce` attribute is reset to an empty string whenever it
+				// becomes browsing-context connected.
+				// See https://github.com/whatwg/html/issues/2369
+				// See https://html.spec.whatwg.org/#nonce-attributes
+				// The `node.getAttribute` check was added for the sake of
+				// `jQuery.globalEval` so that it can fake a nonce-containing node
+				// via an object.
+				val = node[ i ] || node.getAttribute && node.getAttribute( i );
+				if ( val ) {
+					script.setAttribute( i, val );
 				}
 			}
 		}
@@ -28821,7 +29474,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.3.1",
+	version = "3.4.0",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -28950,25 +29603,28 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 			// Extend the base object
 			for ( name in options ) {
-				src = target[ name ];
 				copy = options[ name ];
 
+				// Prevent Object.prototype pollution
 				// Prevent never-ending loop
-				if ( target === copy ) {
+				if ( name === "__proto__" || target === copy ) {
 					continue;
 				}
 
 				// Recurse if we're merging plain objects or arrays
 				if ( deep && copy && ( jQuery.isPlainObject( copy ) ||
 					( copyIsArray = Array.isArray( copy ) ) ) ) {
+					src = target[ name ];
 
-					if ( copyIsArray ) {
-						copyIsArray = false;
-						clone = src && Array.isArray( src ) ? src : [];
-
+					// Ensure proper type for the source value
+					if ( copyIsArray && !Array.isArray( src ) ) {
+						clone = [];
+					} else if ( !copyIsArray && !jQuery.isPlainObject( src ) ) {
+						clone = {};
 					} else {
-						clone = src && jQuery.isPlainObject( src ) ? src : {};
+						clone = src;
 					}
+					copyIsArray = false;
 
 					// Never move original objects, clone them
 					target[ name ] = jQuery.extend( deep, clone, copy );
@@ -29021,9 +29677,6 @@ jQuery.extend( {
 	},
 
 	isEmptyObject: function( obj ) {
-
-		/* eslint-disable no-unused-vars */
-		// See https://github.com/eslint/eslint/issues/6125
 		var name;
 
 		for ( name in obj ) {
@@ -29033,8 +29686,8 @@ jQuery.extend( {
 	},
 
 	// Evaluates a script in a global context
-	globalEval: function( code ) {
-		DOMEval( code );
+	globalEval: function( code, options ) {
+		DOMEval( code, { nonce: options && options.nonce } );
 	},
 
 	each: function( obj, callback ) {
@@ -29190,14 +29843,14 @@ function isArrayLike( obj ) {
 }
 var Sizzle =
 /*!
- * Sizzle CSS Selector Engine v2.3.3
+ * Sizzle CSS Selector Engine v2.3.4
  * https://sizzlejs.com/
  *
- * Copyright jQuery Foundation and other contributors
+ * Copyright JS Foundation and other contributors
  * Released under the MIT license
- * http://jquery.org/license
+ * https://js.foundation/
  *
- * Date: 2016-08-08
+ * Date: 2019-04-08
  */
 (function( window ) {
 
@@ -29231,6 +29884,7 @@ var i,
 	classCache = createCache(),
 	tokenCache = createCache(),
 	compilerCache = createCache(),
+	nonnativeSelectorCache = createCache(),
 	sortOrder = function( a, b ) {
 		if ( a === b ) {
 			hasDuplicate = true;
@@ -29292,8 +29946,7 @@ var i,
 
 	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
 	rcombinators = new RegExp( "^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*" ),
-
-	rattributeQuotes = new RegExp( "=" + whitespace + "*([^\\]'\"]*?)" + whitespace + "*\\]", "g" ),
+	rdescend = new RegExp( whitespace + "|>" ),
 
 	rpseudo = new RegExp( pseudos ),
 	ridentifier = new RegExp( "^" + identifier + "$" ),
@@ -29314,6 +29967,7 @@ var i,
 			whitespace + "*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
 	},
 
+	rhtml = /HTML$/i,
 	rinputs = /^(?:input|select|textarea|button)$/i,
 	rheader = /^h\d$/i,
 
@@ -29368,9 +30022,9 @@ var i,
 		setDocument();
 	},
 
-	disabledAncestor = addCombinator(
+	inDisabledFieldset = addCombinator(
 		function( elem ) {
-			return elem.disabled === true && ("form" in elem || "label" in elem);
+			return elem.disabled === true && elem.nodeName.toLowerCase() === "fieldset";
 		},
 		{ dir: "parentNode", next: "legend" }
 	);
@@ -29483,18 +30137,22 @@ function Sizzle( selector, context, results, seed ) {
 
 			// Take advantage of querySelectorAll
 			if ( support.qsa &&
-				!compilerCache[ selector + " " ] &&
-				(!rbuggyQSA || !rbuggyQSA.test( selector )) ) {
+				!nonnativeSelectorCache[ selector + " " ] &&
+				(!rbuggyQSA || !rbuggyQSA.test( selector )) &&
 
-				if ( nodeType !== 1 ) {
-					newContext = context;
-					newSelector = selector;
-
-				// qSA looks outside Element context, which is not what we want
-				// Thanks to Andrew Dupont for this workaround technique
-				// Support: IE <=8
+				// Support: IE 8 only
 				// Exclude object elements
-				} else if ( context.nodeName.toLowerCase() !== "object" ) {
+				(nodeType !== 1 || context.nodeName.toLowerCase() !== "object") ) {
+
+				newSelector = selector;
+				newContext = context;
+
+				// qSA considers elements outside a scoping root when evaluating child or
+				// descendant combinators, which is not what we want.
+				// In such cases, we work around the behavior by prefixing every selector in the
+				// list with an ID selector referencing the scope context.
+				// Thanks to Andrew Dupont for this technique.
+				if ( nodeType === 1 && rdescend.test( selector ) ) {
 
 					// Capture the context ID, setting it first if necessary
 					if ( (nid = context.getAttribute( "id" )) ) {
@@ -29516,17 +30174,16 @@ function Sizzle( selector, context, results, seed ) {
 						context;
 				}
 
-				if ( newSelector ) {
-					try {
-						push.apply( results,
-							newContext.querySelectorAll( newSelector )
-						);
-						return results;
-					} catch ( qsaError ) {
-					} finally {
-						if ( nid === expando ) {
-							context.removeAttribute( "id" );
-						}
+				try {
+					push.apply( results,
+						newContext.querySelectorAll( newSelector )
+					);
+					return results;
+				} catch ( qsaError ) {
+					nonnativeSelectorCache( selector, true );
+				} finally {
+					if ( nid === expando ) {
+						context.removeAttribute( "id" );
 					}
 				}
 			}
@@ -29690,7 +30347,7 @@ function createDisabledPseudo( disabled ) {
 					// Where there is no isDisabled, check manually
 					/* jshint -W018 */
 					elem.isDisabled !== !disabled &&
-						disabledAncestor( elem ) === disabled;
+						inDisabledFieldset( elem ) === disabled;
 			}
 
 			return elem.disabled === disabled;
@@ -29747,10 +30404,13 @@ support = Sizzle.support = {};
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
-	// documentElement is verified for cases where it doesn't yet exist
-	// (such as loading iframes in IE - #4833)
-	var documentElement = elem && (elem.ownerDocument || elem).documentElement;
-	return documentElement ? documentElement.nodeName !== "HTML" : false;
+	var namespace = elem.namespaceURI,
+		docElem = (elem.ownerDocument || elem).documentElement;
+
+	// Support: IE <=8
+	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
+	// https://bugs.jquery.com/ticket/4833
+	return !rhtml.test( namespace || docElem && docElem.nodeName || "HTML" );
 };
 
 /**
@@ -30172,11 +30832,8 @@ Sizzle.matchesSelector = function( elem, expr ) {
 		setDocument( elem );
 	}
 
-	// Make sure that attribute selectors are quoted
-	expr = expr.replace( rattributeQuotes, "='$1']" );
-
 	if ( support.matchesSelector && documentIsHTML &&
-		!compilerCache[ expr + " " ] &&
+		!nonnativeSelectorCache[ expr + " " ] &&
 		( !rbuggyMatches || !rbuggyMatches.test( expr ) ) &&
 		( !rbuggyQSA     || !rbuggyQSA.test( expr ) ) ) {
 
@@ -30190,7 +30847,9 @@ Sizzle.matchesSelector = function( elem, expr ) {
 					elem.document && elem.document.nodeType !== 11 ) {
 				return ret;
 			}
-		} catch (e) {}
+		} catch (e) {
+			nonnativeSelectorCache( expr, true );
+		}
 	}
 
 	return Sizzle( expr, document, null, [ elem ] ).length > 0;
@@ -30649,7 +31308,7 @@ Expr = Sizzle.selectors = {
 		"contains": markFunction(function( text ) {
 			text = text.replace( runescape, funescape );
 			return function( elem ) {
-				return ( elem.textContent || elem.innerText || getText( elem ) ).indexOf( text ) > -1;
+				return ( elem.textContent || getText( elem ) ).indexOf( text ) > -1;
 			};
 		}),
 
@@ -30788,7 +31447,11 @@ Expr = Sizzle.selectors = {
 		}),
 
 		"lt": createPositionalPseudo(function( matchIndexes, length, argument ) {
-			var i = argument < 0 ? argument + length : argument;
+			var i = argument < 0 ?
+				argument + length :
+				argument > length ?
+					length :
+					argument;
 			for ( ; --i >= 0; ) {
 				matchIndexes.push( i );
 			}
@@ -31838,18 +32501,18 @@ jQuery.each( {
 		return siblings( elem.firstChild );
 	},
 	contents: function( elem ) {
-        if ( nodeName( elem, "iframe" ) ) {
-            return elem.contentDocument;
-        }
+		if ( typeof elem.contentDocument !== "undefined" ) {
+			return elem.contentDocument;
+		}
 
-        // Support: IE 9 - 11 only, iOS 7 only, Android Browser <=4.3 only
-        // Treat the template element as a regular one in browsers that
-        // don't support it.
-        if ( nodeName( elem, "template" ) ) {
-            elem = elem.content || elem;
-        }
+		// Support: IE 9 - 11 only, iOS 7 only, Android Browser <=4.3 only
+		// Treat the template element as a regular one in browsers that
+		// don't support it.
+		if ( nodeName( elem, "template" ) ) {
+			elem = elem.content || elem;
+		}
 
-        return jQuery.merge( [], elem.childNodes );
+		return jQuery.merge( [], elem.childNodes );
 	}
 }, function( name, fn ) {
 	jQuery.fn[ name ] = function( until, selector ) {
@@ -33158,6 +33821,22 @@ var rcssNum = new RegExp( "^(?:([+-])=|)(" + pnum + ")([a-z%]*)$", "i" );
 
 var cssExpand = [ "Top", "Right", "Bottom", "Left" ];
 
+var documentElement = document.documentElement;
+
+
+
+	var isAttached = function( elem ) {
+			return jQuery.contains( elem.ownerDocument, elem );
+		},
+		composed = { composed: true };
+
+	// Check attachment across shadow DOM boundaries when possible (gh-3504)
+	if ( documentElement.attachShadow ) {
+		isAttached = function( elem ) {
+			return jQuery.contains( elem.ownerDocument, elem ) ||
+				elem.getRootNode( composed ) === elem.ownerDocument;
+		};
+	}
 var isHiddenWithinTree = function( elem, el ) {
 
 		// isHiddenWithinTree might be called from jQuery#filter function;
@@ -33172,7 +33851,7 @@ var isHiddenWithinTree = function( elem, el ) {
 			// Support: Firefox <=43 - 45
 			// Disconnected elements can have computed display: none, so first confirm that elem is
 			// in the document.
-			jQuery.contains( elem.ownerDocument, elem ) &&
+			isAttached( elem ) &&
 
 			jQuery.css( elem, "display" ) === "none";
 	};
@@ -33214,7 +33893,8 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		unit = valueParts && valueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
 
 		// Starting value computation is required for potential unit mismatches
-		initialInUnit = ( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
+		initialInUnit = elem.nodeType &&
+			( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
 			rcssNum.exec( jQuery.css( elem, prop ) );
 
 	if ( initialInUnit && initialInUnit[ 3 ] !== unit ) {
@@ -33361,7 +34041,7 @@ jQuery.fn.extend( {
 } );
 var rcheckableType = ( /^(?:checkbox|radio)$/i );
 
-var rtagName = ( /<([a-z][^\/\0>\x20\t\r\n\f]+)/i );
+var rtagName = ( /<([a-z][^\/\0>\x20\t\r\n\f]*)/i );
 
 var rscriptType = ( /^$|^module$|\/(?:java|ecma)script/i );
 
@@ -33433,7 +34113,7 @@ function setGlobalEval( elems, refElements ) {
 var rhtml = /<|&#?\w+;/;
 
 function buildFragment( elems, context, scripts, selection, ignored ) {
-	var elem, tmp, tag, wrap, contains, j,
+	var elem, tmp, tag, wrap, attached, j,
 		fragment = context.createDocumentFragment(),
 		nodes = [],
 		i = 0,
@@ -33497,13 +34177,13 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 			continue;
 		}
 
-		contains = jQuery.contains( elem.ownerDocument, elem );
+		attached = isAttached( elem );
 
 		// Append to fragment
 		tmp = getAll( fragment.appendChild( elem ), "script" );
 
 		// Preserve script evaluation history
-		if ( contains ) {
+		if ( attached ) {
 			setGlobalEval( tmp );
 		}
 
@@ -33546,8 +34226,6 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 	div.innerHTML = "<textarea>x</textarea>";
 	support.noCloneChecked = !!div.cloneNode( true ).lastChild.defaultValue;
 } )();
-var documentElement = document.documentElement;
-
 
 
 var
@@ -33563,8 +34241,19 @@ function returnFalse() {
 	return false;
 }
 
+// Support: IE <=9 - 11+
+// focus() and blur() are asynchronous, except when they are no-op.
+// So expect focus to be synchronous when the element is already active,
+// and blur to be synchronous when the element is not already active.
+// (focus and blur are always synchronous in other supported browsers,
+// this just defines when we can count on it).
+function expectSync( elem, type ) {
+	return ( elem === safeActiveElement() ) === ( type === "focus" );
+}
+
 // Support: IE <=9 only
-// See #13393 for more info
+// Accessing document.activeElement can throw unexpectedly
+// https://bugs.jquery.com/ticket/13393
 function safeActiveElement() {
 	try {
 		return document.activeElement;
@@ -33864,9 +34553,10 @@ jQuery.event = {
 			while ( ( handleObj = matched.handlers[ j++ ] ) &&
 				!event.isImmediatePropagationStopped() ) {
 
-				// Triggered event must either 1) have no namespace, or 2) have namespace(s)
-				// a subset or equal to those in the bound event (both can have no namespace).
-				if ( !event.rnamespace || event.rnamespace.test( handleObj.namespace ) ) {
+				// If the event is namespaced, then each handler is only invoked if it is
+				// specially universal or its namespaces are a superset of the event's.
+				if ( !event.rnamespace || handleObj.namespace === false ||
+					event.rnamespace.test( handleObj.namespace ) ) {
 
 					event.handleObj = handleObj;
 					event.data = handleObj.data;
@@ -33990,39 +34680,53 @@ jQuery.event = {
 			// Prevent triggered image.load events from bubbling to window.load
 			noBubble: true
 		},
-		focus: {
-
-			// Fire native event if possible so blur/focus sequence is correct
-			trigger: function() {
-				if ( this !== safeActiveElement() && this.focus ) {
-					this.focus();
-					return false;
-				}
-			},
-			delegateType: "focusin"
-		},
-		blur: {
-			trigger: function() {
-				if ( this === safeActiveElement() && this.blur ) {
-					this.blur();
-					return false;
-				}
-			},
-			delegateType: "focusout"
-		},
 		click: {
 
-			// For checkbox, fire native event so checked state will be right
-			trigger: function() {
-				if ( this.type === "checkbox" && this.click && nodeName( this, "input" ) ) {
-					this.click();
-					return false;
+			// Utilize native event to ensure correct state for checkable inputs
+			setup: function( data ) {
+
+				// For mutual compressibility with _default, replace `this` access with a local var.
+				// `|| data` is dead code meant only to preserve the variable through minification.
+				var el = this || data;
+
+				// Claim the first handler
+				if ( rcheckableType.test( el.type ) &&
+					el.click && nodeName( el, "input" ) &&
+					dataPriv.get( el, "click" ) === undefined ) {
+
+					// dataPriv.set( el, "click", ... )
+					leverageNative( el, "click", returnTrue );
 				}
+
+				// Return false to allow normal processing in the caller
+				return false;
+			},
+			trigger: function( data ) {
+
+				// For mutual compressibility with _default, replace `this` access with a local var.
+				// `|| data` is dead code meant only to preserve the variable through minification.
+				var el = this || data;
+
+				// Force setup before triggering a click
+				if ( rcheckableType.test( el.type ) &&
+					el.click && nodeName( el, "input" ) &&
+					dataPriv.get( el, "click" ) === undefined ) {
+
+					leverageNative( el, "click" );
+				}
+
+				// Return non-false to allow normal event-path propagation
+				return true;
 			},
 
-			// For cross-browser consistency, don't fire native .click() on links
+			// For cross-browser consistency, suppress native .click() on links
+			// Also prevent it if we're currently inside a leveraged native-event stack
 			_default: function( event ) {
-				return nodeName( event.target, "a" );
+				var target = event.target;
+				return rcheckableType.test( target.type ) &&
+					target.click && nodeName( target, "input" ) &&
+					dataPriv.get( target, "click" ) ||
+					nodeName( target, "a" );
 			}
 		},
 
@@ -34038,6 +34742,85 @@ jQuery.event = {
 		}
 	}
 };
+
+// Ensure the presence of an event listener that handles manually-triggered
+// synthetic events by interrupting progress until reinvoked in response to
+// *native* events that it fires directly, ensuring that state changes have
+// already occurred before other listeners are invoked.
+function leverageNative( el, type, expectSync ) {
+
+	// Missing expectSync indicates a trigger call, which must force setup through jQuery.event.add
+	if ( !expectSync ) {
+		jQuery.event.add( el, type, returnTrue );
+		return;
+	}
+
+	// Register the controller as a special universal handler for all event namespaces
+	dataPriv.set( el, type, false );
+	jQuery.event.add( el, type, {
+		namespace: false,
+		handler: function( event ) {
+			var notAsync, result,
+				saved = dataPriv.get( this, type );
+
+			if ( ( event.isTrigger & 1 ) && this[ type ] ) {
+
+				// Interrupt processing of the outer synthetic .trigger()ed event
+				if ( !saved ) {
+
+					// Store arguments for use when handling the inner native event
+					saved = slice.call( arguments );
+					dataPriv.set( this, type, saved );
+
+					// Trigger the native event and capture its result
+					// Support: IE <=9 - 11+
+					// focus() and blur() are asynchronous
+					notAsync = expectSync( this, type );
+					this[ type ]();
+					result = dataPriv.get( this, type );
+					if ( saved !== result || notAsync ) {
+						dataPriv.set( this, type, false );
+					} else {
+						result = undefined;
+					}
+					if ( saved !== result ) {
+
+						// Cancel the outer synthetic event
+						event.stopImmediatePropagation();
+						event.preventDefault();
+						return result;
+					}
+
+				// If this is an inner synthetic event for an event with a bubbling surrogate
+				// (focus or blur), assume that the surrogate already propagated from triggering the
+				// native event and prevent that from happening again here.
+				// This technically gets the ordering wrong w.r.t. to `.trigger()` (in which the
+				// bubbling surrogate propagates *after* the non-bubbling base), but that seems
+				// less bad than duplication.
+				} else if ( ( jQuery.event.special[ type ] || {} ).delegateType ) {
+					event.stopPropagation();
+				}
+
+			// If this is a native event triggered above, everything is now in order
+			// Fire an inner synthetic event with the original arguments
+			} else if ( saved ) {
+
+				// ...and capture the result
+				dataPriv.set( this, type, jQuery.event.trigger(
+
+					// Support: IE <=9 - 11+
+					// Extend with the prototype to reset the above stopImmediatePropagation()
+					jQuery.extend( saved.shift(), jQuery.Event.prototype ),
+					saved,
+					this
+				) );
+
+				// Abort handling of the native event
+				event.stopImmediatePropagation();
+			}
+		}
+	} );
+}
 
 jQuery.removeEvent = function( elem, type, handle ) {
 
@@ -34151,6 +34934,7 @@ jQuery.each( {
 	shiftKey: true,
 	view: true,
 	"char": true,
+	code: true,
 	charCode: true,
 	key: true,
 	keyCode: true,
@@ -34196,6 +34980,33 @@ jQuery.each( {
 		return event.which;
 	}
 }, jQuery.event.addProp );
+
+jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateType ) {
+	jQuery.event.special[ type ] = {
+
+		// Utilize native event if possible so blur/focus sequence is correct
+		setup: function() {
+
+			// Claim the first handler
+			// dataPriv.set( this, "focus", ... )
+			// dataPriv.set( this, "blur", ... )
+			leverageNative( this, type, expectSync );
+
+			// Return false to allow normal processing in the caller
+			return false;
+		},
+		trigger: function() {
+
+			// Force setup before trigger
+			leverageNative( this, type );
+
+			// Return non-false to allow normal event-path propagation
+			return true;
+		},
+
+		delegateType: delegateType
+	};
+} );
 
 // Create mouseenter/leave events using mouseover/out and event-time checks
 // so that event delegation works in jQuery.
@@ -34447,11 +35258,13 @@ function domManip( collection, args, callback, ignored ) {
 						if ( node.src && ( node.type || "" ).toLowerCase()  !== "module" ) {
 
 							// Optional AJAX dependency, but won't run scripts if not present
-							if ( jQuery._evalUrl ) {
-								jQuery._evalUrl( node.src );
+							if ( jQuery._evalUrl && !node.noModule ) {
+								jQuery._evalUrl( node.src, {
+									nonce: node.nonce || node.getAttribute( "nonce" )
+								} );
 							}
 						} else {
-							DOMEval( node.textContent.replace( rcleanScript, "" ), doc, node );
+							DOMEval( node.textContent.replace( rcleanScript, "" ), node, doc );
 						}
 					}
 				}
@@ -34473,7 +35286,7 @@ function remove( elem, selector, keepData ) {
 		}
 
 		if ( node.parentNode ) {
-			if ( keepData && jQuery.contains( node.ownerDocument, node ) ) {
+			if ( keepData && isAttached( node ) ) {
 				setGlobalEval( getAll( node, "script" ) );
 			}
 			node.parentNode.removeChild( node );
@@ -34491,7 +35304,7 @@ jQuery.extend( {
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
 		var i, l, srcElements, destElements,
 			clone = elem.cloneNode( true ),
-			inPage = jQuery.contains( elem.ownerDocument, elem );
+			inPage = isAttached( elem );
 
 		// Fix IE cloning issues
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
@@ -34787,8 +35600,10 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 		// Support: IE 9 only
 		// Detect overflow:scroll screwiness (gh-3699)
+		// Support: Chrome <=64
+		// Don't get tricked when zoom affects offsetWidth (gh-4029)
 		div.style.position = "absolute";
-		scrollboxSizeVal = div.offsetWidth === 36 || "absolute";
+		scrollboxSizeVal = roundPixelMeasures( div.offsetWidth / 3 ) === 12;
 
 		documentElement.removeChild( container );
 
@@ -34859,7 +35674,7 @@ function curCSS( elem, name, computed ) {
 	if ( computed ) {
 		ret = computed.getPropertyValue( name ) || computed[ name ];
 
-		if ( ret === "" && !jQuery.contains( elem.ownerDocument, elem ) ) {
+		if ( ret === "" && !isAttached( elem ) ) {
 			ret = jQuery.style( elem, name );
 		}
 
@@ -34915,29 +35730,12 @@ function addGetHookIf( conditionFn, hookFn ) {
 }
 
 
-var
+var cssPrefixes = [ "Webkit", "Moz", "ms" ],
+	emptyStyle = document.createElement( "div" ).style,
+	vendorProps = {};
 
-	// Swappable if display is none or starts with table
-	// except "table", "table-cell", or "table-caption"
-	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
-	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
-	rcustomProp = /^--/,
-	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
-	cssNormalTransform = {
-		letterSpacing: "0",
-		fontWeight: "400"
-	},
-
-	cssPrefixes = [ "Webkit", "Moz", "ms" ],
-	emptyStyle = document.createElement( "div" ).style;
-
-// Return a css property mapped to a potentially vendor prefixed property
+// Return a vendor-prefixed property or undefined
 function vendorPropName( name ) {
-
-	// Shortcut for names that are not vendor prefixed
-	if ( name in emptyStyle ) {
-		return name;
-	}
 
 	// Check for vendor prefixed names
 	var capName = name[ 0 ].toUpperCase() + name.slice( 1 ),
@@ -34951,15 +35749,32 @@ function vendorPropName( name ) {
 	}
 }
 
-// Return a property mapped along what jQuery.cssProps suggests or to
-// a vendor prefixed property.
+// Return a potentially-mapped jQuery.cssProps or vendor prefixed property
 function finalPropName( name ) {
-	var ret = jQuery.cssProps[ name ];
-	if ( !ret ) {
-		ret = jQuery.cssProps[ name ] = vendorPropName( name ) || name;
+	var final = jQuery.cssProps[ name ] || vendorProps[ name ];
+
+	if ( final ) {
+		return final;
 	}
-	return ret;
+	if ( name in emptyStyle ) {
+		return name;
+	}
+	return vendorProps[ name ] = vendorPropName( name ) || name;
 }
+
+
+var
+
+	// Swappable if display is none or starts with table
+	// except "table", "table-cell", or "table-caption"
+	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
+	rcustomProp = /^--/,
+	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
+	cssNormalTransform = {
+		letterSpacing: "0",
+		fontWeight: "400"
+	};
 
 function setPositiveNumber( elem, value, subtract ) {
 
@@ -35032,7 +35847,10 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 			delta -
 			extra -
 			0.5
-		) );
+
+		// If offsetWidth/offsetHeight is unknown, then we can't determine content-box scroll gutter
+		// Use an explicit zero to avoid NaN (gh-3964)
+		) ) || 0;
 	}
 
 	return delta;
@@ -35042,9 +35860,16 @@ function getWidthOrHeight( elem, dimension, extra ) {
 
 	// Start with computed style
 	var styles = getStyles( elem ),
+
+		// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-4322).
+		// Fake content-box until we know it's needed to know the true value.
+		boxSizingNeeded = !support.boxSizingReliable() || extra,
+		isBorderBox = boxSizingNeeded &&
+			jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
+		valueIsBorderBox = isBorderBox,
+
 		val = curCSS( elem, dimension, styles ),
-		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
-		valueIsBorderBox = isBorderBox;
+		offsetProp = "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 );
 
 	// Support: Firefox <=54
 	// Return a confounding non-pixel value or feign ignorance, as appropriate.
@@ -35055,22 +35880,29 @@ function getWidthOrHeight( elem, dimension, extra ) {
 		val = "auto";
 	}
 
-	// Check for style in case a browser which returns unreliable values
-	// for getComputedStyle silently falls back to the reliable elem.style
-	valueIsBorderBox = valueIsBorderBox &&
-		( support.boxSizingReliable() || val === elem.style[ dimension ] );
 
 	// Fall back to offsetWidth/offsetHeight when value is "auto"
 	// This happens for inline elements with no explicit setting (gh-3571)
 	// Support: Android <=4.1 - 4.3 only
 	// Also use offsetWidth/offsetHeight for misreported inline dimensions (gh-3602)
-	if ( val === "auto" ||
-		!parseFloat( val ) && jQuery.css( elem, "display", false, styles ) === "inline" ) {
+	// Support: IE 9-11 only
+	// Also use offsetWidth/offsetHeight for when box sizing is unreliable
+	// We use getClientRects() to check for hidden/disconnected.
+	// In those cases, the computed value can be trusted to be border-box
+	if ( ( !support.boxSizingReliable() && isBorderBox ||
+		val === "auto" ||
+		!parseFloat( val ) && jQuery.css( elem, "display", false, styles ) === "inline" ) &&
+		elem.getClientRects().length ) {
 
-		val = elem[ "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 ) ];
+		isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
 
-		// offsetWidth/offsetHeight provide border-box values
-		valueIsBorderBox = true;
+		// Where available, offsetWidth/offsetHeight approximate border box dimensions.
+		// Where not available (e.g., SVG), assume unreliable box-sizing and interpret the
+		// retrieved value as a content box dimension.
+		valueIsBorderBox = offsetProp in elem;
+		if ( valueIsBorderBox ) {
+			val = elem[ offsetProp ];
+		}
 	}
 
 	// Normalize "" and auto
@@ -35116,6 +35948,13 @@ jQuery.extend( {
 		"flexGrow": true,
 		"flexShrink": true,
 		"fontWeight": true,
+		"gridArea": true,
+		"gridColumn": true,
+		"gridColumnEnd": true,
+		"gridColumnStart": true,
+		"gridRow": true,
+		"gridRowEnd": true,
+		"gridRowStart": true,
 		"lineHeight": true,
 		"opacity": true,
 		"order": true,
@@ -35171,7 +36010,9 @@ jQuery.extend( {
 			}
 
 			// If a number was passed in, add the unit (except for certain CSS properties)
-			if ( type === "number" ) {
+			// The isCustomProp check can be removed in jQuery 4.0 when we only auto-append
+			// "px" to a few hardcoded values.
+			if ( type === "number" && !isCustomProp ) {
 				value += ret && ret[ 3 ] || ( jQuery.cssNumber[ origName ] ? "" : "px" );
 			}
 
@@ -35271,18 +36112,29 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 		set: function( elem, value, extra ) {
 			var matches,
 				styles = getStyles( elem ),
-				isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
-				subtract = extra && boxModelAdjustment(
-					elem,
-					dimension,
-					extra,
-					isBorderBox,
-					styles
-				);
+
+				// Only read styles.position if the test has a chance to fail
+				// to avoid forcing a reflow.
+				scrollboxSizeBuggy = !support.scrollboxSize() &&
+					styles.position === "absolute",
+
+				// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-3991)
+				boxSizingNeeded = scrollboxSizeBuggy || extra,
+				isBorderBox = boxSizingNeeded &&
+					jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
+				subtract = extra ?
+					boxModelAdjustment(
+						elem,
+						dimension,
+						extra,
+						isBorderBox,
+						styles
+					) :
+					0;
 
 			// Account for unreliable border-box dimensions by comparing offset* to computed and
 			// faking a content-box to get border and padding (gh-3699)
-			if ( isBorderBox && support.scrollboxSize() === styles.position ) {
+			if ( isBorderBox && scrollboxSizeBuggy ) {
 				subtract -= Math.ceil(
 					elem[ "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 ) ] -
 					parseFloat( styles[ dimension ] ) -
@@ -35450,9 +36302,9 @@ Tween.propHooks = {
 			// Use .style if available and use plain properties where available.
 			if ( jQuery.fx.step[ tween.prop ] ) {
 				jQuery.fx.step[ tween.prop ]( tween );
-			} else if ( tween.elem.nodeType === 1 &&
-				( tween.elem.style[ jQuery.cssProps[ tween.prop ] ] != null ||
-					jQuery.cssHooks[ tween.prop ] ) ) {
+			} else if ( tween.elem.nodeType === 1 && (
+					jQuery.cssHooks[ tween.prop ] ||
+					tween.elem.style[ finalPropName( tween.prop ) ] != null ) ) {
 				jQuery.style( tween.elem, tween.prop, tween.now + tween.unit );
 			} else {
 				tween.elem[ tween.prop ] = tween.now;
@@ -37159,6 +38011,10 @@ jQuery.param = function( a, traditional ) {
 				encodeURIComponent( value == null ? "" : value );
 		};
 
+	if ( a == null ) {
+		return "";
+	}
+
 	// If an array was passed in, assume that it is an array of form elements.
 	if ( Array.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 
@@ -37661,12 +38517,14 @@ jQuery.extend( {
 						if ( !responseHeaders ) {
 							responseHeaders = {};
 							while ( ( match = rheaders.exec( responseHeadersString ) ) ) {
-								responseHeaders[ match[ 1 ].toLowerCase() ] = match[ 2 ];
+								responseHeaders[ match[ 1 ].toLowerCase() + " " ] =
+									( responseHeaders[ match[ 1 ].toLowerCase() + " " ] || [] )
+										.concat( match[ 2 ] );
 							}
 						}
-						match = responseHeaders[ key.toLowerCase() ];
+						match = responseHeaders[ key.toLowerCase() + " " ];
 					}
-					return match == null ? null : match;
+					return match == null ? null : match.join( ", " );
 				},
 
 				// Raw string
@@ -38055,7 +38913,7 @@ jQuery.each( [ "get", "post" ], function( i, method ) {
 } );
 
 
-jQuery._evalUrl = function( url ) {
+jQuery._evalUrl = function( url, options ) {
 	return jQuery.ajax( {
 		url: url,
 
@@ -38065,7 +38923,16 @@ jQuery._evalUrl = function( url ) {
 		cache: true,
 		async: false,
 		global: false,
-		"throws": true
+
+		// Only evaluate the response if it is successful (gh-4126)
+		// dataFilter is not invoked for failure responses, so using it instead
+		// of the default converter is kludgy but it works.
+		converters: {
+			"text script": function() {}
+		},
+		dataFilter: function( response ) {
+			jQuery.globalEval( response, options );
+		}
 	} );
 };
 
@@ -38348,24 +39215,21 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 // Bind script tag hack transport
 jQuery.ajaxTransport( "script", function( s ) {
 
-	// This transport only deals with cross domain requests
-	if ( s.crossDomain ) {
+	// This transport only deals with cross domain or forced-by-attrs requests
+	if ( s.crossDomain || s.scriptAttrs ) {
 		var script, callback;
 		return {
 			send: function( _, complete ) {
-				script = jQuery( "<script>" ).prop( {
-					charset: s.scriptCharset,
-					src: s.url
-				} ).on(
-					"load error",
-					callback = function( evt ) {
+				script = jQuery( "<script>" )
+					.attr( s.scriptAttrs || {} )
+					.prop( { charset: s.scriptCharset, src: s.url } )
+					.on( "load error", callback = function( evt ) {
 						script.remove();
 						callback = null;
 						if ( evt ) {
 							complete( evt.type === "error" ? 404 : 200, evt.type );
 						}
-					}
-				);
+					} );
 
 				// Use native DOM manipulation to avoid our domManip AJAX trickery
 				document.head.appendChild( script[ 0 ] );
@@ -56181,7 +57045,7 @@ return jQuery;
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(global) {/**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
- * @version 1.14.7
+ * @version 1.15.0
  * @license
  * Copyright (c) 2016 Federico Zivolo and contributors
  *
@@ -57785,7 +58649,14 @@ function flip(data, options) {
 
     // flip the variation if required
     var isVertical = ['top', 'bottom'].indexOf(placement) !== -1;
-    var flippedVariation = !!options.flipVariations && (isVertical && variation === 'start' && overflowsLeft || isVertical && variation === 'end' && overflowsRight || !isVertical && variation === 'start' && overflowsTop || !isVertical && variation === 'end' && overflowsBottom);
+
+    // flips variation if reference element overflows boundaries
+    var flippedVariationByRef = !!options.flipVariations && (isVertical && variation === 'start' && overflowsLeft || isVertical && variation === 'end' && overflowsRight || !isVertical && variation === 'start' && overflowsTop || !isVertical && variation === 'end' && overflowsBottom);
+
+    // flips variation if popper content overflows boundaries
+    var flippedVariationByContent = !!options.flipVariationsByContent && (isVertical && variation === 'start' && overflowsRight || isVertical && variation === 'end' && overflowsLeft || !isVertical && variation === 'start' && overflowsBottom || !isVertical && variation === 'end' && overflowsTop);
+
+    var flippedVariation = flippedVariationByRef || flippedVariationByContent;
 
     if (overlapsRef || overflowsBoundaries || flippedVariation) {
       // this boolean to detect any flip loop
@@ -58392,7 +59263,23 @@ var modifiers = {
      * The popper will never be placed outside of the defined boundaries
      * (except if `keepTogether` is enabled)
      */
-    boundariesElement: 'viewport'
+    boundariesElement: 'viewport',
+    /**
+     * @prop {Boolean} flipVariations=false
+     * The popper will switch placement variation between `-start` and `-end` when
+     * the reference element overlaps its boundaries.
+     *
+     * The original placement should have a set variation.
+     */
+    flipVariations: false,
+    /**
+     * @prop {Boolean} flipVariationsByContent=false
+     * The popper will switch placement variation between `-start` and `-end` when
+     * the popper element overlaps its reference boundaries.
+     *
+     * The original placement should have a set variation.
+     */
+    flipVariationsByContent: false
   },
 
   /**
@@ -58609,8 +59496,8 @@ var Popper = function () {
   /**
    * Creates a new Popper.js instance.
    * @class Popper
-   * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
-   * @param {HTMLElement} popper - The HTML element used as the popper
+   * @param {Element|referenceObject} reference - The reference element used to position the popper
+   * @param {Element} popper - The HTML / XML element used as the popper
    * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
    * @return {Object} instance - The generated Popper.js instance
    */
@@ -59816,324 +60703,2440 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("b-container", { attrs: { fluid: "" } }, [
-    _c(
+  return _c("div", { staticClass: "page" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "container-fluid" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-8 col-xl-9 col-md-9" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-body" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("div", { staticClass: "table-responsive" }, [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-bordered nowrap display",
+                    attrs: { id: "file_export" }
+                  },
+                  [
+                    _vm._m(2),
+                    _vm._v(" "),
+                    _c("tbody", [
+                      _c("tr", [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c("a", { attrs: { href: "../" } }, [
+                            _c("img", {
+                              staticClass: "rounded-circle",
+                              attrs: {
+                                src: _vm.image_src,
+                                alt: "user",
+                                width: "30"
+                              }
+                            }),
+                            _vm._v(" Genelia Deshmukh")
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("genelia@gmail.com")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("+123 456 789")]),
+                        _vm._v(" "),
+                        _vm._m(4),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("23")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("12-10-2014")]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v("$1200")]),
+                        _vm._v(" "),
+                        _vm._m(5)
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _vm._m(9),
+                      _vm._v(" "),
+                      _vm._m(10),
+                      _vm._v(" "),
+                      _vm._m(11),
+                      _vm._v(" "),
+                      _vm._m(12),
+                      _vm._v(" "),
+                      _vm._m(13),
+                      _vm._v(" "),
+                      _vm._m(14),
+                      _vm._v(" "),
+                      _vm._m(15),
+                      _vm._v(" "),
+                      _vm._m(16),
+                      _vm._v(" "),
+                      _vm._m(17),
+                      _vm._v(" "),
+                      _vm._m(18),
+                      _vm._v(" "),
+                      _vm._m(19),
+                      _vm._v(" "),
+                      _vm._m(20),
+                      _vm._v(" "),
+                      _vm._m(21),
+                      _vm._v(" "),
+                      _vm._m(22),
+                      _vm._v(" "),
+                      _vm._m(23),
+                      _vm._v(" "),
+                      _vm._m(24),
+                      _vm._v(" "),
+                      _vm._m(25),
+                      _vm._v(" "),
+                      _vm._m(26),
+                      _vm._v(" "),
+                      _vm._m(27),
+                      _vm._v(" "),
+                      _vm._m(28)
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(29)
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(30),
+    _vm._v(" "),
+    _vm._m(31),
+    _vm._v(" "),
+    _c("footer", { staticClass: "footer text-center" }, [
+      _vm._v("\n        All Rights Reserved by Ahmed R. Mohamed\n    ")
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "page-breadcrumb" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-5 align-self-center" }, [
+          _c("h4", { staticClass: "page-title" }, [_vm._v("All Users")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex align-items-center" }, [
+            _c("nav", { attrs: { "aria-label": "breadcrumb" } }, [
+              _c("ol", { staticClass: "breadcrumb" }, [
+                _c("li", { staticClass: "breadcrumb-item" }, [
+                  _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "breadcrumb-item active",
+                    attrs: { "aria-current": "page" }
+                  },
+                  [_vm._v("Library")]
+                )
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-7 align-self-center" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "d-flex no-block justify-content-end align-items-center"
+            },
+            [
+              _c("div", { staticClass: "m-r-10" }, [
+                _c("div", { staticClass: "lastmonth" })
+              ]),
+              _vm._v(" "),
+              _c("div", {}, [
+                _c("small", [_vm._v("LAST MONTH")]),
+                _vm._v(" "),
+                _c("h4", { staticClass: "text-info m-b-0 font-medium" }, [
+                  _vm._v("3,552")
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "d-flex no-block align-items-center m-b-30" },
+      [
+        _c("h4", { staticClass: "card-title" }, [_vm._v("All Users")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "ml-auto" }, [
+          _c("div", { staticClass: "btn-group" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-dark",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": "#createmodel"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                                        Create New User\n                                    "
+                )
+              ]
+            )
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th"),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Phone")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Role")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Age")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Joining date")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Salery")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("div", { staticClass: "custom-control custom-checkbox" }, [
+        _c("input", {
+          staticClass: "custom-control-input",
+          attrs: {
+            type: "checkbox",
+            id: "customControlValidation2",
+            required: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("label", {
+          staticClass: "custom-control-label",
+          attrs: { for: "customControlValidation2" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", { staticClass: "label label-danger" }, [_vm._v("Tester")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c(
+        "button",
+        {
+          staticClass:
+            "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+          attrs: {
+            type: "button",
+            "data-toggle": "tooltip",
+            "data-original-title": "Delete"
+          }
+        },
+        [_c("i", { staticClass: "ti-close", attrs: { "aria-hidden": "true" } })]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation3",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation3" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: {
+              src: __webpack_require__(/*! ../../../../../public/images/AdminDashboardImages/images/users/1.jpg */ "./public/images/AdminDashboardImages/images/users/1.jpg"),
+              alt: "user",
+              width: "30"
+            }
+          }),
+          _vm._v(" Arijit Singh")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("arijit@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+234 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-info" }, [_vm._v("Tester2")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("26")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("10-09-2014")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1800")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation4",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation4" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/3.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Govinda jalan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("govinda@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+345 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-success" }, [_vm._v("Admin")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("28")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("1-10-2013")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$2200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation5",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation5" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/4.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Hritik Roshan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("hritik@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+456 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-inverse" }, [_vm._v("Vip")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("25")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("2-10-2017")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation6",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation6" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/5.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" John Abraham")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("john@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+567 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-danger" }, [_vm._v("Vip")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("23")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("10-9-2015")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation7",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation7" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/6.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Pawandeep kumar")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("pawandeep@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+678 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-warning" }, [_vm._v("Admin")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("29")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("10-5-2013")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1500")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation8",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation8" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/7.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Ritesh Deshmukh")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("ritesh@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+123 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-danger" }, [_vm._v("User")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("35")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("05-10-2012")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$3200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation9",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation9" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/8.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Salman Khan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("salman@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+234 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-info" }, [_vm._v("User")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("27")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-10-2014")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1800")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation10",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation10" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/1.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Govinda jalan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("govinda@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+345 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-success" }, [_vm._v("User")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("18")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("12-5-2017")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$100")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation11",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation11" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/2.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Sonu Nigam")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("sonu@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+456 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-inverse" }, [_vm._v("Admin")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("36")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("18-5-2009")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$4200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation12",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation12" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/3.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Varun Dhawan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("varun@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+567 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-danger" }, [_vm._v("Manager")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("43")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("12-10-2010")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$5200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation13",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation13" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/4.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Genelia Deshmukh")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("genelia@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+123 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-danger" }, [_vm._v("User")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("23")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("12-10-2014")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation14",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation14" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/5.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Arijit Singh")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("arijit@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+234 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-info" }, [_vm._v("Admin")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("26")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("10-09-2014")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1800")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation15",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation15" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/6.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Govinda jalan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("govinda@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+345 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-success" }, [_vm._v("Admin")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("28")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("1-10-2013")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$2200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation16",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation16" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/1.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Genelia Deshmukh")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("genelia@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+123 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-danger" }, [_vm._v("Designer")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("23")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("12-10-2014")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation17",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation17" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/2.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Arijit Singh")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("arijit@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+234 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-info" }, [_vm._v("Developer")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("26")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("10-09-2014")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1800")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation18",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation18" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/3.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Govinda jalan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("govinda@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+345 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-success" }, [_vm._v("User")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("28")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("1-10-2013")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$2200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation19",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation19" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/4.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Hritik Roshan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("hritik@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+456 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-inverse" }, [_vm._v("User")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("25")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("2-10-2017")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation20",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation20" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/5.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" John Abraham")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("john@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+567 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-danger" }, [_vm._v("Admin")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("23")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("10-9-2015")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation21",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation21" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/6.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Pawandeep kumar")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("pawandeep@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+678 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-warning" }, [_vm._v("Vip")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("29")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("10-5-2013")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1500")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation22",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation22" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/7.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Ritesh Deshmukh")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("ritesh@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+123 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-danger" }, [_vm._v("Designer")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("35")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("05-10-2012")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$3200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation23",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation23" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/8.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Salman Khan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("salman@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+234 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-info" }, [_vm._v("Developer")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("27")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("11-10-2014")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$1800")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation24",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation24" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/1.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Govinda jalan")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("govinda@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+345 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-success" }, [
+          _vm._v("Accountant")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("18")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("12-5-2017")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$100")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", [
+        _c("div", { staticClass: "custom-control custom-checkbox" }, [
+          _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: "customControlValidation25",
+              required: ""
+            }
+          }),
+          _vm._v(" "),
+          _c("label", {
+            staticClass: "custom-control-label",
+            attrs: { for: "customControlValidation25" }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [
+        _c("a", { attrs: { href: "../" } }, [
+          _c("img", {
+            staticClass: "rounded-circle",
+            attrs: { src: "images/users/2.jpg", alt: "user", width: "30" }
+          }),
+          _vm._v(" Sonu Nigam")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("sonu@gmail.com")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("+456 456 789")]),
+      _vm._v(" "),
+      _c("td", [
+        _c("span", { staticClass: "label label-inverse" }, [_vm._v("HR")])
+      ]),
+      _vm._v(" "),
+      _c("td", [_vm._v("36")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("18-5-2009")]),
+      _vm._v(" "),
+      _c("td", [_vm._v("$4200")]),
+      _vm._v(" "),
+      _c("td", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+            attrs: {
+              type: "button",
+              "data-toggle": "tooltip",
+              "data-original-title": "Delete"
+            }
+          },
+          [
+            _c("i", {
+              staticClass: "ti-close",
+              attrs: { "aria-hidden": "true" }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-lg-4 col-xl-3 col-md-3" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "border-bottom p-15" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-info",
+              staticStyle: { width: "100%" },
+              attrs: {
+                type: "button",
+                "data-toggle": "modal",
+                "data-target": "#Sharemodel"
+              }
+            },
+            [
+              _c("i", { staticClass: "ti-share m-r-10" }),
+              _vm._v(" Share With\n                        ")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c("form", [
+            _c("div", { staticClass: "input-group mb-3" }, [
+              _c("div", { staticClass: "input-group-prepend" }, [
+                _c("span", { staticClass: "input-group-text" }, [
+                  _c("i", { staticClass: "ti-search" })
+                ])
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Search Contacts Here...",
+                  "aria-label": "Amount (to the nearest dollar)"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "input-group-append" }, [
+                _c("button", { staticClass: "btn btn-info" }, [_vm._v("Ok")])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "list-group m-t-30" }, [
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item active",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("i", { staticClass: "ti-layers m-r-10" }),
+                _vm._v(" All Contacts")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("i", { staticClass: "ti-star m-r-10" }),
+                _vm._v(" Favourite Contacts")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("i", { staticClass: "ti-bookmark m-r-10" }),
+                _vm._v(" Recently Created")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("h4", { staticClass: "card-title m-t-30" }, [_vm._v("Groups")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "list-group" }, [
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("i", { staticClass: "ti-flag-alt-2 m-r-10" }),
+                _vm._v(" Success Warriers\n                                "),
+                _c("span", { staticClass: "badge badge-info float-right" }, [
+                  _vm._v("20")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("i", { staticClass: "ti-notepad m-r-10" }),
+                _vm._v(" Project\n                                "),
+                _c("span", { staticClass: "badge badge-success float-right" }, [
+                  _vm._v("12")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("i", { staticClass: "ti-target m-r-10" }),
+                _vm._v(" Envato Author\n                                "),
+                _c("span", { staticClass: "badge badge-dark float-right" }, [
+                  _vm._v("22")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("i", { staticClass: "ti-comments m-r-10" }),
+                _vm._v(" IT Friends\n                                "),
+                _c("span", { staticClass: "badge badge-danger float-right" }, [
+                  _vm._v("101")
+                ])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("h4", { staticClass: "card-title m-t-30" }, [_vm._v("More")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "list-group" }, [
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("span", { staticClass: "badge badge-info m-r-10" }, [
+                  _c("i", { staticClass: "ti-import" })
+                ]),
+                _vm._v(" Import Contacts\n                            ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "badge badge-warning text-white m-r-10" },
+                  [_c("i", { staticClass: "ti-export" })]
+                ),
+                _vm._v(" Export Contacts\n                            ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("span", { staticClass: "badge badge-success m-r-10" }, [
+                  _c("i", { staticClass: "ti-share-alt" })
+                ]),
+                _vm._v(" Restore Contacts\n                            ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("span", { staticClass: "badge badge-primary m-r-10" }, [
+                  _c("i", { staticClass: "ti-layers-alt" })
+                ]),
+                _vm._v(" Duplicate Contacts\n                            ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "list-group-item",
+                attrs: { href: "javascript:void(0)" }
+              },
+              [
+                _c("span", { staticClass: "badge badge-danger m-r-10" }, [
+                  _c("i", { staticClass: "ti-trash" })
+                ]),
+                _vm._v(" Delete All Contacts\n                            ")
+              ]
+            )
+          ])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
       "div",
       {
-        staticClass: "row",
-        staticStyle: {
-          position: "relative",
-          overflow: "hidden",
-          "min-height": "500px"
+        staticClass: "modal fade",
+        attrs: {
+          id: "Sharemodel",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
         }
       },
       [
         _c(
-          "b-alert",
-          {
-            staticClass: "delete-alert col-lg-5 col-sm-12",
-            attrs: { variant: "danger", dismissible: "" },
-            model: {
-              value: _vm.showDismissibleAlert,
-              callback: function($$v) {
-                _vm.showDismissibleAlert = $$v
-              },
-              expression: "showDismissibleAlert"
-            }
-          },
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c("h4", { staticClass: "alert-heading alert-head font-italic" }, [
-              _vm._v("Delete User")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "alert-body" }, [
-              _c("p", { staticClass: "font-italic" }, [
-                _vm._v("Are you sure that you want to delete this User ?!")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "user-info" }, [
-                _c("p", { staticClass: "font-weight-bold" }, [
-                  _vm._v("Username: "),
-                  _c("span", { staticClass: "font-italic font-weight-light" }, [
-                    _vm._v("Ahmed Ortega")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "alert-footer" },
-              [
-                _c("b-button", { attrs: { variant: "danger" } }, [
-                  _vm._v("YES")
-                ]),
-                _vm._v(" "),
-                _c("b-button", { attrs: { variant: "primary" } }, [
-                  _vm._v("NO")
-                ])
-              ],
-              1
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "b-row",
-          [
-            _c(
-              "b-col",
-              { staticClass: "my-1", attrs: { md: "6" } },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    staticClass: "mb-0",
-                    attrs: { "label-cols-sm": "3", label: "Filter" }
-                  },
-                  [
-                    _c(
-                      "b-input-group",
-                      [
-                        _c("b-form-input", {
-                          attrs: { placeholder: "Type to Search" },
-                          model: {
-                            value: _vm.filter,
-                            callback: function($$v) {
-                              _vm.filter = $$v
-                            },
-                            expression: "filter"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "b-input-group-append",
-                          [
-                            _c(
-                              "b-button",
-                              {
-                                attrs: { disabled: !_vm.filter },
-                                on: {
-                                  click: function($event) {
-                                    _vm.filter = ""
-                                  }
-                                }
-                              },
-                              [_vm._v("Clear")]
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "b-col",
-              { staticClass: "my-1", attrs: { md: "6" } },
-              [
-                _c(
-                  "b-form-group",
-                  {
-                    staticClass: "mb-0",
-                    attrs: { "label-cols-sm": "3", label: "Per page" }
-                  },
-                  [
-                    _c("b-form-select", {
-                      attrs: { options: _vm.pageOptions },
-                      model: {
-                        value: _vm.perPage,
-                        callback: function($$v) {
-                          _vm.perPage = $$v
-                        },
-                        expression: "perPage"
-                      }
-                    })
-                  ],
-                  1
-                )
-              ],
-              1
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("b-table", {
-          attrs: {
-            "show-empty": "",
-            hover: "",
-            stacked: "md",
-            items: _vm.users,
-            fields: _vm.fields,
-            "current-page": _vm.currentPage,
-            "per-page": _vm.perPage
-          },
-          scopedSlots: _vm._u([
-            {
-              key: "name",
-              fn: function(row) {
-                return [
-                  _vm._v(
-                    "\n                " + _vm._s(row.value) + "\n            "
-                  )
-                ]
-              }
-            },
-            {
-              key: "age",
-              fn: function(row) {
-                return [
-                  _vm._v(
-                    "\n                " +
-                      _vm._s(row.value ? row.value : "empty :(") +
-                      "\n            "
-                  )
-                ]
-              }
-            },
-            {
-              key: "actions",
-              fn: function(row) {
-                return [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("form", [
+                _c("div", { staticClass: "modal-header" }, [
                   _c(
-                    "b-button",
+                    "h5",
                     {
-                      staticClass: "mr-1",
-                      attrs: { size: "sm", variant: "outline-primary" },
-                      on: {
-                        click: function($event) {
-                          return _vm.info(row.item, row.index, $event.target)
-                        }
-                      }
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" }
                     },
-                    [_vm._v("\n                    Edit\n                ")]
+                    [
+                      _c("i", { staticClass: "mdi mdi-auto-fix m-r-10" }),
+                      _vm._v(" Share With")
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
-                    "b-button",
+                    "button",
                     {
-                      staticClass: "mr-1",
-                      attrs: { size: "sm", variant: "outline-success" },
-                      on: {
-                        click: function($event) {
-                          return _vm.info(row.item, row.index, $event.target)
-                        }
-                      }
-                    },
-                    [_vm._v("\n                    Profile\n                ")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    {
-                      staticClass: "mr-1",
-                      attrs: { size: "sm", variant: "outline-danger" },
-                      on: {
-                        click: function($event) {
-                          ;(_vm.showDismissibleAlert = true),
-                            (_vm.user_id = row.value.id)
-                        }
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close"
                       }
                     },
                     [
-                      _vm._v(
-                        "\n                    Delete\n                    "
-                      ),
-                      _c(
-                        "b-alert",
-                        {
-                          model: {
-                            value: _vm.user_id,
-                            callback: function($$v) {
-                              _vm.user_id = $$v
-                            },
-                            expression: "user_id"
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.user_id))]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-button",
-                    {
-                      attrs: { size: "sm", variant: "outline-dark" },
-                      on: { click: row.toggleDetails }
-                    },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(row.detailsShowing ? "Hide" : "Show") +
-                          " Details\n                "
-                      )
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
                     ]
                   )
-                ]
-              }
-            },
-            {
-              key: "row-details",
-              fn: function(row) {
-                return [
-                  _c("b-card", [
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-3" }, [
                     _c(
-                      "ul",
-                      _vm._l(row.item, function(value, key) {
-                        return _c("li", { key: key }, [
-                          _vm._v(_vm._s(key) + " : " + _vm._s(value))
-                        ])
-                      }),
-                      0
-                    )
+                      "button",
+                      {
+                        staticClass: "btn btn-info",
+                        attrs: { type: "button" }
+                      },
+                      [_c("i", { staticClass: "ti-user text-white" })]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Enter Name Here",
+                        "aria-label": "Username"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-3 text-center" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-success",
+                          attrs: { href: "#Whatsapp" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "display-6 mdi mdi-whatsapp"
+                          }),
+                          _c("br"),
+                          _c("span", { staticClass: "text-muted" }, [
+                            _vm._v("Whatsapp")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-3 text-center" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-info",
+                          attrs: { href: "#Facebook" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "display-6 mdi mdi-facebook"
+                          }),
+                          _c("br"),
+                          _c("span", { staticClass: "text-muted" }, [
+                            _vm._v("Facebook")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-3 text-center" }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-danger",
+                          attrs: { href: "#Instagram" }
+                        },
+                        [
+                          _c("i", {
+                            staticClass: "display-6 mdi mdi-instagram"
+                          }),
+                          _c("br"),
+                          _c("span", { staticClass: "text-muted" }, [
+                            _vm._v("Instagram")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-3 text-center" }, [
+                      _c(
+                        "a",
+                        { staticClass: "text-cyan", attrs: { href: "#Skype" } },
+                        [
+                          _c("i", { staticClass: "display-6 mdi mdi-skype" }),
+                          _c("br"),
+                          _c("span", { staticClass: "text-muted" }, [
+                            _vm._v("Skype")
+                          ])
+                        ]
+                      )
+                    ])
                   ])
-                ]
-              }
-            }
-          ])
-        }),
-        _vm._v(" "),
-        _c(
-          "b-row",
-          [
-            _c(
-              "b-col",
-              { staticClass: "my-1", attrs: { md: "6" } },
-              [
-                _c("b-pagination", {
-                  staticClass: "my-0",
-                  attrs: {
-                    "total-rows": _vm.totalRows,
-                    "per-page": _vm.perPage
-                  },
-                  model: {
-                    value: _vm.currentPage,
-                    callback: function($$v) {
-                      _vm.currentPage = $$v
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" }
                     },
-                    expression: "currentPage"
-                  }
-                })
-              ],
-              1
-            )
-          ],
-          1
+                    [_vm._v("Close")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "submit" }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-paper-plane" }),
+                      _vm._v(" Send")
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]
         )
-      ],
-      1
+      ]
     )
-  ])
-}
-var staticRenderFns = []
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "createmodel",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "createModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("form", [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "createModalLabel" }
+                    },
+                    [
+                      _c("i", { staticClass: "ti-marker-alt m-r-10" }),
+                      _vm._v(" Create New Contact")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close"
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "input-group mb-3" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-info",
+                        attrs: { type: "button" }
+                      },
+                      [_c("i", { staticClass: "ti-user text-white" })]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Enter Name Here",
+                        "aria-label": "name"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-3" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-info",
+                        attrs: { type: "button" }
+                      },
+                      [_c("i", { staticClass: "ti-more text-white" })]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Enter Mobile Number Here",
+                        "aria-label": "no"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group mb-3" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-info",
+                        attrs: { type: "button" }
+                      },
+                      [_c("i", { staticClass: "ti-import text-white" })]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "custom-file" }, [
+                      _c("input", {
+                        staticClass: "custom-file-input",
+                        attrs: { type: "file", id: "inputGroupFile01" }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "custom-file-label",
+                          attrs: { for: "inputGroupFile01" }
+                        },
+                        [_vm._v("Choose Image")]
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Close")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "submit" }
+                    },
+                    [_c("i", { staticClass: "ti-save" }), _vm._v(" Save")]
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -64470,7 +67473,7 @@ if (inBrowser && window.Vue) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.6.9
+ * Vue.js v2.6.10
  * (c) 2014-2019 Evan You
  * Released under the MIT License.
  */
@@ -67015,8 +70018,8 @@ function normalizeScopedSlots (
   prevSlots
 ) {
   var res;
-  var isStable = slots ? !!slots.$stable : true;
   var hasNormalSlots = Object.keys(normalSlots).length > 0;
+  var isStable = slots ? !!slots.$stable : !hasNormalSlots;
   var key = slots && slots.$key;
   if (!slots) {
     res = {};
@@ -68100,7 +71103,9 @@ function resolveAsyncComponent (
 
   if (owner && !isDef(factory.owners)) {
     var owners = factory.owners = [owner];
-    var sync = true
+    var sync = true;
+    var timerLoading = null;
+    var timerTimeout = null
 
     ;(owner).$on('hook:destroyed', function () { return remove(owners, owner); });
 
@@ -68111,6 +71116,14 @@ function resolveAsyncComponent (
 
       if (renderCompleted) {
         owners.length = 0;
+        if (timerLoading !== null) {
+          clearTimeout(timerLoading);
+          timerLoading = null;
+        }
+        if (timerTimeout !== null) {
+          clearTimeout(timerTimeout);
+          timerTimeout = null;
+        }
       }
     };
 
@@ -68157,7 +71170,8 @@ function resolveAsyncComponent (
           if (res.delay === 0) {
             factory.loading = true;
           } else {
-            setTimeout(function () {
+            timerLoading = setTimeout(function () {
+              timerLoading = null;
               if (isUndef(factory.resolved) && isUndef(factory.error)) {
                 factory.loading = true;
                 forceRender(false);
@@ -68167,7 +71181,8 @@ function resolveAsyncComponent (
         }
 
         if (isDef(res.timeout)) {
-          setTimeout(function () {
+          timerTimeout = setTimeout(function () {
+            timerTimeout = null;
             if (isUndef(factory.resolved)) {
               reject(
                 "timeout (" + (res.timeout) + "ms)"
@@ -68713,16 +71728,21 @@ var getNow = Date.now;
 // timestamp can either be hi-res (relative to page load) or low-res
 // (relative to UNIX epoch), so in order to compare time we have to use the
 // same timestamp type when saving the flush timestamp.
-if (
-  inBrowser &&
-  window.performance &&
-  typeof performance.now === 'function' &&
-  document.createEvent('Event').timeStamp <= performance.now()
-) {
-  // if the event timestamp is bigger than the hi-res timestamp
-  // (which is evaluated AFTER) it means the event is using a lo-res timestamp,
-  // and we need to use the lo-res version for event listeners as well.
-  getNow = function () { return performance.now(); };
+// All IE versions use low-res event timestamps, and have problematic clock
+// implementations (#9632)
+if (inBrowser && !isIE) {
+  var performance = window.performance;
+  if (
+    performance &&
+    typeof performance.now === 'function' &&
+    getNow() > document.createEvent('Event').timeStamp
+  ) {
+    // if the event timestamp, although evaluated AFTER the Date.now(), is
+    // smaller than it, it means the event is using a hi-res timestamp,
+    // and we need to use the hi-res version for event listener timestamps as
+    // well.
+    getNow = function () { return performance.now(); };
+  }
 }
 
 /**
@@ -69887,7 +72907,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.6.9';
+Vue.version = '2.6.10';
 
 /*  */
 
@@ -72049,10 +75069,11 @@ function updateDOMProps (oldVnode, vnode) {
   }
 
   for (key in oldProps) {
-    if (isUndef(props[key])) {
+    if (!(key in props)) {
       elm[key] = '';
     }
   }
+
   for (key in props) {
     cur = props[key];
     // ignore children if the node has textContent or innerHTML,
@@ -75169,7 +78190,7 @@ function isDirectChildOfTemplateFor (node) {
 
 /*  */
 
-var fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function\s*\(/;
+var fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function\s*(?:[\w$]+)?\s*\(/;
 var fnInvokeRE = /\([^)]*?\);*$/;
 var simplePathRE = /^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\['[^']*?']|\["[^"]*?"]|\[\d+]|\[[A-Za-z_$][\w$]*])*$/;
 
@@ -76469,6 +79490,17 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+
+/***/ "./public/images/AdminDashboardImages/images/users/1.jpg":
+/*!***************************************************************!*\
+  !*** ./public/images/AdminDashboardImages/images/users/1.jpg ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/1.jpg?f33d9178c143ca4dace3dc4e7b8bd49e";
 
 /***/ }),
 

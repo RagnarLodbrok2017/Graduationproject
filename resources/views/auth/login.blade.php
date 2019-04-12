@@ -1,4 +1,4 @@
-@extends('layouts.loginMaster')
+@extends('layouts.loginUserLayout')
 
 @section('content')
     <div class="form-holder">

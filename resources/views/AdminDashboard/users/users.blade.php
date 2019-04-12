@@ -12,6 +12,7 @@
                 </div>
             </div>
         </div>
+
 {{--        <example-component></example-component>--}}
 {{--    <user-component></user-component>--}}
 {{--    <script src="{{ mix('js/app.js') }}" type="text/javascript"></script>--}}

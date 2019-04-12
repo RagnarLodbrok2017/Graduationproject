@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
             return redirect('/home');
         }
         elseif (Auth::guard($guard)->check() && Auth::user()->type == 'admin') {
-            return redirect('/crm');
+            return redirect('/admin-dashboard');
         }
 
         return $next($request);

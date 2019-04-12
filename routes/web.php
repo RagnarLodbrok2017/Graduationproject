@@ -19,10 +19,19 @@ Route::get('/', function () {
 //});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('User');
 
-//Route::get('/admin-dashboard/users', 'UserController@initial')->name('Dashboard');
-Route::resource('/admin-dashboard/users', 'UserController');
-Route::get('/admin-dashboard', function () {
-    return view('AdminDashboard.home');
+// Auth Admin Panel
+Route::get('/admin-dashboard/login', 'Auth\AdminAuthController@loginPage');
+Route::get('/admin-dashboard/register', 'Auth\AdminAuthController@registerPage');
+Route::post('/admin-dashboard/login', 'Auth\AdminAuthController@login')->name('AdminLogin');
+Route::post('/admin-dashboard/register', 'Auth\AdminAuthController@register')->name('AdminRegister');
+Route::get('/admin-dashboard/logout', 'Auth\AdminAuthController@logout')->name('AdminLogout');
+Route::group(['middleware' => 'Admin'], function (){
+    Route::resource('/admin-dashboard/users', 'UserController');
+    Route::get('/admin-dashboard', function () {
+        return view('AdminDashboard.home');
+    });
 });
+//Route::get('/admin-dashboard/users', 'UserController@initial')->name('Dashboard');
+

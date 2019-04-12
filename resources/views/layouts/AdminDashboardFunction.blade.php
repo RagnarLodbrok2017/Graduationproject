@@ -13,7 +13,6 @@
     <link rel="icon" type="icon" sizes="16x16" href="{{asset('images/AdminDashboardImages/images/icon.png')}}">
     <title>Recycler</title>
     <!-- Custom CSS -->
-    {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{asset('libraries/AdminDashboardLibs/libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{asset('libraries/AdminDashboardLibs/libs/css-chart/css-chart.css')}}" rel="stylesheet">
@@ -30,7 +29,7 @@
     <link href="{{asset('css/AdminDashboardCss/css/simplelineicons.css')}}" rel="stylesheet">
     <link href="{{asset('css/AdminDashboardCss/css/themifyicons.css')}}" rel="stylesheet">
     <link href="{{asset('css/AdminDashboardCss/css/weathericons.css')}}" rel="stylesheet">
-    <link href="{{asset('css/AdminDashboardCss/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('css/AdminDashboardCss/css/bootstrapAndPlugins.css')}}" rel="stylesheet">
     <!-- <link href="../../dist/css/notimportant.css" rel="stylesheet"> -->
     <link href="{{asset('css/AdminDashboardCss/css/masterStyle.css')}}" rel="stylesheet">
 
@@ -571,7 +570,6 @@
     <!-- ============================================================== -->
     <div class="page-wrapper">
         <section class="content-of-site">
-            {{-- Content of the Site   --}}
             @yield('content')
         </section>
     </div>
