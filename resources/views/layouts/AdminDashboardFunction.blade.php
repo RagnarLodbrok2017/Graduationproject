@@ -13,7 +13,8 @@
     <link rel="icon" type="icon" sizes="16x16" href="{{asset('images/AdminDashboardImages/images/icon.png')}}">
     <title>Recycler</title>
     <!-- Custom CSS -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
+
     <link href="{{asset('libraries/AdminDashboardLibs/libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{asset('libraries/AdminDashboardLibs/libs/css-chart/css-chart.css')}}" rel="stylesheet">
     <link href="{{asset('libraries/AdminDashboardLibs/libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
@@ -579,6 +580,11 @@
 <!-- End Wrapper -->
 <!-- ============================================================== -->
 
+<script src="{{ asset('js/app.js') }}"></script>
+
+{{-- Make Override Styles--}}
+<link href="{{asset('css/AdminDashboardCss/css/bootstrapAndPlugins.css')}}" rel="stylesheet">
+<link href="{{asset('css/AdminDashboardCss/css/masterStyle.css')}}" rel="stylesheet">
 
 <!-- ============================================================== -->
 <!-- All Jquery -->
@@ -586,7 +592,6 @@
 <script src="{{asset('libraries/AdminDashboardLibs/libs/jquery/dist/jquery.min.js')}}"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{asset('libraries/AdminDashboardLibs/libs/popper.js/dist/umd/popper.min.js')}}"></script>
-<script src="{{asset('libraries/AdminDashboardLibs/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- apps -->
 <script src="{{asset('js/AdminDashboardJs/js/app.min.js')}}"></script>
 <script src="{{asset('js/AdminDashboardJs/js/app.init.light-sidebar.js')}}"></script>
@@ -617,6 +622,12 @@
 <script src="{{asset('libraries/AdminDashboardLibs/libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
 
 <script src="{{asset('js/AdminDashboardJs/js/dashboard.js')}}"></script>
+<script type="javascript">
+    $(document).ready(function() {
+        $(".dropdown-toggle").dropdown();
+    });
+
+</script>
 </body>
 
 </html>

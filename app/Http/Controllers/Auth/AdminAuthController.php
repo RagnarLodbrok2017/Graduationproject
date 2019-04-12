@@ -42,7 +42,6 @@ class AdminAuthController extends Controller
     }
 
 
-
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {
