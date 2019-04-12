@@ -2147,402 +2147,86 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
-  mounted: function mounted() {
-    console.log('Component fired.'); // this.totalRows = this.items.length;
-  },
   data: function data() {
     return {
+      items: [],
+      fields: [{
+        key: 'index',
+        label: '#',
+        sortable: true,
+        sortDirection: 'desc'
+      }, {
+        key: 'name',
+        label: 'Name',
+        sortable: true,
+        sortDirection: 'desc'
+      }, {
+        key: 'email',
+        label: 'Email',
+        sortable: true,
+        class: 'text-center'
+      }, {
+        key: 'phone',
+        label: 'Phone',
+        sortable: true,
+        sortDirection: 'desc'
+      }, {
+        key: 'type',
+        label: 'Role',
+        sortable: true,
+        sortDirection: 'desc'
+      }, {
+        key: 'age',
+        label: 'Age',
+        sortable: true,
+        sortDirection: 'desc'
+      }, {
+        key: 'created_at',
+        label: 'Joining Date',
+        sortable: true,
+        sortDirection: 'desc'
+      }, {
+        key: 'posts',
+        label: 'Posts',
+        sortable: true,
+        sortDirection: 'desc'
+      }, {
+        key: 'actions',
+        label: 'Actions'
+      }],
+      totalRows: 1,
+      currentPage: 1,
+      perPage: 5,
+      pageOptions: [5, 10, 25, 100],
+      sortBy: null,
+      sortDesc: false,
+      sortDirection: 'asc',
+      filter: null,
       //DB
       users: [],
       user: [],
       user_id: 0,
-      filter: null,
       image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg'
     };
+  },
+  mounted: function mounted() {
+    console.log('Component fired.');
+    this.totalRows = this.users.length;
+  },
+  computed: {
+    sortOptions: function sortOptions() {
+      // Create an options list from our fields
+      return this.fields.filter(function (f) {
+        return f.sortable;
+      }).map(function (f) {
+        return {
+          text: f.label,
+          value: f.key
+        };
+      });
+    }
   },
   created: function created() {
     this.fetchUsers();
@@ -2554,11 +2238,16 @@ __webpack_require__.r(__webpack_exports__);
       {
         axios.get('../api/admin-dashboard/users').then(function (response) {
           _this.users = response.data.users;
-          console.log("************* This.users *****************");
-          console.log(_this.users);
-          console.log(JSON.stringify(_this.users[0]));
+          _this.totalRows = _this.users.length; // console.log("************* This.users *****************");
+          // console.log(this.users);
+          // console.log(JSON.stringify(this.users[0]));
         });
       }
+    },
+    onFiltered: function onFiltered(filteredItems) {
+      // Trigger pagination to update the number of buttons/pages due to filtering
+      this.totalRows = filteredItems.length;
+      this.currentPage = 1;
     }
   }
 });
@@ -29126,7 +28815,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.delete-alert[data-v-56f21322] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-56f21322] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-56f21322] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-56f21322] {\n    padding: 20px 0;\n    float: right;\n}\n", ""]);
+exports.push([module.i, "\n.delete-alert[data-v-56f21322] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-56f21322] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-56f21322] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-56f21322] {\n    padding: 20px 0;\n    float: right;\n}\ntable tr td span[data-v-56f21322] {\n    text-transform: capitalize;\n}\n", ""]);
 
 // exports
 
@@ -60642,125 +60331,492 @@ var render = function() {
           { staticClass: "col-lg-8 col-xl-9 col-md-9 UsersTableClass" },
           [
             _c("div", { staticClass: "card" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "table-responsive" }, [
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
                   _c(
-                    "table",
-                    {
-                      staticClass: "table table-bordered nowrap display",
-                      attrs: { id: "file_export" }
-                    },
+                    "b-row",
                     [
-                      _vm._m(2),
-                      _vm._v(" "),
                       _c(
-                        "tbody",
+                        "b-col",
+                        { staticClass: "my-1", attrs: { md: "6" } },
                         [
-                          _vm._l(_vm.users, function(user) {
-                            return _c("tr", [
-                              _vm._m(3, true),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("a", { attrs: { href: "../" } }, [
-                                  _c("img", {
-                                    staticClass: "rounded-circle",
-                                    attrs: {
-                                      src: _vm.image_src,
-                                      alt: "user",
-                                      width: "30"
+                          _c(
+                            "b-form-group",
+                            {
+                              staticClass: "mb-0",
+                              attrs: { "label-cols-sm": "3", label: "Filter" }
+                            },
+                            [
+                              _c(
+                                "b-input-group",
+                                [
+                                  _c("b-form-input", {
+                                    attrs: { placeholder: "Type to Search" },
+                                    model: {
+                                      value: _vm.filter,
+                                      callback: function($$v) {
+                                        _vm.filter = $$v
+                                      },
+                                      expression: "filter"
                                     }
                                   }),
-                                  _vm._v(" " + _vm._s(user.name) + " ")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(user.email))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("+123 456 789")]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c(
-                                  "span",
-                                  { staticClass: "label label-danger" },
-                                  [_vm._v(_vm._s(user.type))]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v(_vm._s(user.age))]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("12-10-2014")]),
-                              _vm._v(" "),
-                              _c("td", [_vm._v("1200")]),
-                              _vm._v(" "),
-                              _vm._m(4, true)
-                            ])
-                          }),
-                          _vm._v(" "),
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _vm._m(6),
-                          _vm._v(" "),
-                          _vm._m(7),
-                          _vm._v(" "),
-                          _vm._m(8),
-                          _vm._v(" "),
-                          _vm._m(9),
-                          _vm._v(" "),
-                          _vm._m(10),
-                          _vm._v(" "),
-                          _vm._m(11),
-                          _vm._v(" "),
-                          _vm._m(12),
-                          _vm._v(" "),
-                          _vm._m(13),
-                          _vm._v(" "),
-                          _vm._m(14),
-                          _vm._v(" "),
-                          _vm._m(15),
-                          _vm._v(" "),
-                          _vm._m(16),
-                          _vm._v(" "),
-                          _vm._m(17),
-                          _vm._v(" "),
-                          _vm._m(18),
-                          _vm._v(" "),
-                          _vm._m(19),
-                          _vm._v(" "),
-                          _vm._m(20),
-                          _vm._v(" "),
-                          _vm._m(21),
-                          _vm._v(" "),
-                          _vm._m(22),
-                          _vm._v(" "),
-                          _vm._m(23),
-                          _vm._v(" "),
-                          _vm._m(24),
-                          _vm._v(" "),
-                          _vm._m(25),
-                          _vm._v(" "),
-                          _vm._m(26),
-                          _vm._v(" "),
-                          _vm._m(27)
+                                  _vm._v(" "),
+                                  _c(
+                                    "b-input-group-append",
+                                    [
+                                      _c(
+                                        "b-button",
+                                        {
+                                          attrs: { disabled: !_vm.filter },
+                                          on: {
+                                            click: function($event) {
+                                              _vm.filter = ""
+                                            }
+                                          }
+                                        },
+                                        [_vm._v("Clear")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
                         ],
-                        2
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "b-col",
+                        { staticClass: "my-1", attrs: { md: "6" } },
+                        [
+                          _c(
+                            "b-form-group",
+                            {
+                              staticClass: "mb-0",
+                              attrs: { "label-cols-sm": "3", label: "Per page" }
+                            },
+                            [
+                              _c("b-form-select", {
+                                attrs: { options: _vm.pageOptions },
+                                model: {
+                                  value: _vm.perPage,
+                                  callback: function($$v) {
+                                    _vm.perPage = $$v
+                                  },
+                                  expression: "perPage"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
                       )
-                    ]
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "table-responsive" },
+                    [
+                      _c("b-table", {
+                        staticClass:
+                          "table table-bordered nowrap display dataTable no-footer",
+                        attrs: {
+                          "show-empty": "",
+                          stacked: "md",
+                          items: _vm.users,
+                          fields: _vm.fields,
+                          "current-page": _vm.currentPage,
+                          "per-page": _vm.perPage,
+                          filter: _vm.filter,
+                          "sort-by": _vm.sortBy,
+                          "sort-desc": _vm.sortDesc,
+                          "sort-direction": _vm.sortDirection
+                        },
+                        on: {
+                          "update:sortBy": function($event) {
+                            _vm.sortBy = $event
+                          },
+                          "update:sort-by": function($event) {
+                            _vm.sortBy = $event
+                          },
+                          "update:sortDesc": function($event) {
+                            _vm.sortDesc = $event
+                          },
+                          "update:sort-desc": function($event) {
+                            _vm.sortDesc = $event
+                          },
+                          filtered: _vm.onFiltered
+                        },
+                        scopedSlots: _vm._u([
+                          {
+                            key: "index",
+                            fn: function(row) {
+                              return [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(row.index + 1) +
+                                    "\n                                "
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "name",
+                            fn: function(row) {
+                              return [
+                                _c("a", { attrs: { href: "../" } }, [
+                                  _vm._v(_vm._s(row.value))
+                                ])
+                              ]
+                            }
+                          },
+                          {
+                            key: "email",
+                            fn: function(row) {
+                              return [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(row.value) +
+                                    "\n                                "
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "phone",
+                            fn: function(row) {
+                              return [
+                                _vm._v(
+                                  "\n                                    +345 456 789\n                                "
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "type",
+                            fn: function(row) {
+                              return [
+                                row.value === "admin"
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "label label-danger" },
+                                      [_vm._v(" " + _vm._s(row.value))]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                row.value === "vip"
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "label label-warning" },
+                                      [_vm._v(" " + _vm._s(row.value))]
+                                    )
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                row.value === "user"
+                                  ? _c(
+                                      "span",
+                                      { staticClass: "label label-info" },
+                                      [_vm._v(" " + _vm._s(row.value))]
+                                    )
+                                  : _vm._e()
+                              ]
+                            }
+                          },
+                          {
+                            key: "age",
+                            fn: function(row) {
+                              return [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(row.value) +
+                                    "\n                                "
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "created",
+                            fn: function(row) {
+                              return [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(row.value) +
+                                    "\n                                "
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "posts",
+                            fn: function(row) {
+                              return [
+                                _vm._v(
+                                  "\n                                    101\n                                "
+                                )
+                              ]
+                            }
+                          },
+                          {
+                            key: "actions",
+                            fn: function(row) {
+                              return [
+                                _c(
+                                  "b-button",
+                                  {
+                                    staticClass:
+                                      "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+                                    attrs: {
+                                      type: "button",
+                                      "data-toggle": "tooltip",
+                                      "data-original-title": "Delete"
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "ti-close",
+                                      attrs: { "aria-hidden": "true" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-button",
+                                  {
+                                    staticClass:
+                                      "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+                                    attrs: {
+                                      type: "button",
+                                      "data-toggle": "tooltip",
+                                      "data-original-title": "Delete"
+                                    }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "ti-pencil",
+                                      attrs: { "aria-hidden": "true" }
+                                    })
+                                  ]
+                                )
+                              ]
+                            }
+                          }
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "b-row",
+                        [
+                          _c(
+                            "b-col",
+                            { staticClass: "my-1", attrs: { md: "6" } },
+                            [
+                              _c("b-pagination", {
+                                staticClass: "my-0",
+                                attrs: {
+                                  "total-rows": _vm.totalRows,
+                                  "per-page": _vm.perPage
+                                },
+                                model: {
+                                  value: _vm.currentPage,
+                                  callback: function($$v) {
+                                    _vm.currentPage = $$v
+                                  },
+                                  expression: "currentPage"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
                   )
-                ])
-              ])
+                ],
+                1
+              )
             ])
           ]
         ),
         _vm._v(" "),
-        _vm._m(28)
+        _vm._m(2)
       ])
     ]),
     _vm._v(" "),
-    _vm._m(29),
+    _vm._m(3),
     _vm._v(" "),
-    _vm._m(30),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "createmodel",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "createModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("form", [
+                _vm._m(4),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(5),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Enter Name Here",
+                          "aria-label": "name",
+                          minlength: "10",
+                          maxlength: "30"
+                        },
+                        model: {
+                          value: _vm.name,
+                          callback: function($$v) {
+                            _vm.name = $$v
+                          },
+                          expression: "name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(6),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "email",
+                          placeholder: "Enter Email Here",
+                          "aria-label": "no",
+                          maxlength: "40"
+                        },
+                        model: {
+                          value: _vm.email,
+                          callback: function($$v) {
+                            _vm.email = $$v
+                          },
+                          expression: "email"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(7),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "password",
+                          placeholder: "Enter Password Here",
+                          minlength: "8",
+                          maxlength: "20",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.password,
+                          callback: function($$v) {
+                            _vm.password = $$v
+                          },
+                          expression: "password"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(8),
+                      _vm._v(" "),
+                      _c(
+                        "b-form-select",
+                        {
+                          attrs: { required: "" },
+                          model: {
+                            value: _vm.type,
+                            callback: function($$v) {
+                              _vm.type = $$v
+                            },
+                            expression: "type"
+                          }
+                        },
+                        [
+                          _c("option", { domProps: { value: _vm.user } }, [
+                            _vm._v("User")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { domProps: { value: _vm.admin } }, [
+                            _vm._v("Admin")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "" },
+                              domProps: { value: _vm.vip }
+                            },
+                            [_vm._v("VIP")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            {
+                              attrs: { disabled: "" },
+                              domProps: { value: _vm.superadmin }
+                            },
+                            [_vm._v("SuperAdmin")]
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._m(9)
+                ]),
+                _vm._v(" "),
+                _vm._m(10)
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
     _vm._v(" "),
     _c("footer", { staticClass: "footer text-center" }, [
       _vm._v("\n        All Rights Reserved by Ahmed R. Mohamed\n    ")
@@ -60884,1686 +60940,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th"),
-        _vm._v(" "),
-        _c("th", [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Phone")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Role")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Age")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Joining date")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Posts")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Action")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", { staticClass: "custom-control custom-checkbox" }, [
-        _c("input", {
-          staticClass: "custom-control-input",
-          attrs: {
-            type: "checkbox",
-            id: "customControlValidation2",
-            required: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("label", {
-          staticClass: "custom-control-label",
-          attrs: { for: "customControlValidation2" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c(
-        "button",
-        {
-          staticClass:
-            "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-          attrs: {
-            type: "button",
-            "data-toggle": "tooltip",
-            "data-original-title": "Delete"
-          }
-        },
-        [_c("i", { staticClass: "ti-close", attrs: { "aria-hidden": "true" } })]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass:
-            "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-          attrs: {
-            type: "button",
-            "data-toggle": "tooltip",
-            "data-original-title": "Delete"
-          }
-        },
-        [
-          _c("i", {
-            staticClass: "ti-pencil",
-            attrs: { "aria-hidden": "true" }
-          })
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation3",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation3" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: {
-              src: __webpack_require__(/*! ../../../../../public/images/AdminDashboardImages/images/users/1.jpg */ "./public/images/AdminDashboardImages/images/users/1.jpg"),
-              alt: "user",
-              width: "30"
-            }
-          }),
-          _vm._v(" Arijit Singh")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("arijit@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+234 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-info" }, [_vm._v("Tester2")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("26")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("10-09-2014")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1800")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation4",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation4" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/3.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Govinda jalan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("govinda@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+345 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-success" }, [_vm._v("Admin")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("28")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("1-10-2013")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$2200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation5",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation5" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/4.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Hritik Roshan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("hritik@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+456 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-inverse" }, [_vm._v("Vip")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("25")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("2-10-2017")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation6",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation6" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/5.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" John Abraham")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("john@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+567 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-danger" }, [_vm._v("Vip")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("23")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("10-9-2015")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation7",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation7" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/6.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Pawandeep kumar")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("pawandeep@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+678 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-warning" }, [_vm._v("Admin")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("29")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("10-5-2013")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1500")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation8",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation8" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/7.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Ritesh Deshmukh")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("ritesh@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+123 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-danger" }, [_vm._v("User")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("35")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("05-10-2012")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$3200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation9",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation9" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/8.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Salman Khan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("salman@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+234 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-info" }, [_vm._v("User")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("27")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-10-2014")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1800")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation10",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation10" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/1.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Govinda jalan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("govinda@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+345 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-success" }, [_vm._v("User")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("18")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("12-5-2017")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$100")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation11",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation11" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/2.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Sonu Nigam")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("sonu@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+456 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-inverse" }, [_vm._v("Admin")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("36")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("18-5-2009")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$4200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation12",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation12" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/3.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Varun Dhawan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("varun@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+567 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-danger" }, [_vm._v("Manager")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("43")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("12-10-2010")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$5200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation13",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation13" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/4.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Genelia Deshmukh")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("genelia@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+123 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-danger" }, [_vm._v("User")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("23")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("12-10-2014")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation14",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation14" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/5.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Arijit Singh")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("arijit@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+234 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-info" }, [_vm._v("Admin")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("26")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("10-09-2014")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1800")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation15",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation15" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/6.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Govinda jalan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("govinda@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+345 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-success" }, [_vm._v("Admin")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("28")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("1-10-2013")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$2200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation16",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation16" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/1.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Genelia Deshmukh")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("genelia@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+123 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-danger" }, [_vm._v("Designer")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("23")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("12-10-2014")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation17",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation17" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/2.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Arijit Singh")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("arijit@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+234 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-info" }, [_vm._v("Developer")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("26")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("10-09-2014")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1800")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation18",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation18" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/3.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Govinda jalan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("govinda@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+345 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-success" }, [_vm._v("User")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("28")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("1-10-2013")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$2200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation19",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation19" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/4.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Hritik Roshan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("hritik@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+456 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-inverse" }, [_vm._v("User")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("25")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("2-10-2017")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation20",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation20" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/5.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" John Abraham")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("john@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+567 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-danger" }, [_vm._v("Admin")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("23")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("10-9-2015")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation21",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation21" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/6.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Pawandeep kumar")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("pawandeep@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+678 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-warning" }, [_vm._v("Vip")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("29")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("10-5-2013")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1500")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation22",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation22" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/7.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Ritesh Deshmukh")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("ritesh@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+123 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-danger" }, [_vm._v("Designer")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("35")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("05-10-2012")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$3200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation23",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation23" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/8.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Salman Khan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("salman@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+234 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-info" }, [_vm._v("Developer")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("27")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("11-10-2014")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$1800")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation24",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation24" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/1.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Govinda jalan")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("govinda@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+345 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-success" }, [
-          _vm._v("Accountant")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("18")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("12-5-2017")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$100")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [
-        _c("div", { staticClass: "custom-control custom-checkbox" }, [
-          _c("input", {
-            staticClass: "custom-control-input",
-            attrs: {
-              type: "checkbox",
-              id: "customControlValidation25",
-              required: ""
-            }
-          }),
-          _vm._v(" "),
-          _c("label", {
-            staticClass: "custom-control-label",
-            attrs: { for: "customControlValidation25" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [
-        _c("a", { attrs: { href: "../" } }, [
-          _c("img", {
-            staticClass: "rounded-circle",
-            attrs: { src: "images/users/2.jpg", alt: "user", width: "30" }
-          }),
-          _vm._v(" Sonu Nigam")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("sonu@gmail.com")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("+456 456 789")]),
-      _vm._v(" "),
-      _c("td", [
-        _c("span", { staticClass: "label label-inverse" }, [_vm._v("HR")])
-      ]),
-      _vm._v(" "),
-      _c("td", [_vm._v("36")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("18-5-2009")]),
-      _vm._v(" "),
-      _c("td", [_vm._v("$4200")]),
-      _vm._v(" "),
-      _c("td", [
-        _c(
-          "button",
-          {
-            staticClass:
-              "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
-            attrs: {
-              type: "button",
-              "data-toggle": "tooltip",
-              "data-original-title": "Delete"
-            }
-          },
-          [
-            _c("i", {
-              staticClass: "ti-close",
-              attrs: { "aria-hidden": "true" }
-            })
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
@@ -62636,7 +61012,7 @@ var staticRenderFns = [
                 },
                 [
                   _c("i", { staticClass: "ti-star m-r-10" }),
-                  _vm._v(" Favourite Users")
+                  _vm._v("\n                                Favourite Users")
                 ]
               ),
               _vm._v(" "),
@@ -62648,7 +61024,7 @@ var staticRenderFns = [
                 },
                 [
                   _c("i", { staticClass: "ti-bookmark m-r-10" }),
-                  _vm._v(" Recently Created")
+                  _vm._v("\n                                Recently Created")
                 ]
               )
             ]),
@@ -62679,7 +61055,9 @@ var staticRenderFns = [
                 },
                 [
                   _c("i", { staticClass: "ti-notepad m-r-10" }),
-                  _vm._v(" Admins\n                                "),
+                  _vm._v(
+                    "\n                                Admins\n                                "
+                  ),
                   _c(
                     "span",
                     { staticClass: "badge badge-success float-right" },
@@ -62696,7 +61074,9 @@ var staticRenderFns = [
                 },
                 [
                   _c("i", { staticClass: "ti-target m-r-10" }),
-                  _vm._v(" VIPs\n                                "),
+                  _vm._v(
+                    "\n                                VIPs\n                                "
+                  ),
                   _c("span", { staticClass: "badge badge-dark float-right" }, [
                     _vm._v("42")
                   ])
@@ -62711,7 +61091,9 @@ var staticRenderFns = [
                 },
                 [
                   _c("i", { staticClass: "ti-comments m-r-10" }),
-                  _vm._v(" Users\n                                "),
+                  _vm._v(
+                    "\n                                Users\n                                "
+                  ),
                   _c(
                     "span",
                     { staticClass: "badge badge-danger float-right" },
@@ -62750,7 +61132,9 @@ var staticRenderFns = [
                     { staticClass: "badge badge-warning text-white m-r-10" },
                     [_c("i", { staticClass: "ti-export" })]
                   ),
-                  _vm._v(" Export Users\n                            ")
+                  _vm._v(
+                    "\n                                Export Users\n                            "
+                  )
                 ]
               ),
               _vm._v(" "),
@@ -62764,7 +61148,9 @@ var staticRenderFns = [
                   _c("span", { staticClass: "badge badge-success m-r-10" }, [
                     _c("i", { staticClass: "ti-share-alt" })
                   ]),
-                  _vm._v(" Restore Users\n                            ")
+                  _vm._v(
+                    " Restore\n                                Users\n                            "
+                  )
                 ]
               ),
               _vm._v(" "),
@@ -62778,7 +61164,9 @@ var staticRenderFns = [
                   _c("span", { staticClass: "badge badge-primary m-r-10" }, [
                     _c("i", { staticClass: "ti-layers-alt" })
                   ]),
-                  _vm._v(" Duplicate Users\n                            ")
+                  _vm._v(
+                    "\n                                Duplicate Users\n                            "
+                  )
                 ]
               ),
               _vm._v(" "),
@@ -62792,7 +61180,9 @@ var staticRenderFns = [
                   _c("span", { staticClass: "badge badge-danger m-r-10" }, [
                     _c("i", { staticClass: "ti-trash" })
                   ]),
-                  _vm._v(" Delete All Users\n                            ")
+                  _vm._v(
+                    " Delete All\n                                Users\n                            "
+                  )
                 ]
               )
             ])
@@ -62833,7 +61223,7 @@ var staticRenderFns = [
                     },
                     [
                       _c("i", { staticClass: "mdi mdi-auto-fix m-r-10" }),
-                      _vm._v(" Share With")
+                      _vm._v(" Share\n                            With")
                     ]
                   ),
                   _vm._v(" "),
@@ -62968,7 +61358,7 @@ var staticRenderFns = [
                     },
                     [
                       _c("i", { staticClass: "fas fa-paper-plane" }),
-                      _vm._v(" Send")
+                      _vm._v(" Send\n                        ")
                     ]
                   )
                 ])
@@ -62983,150 +61373,116 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "createModalLabel" } },
+        [
+          _c("i", { staticClass: "ti-marker-alt m-r-10" }),
+          _vm._v(" Create\n                            New User")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "createmodel",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "createModalLabel",
-          "aria-hidden": "true"
-        }
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("form", [
-                _c("div", { staticClass: "modal-header" }, [
-                  _c(
-                    "h5",
-                    {
-                      staticClass: "modal-title",
-                      attrs: { id: "createModalLabel" }
-                    },
-                    [
-                      _c("i", { staticClass: "ti-marker-alt m-r-10" }),
-                      _vm._v(" Create New Contact")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "close",
-                      attrs: {
-                        type: "button",
-                        "data-dismiss": "modal",
-                        "aria-label": "Close"
-                      }
-                    },
-                    [
-                      _c("span", { attrs: { "aria-hidden": "true" } }, [
-                        _vm._v("×")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c("div", { staticClass: "input-group mb-3" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info",
-                        attrs: { type: "button" }
-                      },
-                      [_c("i", { staticClass: "ti-user text-white" })]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Enter Name Here",
-                        "aria-label": "name"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-3" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info",
-                        attrs: { type: "button" }
-                      },
-                      [_c("i", { staticClass: "ti-more text-white" })]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Enter Mobile Number Here",
-                        "aria-label": "no"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-3" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-info",
-                        attrs: { type: "button" }
-                      },
-                      [_c("i", { staticClass: "ti-import text-white" })]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "custom-file" }, [
-                      _c("input", {
-                        staticClass: "custom-file-input",
-                        attrs: { type: "file", id: "inputGroupFile01" }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "label",
-                        {
-                          staticClass: "custom-file-label",
-                          attrs: { for: "inputGroupFile01" }
-                        },
-                        [_vm._v("Choose Image")]
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-secondary",
-                      attrs: { type: "button", "data-dismiss": "modal" }
-                    },
-                    [_vm._v("Close")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "submit" }
-                    },
-                    [_c("i", { staticClass: "ti-save" }), _vm._v(" Save")]
-                  )
-                ])
-              ])
-            ])
-          ]
-        )
-      ]
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-user text-white" })]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-more text-white" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-key text-white" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-hand-point-right text-white" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group mb-3" }, [
+      _c("button", { staticClass: "btn btn-info", attrs: { type: "button" } }, [
+        _c("i", { staticClass: "ti-import text-white" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "custom-file" }, [
+        _c("input", {
+          staticClass: "custom-file-input",
+          attrs: { type: "file", id: "inputGroupFile01" }
+        }),
+        _vm._v(" "),
+        _c(
+          "label",
+          {
+            staticClass: "custom-file-label",
+            attrs: { for: "inputGroupFile01" }
+          },
+          [_vm._v("Choose Image")]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_c("i", { staticClass: "ti-save" }), _vm._v(" Save")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -79482,17 +77838,6 @@ module.exports = function(module) {
 	return module;
 };
 
-
-/***/ }),
-
-/***/ "./public/images/AdminDashboardImages/images/users/1.jpg":
-/*!***************************************************************!*\
-  !*** ./public/images/AdminDashboardImages/images/users/1.jpg ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/1.jpg?f33d9178c143ca4dace3dc4e7b8bd49e";
 
 /***/ }),
 
