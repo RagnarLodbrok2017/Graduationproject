@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     "use strict";
     // ==============================================================
     // Real Time chart
@@ -26,9 +26,10 @@ $(function() {
         }
         return res;
     }
+
     // Set up the control widget
     var updateInterval = 1000;
-    $("#updateInterval").val(updateInterval).change(function() {
+    $("#updateInterval").val(updateInterval).change(function () {
         var v = $(this).val();
         if (v && !isNaN(+v)) {
             updateInterval = +v;
@@ -43,7 +44,7 @@ $(function() {
     var plot = $.plot("#placeholder", [getRandomData()], {
         series: {
             shadowSize: 0, // Drawing is faster without shadows
-            lines: { fill: true, fillColor: '#ffe65d' },
+            lines: {fill: true, fillColor: '#ffe65d'},
         },
         yaxis: {
             min: 0,
@@ -66,7 +67,7 @@ $(function() {
             defaultTheme: false
         }
     });
-    window.onresize = function(event) {
+    window.onresize = function (event) {
         $.plot($("#placeholder"), [getRandomData()]);
     }
 
@@ -76,6 +77,7 @@ $(function() {
         plot.draw();
         setTimeout(update, updateInterval);
     }
+
     update();
     // ==============================================================
     // Our Visitor
@@ -92,9 +94,15 @@ $(function() {
             ],
 
             type: 'donut',
-            onclick: function(d, i) { console.log("onclick", d, i); },
-            onmouseover: function(d, i) { console.log("onmouseover", d, i); },
-            onmouseout: function(d, i) { console.log("onmouseout", d, i); }
+            onclick: function (d, i) {
+                console.log("onclick", d, i);
+            },
+            onmouseover: function (d, i) {
+                console.log("onmouseover", d, i);
+            },
+            onmouseout: function (d, i) {
+                console.log("onmouseout", d, i);
+            }
         },
         donut: {
             label: {
@@ -117,7 +125,7 @@ $(function() {
     // ==============================================================
     // Our Visitor
     // ==============================================================
-    var sparklineLogin = function() {
+    var sparklineLogin = function () {
         $('#ravenue').sparkline([6, 10, 9, 11, 9, 10, 12], {
             type: 'bar',
             height: '55',
@@ -140,7 +148,7 @@ $(function() {
     };
     var sparkResize;
 
-    $(window).resize(function(e) {
+    $(window).resize(function (e) {
         clearTimeout(sparkResize);
         sparkResize = setTimeout(sparklineLogin, 500);
     });
@@ -168,7 +176,7 @@ $(function() {
             }]
         },
         options: {
-            elements: { point: { radius: 2 } },
+            elements: {point: {radius: 2}},
             scales: {
                 xAxes: [{
                     gridLines: {
@@ -255,29 +263,29 @@ $(function() {
         enableZoom: true,
         hoverColor: '#79e580',
         markers: [{
-                latLng: [21.00, 78.00],
-                name: 'India : 9347',
-                style: { fill: '#2961ff' }
-            },
+            latLng: [21.00, 78.00],
+            name: 'India : 9347',
+            style: {fill: '#2961ff'}
+        },
             {
                 latLng: [-33.00, 151.00],
                 name: 'Australia : 250',
-                style: { fill: '#ff821c' }
+                style: {fill: '#ff821c'}
             },
             {
                 latLng: [36.77, -119.41],
                 name: 'USA : 250',
-                style: { fill: '#40c4ff' }
+                style: {fill: '#40c4ff'}
             },
             {
                 latLng: [55.37, -3.41],
                 name: 'UK   : 250',
-                style: { fill: '#398bf7' }
+                style: {fill: '#398bf7'}
             },
             {
                 latLng: [25.20, 55.27],
                 name: 'UAE : 250',
-                style: { fill: '#6fc826' }
+                style: {fill: '#6fc826'}
             }
         ],
         hoverOpacity: null,
@@ -286,9 +294,25 @@ $(function() {
         selectedColor: '#c9dfaf',
         selectedRegions: [],
         showTooltip: true,
-        onRegionClick: function(element, code, region) {
+        onRegionClick: function (element, code, region) {
             var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
             alert(message);
+        }
+    });
+});
+
+$(document).ready(function () {
+    var wide = $('.ShareModel');
+    $('.WideTable').on('click', function () {
+        if ( wide.hasClass('bounceInRight') ) {
+            wide.animate('opacity', '0').removeClass('bounceInRight').addClass('bounceOutRight');
+            $('.UsersTableClass').removeClass('col-lg-8 col-xl-9 col-md-9').addClass('col-12');
+            $('.UsersTableClass .WideButtonArrow').removeClass('ti-angle-double-right').addClass('ti-angle-double-left');
+        }
+        else {
+            wide.animate('display', 'block').removeClass('bounceOutRight').addClass('bounceInRight');
+            $('.UsersTableClass').addClass('col-lg-8 col-xl-9 col-md-9').removeClass('col-12');
+            $('.UsersTableClass .WideButtonArrow').removeClass('ti-angle-double-left').addClass('ti-angle-double-right');
         }
     });
 });

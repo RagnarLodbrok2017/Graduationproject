@@ -66,8 +66,8 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <!-- Column -->
-                <div class="col-lg-8 col-xl-9 col-md-9">
+                <!-- Column  Users Table -->
+                <div class="col-lg-8 col-xl-9 col-md-9 UsersTableClass">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
@@ -76,6 +76,11 @@
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#createmodel">
                                             Create New User
+                                        </button>
+                                        <button type="button" class="btn btn-outline-dark ml-3 WideTable" data-toggle="modal" data-target="">
+                                            <i class="ti-angle-double-right WideButtonArrow"></i>
+                                            <i class="ti-angle-double-right WideButtonArrow"></i>
+                                            <i class="ti-angle-double-right WideButtonArrow"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -91,12 +96,12 @@
                                         <th>Role</th>
                                         <th>Age</th>
                                         <th>Joining date</th>
-                                        <th>Salery</th>
+                                        <th>Posts</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr v-for="user in users">
                                         <td>
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" id="customControlValidation2" required>
@@ -104,16 +109,17 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="../"><img :src="image_src" alt="user" class="rounded-circle" width="30" /> Genelia Deshmukh</a>
+                                            <a href="../"><img :src="image_src" alt="user" class="rounded-circle" width="30" /> {{ user.name }} </a>
                                         </td>
-                                        <td>genelia@gmail.com</td>
+                                        <td>{{ user.email }}</td>
                                         <td>+123 456 789</td>
-                                        <td><span class="label label-danger">Tester</span> </td>
-                                        <td>23</td>
+                                        <td><span class="label label-danger">{{ user.type }}</span> </td>
+                                        <td>{{ user.age }}</td>
                                         <td>12-10-2014</td>
-                                        <td>$1200</td>
+                                        <td>1200</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-pencil" aria-hidden="true"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
@@ -583,8 +589,8 @@
                     </div>
                 </div>
                 <!-- Column -->
-                <!-- Column -->
-                <div class="col-lg-4 col-xl-3 col-md-3">
+                <!-- Column Users Details and Category-->
+                <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
                     <div class="card">
                         <div class="border-bottom p-15">
                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Sharemodel" style="width: 100%">
@@ -604,41 +610,41 @@
                                 </div>
                             </form>
                             <div class="list-group m-t-30">
-                                <a href="javascript:void(0)" class="list-group-item active"><i class="ti-layers m-r-10"></i> All Contacts</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i> Favourite Contacts</a>
+                                <a href="javascript:void(0)" class="list-group-item active"><i class="ti-layers m-r-10"></i> All Users</a>
+                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i> Favourite Users</a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i> Recently Created</a>
                             </div>
                             <h4 class="card-title m-t-30">Groups</h4>
                             <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-flag-alt-2 m-r-10"></i> Success Warriers
-                                    <span class="badge badge-info float-right">20</span>
+                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-flag-alt-2 m-r-10"></i> SuperAdmins
+                                    <span class="badge badge-info float-right">1</span>
                                 </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i> Project
-                                    <span class="badge badge-success float-right">12</span>
+                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i> Admins
+                                    <span class="badge badge-success float-right">4</span>
                                 </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i> Envato Author
-                                    <span class="badge badge-dark float-right">22</span>
+                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i> VIPs
+                                    <span class="badge badge-dark float-right">42</span>
                                 </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i> IT Friends
-                                    <span class="badge badge-danger float-right">101</span>
+                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i> Users
+                                    <span class="badge badge-danger float-right">204</span>
                                 </a>
                             </div>
                             <h4 class="card-title m-t-30">More</h4>
                             <div class="list-group">
                                 <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Contacts
+                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Users
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-warning text-white m-r-10"><i class="ti-export"></i></span> Export Contacts
+                                    <span class="badge badge-warning text-white m-r-10"><i class="ti-export"></i></span> Export Users
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-success m-r-10"><i class="ti-share-alt"></i></span> Restore Contacts
+                                    <span class="badge badge-success m-r-10"><i class="ti-share-alt"></i></span> Restore Users
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-primary m-r-10"><i class="ti-layers-alt"></i></span> Duplicate Contacts
+                                    <span class="badge badge-primary m-r-10"><i class="ti-layers-alt"></i></span> Duplicate Users
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-danger m-r-10"><i class="ti-trash"></i></span> Delete All Contacts
+                                    <span class="badge badge-danger m-r-10"><i class="ti-trash"></i></span> Delete All Users
                                 </a>
                             </div>
                         </div>
@@ -767,20 +773,6 @@
         },
         data() {
             return {
-                fields: [
-                    {key: 'id', label: 'ID', sortable: true},
-                    {key: 'name', label: 'Full Name', sortable: true, sortDirection: 'desc'},
-                    {key: 'age', label: 'Age', sortable: true, class: 'text-center'},
-                    {key: 'email', label: 'Email'},
-                    {key: 'type', label: 'Type'},
-                    {key: 'actions', label: 'Actions'}
-                ],
-                totalRows: 1,
-                currentPage: 1,
-                perPage: 5,
-                pageOptions: [5, 50, 100, 1000],
-                modalInfo: {title: '', content: ''},
-                showDismissibleAlert: false,
                 //DB
                 users: [],
                 user: [],
@@ -801,54 +793,8 @@
                         console.log(this.users);
                         console.log(JSON.stringify(this.users[0]));
                     });
-
-                    // this.users = [{
-                    //     age: null,
-                    //     created_at: "2019-04-06 23:20:15",
-                    //     email: "ahmedrmohamed2017@gmail.com",
-                    //     email_verified_at: null,
-                    //     id: 1,
-                    //     location: null,
-                    //     name: "ahmedortega",
-                    //     photo: "avatar.jpg",
-                    //     reports_num: 0,
-                    //     status: 1,
-                    //     type: "admin",
-                    //     updated_at: "2019-04-06 23:20:15",
-                    //     username: null,
-                    // },
-                    //     {
-                    //         age: null,
-                    //         created_at: "2019-04-06 23:20:15",
-                    //         email: "ahmedrmohamed2017@gmail.com",
-                    //         email_verified_at: null,
-                    //         id: 1,
-                    //         location: null,
-                    //         name: "Mazen Ali",
-                    //         photo: "avatar.jpg",
-                    //         reports_num: 0,
-                    //         status: 1,
-                    //         type: "admin",
-                    //         updated_at: "2019-04-06 23:20:15",
-                    //         username: null,
-                    //     }
-                    // ]
                 }
             },
-            info(item, index, button) {
-                this.modalInfo.title = `Row index: ${index}`
-                this.modalInfo.content = JSON.stringify(item, null, 2)
-                this.$root.$emit('bv::show::modal', 'modalInfo', button)
-            },
-            resetModal() {
-                this.modalInfo.title = ''
-                this.modalInfo.content = ''
-            },
-            onFiltered(filteredItems) {
-                // Trigger pagination to update the number of buttons/pages due to filtering
-                this.totalRows = filteredItems.length
-                this.currentPage = 1
-            }
         },
     }
 </script>
