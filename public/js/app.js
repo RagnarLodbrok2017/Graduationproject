@@ -2147,6 +2147,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -2206,7 +2213,13 @@ __webpack_require__.r(__webpack_exports__);
       filter: null,
       //DB
       users: [],
-      user: [],
+      user: {},
+      newUser: {
+        name: '',
+        email: '',
+        password: '',
+        type: ''
+      },
       user_id: 0,
       image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg'
     };
@@ -2235,14 +2248,25 @@ __webpack_require__.r(__webpack_exports__);
     fetchUsers: function fetchUsers() {
       var _this = this;
 
-      {
-        axios.get('../api/admin-dashboard/users').then(function (response) {
-          _this.users = response.data.users;
-          _this.totalRows = _this.users.length; // console.log("************* This.users *****************");
-          // console.log(this.users);
-          // console.log(JSON.stringify(this.users[0]));
-        });
-      }
+      axios.get('../api/admin-dashboard/users').then(function (response) {
+        _this.users = response.data.users;
+        _this.totalRows = _this.users.length; // console.log("************* This.users *****************");
+        // console.log(this.users);
+        // console.log(JSON.stringify(this.users[0]));
+      });
+    },
+    storeUser: function storeUser() {
+      var _this2 = this;
+
+      axios.post('../api/admin-dashboard/users', this.newUser).then(function (response) {
+        _this2.newUser = response.data.newUser;
+
+        _this2.users.push(_this2.newUser);
+
+        $('.CloseAddUserForm').click();
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     onFiltered: function onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
@@ -60692,14 +60716,15 @@ var render = function() {
                           placeholder: "Enter Name Here",
                           "aria-label": "name",
                           minlength: "10",
-                          maxlength: "30"
+                          maxlength: "30",
+                          required: ""
                         },
                         model: {
-                          value: _vm.name,
+                          value: _vm.newUser.name,
                           callback: function($$v) {
-                            _vm.name = $$v
+                            _vm.$set(_vm.newUser, "name", $$v)
                           },
-                          expression: "name"
+                          expression: "newUser.name"
                         }
                       })
                     ],
@@ -60717,14 +60742,15 @@ var render = function() {
                           type: "email",
                           placeholder: "Enter Email Here",
                           "aria-label": "no",
-                          maxlength: "40"
+                          maxlength: "40",
+                          required: ""
                         },
                         model: {
-                          value: _vm.email,
+                          value: _vm.newUser.email,
                           callback: function($$v) {
-                            _vm.email = $$v
+                            _vm.$set(_vm.newUser, "email", $$v)
                           },
-                          expression: "email"
+                          expression: "newUser.email"
                         }
                       })
                     ],
@@ -60746,11 +60772,11 @@ var render = function() {
                           required: ""
                         },
                         model: {
-                          value: _vm.password,
+                          value: _vm.newUser.password,
                           callback: function($$v) {
-                            _vm.password = $$v
+                            _vm.$set(_vm.newUser, "password", $$v)
                           },
-                          expression: "password"
+                          expression: "newUser.password"
                         }
                       })
                     ],
@@ -60768,37 +60794,33 @@ var render = function() {
                         {
                           attrs: { required: "" },
                           model: {
-                            value: _vm.type,
+                            value: _vm.newUser.type,
                             callback: function($$v) {
-                              _vm.type = $$v
+                              _vm.$set(_vm.newUser, "type", $$v)
                             },
-                            expression: "type"
+                            expression: "newUser.type"
                           }
                         },
                         [
-                          _c("option", { domProps: { value: _vm.user } }, [
-                            _vm._v("User")
-                          ]),
+                          _c(
+                            "option",
+                            { attrs: { value: "user", selected: "selected" } },
+                            [_vm._v("User")]
+                          ),
                           _vm._v(" "),
-                          _c("option", { domProps: { value: _vm.admin } }, [
+                          _c("option", { attrs: { value: "admin" } }, [
                             _vm._v("Admin")
                           ]),
                           _vm._v(" "),
                           _c(
                             "option",
-                            {
-                              attrs: { disabled: "" },
-                              domProps: { value: _vm.vip }
-                            },
+                            { attrs: { value: "vip", disabled: "" } },
                             [_vm._v("VIP")]
                           ),
                           _vm._v(" "),
                           _c(
                             "option",
-                            {
-                              attrs: { disabled: "" },
-                              domProps: { value: _vm.superadmin }
-                            },
+                            { attrs: { value: "superadmin", disabled: "" } },
                             [_vm._v("SuperAdmin")]
                           )
                         ]
@@ -60810,7 +60832,39 @@ var render = function() {
                   _vm._m(9)
                 ]),
                 _vm._v(" "),
-                _vm._m(10)
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary CloseAddUserForm",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v("Close")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.newUser.name &&
+                            _vm.newUser.email &&
+                            _vm.newUser.password &&
+                            _vm.newUser.type,
+                          expression:
+                            "newUser.name && newUser.email && newUser.password && newUser.type"
+                        }
+                      ],
+                      staticClass: "btn btn-success",
+                      attrs: { type: "button" },
+                      on: { click: _vm.storeUser }
+                    },
+                    [_c("i", { staticClass: "ti-save" }), _vm._v(" Save")]
+                  )
+                ])
               ])
             ])
           ]
@@ -60819,7 +60873,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("footer", { staticClass: "footer text-center" }, [
-      _vm._v("\n        All Rights Reserved by Ahmed R. Mohamed\n    ")
+      _vm._v("\n        All Rights Reserved by Ahmed R. Mohamed.\n    ")
     ])
   ])
 }
@@ -61461,27 +61515,6 @@ var staticRenderFns = [
           [_vm._v("Choose Image")]
         )
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-dismiss": "modal" }
-        },
-        [_vm._v("Close")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_c("i", { staticClass: "ti-save" }), _vm._v(" Save")]
-      )
     ])
   }
 ]

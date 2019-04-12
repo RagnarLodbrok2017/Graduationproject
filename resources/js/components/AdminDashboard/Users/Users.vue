@@ -329,23 +329,29 @@
                         <div class="modal-body">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <b-form-input type="text" v-model="name" class="form-control" placeholder="Enter Name Here" aria-label="name" minlength="10" maxlength="30"></b-form-input>
+                                <b-form-input type="text" v-model="newUser.name" class="form-control"
+                                              placeholder="Enter Name Here" aria-label="name" minlength="10"
+                                              maxlength="30" required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <b-form-input type="email" v-model="email" placeholder="Enter Email Here" aria-label="no" maxlength="40"></b-form-input>
+                                <b-form-input type="email" v-model="newUser.email" placeholder="Enter Email Here"
+                                              aria-label="no" maxlength="40" required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
-                                <b-form-input type="password"  v-model="password" placeholder="Enter Password Here" minlength="8" maxlength="20" required></b-form-input>
+                                <b-form-input type="password" v-model="newUser.password"
+                                              placeholder="Enter Password Here" minlength="8" maxlength="20"
+                                              required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-hand-point-right text-white"></i></button>
-                                <b-form-select v-model="type" required>
-                                    <option :value="user">User</option>
-                                    <option :value="admin">Admin</option>
-                                    <option :value="vip" disabled>VIP</option>
-                                    <option :value="superadmin" disabled>SuperAdmin</option>
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-hand-point-right text-white"></i></button>
+                                <b-form-select v-model="newUser.type" required>
+                                    <option value="user" selected="selected">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="vip" disabled>VIP</option>
+                                    <option value="superadmin" disabled>SuperAdmin</option>
                                 </b-form-select>
                             </div>
                             <div class="input-group mb-3">
@@ -357,8 +363,9 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success"><i class="ti-save"></i> Save</button>
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success" v-show="newUser.name && newUser.email && newUser.password && newUser.type" @click="storeUser">
+                                <i class="ti-save"></i> Save</button>
                         </div>
                     </form>
                 </div>
@@ -371,7 +378,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-            All Rights Reserved by Ahmed R. Mohamed
+            All Rights Reserved by Ahmed R. Mohamed.
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -409,7 +416,13 @@
                 filter: null,
                 //DB
                 users: [],
-                user: [],
+                user: {},
+                newUser: {
+                    name: '',
+                    email: '',
+                    password: '',
+                    type: '',
+                },
                 user_id: 0,
                 image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg',
             }
@@ -434,15 +447,22 @@
         },
         methods: {
             fetchUsers: function () {
-                {
-                    axios.get('../api/admin-dashboard/users').then(response => {
-                        this.users = response.data.users;
-                        this.totalRows = this.users.length;
-                        // console.log("************* This.users *****************");
-                        // console.log(this.users);
-                        // console.log(JSON.stringify(this.users[0]));
-                    });
-                }
+                axios.get('../api/admin-dashboard/users').then(response => {
+                    this.users = response.data.users;
+                    this.totalRows = this.users.length;
+                    // console.log("************* This.users *****************");
+                    // console.log(this.users);
+                    // console.log(JSON.stringify(this.users[0]));
+                });
+            },
+            storeUser: function () {
+                axios.post('../api/admin-dashboard/users',this.newUser).then(response => {
+                    this.newUser = response.data.newUser;
+                    this.users.push(this.newUser);
+                    $('.CloseAddUserForm').click();
+                }).catch(error => {
+                    console.log(error);
+                })
             },
             onFiltered(filteredItems) {
                 // Trigger pagination to update the number of buttons/pages due to filtering
