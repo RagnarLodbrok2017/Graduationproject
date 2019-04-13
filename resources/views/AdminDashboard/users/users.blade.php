@@ -1,4 +1,4 @@
-@extends('layouts.AdminDashboardFunction')
+@extends('layouts.AdminDashboardFunctionLayout')
 
 @section('content')
     <div class="app" id="app">

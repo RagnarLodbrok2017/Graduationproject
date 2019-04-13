@@ -51,7 +51,7 @@ class AdminAuthController extends Controller
             ]);
             $credentials = $request->only(['email', 'password']);
             $user = User::where('email', $request->email)->first();
-            if ($user->type == 'admin') {
+            if (isset($user) && $user->type == 'admin') {
                 if (Auth::attempt($credentials)) {
                     return redirect()->intended('admin-dashboard');
                 }

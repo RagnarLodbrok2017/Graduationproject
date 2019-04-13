@@ -20,6 +20,7 @@
     <link href="{{asset('libraries/AdminDashboardLibs/libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
     <link href="{{asset('libraries/AdminDashboardLibs/libs/magnific-popup/dist/magnific-popup.css')}}" rel="stylesheet"/>
     <link href="{{asset('libraries/AdminDashboardLibs/libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet"/>
+    <link href="{{asset('libraries/AdminDashboardLibs/libs/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link href="{{asset('css/AdminDashboardCss/css/animate.css')}}" rel="stylesheet">
     <link href="{{asset('css/AdminDashboardCss/css/chatlist.css')}}" rel="stylesheet">
@@ -32,7 +33,7 @@
     <link href="{{asset('css/AdminDashboardCss/css/weathericons.css')}}" rel="stylesheet">
     <link href="{{asset('css/AdminDashboardCss/css/bootstrapAndPlugins.css')}}" rel="stylesheet">
     <!-- <link href="../../dist/css/notimportant.css" rel="stylesheet"> -->
-    <link href="{{asset('css/AdminDashboardCss/css/masterStyle.css')}}" rel="stylesheet">
+    <link href="{{asset('css/AdminDashboardCss/css/style.css')}}" rel="stylesheet">
 
 </head>
 
@@ -584,7 +585,7 @@
 
 {{-- Make Override Styles--}}
 <link href="{{asset('css/AdminDashboardCss/css/bootstrapAndPlugins.css')}}" rel="stylesheet">
-<link href="{{asset('css/AdminDashboardCss/css/masterStyle.css')}}" rel="stylesheet">
+<link href="{{asset('css/AdminDashboardCss/css/style.css')}}" rel="stylesheet">
 
 <!-- ============================================================== -->
 <!-- All Jquery -->
@@ -620,13 +621,14 @@
 <script src="{{asset('libraries/AdminDashboardLibs/libs/jquery.flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
 <script src="{{asset('libraries/AdminDashboardLibs/libs/jvector/jquery-jvectormap-2.0.2.min.js')}}"></script>
 <script src="{{asset('libraries/AdminDashboardLibs/libs/jvector/jquery-jvectormap-world-mill-en.js')}}"></script>
+<script src="{{asset('libraries/AdminDashboardLibs/libs/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
+<script src="{{asset('libraries/AdminDashboardLibs/libs/sweetalert2/sweet-alert.init.js')}}"></script>
 
 <script src="{{asset('js/AdminDashboardJs/js/dashboard.js')}}"></script>
 <script type="javascript">
     $(document).ready(function() {
         $(".dropdown-toggle").dropdown();
     });
-
 </script>
 </body>
 

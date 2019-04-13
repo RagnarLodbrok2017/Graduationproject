@@ -151,17 +151,17 @@
                                     <template slot="posts" slot-scope="row">
                                         101
                                     </template>
-
                                     <template slot="actions" slot-scope="row">
                                         <b-button type="button"
-                                                  class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
+                                                  class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"
+                                                  v-on:click="destroyUser(row.item.id, row.index)"
                                                   data-toggle="tooltip" data-original-title="Delete"><i class="ti-close"
                                                                                                         aria-hidden="true"></i>
                                         </b-button>
                                         <b-button type="button"
-                                                  class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn"
-                                                  data-toggle="tooltip" data-original-title="Delete"><i
-                                            class="ti-pencil" aria-hidden="true"></i></b-button>
+                                                  class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
+                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditUser(row.item.id)">
+                                            <i class="ti-pencil" aria-hidden="true"></i></b-button>
                                     </template>
                                 </b-table>
                                 <!--           Pagination         -->
@@ -313,7 +313,7 @@
                 </div>
             </div>
         </div>
-        <!-- Create Modal -->
+        <!-- Create User Modal -->
         <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -347,7 +347,7 @@
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i
                                     class="ti-hand-point-right text-white"></i></button>
-                                <b-form-select v-model="newUser.type" required>
+                                <b-form-select v-model="newUser.type" class="custom-select" required>
                                     <option value="user" selected="selected">User</option>
                                     <option value="admin">Admin</option>
                                     <option value="vip" disabled>VIP</option>
@@ -363,9 +363,76 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success" v-show="newUser.name && newUser.email && newUser.password && newUser.type" @click="storeUser">
-                                <i class="ti-save"></i> Save</button>
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-success addUserButtonAlert"
+                                    v-show="newUser.name && newUser.email && newUser.password && newUser.type"
+                                    @click="storeUser">
+                                <i class="ti-save"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit User Modal -->
+        <div class="modal fade" id="updatemodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id=""><i class="ti-marker-alt m-r-10"></i> Create
+                                Edit User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
+                                <b-form-input type="text" v-model="user.name" class="form-control" aria-label="name" minlength="10"
+                                              maxlength="30" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
+                                <b-form-input type="email" v-model="user.email" aria-label="no" maxlength="40" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
+                                <b-form-input type="password" v-model="user.password" placeholder="**********" minlength="8" maxlength="20"></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-hand-point-right text-white"></i></button>
+                                <b-form-select v-model="user.type" class="custom-select" required>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="vip" disabled>VIP</option>
+                                    <option value="superadmin" disabled>SuperAdmin</option>
+                                </b-form-select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-alert text-white"></i></button>
+                                <b-form-select v-model="user.status" class="custom-select" required>
+                                    <option value="1" selected="selected">Active</option>
+                                    <option value="0">Banned</option>
+                                </b-form-select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetUser()">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-success updateUserButtonAlert"
+                                    v-show="user.name && user.email && user.type"
+                                    v-on:click="updateUser(user.id, user)">
+                                <i class="ti-save"></i> Save
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -408,8 +475,8 @@
                 ],
                 totalRows: 1,
                 currentPage: 1,
-                perPage: 5,
-                pageOptions: [5, 10, 25, 100],
+                perPage: 20,
+                pageOptions: [10, 25, 50, 100],
                 sortBy: null,
                 sortDesc: false,
                 sortDirection: 'asc',
@@ -456,10 +523,39 @@
                 });
             },
             storeUser: function () {
-                axios.post('../api/admin-dashboard/users',this.newUser).then(response => {
+                axios.post('../api/admin-dashboard/users', this.newUser).then(response => {
                     this.newUser = response.data.newUser;
                     this.users.push(this.newUser);
-                    $('.CloseAddUserForm').click();
+                    // $('.CloseAddUserForm').click();
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            destroyUser: function (id, index) {
+                axios.delete('/api/admin-dashboard/users/' + id).then(response => {
+                    this.newUser = response.data.user;
+                    this.users.splice(index, 1);
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            // To Show the user information in the modal
+            EditUser: function(id){
+                axios.get('/api/admin-dashboard/users/' + id + '/edit').then(response => {
+                    this.user = response.data.user;
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            resetUser:function(){
+              console.log(this.user);
+            },
+            updateUser: function (id, user) {
+                console.log(user);
+                axios.patch('/api/admin-dashboard/users/' + id, user).then(response => {
+                    this.user = response.data.user;
+                    this.fetchUsers();
+                    console.log(this.user);
                 }).catch(error => {
                     console.log(error);
                 })
@@ -499,5 +595,11 @@
 
     table tr td span {
         text-transform: capitalize;
+    }
+
+    .btn-pure {
+        background-color: transparent;
+        color: #000;
+        border: 0;
     }
 </style>

@@ -2154,6 +2154,73 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {},
   data: function data() {
@@ -2205,8 +2272,8 @@ __webpack_require__.r(__webpack_exports__);
       }],
       totalRows: 1,
       currentPage: 1,
-      perPage: 5,
-      pageOptions: [5, 10, 25, 100],
+      perPage: 20,
+      pageOptions: [10, 25, 50, 100],
       sortBy: null,
       sortDesc: false,
       sortDirection: 'asc',
@@ -2261,9 +2328,46 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('../api/admin-dashboard/users', this.newUser).then(function (response) {
         _this2.newUser = response.data.newUser;
 
-        _this2.users.push(_this2.newUser);
+        _this2.users.push(_this2.newUser); // $('.CloseAddUserForm').click();
 
-        $('.CloseAddUserForm').click();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    destroyUser: function destroyUser(id, index) {
+      var _this3 = this;
+
+      axios.delete('/api/admin-dashboard/users/' + id).then(function (response) {
+        _this3.newUser = response.data.user;
+
+        _this3.users.splice(index, 1);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    // To Show the user information in the modal
+    EditUser: function EditUser(id) {
+      var _this4 = this;
+
+      axios.get('/api/admin-dashboard/users/' + id + '/edit').then(function (response) {
+        _this4.user = response.data.user;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    resetUser: function resetUser() {
+      console.log(this.user);
+    },
+    updateUser: function updateUser(id, user) {
+      var _this5 = this;
+
+      console.log(user);
+      axios.patch('/api/admin-dashboard/users/' + id, user).then(function (response) {
+        _this5.user = response.data.user;
+
+        _this5.fetchUsers();
+
+        console.log(_this5.user);
       }).catch(function (error) {
         console.log(error);
       });
@@ -28839,7 +28943,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.delete-alert[data-v-56f21322] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-56f21322] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-56f21322] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-56f21322] {\n    padding: 20px 0;\n    float: right;\n}\ntable tr td span[data-v-56f21322] {\n    text-transform: capitalize;\n}\n", ""]);
+exports.push([module.i, "\n.delete-alert[data-v-56f21322] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-56f21322] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-56f21322] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-56f21322] {\n    padding: 20px 0;\n    float: right;\n}\ntable tr td span[data-v-56f21322] {\n    text-transform: capitalize;\n}\n.btn-pure[data-v-56f21322] {\n    background-color: transparent;\n    color: #000;\n    border: 0;\n}\n", ""]);
 
 // exports
 
@@ -60599,11 +60703,19 @@ var render = function() {
                                   "b-button",
                                   {
                                     staticClass:
-                                      "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+                                      "btn btn-sm btn-icon btn-pure btn-outline deleteUserButton",
                                     attrs: {
                                       type: "button",
                                       "data-toggle": "tooltip",
                                       "data-original-title": "Delete"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.destroyUser(
+                                          row.item.id,
+                                          row.index
+                                        )
+                                      }
                                     }
                                   },
                                   [
@@ -60618,11 +60730,17 @@ var render = function() {
                                   "b-button",
                                   {
                                     staticClass:
-                                      "btn btn-sm btn-icon btn-pure btn-outline delete-row-btn",
+                                      "btn btn-sm btn-icon btn-pure btn-outline edit-row-btn",
                                     attrs: {
                                       type: "button",
-                                      "data-toggle": "tooltip",
-                                      "data-original-title": "Delete"
+                                      "data-toggle": "modal",
+                                      "data-original-title": "Edit",
+                                      "data-target": "#updatemodel"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.EditUser(row.item.id)
+                                      }
                                     }
                                   },
                                   [
@@ -60792,6 +60910,7 @@ var render = function() {
                       _c(
                         "b-form-select",
                         {
+                          staticClass: "custom-select",
                           attrs: { required: "" },
                           model: {
                             value: _vm.newUser.type,
@@ -60839,7 +60958,11 @@ var render = function() {
                       staticClass: "btn btn-secondary CloseAddUserForm",
                       attrs: { type: "button", "data-dismiss": "modal" }
                     },
-                    [_vm._v("Close")]
+                    [
+                      _vm._v(
+                        "\n                            Close\n                        "
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
@@ -60858,11 +60981,246 @@ var render = function() {
                             "newUser.name && newUser.email && newUser.password && newUser.type"
                         }
                       ],
-                      staticClass: "btn btn-success",
+                      staticClass: "btn btn-success addUserButtonAlert",
                       attrs: { type: "button" },
                       on: { click: _vm.storeUser }
                     },
-                    [_c("i", { staticClass: "ti-save" }), _vm._v(" Save")]
+                    [
+                      _c("i", { staticClass: "ti-save" }),
+                      _vm._v(" Save\n                        ")
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ]
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "updatemodel",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "createModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("form", [
+                _vm._m(10),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-body" }, [
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(11),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          "aria-label": "name",
+                          minlength: "10",
+                          maxlength: "30",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.user.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.user, "name", $$v)
+                          },
+                          expression: "user.name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(12),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "email",
+                          "aria-label": "no",
+                          maxlength: "40",
+                          required: ""
+                        },
+                        model: {
+                          value: _vm.user.email,
+                          callback: function($$v) {
+                            _vm.$set(_vm.user, "email", $$v)
+                          },
+                          expression: "user.email"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(13),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        attrs: {
+                          type: "password",
+                          placeholder: "**********",
+                          minlength: "8",
+                          maxlength: "20"
+                        },
+                        model: {
+                          value: _vm.user.password,
+                          callback: function($$v) {
+                            _vm.$set(_vm.user, "password", $$v)
+                          },
+                          expression: "user.password"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(14),
+                      _vm._v(" "),
+                      _c(
+                        "b-form-select",
+                        {
+                          staticClass: "custom-select",
+                          attrs: { required: "" },
+                          model: {
+                            value: _vm.user.type,
+                            callback: function($$v) {
+                              _vm.$set(_vm.user, "type", $$v)
+                            },
+                            expression: "user.type"
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "user" } }, [
+                            _vm._v("User")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "admin" } }, [
+                            _vm._v("Admin")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "vip", disabled: "" } },
+                            [_vm._v("VIP")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "option",
+                            { attrs: { value: "superadmin", disabled: "" } },
+                            [_vm._v("SuperAdmin")]
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "input-group mb-3" },
+                    [
+                      _vm._m(15),
+                      _vm._v(" "),
+                      _c(
+                        "b-form-select",
+                        {
+                          staticClass: "custom-select",
+                          attrs: { required: "" },
+                          model: {
+                            value: _vm.user.status,
+                            callback: function($$v) {
+                              _vm.$set(_vm.user, "status", $$v)
+                            },
+                            expression: "user.status"
+                          }
+                        },
+                        [
+                          _c(
+                            "option",
+                            { attrs: { value: "1", selected: "selected" } },
+                            [_vm._v("Active")]
+                          ),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "0" } }, [
+                            _vm._v("Banned")
+                          ])
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary CloseAddUserForm",
+                      attrs: { type: "button", "data-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.resetUser()
+                        }
+                      }
+                    },
+                    [
+                      _vm._v(
+                        "\n                            Cancel\n                        "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            _vm.user.name && _vm.user.email && _vm.user.type,
+                          expression: "user.name && user.email && user.type"
+                        }
+                      ],
+                      staticClass: "btn btn-success updateUserButtonAlert",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.updateUser(_vm.user.id, _vm.user)
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "ti-save" }),
+                      _vm._v(" Save\n                        ")
+                    ]
                   )
                 ])
               ])
@@ -61516,6 +61874,80 @@ var staticRenderFns = [
         )
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title", attrs: { id: "" } }, [
+        _c("i", { staticClass: "ti-marker-alt m-r-10" }),
+        _vm._v(" Create\n                            Edit User")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-user text-white" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-more text-white" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-key text-white" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-hand-point-right text-white" })]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      { staticClass: "btn btn-info", attrs: { type: "button" } },
+      [_c("i", { staticClass: "ti-alert text-white" })]
+    )
   }
 ]
 render._withStripped = true
@@ -77900,6 +78332,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var vue_resource__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-resource */ "./node_modules/vue-resource/dist/vue-resource.esm.js");
 /* harmony import */ var _components_AdminDashboard_Users_Users_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/AdminDashboard/Users/Users.vue */ "./resources/js/components/AdminDashboard/Users/Users.vue");
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes Vue and other libraries. It is a great starting point when
+ * building robust, powerful web applications using Vue and Laravel.
+ */
 
  // import App from './App.vue'
 
@@ -77919,17 +78356,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(bootstrap_vue__WEBPACK_IMPORTED_M
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Vue.http.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content');
 // Vue.http.options.emulateJSON = true;
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('User', require('./components/Users/Users.vue'));
-// import user from'./components/Users/Users.vue'
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
 //import components
 
 

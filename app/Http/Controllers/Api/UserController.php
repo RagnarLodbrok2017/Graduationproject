@@ -39,13 +39,13 @@ class UserController extends Controller
         if ($request->isMethod('post')) {
             $this->validate($request, [
                 'name' => 'required|max:30|min:10|max:30',
-                'email' => 'required|max:30|email',
+                'email' => 'required|max:30|email|unique:users',
                 'password' => 'required|max:30|min:8',
                 'type' => 'required',
             ]);
             $user = new User();
             $user->name = $request->name;
-            $user->password = bcrypt($request->name);
+            $user->password = bcrypt($request->password);
             $user->email = $request->email;
             $user->type = $request->type;
             $user->save();
@@ -72,7 +72,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return response()->json(['user' => $user]);
     }
 
     /**
@@ -84,7 +85,33 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+//        $user = User::find($id);
+//        $user->update($request->all());
+//        return response()->json(['user' => $user]);
+        if ($request->isMethod('patch')) {
+            $this->validate($request, [
+                'name' => 'required|max:30|min:10',
+                'password' => 'max:30|min:8',
+                'email' => 'required|max:30|email|unique:users,email,'.$request->get('id'),
+                'type' => 'required',
+                'status' => 'required',
+            ]);
+//            if (strlen($request->password) !== 0)
+            $user  = User::find($id);
+            if (!is_null($user) && isset($user)) {
+                $user->name = $request->name;
+                $user->email = $request->email;
+                $user->type = $request->type;
+                $user->status = $request->status;
+                if (strlen($request->password) !== 0)
+                {
+                    $user->password = bcrypt($request->password);
+                }
+                $user->save();
+//                $user->update($request->all());
+            }
+        }
+        return response()->json(['user' => $request]);
     }
 
     /**
@@ -95,6 +122,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return response()->json(['user' => $user]);
     }
 }
