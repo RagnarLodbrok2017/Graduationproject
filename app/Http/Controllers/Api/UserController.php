@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -108,10 +109,9 @@ class UserController extends Controller
                     $user->password = bcrypt($request->password);
                 }
                 $user->save();
-//                $user->update($request->all());
             }
         }
-        return response()->json(['user' => $request]);
+        return response()->json(['user' => $user]);
     }
 
     /**
@@ -125,5 +125,13 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
         return response()->json(['user' => $user]);
+    }
+    public function UserProfile($id)
+    {
+        if (!is_null($id))
+        {
+            $user = User::findorFail($id);
+            return response()->json(['user'=> $user]);
+        }
     }
 }

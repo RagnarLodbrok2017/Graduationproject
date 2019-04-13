@@ -6,6 +6,8 @@
             <user-component></user-component>
         @elseif (Request::path() == 'admin-dashboard/posts')
             <Post></Post>
+        @elseif (Request::is ('admin-dashboard/profile'))
+            <user-profile :auth_user_id="{{Auth::user()->id}}"></user-profile>
         @endif
     </div>
 

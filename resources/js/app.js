@@ -34,6 +34,7 @@ require('./bootstrap');
 
 //import components
 import UserComponent from "./components/AdminDashboard/Users/Users.vue";
+import UserProfileComponent from "./components/AdminDashboard/Users/Profile.vue";
 
 
 // const routes = [
@@ -45,5 +46,6 @@ const app = new Vue({
     el: "#app",
     components: {
         "user-component": UserComponent,
+        "user-profile": UserProfileComponent,
     }
 });

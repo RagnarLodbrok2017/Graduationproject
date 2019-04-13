@@ -439,8 +439,8 @@
                                                    alt="user" class="img-circle" width="60">
                                 </div>
                                 <div class="m-l-10">
-                                    <h4 class="m-b-0">Ahmed R.Mohamed</h4>
-                                    <p class=" m-b-0">ahmedortega@gmail.com</p>
+                                    <h4 class="m-b-0">{{ Auth::user()->name }}</h4>
+                                    <p class=" m-b-0">{{ Auth::user()->email }}</p>
                                 </div>
                             </div>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
@@ -453,7 +453,7 @@
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i>
                                 Account Setting</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i
+                            <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i
                                     class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                             <div class="dropdown-divider"></div>
                             <div class="p-l-30 p-10"><a href="javascript:void(0)"
@@ -494,9 +494,9 @@
                             <div class="user-content hide-menu ml-2">
                                 <a href="javascript:void(0)" class="" id="Userdd" role="button" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">
-                                    <h5 class="mb-0 user-name font-medium">Ahmed R.Mohamed <i
+                                    <h5 class="mb-0 user-name font-medium">{{ Auth::user()->name }} <i
                                             class="fa fa-angle-down"></i></h5>
-                                    <span class="op-5 user-email">ahmedortega@gmail.com</span>
+                                    <span class="op-5 user-email">{{ Auth::user()->email }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
                                     <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user mr-1 ml-1"></i>
@@ -509,7 +509,7 @@
                                     <a class="dropdown-item" href="javascript:void(0)"><i
                                             class="ti-settings mr-1 ml-1"></i> Account Setting</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:void(0)"><i
+                                    <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i
                                             class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
                                 </div>
                             </div>

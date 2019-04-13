@@ -23,6 +23,14 @@ class UserController extends Controller
 //        return view('user.user');
 //        return view('AdminDashboard.user.user', compact($users = User::all()));
     }
+    public function profile()
+    {
+//        if (true){
+//            return response()->json(['user'=>$user]);
+//        }
+        return view('AdminDashboard.users.users');
+//        return view('AdminDashboard.users.users');
+    }
 
     /**
      * Show the form for creating a new resource.
