@@ -29,6 +29,7 @@ Route::post('/admin-dashboard/register', 'Auth\AdminAuthController@register')->n
 Route::get('/admin-dashboard/logout', 'Auth\AdminAuthController@logout')->name('AdminLogout');
 Route::group(['middleware' => 'Admin'], function (){
     Route::resource('/admin-dashboard/users', 'UserController');
+    Route::resource('/admin-dashboard/posts', 'PostController');
     Route::get('/admin-dashboard', function () {
         return view('AdminDashboard.home');
     });

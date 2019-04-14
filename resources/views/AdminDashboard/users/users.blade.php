@@ -5,7 +5,7 @@
         @if ((Request::path() == 'admin-dashboard/users'))
             <user-component></user-component>
         @elseif (Request::path() == 'admin-dashboard/posts')
-            <Post></Post>
+            <post-component></post-component>
         @elseif (Request::is ('admin-dashboard/profile'))
             <user-profile :auth_user_id="{{Auth::user()->id}}"></user-profile>
         @endif

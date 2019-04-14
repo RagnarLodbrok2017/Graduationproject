@@ -155,8 +155,7 @@
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"
                                                   v-on:click="destroyUser(row.item.id, row.index)"
-                                                  data-toggle="tooltip" data-original-title="Delete"><i class="ti-close"
-                                                                                                        aria-hidden="true"></i>
+                                                  data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i>
                                         </b-button>
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
@@ -540,15 +539,15 @@
                 })
             },
             // To Show the user information in the modal
-            EditUser: function(id){
+            EditUser: function (id) {
                 axios.get('/api/admin-dashboard/users/' + id + '/edit').then(response => {
                     this.user = response.data.user;
                 }).catch(error => {
                     console.log(error);
                 })
             },
-            resetUser:function(){
-              console.log(this.user);
+            resetUser: function () {
+                console.log(this.user);
             },
             updateUser: function (id, user) {
                 console.log(user);

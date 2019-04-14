@@ -314,7 +314,8 @@
                                         <a href="javascript:void(0)" class="message-item">
                                             <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
                                             <div class="mail-contnet">
-                                                <h5 class="message-title">Settings</h5> <span class="mail-desc">You can customize this template as you want</span>
+                                                <h5 class="message-title">Settings</h5> <span
+                                                    class="mail-desc">You can customize this template as you want</span>
                                                 <span class="time">9:08 AM</span>
                                             </div>
                                         </a>
@@ -443,14 +444,14 @@
                                     <p class=" m-b-0">{{ Auth::user()->email }}</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My
+                            <a class="dropdown-item" href="../admin-dashboard/profile"><i class="ti-user m-r-5 m-l-5"></i> My
                                 Profile</a>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My
                                 Activity</a>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
                                 Inbox</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i>
+                            <a class="dropdown-item" href="../admin-dashboard/profile"><i class="ti-settings m-r-5 m-l-5"></i>
                                 Account Setting</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i
@@ -488,29 +489,22 @@
                     <li>
                         <!-- User Profile-->
                         <div class="user-profile d-flex no-block dropdown mt-3">
-                            <div class="user-pic"><img src="{{asset('images/AdminDashboardImages/images/users/1.jpg')}}"
-                                                       alt="users" class="rounded-circle"
+                            <div class="user-pic"><img src="{{asset('images/AdminDashboardImages/images/users/1.jpg')}}" alt="users" class="rounded-circle"
                                                        width="40"/></div>
                             <div class="user-content hide-menu ml-2">
                                 <a href="javascript:void(0)" class="" id="Userdd" role="button" data-toggle="dropdown"
                                    aria-haspopup="true" aria-expanded="false">
-                                    <h5 class="mb-0 user-name font-medium">{{ Auth::user()->name }} <i
-                                            class="fa fa-angle-down"></i></h5>
+                                    <h5 class="mb-0 user-name font-medium">{{ Auth::user()->name }} <i class="fa fa-angle-down"></i></h5>
                                     <span class="op-5 user-email">{{ Auth::user()->email }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
-                                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user mr-1 ml-1"></i>
-                                        My Profile</a>
-                                    <a class="dropdown-item" href="javascript:void(0)"><i
-                                            class="ti-wallet mr-1 ml-1"></i> My Activity</a>
-                                    <a class="dropdown-item" href="javascript:void(0)"><i
-                                            class="ti-email mr-1 ml-1"></i> Inbox</a>
+                                    <a class="dropdown-item" href="../admin-dashboard/profile"><i class="ti-user mr-1 ml-1"></i>My Profile</a>
+                                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet mr-1 ml-1"></i> My Activity</a>
+                                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email mr-1 ml-1"></i> Inbox</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:void(0)"><i
-                                            class="ti-settings mr-1 ml-1"></i> Account Setting</a>
+                                    <a class="dropdown-item" href="admin-dashboard/profile"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i
-                                            class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
+                                    <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
                                 </div>
                             </div>
                         </div>
@@ -519,8 +513,7 @@
                     <!-- Links-->
                     <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span
                             class="hide-menu">C . R . M</span></li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
-                                                href="javascript:void(0)" aria-expanded="false"><i
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-account-multiple"></i><span class="hide-menu">Users </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
@@ -535,10 +528,10 @@
                                                 href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-file-image"></i><span class="hide-menu">Posts </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="../admin-dashboard/posts" class="sidebar-link"><i
                                         class="mdi mdi-database-plus"></i><span class="hide-menu"> Add Post</span></a>
                             </li>
-                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="../admin-dashboard/posts" class="sidebar-link"><i
                                         class="mdi mdi-book-open"></i><span class="hide-menu"> Post Detail </span></a>
                             </li>
                         </ul>
@@ -626,7 +619,7 @@
 
 <script src="{{asset('js/AdminDashboardJs/js/dashboard.js')}}"></script>
 <script type="javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $(".dropdown-toggle").dropdown();
     });
 </script>
