@@ -222,16 +222,11 @@
                                     <h4 class="m-b-20">List style</h4>
                                     <!-- List style -->
                                     <ul class="list-style-none">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You
-                                                can give link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give
-                                                link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i>
-                                                Another Give link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth
-                                                link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i>
-                                                Another fifth link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i>Another Give link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
+                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i>Another fifth link</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -245,11 +240,9 @@
                     <!-- ============================================================== -->
                     <!-- **************** Search  ***************************8-->
                     <!-- ============================================================== -->
-                    <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark"
-                                                       href="javascript:void(0)"><i class="ti-search"></i></a>
+                    <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
                         <form class="app-search position-absolute">
-                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
-                                class="srh-btn"><i class="ti-close"></i></a>
+                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
                         </form>
                     </li>
                 </ul>
@@ -516,16 +509,15 @@
                     <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-account-multiple"></i><span class="hide-menu">Users </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i
-                                        class="mdi mdi-account-plus"></i><span class="hide-menu"> Add User </span></a>
+                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span
+                                        class="hide-menu"> Add User </span></a>
                             </li>
                             <li class="sidebar-item"><a href="../admin-dashboard/users" class="sidebar-link"><i
                                         class="mdi mdi-account-multiple"></i><span
                                         class="hide-menu">  View Users </span></a></li>
                         </ul>
                     </li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark"
-                                                href="javascript:void(0)" aria-expanded="false"><i
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-file-image"></i><span class="hide-menu">Posts </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
                             <li class="sidebar-item"><a href="../admin-dashboard/posts" class="sidebar-link"><i
@@ -533,6 +525,17 @@
                             </li>
                             <li class="sidebar-item"><a href="../admin-dashboard/posts" class="sidebar-link"><i
                                         class="mdi mdi-book-open"></i><span class="hide-menu"> Post Detail </span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
+                                class="mdi mdi-access-point"></i><span class="hide-menu">Category </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level">
+                            <li class="sidebar-item"><a href="../admin-dashboard/categories" class="sidebar-link"><i
+                                        class="mdi mdi-database-plus"></i><span class="hide-menu"> Add Category</span></a>
+                            </li>
+                            <li class="sidebar-item"><a href="../admin-dashboard/categories" class="sidebar-link"><i
+                                        class="mdi mdi-book-open"></i><span class="hide-menu"> Category Detail </span></a>
                             </li>
                         </ul>
                     </li>

@@ -1,4 +1,29 @@
 <template>
+    <!--    <div class="container Users" id="Users">
+            <div class="row">
+                <b-alert show>{{users.length}}</b-alert>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Age</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="user in users">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            lol
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>-->
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page">
@@ -8,7 +33,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-5 align-self-center">
-                    <h4 class="page-title">Posts Table</h4>
+                    <h4 class="page-title">All Posts</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -23,8 +48,10 @@
                         <div class="m-r-10">
                             <div class="lastmonth"></div>
                         </div>
-                        <div class=""><small>NumPosts</small>
-                            <h4 class="text-info m-b-0 font-medium">13,515</h4></div>
+                        <div class="">
+                            <small>LAST MONTH</small>
+                            <h4 class="text-info m-b-0 font-medium">3,552</h4>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -40,107 +67,107 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <!-- Column -->
-                <div class="col-lg-12">
+                <!-- Column  Users Table -->
+                <div class="col-lg-12 col-xl-9 col-md-12 UsersTableClass">
                     <div class="card">
                         <div class="card-body">
+                            <div class="d-flex no-block align-items-center m-b-30">
+                                <h4 class="card-title">All Posts</h4>
+                                <div class="ml-auto">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-dark" data-toggle="modal"
+                                                data-target="#createmodel">
+                                            Create New Post
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <b-row>
+                                <b-col md="6" class="my-1">
+                                    <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
+                                        <b-input-group>
+                                            <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
+                                            <b-input-group-append>
+                                                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                                            </b-input-group-append>
+                                        </b-input-group>
+                                    </b-form-group>
+                                </b-col>
+                                <b-col md="6" class="my-1">
+                                    <b-form-group label-cols-sm="3" label="Per page" class="mb-0">
+                                        <b-form-select v-model="perPage" :options="pageOptions"></b-form-select>
+                                    </b-form-group>
+                                </b-col>
+                            </b-row>
                             <div class="table-responsive">
-                                <table class="table product-overview" id="zero_config">
-                                    <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>ID</th>
-                                        <th>Photo</th>
-                                        <th>Post</th>
-                                        <th>Likes</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Ahmed R. Mohamed</td>
-                                        <td>1</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg" alt="iMac" width="80"> </td>
-                                        <td>Rounded Chair</td>
-                                        <td>20</td>
-                                        <td>10-7-2018</td>
-                                        <td> <span class="label label-success font-weight-100">Active</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Yasser Ibrahim</td>
-                                        <td>2</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair2.jpg" alt="iPhone" width="80"> </td>
-                                        <td>Wooden Chair</td>
-                                        <td>25</td>
-                                        <td>09-7-2018</td>
-                                        <td> <span class="label label-warning font-weight-100">Pending</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mohamed Essam</td>
-                                        <td>3</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair3.jpg" alt="apple_watch" width="80"> </td>
-                                        <td>Gray Chair</td>
-                                        <td>12</td>
-                                        <td>08-7-2018</td>
-                                        <td> <span class="label label-success font-weight-100">Active</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ahmed Gamal</td>
-                                        <td>4</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair4.jpg" alt="mac_mouse" width="80"> </td>
-                                        <td>Wooden chair</td>
-                                        <td>1</td>
-                                        <td>02-7-2018</td>
-                                        <td> <span class="label label-danger font-weight-100">Blocked</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mazen Emad</td>
-                                        <td>5</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg" alt="iMac" width="80"> </td>
-                                        <td>Rounded Chair</td>
-                                        <td>100</td>
-                                        <td>08-7-2018</td>
-                                        <td> <span class="label label-success font-weight-100">Active</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gamal Ahmed</td>
-                                        <td>10</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair2.jpg" alt="iPhone" width="80"> </td>
-                                        <td>Wooden Chair</td>
-                                        <td>14</td>
-                                        <td>06-7-2018</td>
-                                        <td> <span class="label label-warning font-weight-100">Pending</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ezat Essam</td>
-                                        <td>6</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg" alt="apple_watch" width="80"> </td>
-                                        <td>Still Gray Chair</td>
-                                        <td>11</td>
-                                        <td>05-7-2018</td>
-                                        <td> <span class="label label-success font-weight-100">Active</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hagar Ali</td>
-                                        <td>7</td>
-                                        <td> <img src="../../../../../public/images/AdminDashboardImages/images/gallery/chair4.jpg" alt="mac_mouse" width="80"> </td>
-                                        <td>wooden chair</td>
-                                        <td>28</td>
-                                        <td>01-7-2018</td>
-                                        <td> <span class="label label-danger font-weight-100">Blocked</span> </td>
-                                        <td><a href="javascript:void(0)" class="text-inverse p-r-10" data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a> <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="ti-trash"></i></a></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                <!-- Main table element -->
+                                <b-table
+                                    show-empty
+                                    class="table table-bordered nowrap display dataTable no-footer"
+                                    stacked="md"
+                                    :items="users"
+                                    :fields="fields"
+                                    :current-page="currentPage"
+                                    :per-page="perPage"
+                                    :filter="filter"
+                                    :sort-by.sync="sortBy"
+                                    :sort-desc.sync="sortDesc"
+                                    :sort-direction="sortDirection"
+                                    @filtered="onFiltered"
+                                >
+                                    <template slot="index" slot-scope="row">
+                                        {{ row.index+1 }}
+                                    </template>
+                                    <template slot="name" slot-scope="row">
+                                        <a href="../">{{ row.value }}</a>
+                                    </template>
+
+                                    <template slot="email" slot-scope="row">
+                                        {{ row.value }}
+                                    </template>
+                                    <template slot="phone" slot-scope="row">
+                                        +345 456 789
+                                    </template>
+                                    <template slot="type" slot-scope="row">
+                                        <span v-if="row.value === 'admin'"
+                                              class="label label-danger"> {{ row.value }}</span>
+                                        <span v-if="row.value === 'vip'"
+                                              class="label label-warning"> {{ row.value }}</span>
+                                        <span v-if="row.value === 'user'"
+                                              class="label label-info"> {{ row.value }}</span>
+                                    </template>
+                                    <template slot="age" slot-scope="row">
+                                        {{ row.value }}
+                                    </template>
+                                    <template slot="created" slot-scope="row">
+                                        {{ row.value }}
+                                    </template>
+                                    <template slot="posts" slot-scope="row">
+                                        101
+                                    </template>
+                                    <template slot="actions" slot-scope="row">
+                                        <b-button type="button"
+                                                  class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"
+                                                  v-on:click="destroyUser(row.item.id, row.index)"
+                                                  data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i>
+                                        </b-button>
+                                        <b-button type="button"
+                                                  class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
+                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditUser(row.item.id)">
+                                            <i class="ti-pencil" aria-hidden="true"></i></b-button>
+                                    </template>
+                                </b-table>
+                                <!--           Pagination         -->
+                                <b-row>
+                                    <b-col md="6" class="my-1">
+                                        <b-pagination
+                                            v-model="currentPage"
+                                            :total-rows="totalRows"
+                                            :per-page="perPage"
+                                            class="my-0"
+                                        ></b-pagination>
+                                    </b-col>
+                                </b-row>
                             </div>
                         </div>
                     </div>
@@ -148,8 +175,186 @@
                 <!-- Column -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Page Content -->
+            <!-- End page Content -->
             <!-- ============================================================== -->
+        </div>
+        <!-- Share Modal -->
+        <div class="modal fade" id="Sharemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> Share
+                                With</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
+                                <input type="text" class="form-control" placeholder="Enter Name Here"
+                                       aria-label="Username">
+                            </div>
+                            <div class="row">
+                                <div class="col-3 text-center">
+                                    <a href="#Whatsapp" class="text-success">
+                                        <i class="display-6 mdi mdi-whatsapp"></i><br><span
+                                        class="text-muted">Whatsapp</span>
+                                    </a>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <a href="#Facebook" class="text-info">
+                                        <i class="display-6 mdi mdi-facebook"></i><br><span
+                                        class="text-muted">Facebook</span>
+                                    </a>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <a href="#Instagram" class="text-danger">
+                                        <i class="display-6 mdi mdi-instagram"></i><br><span class="text-muted">Instagram</span>
+                                    </a>
+                                </div>
+                                <div class="col-3 text-center">
+                                    <a href="#Skype" class="text-cyan">
+                                        <i class="display-6 mdi mdi-skype"></i><br><span class="text-muted">Skype</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Create User Modal -->
+        <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Create
+                                New User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
+                                <b-form-input type="text" v-model="newUser.name" class="form-control"
+                                              placeholder="Enter Name Here" aria-label="name" minlength="10"
+                                              maxlength="30" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
+                                <b-form-input type="email" v-model="newUser.email" placeholder="Enter Email Here"
+                                              aria-label="no" maxlength="40" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
+                                <b-form-input type="password" v-model="newUser.password"
+                                              placeholder="Enter Password Here" minlength="8" maxlength="20"
+                                              required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-hand-point-right text-white"></i></button>
+                                <b-form-select v-model="newUser.type" class="custom-select" required>
+                                    <option value="user" selected="selected">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="vip" disabled>VIP</option>
+                                    <option value="superadmin" disabled>SuperAdmin</option>
+                                </b-form-select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-import text-white"></i></button>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-success addUserButtonAlert"
+                                    v-show="newUser.name && newUser.email && newUser.password && newUser.type"
+                                    @click="storeUser">
+                                <i class="ti-save"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit User Modal -->
+        <div class="modal fade" id="updatemodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id=""><i class="ti-marker-alt m-r-10"></i> Create
+                                Edit User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
+                                <b-form-input type="text" v-model="user.name" class="form-control" aria-label="name" minlength="10"
+                                              maxlength="30" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
+                                <b-form-input type="email" v-model="user.email" aria-label="no" maxlength="40" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
+                                <b-form-input type="password" v-model="user.password" placeholder="**********" minlength="8" maxlength="20"></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-hand-point-right text-white"></i></button>
+                                <b-form-select v-model="user.type" class="custom-select" required>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="vip" disabled>VIP</option>
+                                    <option value="superadmin" disabled>SuperAdmin</option>
+                                </b-form-select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-alert text-white"></i></button>
+                                <b-form-select v-model="user.status" class="custom-select" required>
+                                    <option value="1" selected="selected">Active</option>
+                                    <option value="0">Banned</option>
+                                </b-form-select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetUser()">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-success updateUserButtonAlert"
+                                    v-show="user.name && user.email && user.type"
+                                    v-on:click="updateUser(user.id, user)">
+                                <i class="ti-save"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
@@ -158,7 +363,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-            Ahmed R. Mohamed
+            All Rights Reserved by Ahmed R. Mohamed.
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->

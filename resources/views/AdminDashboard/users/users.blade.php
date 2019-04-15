@@ -8,6 +8,8 @@
             <post-component></post-component>
         @elseif (Request::is ('admin-dashboard/profile'))
             <user-profile :auth_user_id="{{Auth::user()->id}}"></user-profile>
+        @elseif (Request::path() == 'admin-dashboard/categories')
+            <category-component></category-component>
         @endif
     </div>
 

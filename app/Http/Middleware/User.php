@@ -20,6 +20,8 @@ class User
         {
             return $next($request);
         }
-        return abort(404);
+//        return abort(404);
+        return redirect('../login');
     }
+
 }

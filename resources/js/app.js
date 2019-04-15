@@ -36,6 +36,7 @@ require('./bootstrap');
 import UserComponent from "./components/AdminDashboard/Users/Users.vue";
 import UserProfileComponent from "./components/AdminDashboard/Users/Profile.vue";
 import PostComponent from "./components/AdminDashboard/Posts/Posts.vue";
+import CategoryComponent from "./components/AdminDashboard/Category/Category.vue";
 
 
 // const routes = [
@@ -49,5 +50,6 @@ const app = new Vue({
         "user-component": UserComponent,
         "user-profile": UserProfileComponent,
         "post-component": PostComponent,
+        "category-component": CategoryComponent,
     }
 });

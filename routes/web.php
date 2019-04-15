@@ -33,6 +33,9 @@ Route::group(['middleware' => 'Admin'], function (){
     Route::get('/admin-dashboard', function () {
         return view('AdminDashboard.home');
     });
+    Route::get('/admin-dashboard/categories', function () {
+        return view('AdminDashboard.users.users');
+    });
     Route::get('/admin-dashboard/profile', 'UserController@profile');
 });
 //Route::get('/admin-dashboard/users', 'UserController@initial')->name('Dashboard');

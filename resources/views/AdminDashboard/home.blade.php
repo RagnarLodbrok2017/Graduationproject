@@ -46,7 +46,7 @@
                             </button>
                         </div>
                         <div class="card-body">
-                            <h3 class="font-weight-200 mb-0">Ahmed R. Mohamed</h3>
+                            <h3 class="font-weight-200 mb-0">{{Auth::user()->name }}</h3>
                             <p>The Master Of The Admin Panel</p>
                             <ul class="listInCard flexbox flex-justified mt-20">
                                 <li>
