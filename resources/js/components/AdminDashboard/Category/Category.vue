@@ -99,20 +99,15 @@
                                     <template slot="name" slot-scope="row">
                                         {{ row.value }}
                                     </template>
-
-                                    <template slot="description" slot-scope="row" class="limitWidth" width="20%" style="max-width: 100px; overflow: hidden; width: 100px;">
+                                    <template slot="posts" slot-scope="row">
+                                        100
+                                        <span v-if="row.value === 0" class="badge badge-danger"> {{ row.value }}</span>
+                                        <span v-if="row.value >= 100 && row.value < 1000" class="badge badge-warning"> {{ row.value }}</span>
+                                        <span v-if="row.value >= 1000" class="badge badge-info"> {{ row.value }}</span>
+                                    </template>
+                                    <template slot="likes" slot-scope="row">
+                                        1203
                                         {{ row.value }}
-                                    </template>
-                                    <template slot="#Posts" slot-scope="row">
-                                        1200
-                                    </template>
-                                    <template slot=#Posts slot-scope="row">
-                                        <span v-if="row.value === 0"
-                                              class="badge badge-danger"> {{ row.value }}</span>
-                                        <span v-if="row.value >= 100 && row.value < 1000"
-                                              class="badge badge-warning"> {{ row.value }}</span>
-                                        <span v-if="row.value >= 1000"
-                                              class="badge badge-info"> {{ row.value }}</span>
                                     </template>
                                     <template slot="created" slot-scope="row">
                                         {{ row.value }}
@@ -125,7 +120,7 @@
                                         </b-button>
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
-                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditUser(row.item.id)">
+                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditCategory(row.item.id)">
                                             <i class="ti-pencil" aria-hidden="true"></i></b-button>
                                     </template>
                                 </b-table>
@@ -343,10 +338,8 @@
                             <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetCategory()">
                                 Cancel
                             </button>
-                            <button type="button" class="btn btn-success updateUserButtonAlert"
-                                    v-show="category.name"
-                                    v-on:click="updateCategory(category.id, category)">
-                                <i class="ti-save"></i> Save
+                            <button type="button" class="btn btn-success" v-show="category.name" v-on:click="updateCategory(category.id, category)">
+                                <i class="ti-save"></i> Update
                             </button>
                         </div>
                     </form>
@@ -380,8 +373,8 @@
                 fields: [
                     {key: 'index', label: '#', sortable: true, sortDirection: 'desc'},
                     {key: 'name', label: 'Name', sortable: true, sortDirection: 'desc'},
-                    {key: 'description', label: 'Description', class: 'text-center limitWidth'},
                     {key: 'posts', label: '# Posts', sortable: true, sortDirection: 'desc'},
+                    {key: 'likes', label: '# Likes', sortable: true, sortDirection: 'desc'},
                     {key: 'created_at', label: 'Created Date', sortable: true, sortDirection: 'desc'},
                     {key: 'actions', label: 'Actions'},
                 ],
@@ -458,7 +451,6 @@
                 console.log(this.category);
             },
             updateCategory: function (id, category) {
-                console.log(category);
                 axios.patch('/api/admin-dashboard/categories/' + id, category).then(response => {
                     this.category = response.data.category;
                     this.fetchCategories();
@@ -508,11 +500,5 @@
         background-color: transparent;
         color: #000;
         border: 0;
-    }
-    .limitWidth{
-        max-width: 50px !important;
-        width: 50px;
-        overflow: hidden;
-
     }
 </style>

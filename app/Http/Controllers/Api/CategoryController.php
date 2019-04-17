@@ -71,45 +71,28 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        return response()->json(['user' => $user]);
+        $category = Category::findOrFail($id);
+        return response()->json(['category' => $category]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-//        $user = User::find($id);
-//        $user->update($request->all());
-//        return response()->json(['user' => $user]);
         if ($request->isMethod('patch')) {
             $this->validate($request, [
-                'name' => 'required|max:30|min:10',
-                'password' => 'max:30|min:8',
-                'email' => 'required|max:30|email|unique:users,email,'.$request->get('id'),
-                'type' => 'required',
-                'status' => 'required',
+                'name' => 'required|max:30|min:6|max:40|unique:category,name,'.$request->get('id'),
+                'description' => 'nullable|min:10|max:400',
             ]);
-//            if (strlen($request->password) !== 0)
-            $user  = User::find($id);
-            if (!is_null($user) && isset($user)) {
-                $user->name = $request->name;
-                $user->email = $request->email;
-                $user->type = $request->type;
-                $user->status = $request->status;
-                if (strlen($request->password) !== 0)
+            $category  = Category::find($id);
+            if (!is_null($category) && isset($category)) {
+                $category->name = $request->name;
+                if (strlen($request->description) !== 0)
                 {
-                    $user->password = bcrypt($request->password);
+                    $category->description = $request->description;
                 }
-                $user->save();
+                $category->save();
             }
         }
-        return response()->json(['user' => $user]);
+        return response()->json(['category' => $category]);
     }
 
     /**
@@ -120,9 +103,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
-        return response()->json(['user' => $user]);
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return response()->json(['category' => $category]);
     }
     public function UserProfile($id)
     {

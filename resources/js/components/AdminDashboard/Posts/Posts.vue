@@ -1,29 +1,4 @@
 <template>
-    <!--    <div class="container Users" id="Users">
-            <div class="row">
-                <b-alert show>{{users.length}}</b-alert>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <td>#</td>
-                        <td>ID</td>
-                        <td>Name</td>
-                        <td>Age</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="user in users">
-                        <td>{{ user.id }}</td>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            lol
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>-->
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page">
@@ -105,7 +80,7 @@
                                     show-empty
                                     class="table table-bordered nowrap display dataTable no-footer"
                                     stacked="md"
-                                    :items="users"
+                                    :items="posts"
                                     :fields="fields"
                                     :current-page="currentPage"
                                     :per-page="perPage"
@@ -118,42 +93,41 @@
                                     <template slot="index" slot-scope="row">
                                         {{ row.index+1 }}
                                     </template>
-                                    <template slot="name" slot-scope="row">
-                                        <a href="../">{{ row.value }}</a>
+                                    <template slot="title" slot-scope="row">
+                                        <a href="../"><strong>{{ row.value }}</strong></a>
                                     </template>
 
-                                    <template slot="email" slot-scope="row">
-                                        {{ row.value }}
+                                    <template slot="image" slot-scope="row">
+                                        <img :src="path(row.value)" alt="" width="80px" height="80px" class="img img-circle">
                                     </template>
-                                    <template slot="phone" slot-scope="row">
-                                        +345 456 789
+                                    <template slot="category" slot-scope="row">
+                                        <strong v-for="value in row.value">{{value.name}}</strong>
                                     </template>
-                                    <template slot="type" slot-scope="row">
-                                        <span v-if="row.value === 'admin'"
-                                              class="label label-danger"> {{ row.value }}</span>
-                                        <span v-if="row.value === 'vip'"
-                                              class="label label-warning"> {{ row.value }}</span>
-                                        <span v-if="row.value === 'user'"
-                                              class="label label-info"> {{ row.value }}</span>
+                                    <template slot="user" slot-scope="row">
+                                        {{ row.value.name }}
                                     </template>
-                                    <template slot="age" slot-scope="row">
-                                        {{ row.value }}
+                                    <template slot="status" slot-scope="row">
+                                        <span v-if="row.value === '0'" class="label label-danger"> Banned</span>
+                                        <span v-if="row.value === '1'" class="label label-info"> Active </span>
+                                    </template>
+                                    <template slot="likes" slot-scope="row">
+                                        1564
+                                    </template>
+                                    <template slot="comments" slot-scope="row">
+                                        101
                                     </template>
                                     <template slot="created" slot-scope="row">
-                                        {{ row.value }}
-                                    </template>
-                                    <template slot="posts" slot-scope="row">
-                                        101
+                                       {{ row.value }}
                                     </template>
                                     <template slot="actions" slot-scope="row">
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"
-                                                  v-on:click="destroyUser(row.item.id, row.index)"
+                                                  v-on:click="destroyPost(row.item.id, row.index)"
                                                   data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i>
                                         </b-button>
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
-                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditUser(row.item.id)">
+                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditPost(row.item.id)">
                                             <i class="ti-pencil" aria-hidden="true"></i></b-button>
                                     </template>
                                 </b-table>
@@ -178,59 +152,6 @@
             <!-- End page Content -->
             <!-- ============================================================== -->
         </div>
-        <!-- Share Modal -->
-        <div class="modal fade" id="Sharemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> Share
-                                With</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <input type="text" class="form-control" placeholder="Enter Name Here"
-                                       aria-label="Username">
-                            </div>
-                            <div class="row">
-                                <div class="col-3 text-center">
-                                    <a href="#Whatsapp" class="text-success">
-                                        <i class="display-6 mdi mdi-whatsapp"></i><br><span
-                                        class="text-muted">Whatsapp</span>
-                                    </a>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <a href="#Facebook" class="text-info">
-                                        <i class="display-6 mdi mdi-facebook"></i><br><span
-                                        class="text-muted">Facebook</span>
-                                    </a>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <a href="#Instagram" class="text-danger">
-                                        <i class="display-6 mdi mdi-instagram"></i><br><span class="text-muted">Instagram</span>
-                                    </a>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <a href="#Skype" class="text-cyan">
-                                        <i class="display-6 mdi mdi-skype"></i><br><span class="text-muted">Skype</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Send
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- Create User Modal -->
         <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
              aria-hidden="true">
@@ -246,27 +167,27 @@
                         </div>
                         <div class="modal-body">
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <b-form-input type="text" v-model="newUser.name" class="form-control"
+                                <button type="button" class="btn btn-info"><i class="ti-post text-white"></i></button>
+                                <b-form-input type="text" v-model="newPost.name" class="form-control"
                                               placeholder="Enter Name Here" aria-label="name" minlength="10"
                                               maxlength="30" required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <b-form-input type="email" v-model="newUser.email" placeholder="Enter Email Here"
+                                <b-form-input type="email" v-model="newPost.email" placeholder="Enter Email Here"
                                               aria-label="no" maxlength="40" required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
-                                <b-form-input type="password" v-model="newUser.password"
+                                <b-form-input type="password" v-model="newPost.password"
                                               placeholder="Enter Password Here" minlength="8" maxlength="20"
                                               required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i
                                     class="ti-hand-point-right text-white"></i></button>
-                                <b-form-select v-model="newUser.type" class="custom-select" required>
-                                    <option value="user" selected="selected">User</option>
+                                <b-form-select v-model="newPost.type" class="custom-select" required>
+                                    <option value="post" selected="selected">User</option>
                                     <option value="admin">Admin</option>
                                     <option value="vip" disabled>VIP</option>
                                     <option value="superadmin" disabled>SuperAdmin</option>
@@ -285,8 +206,8 @@
                                 Close
                             </button>
                             <button type="button" class="btn btn-success addUserButtonAlert"
-                                    v-show="newUser.name && newUser.email && newUser.password && newUser.type"
-                                    @click="storeUser">
+                                    v-show="newPost.name && newPost.email && newPost.password && newPost.type"
+                                    @click="storePost">
                                 <i class="ti-save"></i> Save
                             </button>
                         </div>
@@ -310,23 +231,23 @@
                         </div>
                         <div class="modal-body">
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <b-form-input type="text" v-model="user.name" class="form-control" aria-label="name" minlength="10"
+                                <button type="button" class="btn btn-info"><i class="ti-post text-white"></i></button>
+                                <b-form-input type="text" v-model="post.name" class="form-control" aria-label="name" minlength="10"
                                               maxlength="30" required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <b-form-input type="email" v-model="user.email" aria-label="no" maxlength="40" required></b-form-input>
+                                <b-form-input type="email" v-model="post.email" aria-label="no" maxlength="40" required></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
-                                <b-form-input type="password" v-model="user.password" placeholder="**********" minlength="8" maxlength="20"></b-form-input>
+                                <b-form-input type="password" v-model="post.password" placeholder="**********" minlength="8" maxlength="20"></b-form-input>
                             </div>
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i
                                     class="ti-hand-point-right text-white"></i></button>
-                                <b-form-select v-model="user.type" class="custom-select" required>
-                                    <option value="user">User</option>
+                                <b-form-select v-model="post.type" class="custom-select" required>
+                                    <option value="post">User</option>
                                     <option value="admin">Admin</option>
                                     <option value="vip" disabled>VIP</option>
                                     <option value="superadmin" disabled>SuperAdmin</option>
@@ -335,7 +256,7 @@
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i
                                     class="ti-alert text-white"></i></button>
-                                <b-form-select v-model="user.status" class="custom-select" required>
+                                <b-form-select v-model="post.status" class="custom-select" required>
                                     <option value="1" selected="selected">Active</option>
                                     <option value="0">Banned</option>
                                 </b-form-select>
@@ -346,9 +267,9 @@
                             <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetUser()">
                                 Cancel
                             </button>
-                            <button type="button" class="btn btn-success updateUserButtonAlert"
-                                    v-show="user.name && user.email && user.type"
-                                    v-on:click="updateUser(user.id, user)">
+                            <button type="button" class="btn btn-success updatePostButtonAlert"
+                                    v-show="post.name && post.email && post.type"
+                                    v-on:click="updatePost(post.id, post)">
                                 <i class="ti-save"></i> Save
                             </button>
                         </div>
@@ -375,6 +296,7 @@
 </template>
 
 <script>
+
     export default {
         props: {},
         data() {
@@ -382,13 +304,14 @@
                 items: [],
                 fields: [
                     {key: 'index', label: '#', sortable: true, sortDirection: 'desc'},
-                    {key: 'name', label: 'Name', sortable: true, sortDirection: 'desc'},
-                    {key: 'email', label: 'Email', sortable: true, class: 'text-center'},
-                    {key: 'phone', label: 'Phone', sortable: true, sortDirection: 'desc'},
-                    {key: 'type', label: 'Role', sortable: true, sortDirection: 'desc'},
-                    {key: 'age', label: 'Age', sortable: true, sortDirection: 'desc'},
-                    {key: 'created_at', label: 'Joining Date', sortable: true, sortDirection: 'desc'},
-                    {key: 'posts', label: 'Posts', sortable: true, sortDirection: 'desc'},
+                    {key: 'title', label: 'Title', sortable: true, sortDirection: 'desc'},
+                    {key: 'image', label: 'Image'},
+                    {key: 'category', label: 'Category', sortable: true, sortDirection: 'desc'},
+                    {key: 'user', label: 'User', sortable: true, sortDirection: 'desc'},
+                    {key: 'status', label: 'Status', sortable: true, sortDirection: 'desc'},
+                    {key: 'likes', label: '#Likes', sortable: true, sortDirection: 'desc'},
+                    {key: 'comments', label: '#Comments', sortable: true, sortDirection: 'desc'},
+                    {key: 'created_at', label: 'Published Date', sortable: true, sortDirection: 'desc'},
                     {key: 'actions', label: 'Actions'},
                 ],
                 totalRows: 1,
@@ -400,21 +323,21 @@
                 sortDirection: 'asc',
                 filter: null,
                 //DB
-                users: [],
-                user: {},
-                newUser: {
-                    name: '',
-                    email: '',
-                    password: '',
+                posts: [],
+                post: {},
+                newPost: {
+                    title: '',
+                    description: '',
+                    about: '',
                     type: '',
                 },
-                user_id: 0,
-                image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg',
+                post_id: 0,
+                image_src: '../../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg',
             }
         },
         mounted: function () {
             console.log('Component fired.');
-            this.totalRows = this.users.length;
+            this.totalRows = this.posts.length;
         },
         computed: {
             sortOptions() {
@@ -428,52 +351,53 @@
         },
 
         created: function () {
-            this.fetchUsers();
+            this.fetchPosts();
         },
         methods: {
-            fetchUsers: function () {
-                axios.get('../api/admin-dashboard/users').then(response => {
-                    this.users = response.data.users;
-                    this.totalRows = this.users.length;
-                    // console.log("************* This.users *****************");
-                    // console.log(this.users);
-                    // console.log(JSON.stringify(this.users[0]));
+            fetchPosts: function () {
+                axios.get('../api/admin-dashboard/posts').then(response => {
+                    this.posts = response.data.posts;
+                    this.totalRows = this.posts.length;
+                    console.table(this.posts);
+                    // console.log("************* This.posts *****************");
+                    // console.log(this.posts);
+                    // console.log(JSON.stringify(this.posts[0]));
                 });
             },
-            storeUser: function () {
-                axios.post('../api/admin-dashboard/users', this.newUser).then(response => {
-                    this.newUser = response.data.newUser;
-                    this.users.push(this.newUser);
+            storePost: function () {
+                axios.post('../api/admin-dashboard/posts', this.newPost).then(response => {
+                    this.newPost = response.data.newPost;
+                    this.posts.push(this.newPost);
                     // $('.CloseAddUserForm').click();
                 }).catch(error => {
                     console.log(error);
                 })
             },
-            destroyUser: function (id, index) {
-                axios.delete('/api/admin-dashboard/users/' + id).then(response => {
-                    this.newUser = response.data.user;
-                    this.users.splice(index, 1);
+            destroyPost: function (id, index) {
+                axios.delete('/api/admin-dashboard/posts/' + id).then(response => {
+                    this.newPost = response.data.post;
+                    this.posts.splice(index, 1);
                 }).catch(error => {
                     console.log(error);
                 })
             },
-            // To Show the user information in the modal
-            EditUser: function (id) {
-                axios.get('/api/admin-dashboard/users/' + id + '/edit').then(response => {
-                    this.user = response.data.user;
+            // To Show the post information in the modal
+            EditPost: function (id) {
+                axios.get('/api/admin-dashboard/posts/' + id + '/edit').then(response => {
+                    this.post = response.data.post;
                 }).catch(error => {
                     console.log(error);
                 })
             },
             resetUser: function () {
-                console.log(this.user);
+                console.log(this.post);
             },
-            updateUser: function (id, user) {
-                console.log(user);
-                axios.patch('/api/admin-dashboard/users/' + id, user).then(response => {
-                    this.user = response.data.user;
-                    this.fetchUsers();
-                    console.log(this.user);
+            updatePost: function (id, post) {
+                console.log(post);
+                axios.patch('/api/admin-dashboard/posts/' + id, post).then(response => {
+                    this.post = response.data.post;
+                    this.fetchPosts();
+                    console.log(this.post);
                 }).catch(error => {
                     console.log(error);
                 })
@@ -482,6 +406,9 @@
                 // Trigger pagination to update the number of buttons/pages due to filtering
                 this.totalRows = filteredItems.length;
                 this.currentPage = 1;
+            },
+            path(image) {
+                return require('../../../../../public/images/AdminDashboardImages/images/gallery/' + image)
             }
         },
     }
@@ -519,5 +446,8 @@
         background-color: transparent;
         color: #000;
         border: 0;
+    }
+    table tbody tr td{
+        line-height: 79px;
     }
 </style>
