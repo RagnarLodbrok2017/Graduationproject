@@ -107,8 +107,9 @@
                                         {{ row.value.name }}
                                     </template>
                                     <template slot="status" slot-scope="row">
-                                        <span v-if="row.value === '0'" class="label label-danger"> Banned</span>
-                                        <span v-if="row.value === '1'" class="label label-info"> Active </span>
+                                        <span v-if="row.value === 0" class="label label-danger"> Banned</span>
+                                        <span v-if="row.value === 1" class="label label-success"> Active </span>
+                                        <span v-if="row.value === 2" class="label label-warning"> Pending </span>
                                     </template>
                                     <template slot="likes" slot-scope="row">
                                         1564
@@ -117,7 +118,7 @@
                                         101
                                     </template>
                                     <template slot="created" slot-scope="row">
-                                       {{ row.value }}
+                                        {{ row.value }}
                                     </template>
                                     <template slot="actions" slot-scope="row">
                                         <b-button type="button"
@@ -157,116 +158,415 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form>
+                    <form method="post" enctype="multipart/form-data">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Create
-                                New User</h5>
+                            <h5 class="modal-title"><i class="ti-marker-alt m-r-10"></i>Create new Post</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-post text-white"></i></button>
-                                <b-form-input type="text" v-model="newPost.name" class="form-control"
-                                              placeholder="Enter Name Here" aria-label="name" minlength="10"
-                                              maxlength="30" required></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <b-form-input type="email" v-model="newPost.email" placeholder="Enter Email Here"
-                                              aria-label="no" maxlength="40" required></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
-                                <b-form-input type="password" v-model="newPost.password"
-                                              placeholder="Enter Password Here" minlength="8" maxlength="20"
-                                              required></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i
-                                    class="ti-hand-point-right text-white"></i></button>
-                                <b-form-select v-model="newPost.type" class="custom-select" required>
-                                    <option value="post" selected="selected">User</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="vip" disabled>VIP</option>
-                                    <option value="superadmin" disabled>SuperAdmin</option>
-                                </b-form-select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-import text-white"></i></button>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                            <form>
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Post Title</label>
+                                                <b-form-input type="text" v-model="newPost.title" class="form-control" minlength="10" maxlength="50" required></b-form-input>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Sub title</label>
+                                                <b-form-input type="text" v-model="newPost.subtitle"  class="form-control" required></b-form-input>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <!--/row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Category</label>
+                                                <select class="selectpicker" v-model="newPost.categoriesIds" multiple data-selected-text-format="count" data-width="100%" data-max-options="3">
+                                                    <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Status</label>
+                                                <br/>
+                                                <b-form-group>
+                                                    <b-form-radio-group
+                                                        v-model="newPost.status"
+                                                        :options="options"
+                                                        name="radio-inline"
+                                                    ></b-form-radio-group>
+                                                </b-form-group>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Meta Title</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="ti-image"></i></span>
+                                                    </div>
+                                                    <b-form-input v-model="newPost.meta_title" type="text" aria-describedby="basic-addon1"></b-form-input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Meta Keyword</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="ti-image"></i></span>
+                                                    </div>
+                                                    <b-form-input v-model="newPost.meta_keyword" type="text" aria-describedby="basic-addon1"></b-form-input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <h5 class="card-title m-t-40">Post Description</h5>
+                                    <div class="row">
+                                        <div class="col-md-12 ">
+                                            <div class="form-group">
+                                                <b-textarea class="form-control" v-model="newPost.description" rows="4"></b-textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row">
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Image Upload</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="ti-image"></i></span>
+                                                    </div>
+                                                    <input type="file" v-on:change="onImageChange" class="upload" accept=".jpg, .png, .jpeg">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Video Upload</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="ti-image"></i></span>
+                                                    </div>
+                                                    <input type="file" :onchange="imageChanged" class="upload" accept="video/*">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="card-title m-t-40">GENERAL INFO</h5>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered td-padding">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> About</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="newPost.about"></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> Color </label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="newPost.color"></b-form-input>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> Type</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="newPost.type"></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <input type="text" v-model="newPost.users_id" hidden>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">
-                                Close
-                            </button>
-                            <button type="button" class="btn btn-success addUserButtonAlert"
-                                    v-show="newPost.name && newPost.email && newPost.password && newPost.type"
-                                    @click="storePost">
-                                <i class="ti-save"></i> Save
-                            </button>
+                                <div class="form-actions m-t-40">
+                                    <button type="button" class="btn btn-success" v-show="newPost.title && newPost.categoriesIds"
+                                            @click="storePost"><i class="fa fa-check"></i> Save
+                                    </button>
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- Edit User Modal -->
+        <!-- Edit Post Modal -->
         <div class="modal fade" id="updatemodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form>
                         <div class="modal-header">
-                            <h5 class="modal-title" id=""><i class="ti-marker-alt m-r-10"></i> Create
-                                Edit User</h5>
+                            <h5 class="modal-title" id=""><i class="ti-marker-alt m-r-10"></i>
+                                Edit Post</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-post text-white"></i></button>
-                                <b-form-input type="text" v-model="post.name" class="form-control" aria-label="name" minlength="10"
-                                              maxlength="30" required></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <b-form-input type="email" v-model="post.email" aria-label="no" maxlength="40" required></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
-                                <b-form-input type="password" v-model="post.password" placeholder="**********" minlength="8" maxlength="20"></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i
-                                    class="ti-hand-point-right text-white"></i></button>
-                                <b-form-select v-model="post.type" class="custom-select" required>
-                                    <option value="post">User</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="vip" disabled>VIP</option>
-                                    <option value="superadmin" disabled>SuperAdmin</option>
-                                </b-form-select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i
-                                    class="ti-alert text-white"></i></button>
-                                <b-form-select v-model="post.status" class="custom-select" required>
-                                    <option value="1" selected="selected">Active</option>
-                                    <option value="0">Banned</option>
-                                </b-form-select>
-                            </div>
+                            <form enctype="multipart/form-data">
+                                <div class="form-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Post Title</label>
+                                                <b-form-input type="text" v-model="post.title" class="form-control" minlength="10" maxlength="50" required></b-form-input>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Sub title</label>
+                                                <b-form-input type="text" v-model="post.subtitle"  class="form-control" required></b-form-input>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <!--/row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="control-label">Category</label>
+                                                <select class="selectpicker" v-model="categoriesIds" multiple data-selected-text-format="count" data-width="100%" data-max-options="3">
+                                                    <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Status</label>
+                                                <br/>
+                                                <b-form-group>
+                                                    <b-form-radio-group
+                                                        v-model="post.status"
+                                                        :options="options"
+                                                        name="radio-inline"
+                                                    ></b-form-radio-group>
+                                                </b-form-group>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>User</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="ti-user"></i></span>
+                                                    </div>
+                                                    <b-form-input type="text" v-model="user.name" aria-describedby="basic-addon1" disabled></b-form-input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>User Type</label>
+                                                <div class="input-group mb-3">
+                                                    <div class="input-group-prepend">
+                                                        <span class="input-group-text" ><i class="ti-user"></i></span>
+                                                    </div>
+                                                    <b-form-input type="text" v-model="user.type" aria-describedby="basic-addon1" disabled></b-form-input>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--/span-->
+                                    </div>
+                                    <h5 class="card-title m-t-40">Post Description</h5>
+                                    <div class="row">
+                                        <div class="col-md-12 ">
+                                            <div class="form-group">
+                                                <b-textarea class="form-control" v-model="post.description" rows="4"></b-textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/row-->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Meta Title</label>
+                                                <b-form-input v-model="post.meta_title" type="text" class="form-control"></b-form-input></div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Meta Keyword</label>
+                                                <b-form-input v-model="post.meta_keyword" type="text" class="form-control"></b-form-input></div>
+                                        </div>
+                                        <!--/span-->
+                                        <div class="col-md-3">
+                                            <h5 class="card-title m-t-20">Upload Image</h5>
+                                            <div class="el-element-overlay">
+                                                <div class="el-card-item">
+                                                    <div class="el-card-avatar el-overlay-1"><img :src="path('chair.jpg')" alt="postImage"/>
+                                                        <div class="el-overlay">
+                                                            <ul class="list-style-none el-info">
+                                                                <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                                       href="images/gallery/chair3.jpg"><i class="icon-magnifier"></i></a></li>
+                                                                <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i
+                                                                    class="icon-link"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn btn-info waves-effect waves-light"><span>Upload another Image</span>
+                                                <input v-on:change="onFileChange" type="file" class="upload">
+                                            </div>
+                                            <div class="btn btn-info waves-effect waves-light"><span>Upload an Video</span>
+                                                <input v-on:change="onFileChange" type="file" class="upload">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 offset-md-3">
+                                            <h5 class="card-title m-t-20">Upload Video</h5>
+                                            <div class="el-element-overlay">
+                                                <div class="el-card-item">
+                                                    <div class="el-card-avatar el-overlay-1"><img :src="path('chair.jpg')" alt="postImage"/>
+                                                        <div class="el-overlay">
+                                                            <ul class="list-style-none el-info">
+                                                                <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link"
+                                                                                       href="images/gallery/chair3.jpg"><i class="icon-magnifier"></i></a></li>
+                                                                <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i
+                                                                    class="icon-link"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn btn-info waves-effect waves-light"><span>Upload another Image</span>
+                                                <input v-on:change="onFileChange" type="file" class="upload">
+                                            </div>
+                                            <div class="btn btn-info waves-effect waves-light"><span>Upload an Video</span>
+                                                <input v-on:change="onFileChange" type="file" class="upload">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h5 class="card-title m-t-40">GENERAL INFO</h5>
+                                            <div class="table-responsive">
+                                                <table class="table table-bordered td-padding">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> Has Video</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-show="post.has_video === 1" disabled placeholder="YES"></b-form-input>
+                                                            <b-form-input type="text" v-show="post.has_video === 0" disabled placeholder="NO"></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> About</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="post.about"></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> Color </label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="post.color"></b-form-input>
+                                                        </td>
+                                                    </tr>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetUser()">
-                                Cancel
-                            </button>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> Type</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="post.type"></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control"> Likes Count</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="post.like_count"></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control">Comments Count</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="post.comment_count"></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control">Image Url</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="url" v-model="post.image_url" disabled></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label for="" class="form-control">Posted at</label>
+                                                        </td>
+                                                        <td>
+                                                            <b-form-input type="text" v-model="post.created_at" disabled></b-form-input>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="form-actions m-t-40">
+                                    <button type="button" class="btn btn-success"><i class="fa fa-check"
+                                                                                     v-show="newPost.name && newPost.email && newPost.password && newPost.type"></i> Save
+                                    </button>
+                                    <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                                </div>
+                            </form>
                             <button type="button" class="btn btn-success updatePostButtonAlert"
                                     v-show="post.name && post.email && post.type"
                                     v-on:click="updatePost(post.id, post)">
@@ -296,9 +596,9 @@
 </template>
 
 <script>
-
+    import Multiselect from 'vue-multiselect';
     export default {
-        props: {},
+        props: ['auth_user_id'],
         data() {
             return {
                 items: [],
@@ -322,14 +622,37 @@
                 sortDesc: false,
                 sortDirection: 'asc',
                 filter: null,
+                //select Status of Post
+                selected: '',
+                options: [
+                    { text: 'Active', value: '1' },
+                    { text: 'Pending', value: '2' },
+                    { text: 'Banned', value: '0' }
+                ],
+                value: '',
+
+
                 //DB
+                image:'',
                 posts: [],
                 post: {},
+                user: {},
+                categories: [],
+                categoriesIds: [],
+                category: {},
+                PostCategoryId: {},
                 newPost: {
                     title: '',
                     description: '',
                     about: '',
+                    subtitle:'',
                     type: '',
+                    color: '',
+                    image:'',
+                    meta_keyword:'',
+                    meta_title:'',
+                    categoriesIds: [],
+
                 },
                 post_id: 0,
                 image_src: '../../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg',
@@ -357,17 +680,54 @@
             fetchPosts: function () {
                 axios.get('../api/admin-dashboard/posts').then(response => {
                     this.posts = response.data.posts;
+                    this.categories = response.data.categories;
                     this.totalRows = this.posts.length;
-                    console.table(this.posts);
-                    // console.log("************* This.posts *****************");
-                    // console.log(this.posts);
-                    // console.log(JSON.stringify(this.posts[0]));
                 });
             },
-            storePost: function () {
+            storePost(e) {
+                e.preventDefault();
+                let currentObj = this;
+
+                const config = {
+                    headers: { 'content-type': 'multipart/form-data' }
+                }
+
+                let formData = new FormData();
+                formData.append('image', this.image);
+                formData.append('users_id', this.auth_user_id);
+                formData.append('title', this.newPost.title);
+                formData.append('subtitle', this.newPost.subtitle);
+                formData.append('description', this.newPost.description);
+                formData.append('color', this.newPost.color);
+                formData.append('status', this.newPost.status);
+                formData.append('about', this.newPost.about);
+                formData.append('meta_keyword', this.newPost.meta_keyword);
+                formData.append('meta_title', this.newPost.meta_title);
+                formData.append('type', this.newPost.type);
+                formData.append('about', this.newPost.about);
+                for (var i = 0; i < this.newPost.categoriesIds.length; i++) {
+                    formData.append('categoriesIds[]', this.newPost.categoriesIds[i]);
+                }
+                // formData.append('categoriesIds', this.newPost.categoriesIds);
+                console.log(this.newPost.categoriesIds);
+
+                axios.post('../api/admin-dashboard/posts', formData, config)
+                    .then(function (response) {
+                        this.posts.push(this.newPost);
+                    })
+                    .catch(function (error) {
+                        currentObj.output = error;
+                    });
+            },
+            storePost2: function () {
+                this.newPost.users_id = this.auth_user_id;
+                this.newPost.image = this.image;
+                console.log(this.newPost.image);
+                // this.newPost.categoriesIds = this.newPost.categoriesIds;
                 axios.post('../api/admin-dashboard/posts', this.newPost).then(response => {
                     this.newPost = response.data.newPost;
-                    this.posts.push(this.newPost);
+                    console.log(this.newPost);
+                    // this.posts.push(this.newPost);
                     // $('.CloseAddUserForm').click();
                 }).catch(error => {
                     console.log(error);
@@ -384,7 +744,10 @@
             // To Show the post information in the modal
             EditPost: function (id) {
                 axios.get('/api/admin-dashboard/posts/' + id + '/edit').then(response => {
-                    this.post = response.data.post;
+                    this.post = response.data.post[0];
+                    this.categoriesIds = response.data.categoriesIds;
+                    this.user = this.post.user;
+                    console.log(this.user);
                 }).catch(error => {
                     console.log(error);
                 })
@@ -397,7 +760,6 @@
                 axios.patch('/api/admin-dashboard/posts/' + id, post).then(response => {
                     this.post = response.data.post;
                     this.fetchPosts();
-                    console.log(this.post);
                 }).catch(error => {
                     console.log(error);
                 })
@@ -408,11 +770,43 @@
                 this.currentPage = 1;
             },
             path(image) {
+                return require('../../../../../public/uploads/posts/images/' + image)
+            },
+            path2(image) {
                 return require('../../../../../public/images/AdminDashboardImages/images/gallery/' + image)
-            }
+            },
+            onFileChange(e) {
+                var files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.image(files[0]);
+            },
+            imageChanged(e) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(e.target.files[0]);
+                fileReader.onload = (e) => {
+                    this.image = e.target.result;
+                }
+
+            },
+            fileChanged(e) {
+                var fileReader = new FileReader();
+                fileReader.readAsDataURL(e.target.files[0]);
+                fileReader.onload = (e) => {
+                    this.post.video = e.target.result;
+                }
+            },
+            onImageChange(e){
+                console.log(e.target.files[0]);
+                this.image = e.target.files[0];
+            },
+        },
+        components: {
+            "multiselect": Multiselect,
         },
     }
 </script>
+
 <style scoped>
     .delete-alert {
         /*background-color: red;*/
@@ -447,7 +841,17 @@
         color: #000;
         border: 0;
     }
-    table tbody tr td{
+
+    table tbody tr td {
         line-height: 79px;
+    }
+
+    .modal-content {
+        width: 81vw;
+        margin: 44px 214px;
+    }
+
+    .modal-dialog {
+        margin: 0;
     }
 </style>

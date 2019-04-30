@@ -18,6 +18,9 @@ import VueRouter from 'vue-router'
 import VueAxios from "vue-axios";
 import axios from "axios";
 import VueResource from 'vue-resource';
+import Multiselect from 'vue-multiselect';
+
+Vue.component('multiselect', Multiselect);
 
 // window.Vue = require('vue').default;
 // window.VueRouter = require('vue-router').default;
@@ -53,3 +56,4 @@ const app = new Vue({
         "category-component": CategoryComponent,
     }
 });
+

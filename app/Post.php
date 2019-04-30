@@ -9,14 +9,16 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $title
+ * @property string $subtitle
  * @property string $description
  * @property string $image
  * @property string|null $video
+ * @property string|null $has_video
  * @property int|null $status
  * @property string|null $about
  * @property string|null $color
- * @property string|null $keyword
- * @property string|null $search
+ * @property string|null $meta_keyword
+ * @property string|null $meta_title
  * @property int|null $like_count
  * @property int|null $comment_count
  * @property string|null $type
@@ -60,7 +62,7 @@ class Post extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'title',	'description', 'image',	'video',	'status',	'about',	'color',	'keyword',	'search', 'like_count',
+        'title','subtitle',	'description', 'image',	'video',	'status',	'about',	'color',	'meta_keyword',	'meta_title', 'like_count',
         'comment_count',	'type',	'image_url',	'video_url',	'created_at',	'updated_at',	'banned_at',	'users_id'];
 
 
@@ -68,6 +70,6 @@ class Post extends Model
         return $this->belongsTo('App\User', 'users_id');
     }
     public function category() {
-        return $this->belongsToMany('App\Category', 'post_category', 'post_id', 'category_id');
+        return $this->belongsToMany('App\Category', 'post_category');
     }
 }

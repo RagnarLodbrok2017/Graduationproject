@@ -580,6 +580,11 @@
 <script src="{{ asset('js/app.js') }}"></script>
 
 {{-- Make Override Styles--}}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="{{asset('libraries/AdminDashboardLibs/libs/bootstrap-multiselect/bootstrap-select.min.css')}}">
+<!-- Latest compiled and minified JavaScript -->
+<script src="{{asset('libraries/AdminDashboardLibs/libs/bootstrap-multiselect/bootstrap-select.min.js')}}"></script>
+
 <link href="{{asset('css/AdminDashboardCss/css/bootstrapAndPlugins.css')}}" rel="stylesheet">
 <link href="{{asset('css/AdminDashboardCss/css/style.css')}}" rel="stylesheet">
 
@@ -624,6 +629,7 @@
 <script type="javascript">
     $(document).ready(function () {
         $(".dropdown-toggle").dropdown();
+        $('select').selectpicker();
     });
 </script>
 </body>
