@@ -2878,6 +2878,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['auth_user_id'],
@@ -2952,6 +2970,8 @@ __webpack_require__.r(__webpack_exports__);
         value: '0'
       }],
       value: '',
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+      routeName: "{{route(''post.uploadVideoRoute')}}",
       //DB
       image: '',
       posts: [],
@@ -2969,6 +2989,7 @@ __webpack_require__.r(__webpack_exports__);
         type: '',
         color: '',
         image: '',
+        video: '',
         meta_keyword: '',
         meta_title: '',
         categoriesIds: []
@@ -3017,6 +3038,7 @@ __webpack_require__.r(__webpack_exports__);
       };
       var formData = new FormData();
       formData.append('image', this.image);
+      formData.append('image', this.video);
       formData.append('users_id', this.auth_user_id);
       formData.append('title', this.newPost.title);
       formData.append('subtitle', this.newPost.subtitle);
@@ -3132,8 +3154,12 @@ __webpack_require__.r(__webpack_exports__);
       };
     },
     onImageChange: function onImageChange(e) {
-      console.log(e.target.files[0]);
       this.image = e.target.files[0];
+      console.log(this.image);
+    },
+    onVideoChange: function onVideoChange(e) {
+      // this.video = e.target.files[0];
+      console.log(e.target);
     }
   },
   components: {
@@ -63685,9 +63711,9 @@ var render = function() {
                             fn: function(row) {
                               return [
                                 _vm._v(
-                                  "\n                                    " +
+                                  "\n                                        " +
                                     _vm._s(row.index + 1) +
-                                    "\n                                "
+                                    "\n                                    "
                                 )
                               ]
                             }
@@ -63733,9 +63759,9 @@ var render = function() {
                             fn: function(row) {
                               return [
                                 _vm._v(
-                                  "\n                                    " +
+                                  "\n                                        " +
                                     _vm._s(row.value.name) +
-                                    "\n                                "
+                                    "\n                                    "
                                 )
                               ]
                             }
@@ -63775,7 +63801,7 @@ var render = function() {
                             fn: function(row) {
                               return [
                                 _vm._v(
-                                  "\n                                    1564\n                                "
+                                  "\n                                        1564\n                                    "
                                 )
                               ]
                             }
@@ -63785,7 +63811,7 @@ var render = function() {
                             fn: function(row) {
                               return [
                                 _vm._v(
-                                  "\n                                    101\n                                "
+                                  "\n                                        101\n                                    "
                                 )
                               ]
                             }
@@ -63795,9 +63821,9 @@ var render = function() {
                             fn: function(row) {
                               return [
                                 _vm._v(
-                                  "\n                                    " +
+                                  "\n                                        " +
                                     _vm._s(row.value) +
-                                    "\n                                "
+                                    "\n                                    "
                                 )
                               ]
                             }
@@ -63855,6 +63881,115 @@ var render = function() {
                                       staticClass: "ti-pencil",
                                       attrs: { "aria-hidden": "true" }
                                     })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-button",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "b-modal",
+                                        rawName: "v-b-modal.UploadVideoModal",
+                                        modifiers: { UploadVideoModal: true }
+                                      }
+                                    ],
+                                    staticClass:
+                                      "btn btn-sm btn-icon btn-pure btn-outline edit-row-btn",
+                                    attrs: { alt: "Upload Video" }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "ti-upload",
+                                      attrs: { "aria-hidden": "true" }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "b-modal",
+                                  {
+                                    attrs: {
+                                      id: "UploadVideoModal",
+                                      title: "Upload Video Modal"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "form",
+                                      {
+                                        attrs: {
+                                          method: "POST",
+                                          action: "./posts",
+                                          enctype: "multipart/form-data"
+                                        }
+                                      },
+                                      [
+                                        _c("input", {
+                                          attrs: {
+                                            type: "hidden",
+                                            name: "_token"
+                                          },
+                                          domProps: { value: _vm.csrf }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "form-group row" },
+                                          [
+                                            _c("input", {
+                                              staticClass: "upload",
+                                              attrs: {
+                                                type: "file",
+                                                name: "video",
+                                                accept: "video/*"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("input", {
+                                              directives: [
+                                                {
+                                                  name: "model",
+                                                  rawName: "v-model",
+                                                  value: row.item.id,
+                                                  expression: "row.item.id"
+                                                }
+                                              ],
+                                              attrs: {
+                                                type: "hidden",
+                                                name: "id"
+                                              },
+                                              domProps: { value: row.item.id },
+                                              on: {
+                                                input: function($event) {
+                                                  if ($event.target.composing) {
+                                                    return
+                                                  }
+                                                  _vm.$set(
+                                                    row.item,
+                                                    "id",
+                                                    $event.target.value
+                                                  )
+                                                }
+                                              }
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-primary",
+                                            attrs: { type: "submit" }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                    Save\n                                                "
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
                                   ]
                                 )
                               ]
@@ -64191,24 +64326,7 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-md-6" }, [
-                            _c("div", { staticClass: "form-group" }, [
-                              _c("label", [_vm._v("Video Upload")]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "input-group mb-3" }, [
-                                _vm._m(6),
-                                _vm._v(" "),
-                                _c("input", {
-                                  staticClass: "upload",
-                                  attrs: {
-                                    type: "file",
-                                    onchange: _vm.imageChanged,
-                                    accept: "video/*"
-                                  }
-                                })
-                              ])
-                            ])
-                          ])
+                          _vm._m(6)
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
@@ -64355,7 +64473,9 @@ var render = function() {
                           },
                           [
                             _c("i", { staticClass: "fa fa-check" }),
-                            _vm._v(" Save\n                                ")
+                            _vm._v(
+                              " Save\n                                    "
+                            )
                           ]
                         ),
                         _vm._v(" "),
@@ -65055,7 +65175,7 @@ var render = function() {
                             ],
                             staticClass: "fa fa-check"
                           }),
-                          _vm._v(" Save\n                                ")
+                          _vm._v(" Save\n                                    ")
                         ]
                       ),
                       _vm._v(" "),
@@ -65092,7 +65212,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "ti-save" }),
-                      _vm._v(" Save\n                        ")
+                      _vm._v(" Save\n                            ")
                     ]
                   )
                 ])
@@ -65104,7 +65224,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("footer", { staticClass: "footer text-center" }, [
-      _vm._v("\n        All Rights Reserved by Ahmed R. Mohamed.\n    ")
+      _vm._v("\n            All Rights Reserved by Ahmed R. Mohamed.\n        ")
     ])
   ])
 }
@@ -65187,7 +65307,7 @@ var staticRenderFns = [
               },
               [
                 _vm._v(
-                  "\n                                        Create New Post\n                                    "
+                  "\n                                            Create New Post\n                                        "
                 )
               ]
             )
@@ -65254,9 +65374,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" }, [
-        _c("i", { staticClass: "ti-image" })
+    return _c("div", { staticClass: "col-md-6" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Video Upload")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "input-group mb-3" }, [
+          _c("div", { staticClass: "input-group-prepend" }, [
+            _c("span", { staticClass: "input-group-text" }, [
+              _c("i", { staticClass: "ti-image" })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v("you can upload video after adding the post")])
+        ])
       ])
     ])
   },
@@ -65297,7 +65427,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-header" }, [
       _c("h5", { staticClass: "modal-title", attrs: { id: "" } }, [
         _c("i", { staticClass: "ti-marker-alt m-r-10" }),
-        _vm._v("\n                            Edit Post")
+        _vm._v("\n                                Edit Post")
       ]),
       _vm._v(" "),
       _c(
@@ -84453,8 +84583,7 @@ module.exports = "/images/5.jpg?764ff0464199e47c14d2db98d10304b9";
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./chair.jpg": "./public/uploads/posts/images/chair.jpg",
-	"./fewwwwwwwwww.png": "./public/uploads/posts/images/fewwwwwwwwww.png"
+	"./chair.jpg": "./public/uploads/posts/images/chair.jpg"
 };
 
 
@@ -84487,17 +84616,6 @@ webpackContext.id = "./public/uploads/posts/images sync recursive ^\\.\\/.*$";
 /***/ (function(module, exports) {
 
 module.exports = "/images/chair.jpg?df136b8118006b8157df81699b68147e";
-
-/***/ }),
-
-/***/ "./public/uploads/posts/images/fewwwwwwwwww.png":
-/*!******************************************************!*\
-  !*** ./public/uploads/posts/images/fewwwwwwwwww.png ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/fewwwwwwwwww.png?d9c68cd675193af1bc047a6f3bd961a3";
 
 /***/ }),
 

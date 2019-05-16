@@ -126,6 +126,16 @@ class PostController extends Controller
             $post->image = 'chair.jpg';
             $post->image_url = '../../../../../public/uploads/posts/images/images/';
         }
+//        if ($request->hasFile('video')) {
+//            $UploadedVideo = Input::file('video');
+//            $videoName = $request->title . '.' . $UploadedVideo->getClientOriginalExtension();
+//            $UploadedVideo->move(public_path('uploads/posts/videos'), $videoName);
+//            $post->video = $videoName;
+//            $post->video_url = '../../../../../public/uploads/posts/videos/';
+//            $post->has_video = 0;
+//        } else {
+//            $post->has_video = 0;
+//        }
         $post->status = $request->status;
         $post->meta_keyword = $request->meta_keyword;
         $post->meta_title = $request->meta_title;
@@ -212,6 +222,14 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->category()->detach();
         $post->delete();
+        $image = public_path("uploads/posts/images/$post->image");
+        if ($image != null){
+            File::delete(public_path("uploads/posts/images/$post->image"));
+        }
+        $video = public_path("uploads/posts/videos/$post->video");
+        if ($video != null){
+            File::delete(public_path("uploads/posts/videos/$post->video"));
+        }
         return response()->json(['post' => $post]);
     }
 

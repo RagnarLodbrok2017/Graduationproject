@@ -129,7 +129,24 @@
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
                                                   data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditPost(row.item.id)">
-                                            <i class="ti-pencil" aria-hidden="true"></i></b-button>
+                                            <i class="ti-pencil" aria-hidden="true"></i>
+                                        </b-button>
+                                        <b-button v-b-modal.UploadVideoModal class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn" alt="Upload Video">
+                                            <i class="ti-upload" aria-hidden="true"></i>
+                                        </b-button>
+                                        <b-modal id="UploadVideoModal" title="Upload Video Modal">
+
+                                            <form method="POST" action="./posts" enctype="multipart/form-data">
+                                                <input type="hidden" name="_token" :value="csrf">
+                                                <div class="form-group row">
+                                                    <input type="file" name="video" class="upload" accept="video/*">
+                                                    <input type="hidden" name="id" class="" v-model="row.item.id">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">
+                                                    Save
+                                                </button>
+                                            </form>
+                                        </b-modal>
                                     </template>
                                 </b-table>
                                 <!--           Pagination         -->
@@ -268,7 +285,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" ><i class="ti-image"></i></span>
                                                     </div>
-                                                    <input type="file" :onchange="imageChanged" class="upload" accept="video/*">
+<!--                                                    <input type="file" :onchange="onVideoChange" class="upload" accept="video/*">-->
+                                                    <p>you can upload video after adding the post</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -631,6 +649,8 @@
                 ],
                 value: '',
 
+                csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                routeName: "{{route(''post.uploadVideoRoute')}}",
 
                 //DB
                 image:'',
@@ -649,10 +669,10 @@
                     type: '',
                     color: '',
                     image:'',
+                    video:'',
                     meta_keyword:'',
                     meta_title:'',
                     categoriesIds: [],
-
                 },
                 post_id: 0,
                 image_src: '../../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg',
@@ -694,6 +714,7 @@
 
                 let formData = new FormData();
                 formData.append('image', this.image);
+                formData.append('image', this.video);
                 formData.append('users_id', this.auth_user_id);
                 formData.append('title', this.newPost.title);
                 formData.append('subtitle', this.newPost.subtitle);
@@ -797,8 +818,12 @@
                 }
             },
             onImageChange(e){
-                console.log(e.target.files[0]);
                 this.image = e.target.files[0];
+                console.log(this.image);
+            },
+            onVideoChange(e){
+                // this.video = e.target.files[0];
+                console.log(e.target);
             },
         },
         components: {

@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('/admin-dashboard/users', 'Api\UserController');
 Route::resource('/admin-dashboard/categories', 'Api\CategoryController');
 Route::resource('/admin-dashboard/posts', 'Api\PostController');
+Route::get('/admin-dashboard/posts/{id}', 'Api\PostController@uploadVideo');
 Route::get('/admin-dashboard/profile/{id}', 'Api\UserController@UserProfile');

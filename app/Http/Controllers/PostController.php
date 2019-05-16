@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
+use App\Category;
+use File;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class PostController extends Controller
 {
@@ -24,6 +30,23 @@ class PostController extends Controller
     public function create()
     {
         //
+    }
+    public function uploadVideo(Request $request)
+    {
+        $post = Post::find($request->id)->first();
+//        dd($UploadedVideo);
+        if ($request->hasFile('video')) {
+            $UploadedVideo = Input::file('video');
+            $videoName = $post->title . '.' . $UploadedVideo->getClientOriginalExtension();
+            $UploadedVideo->move(public_path('uploads/posts/videos'), $videoName);
+            $post->video = $videoName;
+            $post->video_url = '../../../../../public/uploads/posts/videos/';
+            $post->has_video = 1;
+        } else {
+            $post->has_video = 0;
+        }
+        $post->save();
+        return redirect('../admin-dashboard/posts');
     }
 
     /**

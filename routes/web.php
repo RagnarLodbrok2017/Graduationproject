@@ -38,5 +38,6 @@ Route::group(['middleware' => 'Admin'], function (){
     });
     Route::get('/admin-dashboard/profile', 'UserController@profile');
 });
+Route::post('/admin-dashboard/posts', 'PostController@uploadVideo')->name('post.uploadVideoRoute');
 //Route::get('/admin-dashboard/users', 'UserController@initial')->name('Dashboard');
 
