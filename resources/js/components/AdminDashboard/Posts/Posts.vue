@@ -101,7 +101,7 @@
                                         <img :src="path(row.value)" alt="" width="80px" height="80px" class="img img-circle">
                                     </template>
                                     <template slot="category" slot-scope="row">
-                                        <strong v-for="value in row.value">{{value.name}}</strong>
+                                        <p v-for="value in row.value">{{value.name}}</p>
                                     </template>
                                     <template slot="user" slot-scope="row">
                                         {{ row.value.name }}

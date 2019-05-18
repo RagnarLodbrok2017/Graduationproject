@@ -920,3 +920,11 @@ body {
     background-color: #000;
   }
 }
+
+/* DataTables */
+table.table-bordered.dataTable tbody th, table.table-bordered.dataTable tbody td{
+    font-size: 14px !important;
+}
+.b-table.table > thead > tr > th[aria-sort], .b-table.table > tfoot > tr > th[aria-sort]{
+    font-size: 14px !important;
+}

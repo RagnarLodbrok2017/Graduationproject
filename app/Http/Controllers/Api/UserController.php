@@ -126,6 +126,7 @@ class UserController extends Controller
         $user->delete();
         return response()->json(['user' => $user]);
     }
+
     public function UserProfile($id)
     {
         if (!is_null($id))

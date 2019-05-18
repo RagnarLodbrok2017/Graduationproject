@@ -21,3 +21,4 @@ Route::resource('/admin-dashboard/categories', 'Api\CategoryController');
 Route::resource('/admin-dashboard/posts', 'Api\PostController');
 Route::get('/admin-dashboard/posts/{id}', 'Api\PostController@uploadVideo');
 Route::get('/admin-dashboard/profile/{id}', 'Api\UserController@UserProfile');
+Route::get('/admin-dashboard/user-profile/{id}', 'Api\UserController@UserProfile');

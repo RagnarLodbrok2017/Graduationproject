@@ -31,6 +31,19 @@ class UserController extends Controller
         return view('AdminDashboard.users.users');
 //        return view('AdminDashboard.users.users');
     }
+    public function AnyUserProfile($id)
+    {
+//        if (true){
+//            return response()->json(['user'=>$user]);
+//        }
+        if (!is_null($id)) {
+            $user = User::findOrFail($id);
+            $posts = $user->post()->get();
+//            return view('AdminDashboard.users.users', $id);
+            return view('AdminDashboard.users.users')->with(compact('user', 'posts'));
+        }
+//        return view('AdminDashboard.users.users');
+    }
 
     /**
      * Show the form for creating a new resource.

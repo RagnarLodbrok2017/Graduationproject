@@ -38,6 +38,7 @@ require('./bootstrap');
 //import components
 import UserComponent from "./components/AdminDashboard/Users/Users.vue";
 import UserProfileComponent from "./components/AdminDashboard/Users/Profile.vue";
+import AnyUserProfileComponent from "./components/AdminDashboard/Users/AnyUserProfile.vue";
 import PostComponent from "./components/AdminDashboard/Posts/Posts.vue";
 import CategoryComponent from "./components/AdminDashboard/Category/Category.vue";
 
@@ -52,6 +53,7 @@ const app = new Vue({
     components: {
         "user-component": UserComponent,
         "user-profile": UserProfileComponent,
+        "any-user-profile": AnyUserProfileComponent,
         "post-component": PostComponent,
         "category-component": CategoryComponent,
     }

@@ -125,7 +125,7 @@
                                         {{ row.index+1 }}
                                     </template>
                                     <template slot="name" slot-scope="row">
-                                        <a href="../">{{ row.value }}</a>
+                                        <a :href="'../admin-dashboard/user-profile/'+ row.item.id">{{ row.value }}</a>
                                     </template>
 
                                     <template slot="email" slot-scope="row">

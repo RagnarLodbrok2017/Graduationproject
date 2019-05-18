@@ -491,11 +491,11 @@
                                     <span class="op-5 user-email">{{ Auth::user()->email }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
-                                    <a class="dropdown-item" href="../admin-dashboard/profile"><i class="ti-user mr-1 ml-1"></i>My Profile</a>
+                                    <a class="dropdown-item" href="../../admin-dashboard/profile"><i class="ti-user mr-1 ml-1"></i>My Profile</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet mr-1 ml-1"></i> My Activity</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email mr-1 ml-1"></i> Inbox</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="admin-dashboard/profile"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
+                                    <a class="dropdown-item" href="../../admin-dashboard/profile"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
                                 </div>
@@ -512,7 +512,7 @@
                             <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span
                                         class="hide-menu"> Add User </span></a>
                             </li>
-                            <li class="sidebar-item"><a href="../admin-dashboard/users" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="../../admin-dashboard/users" class="sidebar-link"><i
                                         class="mdi mdi-account-multiple"></i><span
                                         class="hide-menu">  View Users </span></a></li>
                         </ul>
@@ -520,10 +520,10 @@
                     <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-file-image"></i><span class="hide-menu">Posts </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="../admin-dashboard/posts" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="../../admin-dashboard/posts" class="sidebar-link"><i
                                         class="mdi mdi-database-plus"></i><span class="hide-menu"> Add Post</span></a>
                             </li>
-                            <li class="sidebar-item"><a href="../admin-dashboard/posts" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="../../admin-dashboard/posts" class="sidebar-link"><i
                                         class="mdi mdi-book-open"></i><span class="hide-menu"> Post Detail </span></a>
                             </li>
                         </ul>
@@ -531,10 +531,10 @@
                     <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-access-point"></i><span class="hide-menu">Category </span></a>
                         <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="../admin-dashboard/categories" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="../../admin-dashboard/categories" class="sidebar-link"><i
                                         class="mdi mdi-database-plus"></i><span class="hide-menu"> Add Category</span></a>
                             </li>
-                            <li class="sidebar-item"><a href="../admin-dashboard/categories" class="sidebar-link"><i
+                            <li class="sidebar-item"><a href="../../admin-dashboard/categories" class="sidebar-link"><i
                                         class="mdi mdi-book-open"></i><span class="hide-menu"> Category Detail </span></a>
                             </li>
                         </ul>
