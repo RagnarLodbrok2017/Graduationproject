@@ -238,7 +238,7 @@
 
 
                     <!-- ============================================================== -->
-                    <!-- **************** Search  ***************************8-->
+                    <!-- **************** Search  ***************************-->
                     <!-- ============================================================== -->
                     <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
                         <form class="app-search position-absolute">
@@ -260,8 +260,8 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right  animated bounceInDown"
                              aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-eg"></i> Arabic</a>
                             <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> English</a>
-                            <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a>
                             <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-es"></i> Spanish</a>
                             <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> German</a>
                         </div>
@@ -542,6 +542,9 @@
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-message-alert"></i><span class="hide-menu">Notifications</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="javascript:void(0)" aria-expanded="false"><i
+                                class="mdi mdi-book"></i><span class="hide-menu">History</span></a></li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-email"></i><span class="hide-menu">Emails</span></a></li>

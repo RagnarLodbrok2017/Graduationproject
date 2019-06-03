@@ -72,4 +72,7 @@ class Post extends Model
     public function category() {
         return $this->belongsToMany('App\Category', 'post_category');
     }
+    public function history() {
+        return $this->hasMany('App\History','post_id');
+    }
 }

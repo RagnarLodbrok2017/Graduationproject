@@ -86172,9 +86172,20 @@ module.exports = "/images/5.jpg?764ff0464199e47c14d2db98d10304b9";
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
+	"./Post Rec.png": "./public/uploads/posts/images/Post Rec.png",
+	"./Printer Papers.png": "./public/uploads/posts/images/Printer Papers.png",
 	"./Recycling Chair.jpg": "./public/uploads/posts/images/Recycling Chair.jpg",
 	"./Recycling Papers.jpg": "./public/uploads/posts/images/Recycling Papers.jpg",
-	"./chair.jpg": "./public/uploads/posts/images/chair.jpg"
+	"./Recycling bomb.png": "./public/uploads/posts/images/Recycling bomb.png",
+	"./Refewv wefff.png": "./public/uploads/posts/images/Refewv wefff.png",
+	"./chair.jpg": "./public/uploads/posts/images/chair.jpg",
+	"./dwaaaaaaa.jpg": "./public/uploads/posts/images/dwaaaaaaa.jpg",
+	"./dwaaaaaaadw.jpg": "./public/uploads/posts/images/dwaaaaaaadw.jpg",
+	"./dwqqqqqqq.jpg": "./public/uploads/posts/images/dwqqqqqqq.jpg",
+	"./dwqqqqqqqq wdq.jpg": "./public/uploads/posts/images/dwqqqqqqqq wdq.jpg",
+	"./dwqqqqqqqq.jpg": "./public/uploads/posts/images/dwqqqqqqqq.jpg",
+	"./efwwwwwww.jpg": "./public/uploads/posts/images/efwwwwwww.jpg",
+	"./wqddddddd.jpg": "./public/uploads/posts/images/wqddddddd.jpg"
 };
 
 
@@ -86196,6 +86207,28 @@ webpackContext.keys = function webpackContextKeys() {
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
 webpackContext.id = "./public/uploads/posts/images sync recursive ^\\.\\/.*$";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/Post Rec.png":
+/*!**************************************************!*\
+  !*** ./public/uploads/posts/images/Post Rec.png ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Post Rec.png?161a157963a10284b62f7576986c90cd";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/Printer Papers.png":
+/*!********************************************************!*\
+  !*** ./public/uploads/posts/images/Printer Papers.png ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Printer Papers.png?161a157963a10284b62f7576986c90cd";
 
 /***/ }),
 
@@ -86221,6 +86254,28 @@ module.exports = "/images/Recycling Papers.jpg?53afeec3d326c401dc3b115f0e785208"
 
 /***/ }),
 
+/***/ "./public/uploads/posts/images/Recycling bomb.png":
+/*!********************************************************!*\
+  !*** ./public/uploads/posts/images/Recycling bomb.png ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Recycling bomb.png?161a157963a10284b62f7576986c90cd";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/Refewv wefff.png":
+/*!******************************************************!*\
+  !*** ./public/uploads/posts/images/Refewv wefff.png ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Refewv wefff.png?161a157963a10284b62f7576986c90cd";
+
+/***/ }),
+
 /***/ "./public/uploads/posts/images/chair.jpg":
 /*!***********************************************!*\
   !*** ./public/uploads/posts/images/chair.jpg ***!
@@ -86229,6 +86284,83 @@ module.exports = "/images/Recycling Papers.jpg?53afeec3d326c401dc3b115f0e785208"
 /***/ (function(module, exports) {
 
 module.exports = "/images/chair.jpg?df136b8118006b8157df81699b68147e";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/dwaaaaaaa.jpg":
+/*!***************************************************!*\
+  !*** ./public/uploads/posts/images/dwaaaaaaa.jpg ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/dwaaaaaaa.jpg?e08214feb82cbd2d4110411d107ccfce";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/dwaaaaaaadw.jpg":
+/*!*****************************************************!*\
+  !*** ./public/uploads/posts/images/dwaaaaaaadw.jpg ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/dwaaaaaaadw.jpg?e08214feb82cbd2d4110411d107ccfce";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/dwqqqqqqq.jpg":
+/*!***************************************************!*\
+  !*** ./public/uploads/posts/images/dwqqqqqqq.jpg ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/dwqqqqqqq.jpg?e08214feb82cbd2d4110411d107ccfce";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/dwqqqqqqqq wdq.jpg":
+/*!********************************************************!*\
+  !*** ./public/uploads/posts/images/dwqqqqqqqq wdq.jpg ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/dwqqqqqqqq wdq.jpg?e08214feb82cbd2d4110411d107ccfce";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/dwqqqqqqqq.jpg":
+/*!****************************************************!*\
+  !*** ./public/uploads/posts/images/dwqqqqqqqq.jpg ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/dwqqqqqqqq.jpg?e08214feb82cbd2d4110411d107ccfce";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/efwwwwwww.jpg":
+/*!***************************************************!*\
+  !*** ./public/uploads/posts/images/efwwwwwww.jpg ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/efwwwwwww.jpg?e08214feb82cbd2d4110411d107ccfce";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/wqddddddd.jpg":
+/*!***************************************************!*\
+  !*** ./public/uploads/posts/images/wqddddddd.jpg ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/wqddddddd.jpg?e08214feb82cbd2d4110411d107ccfce";
 
 /***/ }),
 
@@ -86827,8 +86959,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\AhmedOrtega\Documents\GitHub\Graduationproject\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\AhmedOrtega\Documents\GitHub\Graduationproject\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\ahmed\Documents\GitHub\Graduationproject\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ahmed\Documents\GitHub\Graduationproject\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ }),

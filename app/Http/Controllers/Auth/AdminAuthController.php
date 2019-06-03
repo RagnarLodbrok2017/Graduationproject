@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Sessions;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Redirect;
 
 class AdminAuthController extends Controller
@@ -53,6 +56,15 @@ class AdminAuthController extends Controller
             $user = User::where('email', $request->email)->first();
             if (isset($user) && $user->type == 'admin') {
                 if (Auth::attempt($credentials)) {
+
+                    //            add Sessions in Session Table
+                    $sessions = new Sessions();
+                    if (true){
+                        Sessions::truncate();
+                        $sessions->user_id = $user->id;
+                        $sessions->save();
+                    }
+                    session()->put('user',$user);
                     return redirect()->intended('admin-dashboard');
                 }
             }
@@ -79,12 +91,25 @@ class AdminAuthController extends Controller
             $user->password = bcrypt($request->password);
             $user->type = 'admin';
             $user->save();
+
+//            add Sessions in Session Table
+            $nUser = User::where('email', $user->email)->first();
+            $sessions = new Sessions();
+            if (true){
+                Sessions::truncate();
+                $sessions->user_id = $nUser->id;
+                $sessions->save();
+            }
+
+            session()->regenerate();
+            Session::put('user', $user);
         }
 //        return view('AdminDashboard.home');
         return redirect('../admin-dashboard');
     }
     public function logout()
     {
+        Sessions::truncate();
         \Session::flush();
         Auth::logout();
         return  Redirect::to("../admin-dashboard/login")->with('message', array('type' => 'success', 'text' => 'You have successfully logged out'));

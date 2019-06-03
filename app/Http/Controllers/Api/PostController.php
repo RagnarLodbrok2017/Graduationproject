@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\History;
 use App\Post;
 use App\Category;
+use App\Sessions;
+use App\User;
 use File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class PostController extends Controller
 {
@@ -101,8 +105,8 @@ class PostController extends Controller
 //                'image' => 'required|min:10|max:400',
 //                'video' => 'nullable|min:10|max:400',
                 'image' => 'mimes:jpeg,bmp,png,jpg',
-                'about' => 'nullable|min:3|max:400',
-                'subtitle' => 'nullable|min:8|max:400',
+                'about' => 'nullable|max:400',
+                'subtitle' => 'nullable|max:400',
                 'color' => 'nullable|min:3|max:400',
                 'meta_keyword' => 'nullable|max:400',
                 'meta_title' => 'nullable|max:400',
@@ -148,8 +152,21 @@ class PostController extends Controller
         if ($request->about != null) {
             $post->about = $request->about;
         }
+
         $post->save();
         $post->category()->attach($request->categoriesIds);
+
+//        Add a History
+        $nPost = Post::where('title' , $request->title)->first();
+        $user = User::findOrFail($request->users_id);
+        $history = new History();
+        $history->action = 'Add';
+        $history->about = 'User added a Post';
+        $history->users_id = $request->users_id;
+        $history->post_id = $nPost->id;
+        $history->post_title = $nPost->title;
+        $history->save();
+
         return response()->json(['newPost' => $post]);
     }
 
@@ -219,18 +236,31 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
-        $post->category()->detach();
-        $post->delete();
-        $image = public_path("uploads/posts/images/$post->image");
-        if ($image != null){
-            File::delete(public_path("uploads/posts/images/$post->image"));
-        }
-        $video = public_path("uploads/posts/videos/$post->video");
-        if ($video != null){
-            File::delete(public_path("uploads/posts/videos/$post->video"));
-        }
-        return response()->json(['post' => $post]);
+            $post = Post::findOrFail($id);
+            $post->category()->detach();
+            $post->delete();
+
+//        Add History
+        $sessions = Sessions::first();
+        $user = User::findOrFail($sessions->user_id);
+            $history = new History();
+            $history->action = 'Delete';
+            $history->about = 'User deleted a Post';
+            $history->users_id = $user->id;
+//            $history->users_id = Sentry::getUser()->id;
+//        $history->user_name = Auth::user()->name;
+        $history->post_title = $post->title;
+            $history->save();
+
+            $image = public_path("uploads/posts/images/$post->image");
+            if ($image != null) {
+                File::delete(public_path("uploads/posts/images/$post->image"));
+            }
+            $video = public_path("uploads/posts/videos/$post->video");
+            if ($video != null) {
+                File::delete(public_path("uploads/posts/videos/$post->video"));
+            }
+            return response()->json(['post' => $post]);
     }
 
     public function PostProfile($id)
