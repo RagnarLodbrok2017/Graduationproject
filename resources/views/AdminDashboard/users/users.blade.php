@@ -15,6 +15,8 @@
             <any-user-profile :User="{{ $user }}" :Posts="{{ $posts }}"></any-user-profile>
         @elseif (Request::path() == 'admin-dashboard/categories')
             <category-component :auth_user_id="{{Auth::user()->id}}"></category-component>
+        @elseif (Request::path() == 'admin-dashboard/histories')
+            <history-component :auth_user_id="{{Auth::user()->id}}"></history-component>
         @endif
     </div>
 
@@ -24,4 +26,10 @@
     // export default {
     //     components: {AnyUserProfile}
     // }
+</script>
+<script>
+    import History from "../../../js/components/AdminDashboard/History/History";
+    export default {
+        components: {History}
+    }
 </script>

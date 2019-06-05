@@ -543,7 +543,7 @@
                                                 href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-message-alert"></i><span class="hide-menu">Notifications</span></a></li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="javascript:void(0)" aria-expanded="false"><i
+                                                href="../../admin-dashboard/histories" aria-expanded="false"><i
                                 class="mdi mdi-book"></i><span class="hide-menu">History</span></a></li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="javascript:void(0)" aria-expanded="false"><i

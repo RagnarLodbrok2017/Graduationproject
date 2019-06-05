@@ -41,7 +41,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
 //    public function store(Request $request)
@@ -122,7 +122,7 @@ class PostController extends Controller
         $post->subtitle = $request->subtitle;
         if ($request->hasFile('image')) {
             $UploadedImage = Input::file('image');
-            $imageName = $request->title . '.' . $UploadedImage->getClientOriginalExtension();
+            $imageName = $request->title.'.'.$UploadedImage->getClientOriginalExtension();
             $post->image = $imageName;
             $UploadedImage->move(public_path('uploads/posts/images'), $imageName);
             $post->image_url = '../../../../../public/uploads/posts/images/images/';
@@ -157,7 +157,7 @@ class PostController extends Controller
         $post->category()->attach($request->categoriesIds);
 
 //        Add a History
-        $nPost = Post::where('title' , $request->title)->first();
+        $nPost = Post::where('title', $request->title)->first();
         $user = User::findOrFail($request->users_id);
         $history = new History();
         $history->action = 'Add';
@@ -165,6 +165,7 @@ class PostController extends Controller
         $history->users_id = $request->users_id;
         $history->post_id = $nPost->id;
         $history->post_title = $nPost->title;
+        $history->user_name = $user->name;
         $history->save();
 
         return response()->json(['newPost' => $post]);
@@ -173,7 +174,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -184,7 +185,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -228,39 +229,35 @@ class PostController extends Controller
         return response()->json(['post' => $post]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-            $post = Post::findOrFail($id);
-            $post->category()->detach();
-            $post->delete();
+        $post = Post::findOrFail($id);
+        $post->category()->detach();
+        $post->delete();
 
 //        Add History
         $sessions = Sessions::first();
         $user = User::findOrFail($sessions->user_id);
-            $history = new History();
-            $history->action = 'Delete';
-            $history->about = 'User deleted a Post';
-            $history->users_id = $user->id;
+        $history = new History();
+        $history->action = 'Delete';
+        $history->about = 'User deleted a Post';
+        $history->users_id = $user->id;
+        $history->user_name = $user->name;
 //            $history->users_id = Sentry::getUser()->id;
 //        $history->user_name = Auth::user()->name;
         $history->post_title = $post->title;
-            $history->save();
+        $history->save();
 
-            $image = public_path("uploads/posts/images/$post->image");
-            if ($image != null) {
-                File::delete(public_path("uploads/posts/images/$post->image"));
-            }
-            $video = public_path("uploads/posts/videos/$post->video");
-            if ($video != null) {
-                File::delete(public_path("uploads/posts/videos/$post->video"));
-            }
-            return response()->json(['post' => $post]);
+        $image = public_path("uploads/posts/images/$post->image");
+        if ($image != null) {
+            File::delete(public_path("uploads/posts/images/$post->image"));
+        }
+        $video = public_path("uploads/posts/videos/$post->video");
+        if ($video != null) {
+            File::delete(public_path("uploads/posts/videos/$post->video"));
+        }
+        return response()->json(['post' => $post]);
     }
 
     public function PostProfile($id)
@@ -268,7 +265,7 @@ class PostController extends Controller
         if (!is_null($id)) {
             $post = Post::findorFail($id);
             $image = public_path("uploads/posts/images/$post->image");
-            if ($image != null){
+            if ($image != null) {
                 File::delete(public_path("uploads/posts/images/$post->image"));
             }
 //            $image_path = public_path().'/uploads/posts/images'.$imageName;
