@@ -100,6 +100,9 @@ class User extends Authenticatable
     public function post() {
         return $this->hasMany('App\Post','users_id');
     }
+    public function like() {
+        return $this->hasMany('App\Like','users_id');
+    }
     public function history() {
         return $this->hasMany('App\History','users_id');
     }

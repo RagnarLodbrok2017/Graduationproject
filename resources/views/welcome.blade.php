@@ -73,22 +73,34 @@
                         <li>
                             <a href="#contact">Contact</a>
                         </li>
-                        @if (Route::has('login'))
-                                @auth
-                                    <li>
-                                    <a href="{{ url('/home') }}">Home</a>
-                                    </li>
-                                @else
-                                    <li>
-                                    <a href="{{ route('login') }}">Login</a>
-                                    </li>
-                                    @if (Route::has('register'))
-                                        <li>
-                                        <a href="{{ route('register') }}">Register</a>
-                                        </li>
-                                    @endif
-                                @endauth
-                        @endif
+{{--                        @auth--}}
+{{--                            <li>--}}
+{{--                                <a href="{{ url('/home') }}">Home</a>--}}
+{{--                            </li>--}}
+{{--                        @else--}}
+{{--                            <li>--}}
+{{--                                <a href="{{ url('/login') }}">Login</a>--}}
+{{--                            </li>--}}
+{{--                                <li>--}}
+{{--                                    <a href="{{ url('/register') }}">Register</a>--}}
+{{--                                </li>--}}
+{{--                        @endauth--}}
+                                                    @if (Route::has('login'))
+                                                            @auth
+                                                                <li>
+                                                                <a href="{{ url('/dashboard') }}">Dashboard</a>
+                                                                </li>
+                                                            @else
+                                                                <li>
+                                                                <a href="{{ route('login') }}">Login</a>
+                                                                </li>
+                                                                @if (Route::has('register'))
+                                                                    <li>
+                                                                        <a href="{{ route('register') }}">Register</a>
+                                                                    </li>
+                                                                @endif
+                                                            @endauth
+                                                    @endif
                     </ul>
                 </nav>
             </div>
@@ -119,7 +131,7 @@
                 <div class="header-overlay"></div>
                 <div class="header-content text-md-center">
                     {{--                <h3>Welcome Everyone to Recycler</h3>--}}
-                    <button class="close-button btn btn-danger"> close Video </button>
+                    <button class="close-button btn btn-danger"> close Video</button>
                 </div>
             </div>
 
@@ -384,81 +396,81 @@
                                     </div>
                                 </a>
                             </div>
-{{--                            <div class="owl-item">--}}
-{{--                                <a href="#services" class="scroll">--}}
-{{--                                    <div class="section-content-holder float-left">--}}
-{{--                                        <div class="content-wrapper">--}}
-{{--                                            <p>&nbsp;</p>--}}
-{{--                                            <video--}}
-{{--                                                id="my-player"--}}
-{{--                                                class="video-js col-lg-6"--}}
-{{--                                                controls--}}
-{{--                                                preload="auto"--}}
-{{--                                                width="700" height="400"--}}
-{{--                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}">--}}
-{{--                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>--}}
-{{--                                                <p class="vjs-no-js">--}}
-{{--                                                    To view this video please enable JavaScript, and consider upgrading to a--}}
-{{--                                                    web browser that--}}
-{{--                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">--}}
-{{--                                                        supports HTML5 video--}}
-{{--                                                    </a>--}}
-{{--                                                </p>--}}
-{{--                                            </video>--}}
-{{--                                            <div class="clear"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="section-content-holder2">--}}
-{{--                                        <div class="content-wrapper">--}}
-{{--                                            <p>&nbsp;</p>--}}
-{{--                                            <h3> PLASTIC TABLE</h3>--}}
-{{--                                            <p><span>Posted By : </span>Emad Ashraf</p>--}}
-{{--                                            <p>this is a plastic chair you<br> can restore it in our website</p>--}}
-{{--                                            <p>&nbsp;</p>--}}
+                            {{--                            <div class="owl-item">--}}
+                            {{--                                <a href="#services" class="scroll">--}}
+                            {{--                                    <div class="section-content-holder float-left">--}}
+                            {{--                                        <div class="content-wrapper">--}}
+                            {{--                                            <p>&nbsp;</p>--}}
+                            {{--                                            <video--}}
+                            {{--                                                id="my-player"--}}
+                            {{--                                                class="video-js col-lg-6"--}}
+                            {{--                                                controls--}}
+                            {{--                                                preload="auto"--}}
+                            {{--                                                width="700" height="400"--}}
+                            {{--                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}">--}}
+                            {{--                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>--}}
+                            {{--                                                <p class="vjs-no-js">--}}
+                            {{--                                                    To view this video please enable JavaScript, and consider upgrading to a--}}
+                            {{--                                                    web browser that--}}
+                            {{--                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">--}}
+                            {{--                                                        supports HTML5 video--}}
+                            {{--                                                    </a>--}}
+                            {{--                                                </p>--}}
+                            {{--                                            </video>--}}
+                            {{--                                            <div class="clear"></div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                    <div class="section-content-holder2">--}}
+                            {{--                                        <div class="content-wrapper">--}}
+                            {{--                                            <p>&nbsp;</p>--}}
+                            {{--                                            <h3> PLASTIC TABLE</h3>--}}
+                            {{--                                            <p><span>Posted By : </span>Emad Ashraf</p>--}}
+                            {{--                                            <p>this is a plastic chair you<br> can restore it in our website</p>--}}
+                            {{--                                            <p>&nbsp;</p>--}}
 
-{{--                                            <div class="clear"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
-{{--                            <div class="owl-item">--}}
-{{--                                <a href="#services" class="scroll">--}}
-{{--                                    <div class="section-content-holder float-left">--}}
-{{--                                        <div class="content-wrapper">--}}
-{{--                                            <p>&nbsp;</p>--}}
-{{--                                            <video--}}
-{{--                                                id="my-player"--}}
-{{--                                                class="video-js col-lg-6"--}}
-{{--                                                controls--}}
-{{--                                                preload="auto"--}}
-{{--                                                width="700" height="400"--}}
-{{--                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"--}}
-{{--                                            >--}}
-{{--                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>--}}
-{{--                                                <p class="vjs-no-js">--}}
-{{--                                                    To view this video please enable JavaScript, and consider upgrading to a--}}
-{{--                                                    web browser that--}}
-{{--                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">--}}
-{{--                                                        supports HTML5 video--}}
-{{--                                                    </a>--}}
-{{--                                                </p>--}}
-{{--                                            </video>--}}
-{{--                                            <div class="clear"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="section-content-holder2">--}}
-{{--                                        <div class="content-wrapper">--}}
-{{--                                            <p>&nbsp;</p>--}}
-{{--                                            <h3> PAPERS</h3>--}}
-{{--                                            <p><span>Posted By : </span>Mazen Ali</p>--}}
-{{--                                            <p>this is a plastic chair you<br> can restore it in our website</p>--}}
-{{--                                            <p>&nbsp;</p>--}}
+                            {{--                                            <div class="clear"></div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </a>--}}
+                            {{--                            </div>--}}
+                            {{--                            <div class="owl-item">--}}
+                            {{--                                <a href="#services" class="scroll">--}}
+                            {{--                                    <div class="section-content-holder float-left">--}}
+                            {{--                                        <div class="content-wrapper">--}}
+                            {{--                                            <p>&nbsp;</p>--}}
+                            {{--                                            <video--}}
+                            {{--                                                id="my-player"--}}
+                            {{--                                                class="video-js col-lg-6"--}}
+                            {{--                                                controls--}}
+                            {{--                                                preload="auto"--}}
+                            {{--                                                width="700" height="400"--}}
+                            {{--                                                poster="{{asset('images/welcomeimages/chair1.jpg')}}"--}}
+                            {{--                                            >--}}
+                            {{--                                                <source src="{{asset('videos/secondVideo.mp4')}}" type="video/mp4"></source>--}}
+                            {{--                                                <p class="vjs-no-js">--}}
+                            {{--                                                    To view this video please enable JavaScript, and consider upgrading to a--}}
+                            {{--                                                    web browser that--}}
+                            {{--                                                    <a href="http://videojs.com/html5-video-support/" target="_blank">--}}
+                            {{--                                                        supports HTML5 video--}}
+                            {{--                                                    </a>--}}
+                            {{--                                                </p>--}}
+                            {{--                                            </video>--}}
+                            {{--                                            <div class="clear"></div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                    <div class="section-content-holder2">--}}
+                            {{--                                        <div class="content-wrapper">--}}
+                            {{--                                            <p>&nbsp;</p>--}}
+                            {{--                                            <h3> PAPERS</h3>--}}
+                            {{--                                            <p><span>Posted By : </span>Mazen Ali</p>--}}
+                            {{--                                            <p>this is a plastic chair you<br> can restore it in our website</p>--}}
+                            {{--                                            <p>&nbsp;</p>--}}
 
-{{--                                            <div class="clear"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
+                            {{--                                            <div class="clear"></div>--}}
+                            {{--                                        </div>--}}
+                            {{--                                    </div>--}}
+                            {{--                                </a>--}}
+                            {{--                            </div>--}}
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,29 @@
 <template>
+    <!--    <div class="container Users" id="Users">
+            <div class="row">
+                <b-alert show>{{users.length}}</b-alert>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Age</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="user in users">
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            lol
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>-->
     <!-- Page wrapper  -->
     <!-- ============================================================== -->
     <div class="page">
@@ -8,7 +33,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-5 align-self-center">
-                    <h4 class="page-title">Your Histories</h4>
+                    <h4 class="page-title">All Users</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -42,22 +67,22 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <!-- Column  Categories Table -->
+                <!-- Column  Users Table -->
                 <div class="col-lg-8 col-xl-9 col-md-9 UsersTableClass">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
-                                <h4 class="card-title">All Histories</h4>
-<!--                                <button style="margin-left: 10px" type="button" class="btn btn-info" :onclick="myHistory()">-->
-<!--                                    click to see your Histories-->
-<!--                                </button>-->
+                                <h4 class="card-title">All Users</h4>
                                 <div class="ml-auto">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-danger" v-on:click="deleteHistories()">
-                                            Delete all Histories
+                                        <button type="button" class="btn btn-dark" data-toggle="modal"
+                                                data-target="#createmodel">
+                                            Create New User
                                         </button>
                                         <button type="button" class="btn btn-outline-dark ml-3 WideTable"
                                                 data-toggle="modal" data-target="">
+                                            <i class="ti-angle-double-right WideButtonArrow"></i>
+                                            <i class="ti-angle-double-right WideButtonArrow"></i>
                                             <i class="ti-angle-double-right WideButtonArrow"></i>
                                         </button>
                                     </div>
@@ -67,7 +92,8 @@
                                 <b-col md="6" class="my-1">
                                     <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
                                         <b-input-group>
-                                            <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input><b-input-group-append>
+                                            <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>
+                                            <b-input-group-append>
                                                 <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
                                             </b-input-group-append>
                                         </b-input-group>
@@ -85,7 +111,7 @@
                                     show-empty
                                     class="table table-bordered nowrap display dataTable no-footer"
                                     stacked="md"
-                                    :items="histories"
+                                    :items="users"
                                     :fields="fields"
                                     :current-page="currentPage"
                                     :per-page="perPage"
@@ -98,28 +124,43 @@
                                     <template slot="index" slot-scope="row">
                                         {{ row.index+1 }}
                                     </template>
-                                    <template slot="about" slot-scope="row">
+                                    <template slot="name" slot-scope="row">
+                                        <a :href="'../admin-dashboard/user-profile/'+ row.item.id">{{ row.value }}</a>
+                                    </template>
+
+                                    <template slot="email" slot-scope="row">
                                         {{ row.value }}
                                     </template>
-                                    <template slot="action" slot-scope="row">
-                                        <span v-if="row.value === 'Delete'" class="badge badge-danger"> {{ row.value }}</span>
-                                        <span v-if="row.value === 'Add'" class="badge badge-info"> {{ row.value }}</span>
+                                    <template slot="phone" slot-scope="row">
+                                        +345 456 789
                                     </template>
-                                    <template slot="post_title" slot-scope="row">
+                                    <template slot="type" slot-scope="row">
+                                        <span v-if="row.value === 'admin'"
+                                              class="label label-danger"> {{ row.value }}</span>
+                                        <span v-if="row.value === 'vip'"
+                                              class="label label-warning"> {{ row.value }}</span>
+                                        <span v-if="row.value === 'user'"
+                                              class="label label-info"> {{ row.value }}</span>
+                                    </template>
+                                    <template slot="age" slot-scope="row">
                                         {{ row.value }}
                                     </template>
-                                    <template slot="user_name" slot-scope="row">
+                                    <template slot="created" slot-scope="row">
                                         {{ row.value }}
                                     </template>
-                                    <template slot="created_at" slot-scope="row">
-                                        {{ row.value }}
+                                    <template slot="posts" slot-scope="row">
+                                        101
                                     </template>
-                                    <template slot="delete" slot-scope="row">
+                                    <template slot="actions" slot-scope="row">
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"
-                                                  v-on:click="destroyHistrory(row.item.id, row.index)"
+                                                  v-on:click="destroyUser(row.item.id, row.index)"
                                                   data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i>
                                         </b-button>
+                                        <b-button type="button"
+                                                  class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
+                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditUser(row.item.id)">
+                                            <i class="ti-pencil" aria-hidden="true"></i></b-button>
                                     </template>
                                 </b-table>
                                 <!--           Pagination         -->
@@ -138,6 +179,7 @@
                     </div>
                 </div>
                 <!-- Column -->
+                <!-- Column Users Details and Category-->
                 <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
                     <div class="card">
                         <div class="border-bottom p-15">
@@ -161,7 +203,7 @@
                             </form>
                             <div class="list-group m-t-30">
                                 <a href="javascript:void(0)" class="list-group-item active"><i
-                                    class="ti-layers m-r-10"></i> All Histories</a>
+                                    class="ti-layers m-r-10"></i> All Users</a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i>
                                     Favourite Users</a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
@@ -170,38 +212,30 @@
                             <h4 class="card-title m-t-30">Groups</h4>
                             <div class="list-group">
                                 <a href="javascript:void(0)" class="list-group-item"><i
-                                    class="ti-flag-alt-2 m-r-10"></i> Users
+                                    class="ti-flag-alt-2 m-r-10"></i> SuperAdmins
                                     <span class="badge badge-info float-right">1</span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i>
-                                    Posts
+                                    Admins
                                     <span class="badge badge-success float-right">4</span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i>
-                                    Categories
+                                    VIPs
                                     <span class="badge badge-dark float-right">42</span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Emails
-                                    <span class="badge badge-danger float-right">45</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Notifications
-                                    <span class="badge badge-danger float-right">100</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Other
+                                    Users
                                     <span class="badge badge-danger float-right">204</span>
                                 </a>
                             </div>
                             <h4 class="card-title m-t-30">More</h4>
                             <div class="list-group">
                                 <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Categories
+                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Users
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item">
                                     <span class="badge badge-warning text-white m-r-10"><i class="ti-export"></i></span>
-                                    Export Categories
+                                    Export Users
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item">
                                     <span class="badge badge-success m-r-10"><i class="ti-share-alt"></i></span> Restore
@@ -219,8 +253,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Column --> <!-- Column Users Details and Category-->
-
+                <!-- Column -->
             </div>
             <!-- ============================================================== -->
             <!-- End page Content -->
@@ -242,8 +275,8 @@
                         <div class="modal-body">
                             <div class="input-group mb-3">
                                 <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <input type="text" class="form-control" placeholder="Enter Category Name Here"
-                                       aria-label="name">
+                                <input type="text" class="form-control" placeholder="Enter Name Here"
+                                       aria-label="Username">
                             </div>
                             <div class="row">
                                 <div class="col-3 text-center">
@@ -279,6 +312,131 @@
                 </div>
             </div>
         </div>
+        <!-- Create User Modal -->
+        <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Create
+                                New User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
+                                <b-form-input type="text" v-model="newUser.name" class="form-control"
+                                              placeholder="Enter Name Here" aria-label="name" minlength="10"
+                                              maxlength="30" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
+                                <b-form-input type="email" v-model="newUser.email" placeholder="Enter Email Here"
+                                              aria-label="no" maxlength="40" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
+                                <b-form-input type="password" v-model="newUser.password"
+                                              placeholder="Enter Password Here" minlength="8" maxlength="20"
+                                              required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-hand-point-right text-white"></i></button>
+                                <b-form-select v-model="newUser.type" class="custom-select" required>
+                                    <option value="user" selected="selected">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="vip" disabled>VIP</option>
+                                    <option value="superadmin" disabled>SuperAdmin</option>
+                                </b-form-select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-import text-white"></i></button>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-success addUserButtonAlert"
+                                    v-show="newUser.name && newUser.email && newUser.password && newUser.type"
+                                    @click="storeUser">
+                                <i class="ti-save"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit User Modal -->
+        <div class="modal fade" id="updatemodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id=""><i class="ti-marker-alt m-r-10"></i> Create
+                                Edit User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
+                                <b-form-input type="text" v-model="user.name" class="form-control" aria-label="name" minlength="10"
+                                              maxlength="30" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
+                                <b-form-input type="email" v-model="user.email" aria-label="no" maxlength="40" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-key text-white"></i></button>
+                                <b-form-input type="password" v-model="user.password" placeholder="**********" minlength="8" maxlength="20"></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-hand-point-right text-white"></i></button>
+                                <b-form-select v-model="user.type" class="custom-select" required>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                    <option value="vip" disabled>VIP</option>
+                                    <option value="superadmin" disabled>SuperAdmin</option>
+                                </b-form-select>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i
+                                    class="ti-alert text-white"></i></button>
+                                <b-form-select v-model="user.status" class="custom-select" required>
+                                    <option value="1" selected="selected">Active</option>
+                                    <option value="0">Banned</option>
+                                </b-form-select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetUser()">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-success updateUserButtonAlert"
+                                    v-show="user.name && user.email && user.type"
+                                    v-on:click="updateUser(user.id, user)">
+                                <i class="ti-save"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
@@ -299,34 +457,45 @@
 
 <script>
     export default {
-        props: ['auth_user_id'],
+        props: {},
         data() {
             return {
                 items: [],
                 fields: [
                     {key: 'index', label: '#', sortable: true, sortDirection: 'desc'},
-                    {key: 'about', label: 'About', sortable: true, sortDirection: 'desc'},
-                    {key: 'action', label: 'Action', sortable: true, sortDirection: 'desc'},
-                    {key: 'post_title', label: 'Post Title', sortable: true, sortDirection: 'desc'},
-                    {key: 'user_name', label: 'Username', sortable: true, sortDirection: 'desc'},
-                    {key: 'created_at', label: 'Created Date', sortable: true, sortDirection: 'desc'},
-                    {key: 'delete', label: 'Delete'},
+                    {key: 'name', label: 'Name', sortable: true, sortDirection: 'desc'},
+                    {key: 'email', label: 'Email', sortable: true, class: 'text-center'},
+                    {key: 'phone', label: 'Phone', sortable: true, sortDirection: 'desc'},
+                    {key: 'type', label: 'Role', sortable: true, sortDirection: 'desc'},
+                    {key: 'age', label: 'Age', sortable: true, sortDirection: 'desc'},
+                    {key: 'created_at', label: 'Joining Date', sortable: true, sortDirection: 'desc'},
+                    {key: 'posts', label: 'Posts', sortable: true, sortDirection: 'desc'},
+                    {key: 'actions', label: 'Actions'},
                 ],
                 totalRows: 1,
                 currentPage: 1,
-                perPage: 10,
+                perPage: 20,
                 pageOptions: [10, 25, 50, 100],
                 sortBy: null,
                 sortDesc: false,
                 sortDirection: 'asc',
                 filter: null,
                 //DB
-                histories: [],
+                users: [],
+                user: {},
+                newUser: {
+                    name: '',
+                    email: '',
+                    password: '',
+                    type: '',
+                },
+                user_id: 0,
+                image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg',
             }
         },
         mounted: function () {
             console.log('Component fired.');
-            this.totalRows = this.histories.length;
+            this.totalRows = this.users.length;
         },
         computed: {
             sortOptions() {
@@ -340,31 +509,52 @@
         },
 
         created: function () {
-            this.fetchHistories();
+            this.fetchUsers();
         },
         methods: {
-            fetchHistories: function () {
-                axios.get('../api/admin-dashboard/histories').then(response => {
-                    this.histories = response.data.histories;
-                    this.totalRows = this.histories.length;
+            fetchUsers: function () {
+                axios.get('../api/admin-dashboard/users').then(response => {
+                    this.users = response.data.users;
+                    this.totalRows = this.users.length;
+                    // console.log("************* This.users *****************");
+                    // console.log(this.users);
+                    // console.log(JSON.stringify(this.users[0]));
                 });
             },
-            destroyHistrory: function (id, index) {
-                axios.delete('/api/admin-dashboard/histories/' + id).then(response => {
-                    this.newCategory = response.data.category;
-                    this.histories.splice(index, 1);
+            storeUser: function () {
+                axios.post('../api/admin-dashboard/users', this.newUser).then(response => {
+                    this.newUser = response.data.newUser;
+                    this.users.push(this.newUser);
+                    // $('.CloseAddUserForm').click();
                 }).catch(error => {
                     console.log(error);
                 })
             },
-            deleteHistories: function () {
-                var id = this.auth_user_id;
-                axios.post('/api/admin-dashboard/histories/' + id).then(response => {
-                    this.histories = response.data.histories;
-                    this.totalRows = this.histories.length;
-                    // this.histories = {};
-                    // this.newCategory = response.data.category;
-                    this.histories.splice(index, 1);
+            destroyUser: function (id, index) {
+                axios.delete('/api/admin-dashboard/users/' + id).then(response => {
+                    this.newUser = response.data.user;
+                    this.users.splice(index, 1);
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            // To Show the user information in the modal
+            EditUser: function (id) {
+                axios.get('/api/admin-dashboard/users/' + id + '/edit').then(response => {
+                    this.user = response.data.user;
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            resetUser: function () {
+                console.log(this.user);
+            },
+            updateUser: function (id, user) {
+                console.log(user);
+                axios.patch('/api/admin-dashboard/users/' + id, user).then(response => {
+                    this.user = response.data.user;
+                    this.fetchUsers();
+                    console.log(this.user);
                 }).catch(error => {
                     console.log(error);
                 })

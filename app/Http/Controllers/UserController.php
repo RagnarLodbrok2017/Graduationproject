@@ -18,7 +18,7 @@ class UserController extends Controller
 //    }
     public function index()
     {
-        return view('AdminDashboard.users.users');
+        return view('AdminDashboard.master');
 //        return response()->json(['users' => $users = User::all()]);
 //        return view('user.user');
 //        return view('AdminDashboard.user.user', compact($users = User::all()));
@@ -28,7 +28,7 @@ class UserController extends Controller
 //        if (true){
 //            return response()->json(['user'=>$user]);
 //        }
-        return view('AdminDashboard.users.users');
+        return view('AdminDashboard.master');
 //        return view('AdminDashboard.users.users');
     }
     public function AnyUserProfile($id)
@@ -40,7 +40,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $posts = $user->post()->get();
 //            return view('AdminDashboard.users.users', $id);
-            return view('AdminDashboard.users.users')->with(compact('user', 'posts'));
+            return view('AdminDashboard.master')->with(compact('user', 'posts'));
         }
 //        return view('AdminDashboard.users.users');
     }

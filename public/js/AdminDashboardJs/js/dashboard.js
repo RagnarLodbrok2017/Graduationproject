@@ -302,17 +302,20 @@ $(function () {
 });
 
 $(document).ready(function () {
+
     var wide = $('.ShareModel');
     $('.WideTable').on('click', function () {
         if ( wide.hasClass('bounceInRight') ) {
             wide.animate('opacity', '0').removeClass('bounceInRight').addClass('bounceOutRight');
             $('.UsersTableClass').removeClass('col-lg-8 col-xl-9 col-md-9').addClass('col-12');
-            $('.UsersTableClass .WideButtonArrow').removeClass('ti-angle-double-right').addClass('ti-angle-double-left');
+            $('.UsersTableClass').removeClass('col-lg-8 col-xl-9 col-md-9').addClass('col-12');
+            $('.UsersTableClass .changeSizeOfCardToSmall').removeClass('changeSizeOfCardToSmall').addClass('changeSizeOfCardToBig');
         }
         else {
             wide.animate('display', 'block').removeClass('bounceOutRight').addClass('bounceInRight');
             $('.UsersTableClass').addClass('col-lg-8 col-xl-9 col-md-9').removeClass('col-12');
             $('.UsersTableClass .WideButtonArrow').removeClass('ti-angle-double-left').addClass('ti-angle-double-right');
+            $('.UsersTableClass .changeSizeOfCardToBig').removeClass('changeSizeOfCardToBig').addClass('changeSizeOfCardToSmall');
         }
     });
 });

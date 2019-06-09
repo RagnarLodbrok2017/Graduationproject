@@ -35,14 +35,15 @@ require('./bootstrap');
 // Vue.http.options.emulateJSON = true;
 
 
-//import components
+//import components of Admin panel
 import UserComponent from "./components/AdminDashboard/Users/Users.vue";
 import UserProfileComponent from "./components/AdminDashboard/Users/Profile.vue";
 import AnyUserProfileComponent from "./components/AdminDashboard/Users/AnyUserProfile.vue";
 import PostComponent from "./components/AdminDashboard/Posts/Posts.vue";
 import CategoryComponent from "./components/AdminDashboard/Category/Category.vue";
 import HistoryComponent from "./components/AdminDashboard/History/History.vue";
-
+//import components of User panel
+import HomeComponent from "./components/UserDashboard/Home.vue";
 
 // const routes = [
 //     { path: '/user', component: User, name: 'UserList' },
@@ -52,12 +53,17 @@ import HistoryComponent from "./components/AdminDashboard/History/History.vue";
 const app = new Vue({
     el: "#app",
     components: {
+        //Admin Panel Components
         "user-component": UserComponent,
         "user-profile": UserProfileComponent,
         "any-user-profile": AnyUserProfileComponent,
         "post-component": PostComponent,
         "category-component": CategoryComponent,
         "history-component": HistoryComponent,
+    //    UserPanel Components
+        "home-user-component": HomeComponent,
+
+
     }
 });
 

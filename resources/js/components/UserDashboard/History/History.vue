@@ -138,6 +138,7 @@
                     </div>
                 </div>
                 <!-- Column -->
+                <!-- Column Users Details and Category-->
                 <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
                     <div class="card">
                         <div class="border-bottom p-15">
@@ -219,8 +220,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Column --> <!-- Column Users Details and Category-->
-
+                <!-- Column -->
             </div>
             <!-- ============================================================== -->
             <!-- End page Content -->

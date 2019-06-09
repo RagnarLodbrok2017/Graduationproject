@@ -75,4 +75,7 @@ class Post extends Model
     public function history() {
         return $this->hasMany('App\History','post_id');
     }
+    public function like() {
+        return $this->hasMany('App\Like','post_id');
+    }
 }

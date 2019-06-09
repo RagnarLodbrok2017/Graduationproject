@@ -8,7 +8,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-5 align-self-center">
-                    <h4 class="page-title">Your Histories</h4>
+                    <h4 class="page-title">All Categories</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
@@ -47,14 +47,12 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
-                                <h4 class="card-title">All Histories</h4>
-<!--                                <button style="margin-left: 10px" type="button" class="btn btn-info" :onclick="myHistory()">-->
-<!--                                    click to see your Histories-->
-<!--                                </button>-->
+                                <h4 class="card-title">All Categories</h4>
                                 <div class="ml-auto">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-danger" v-on:click="deleteHistories()">
-                                            Delete all Histories
+                                        <button type="button" class="btn btn-dark" data-toggle="modal"
+                                                data-target="#createmodel">
+                                            Create New Category
                                         </button>
                                         <button type="button" class="btn btn-outline-dark ml-3 WideTable"
                                                 data-toggle="modal" data-target="">
@@ -85,7 +83,7 @@
                                     show-empty
                                     class="table table-bordered nowrap display dataTable no-footer"
                                     stacked="md"
-                                    :items="histories"
+                                    :items="categories"
                                     :fields="fields"
                                     :current-page="currentPage"
                                     :per-page="perPage"
@@ -98,28 +96,32 @@
                                     <template slot="index" slot-scope="row">
                                         {{ row.index+1 }}
                                     </template>
-                                    <template slot="about" slot-scope="row">
+                                    <template slot="name" slot-scope="row">
                                         {{ row.value }}
                                     </template>
-                                    <template slot="action" slot-scope="row">
-                                        <span v-if="row.value === 'Delete'" class="badge badge-danger"> {{ row.value }}</span>
-                                        <span v-if="row.value === 'Add'" class="badge badge-info"> {{ row.value }}</span>
+                                    <template slot="posts" slot-scope="row">
+                                        100
+                                        <span v-if="row.value === 0" class="badge badge-danger"> {{ row.value }}</span>
+                                        <span v-if="row.value >= 100 && row.value < 1000" class="badge badge-warning"> {{ row.value }}</span>
+                                        <span v-if="row.value >= 1000" class="badge badge-info"> {{ row.value }}</span>
                                     </template>
-                                    <template slot="post_title" slot-scope="row">
+                                    <template slot="likes" slot-scope="row">
+                                        1203
                                         {{ row.value }}
                                     </template>
-                                    <template slot="user_name" slot-scope="row">
+                                    <template slot="created" slot-scope="row">
                                         {{ row.value }}
                                     </template>
-                                    <template slot="created_at" slot-scope="row">
-                                        {{ row.value }}
-                                    </template>
-                                    <template slot="delete" slot-scope="row">
+                                    <template slot="actions" slot-scope="row">
                                         <b-button type="button"
                                                   class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"
-                                                  v-on:click="destroyHistrory(row.item.id, row.index)"
+                                                  v-on:click="destroyCategory(row.item.id, row.index)"
                                                   data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i>
                                         </b-button>
+                                        <b-button type="button"
+                                                  class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
+                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditCategory(row.item.id)">
+                                            <i class="ti-pencil" aria-hidden="true"></i></b-button>
                                     </template>
                                 </b-table>
                                 <!--           Pagination         -->
@@ -138,6 +140,7 @@
                     </div>
                 </div>
                 <!-- Column -->
+                <!-- Column Users Details and Category-->
                 <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
                     <div class="card">
                         <div class="border-bottom p-15">
@@ -161,7 +164,7 @@
                             </form>
                             <div class="list-group m-t-30">
                                 <a href="javascript:void(0)" class="list-group-item active"><i
-                                    class="ti-layers m-r-10"></i> All Histories</a>
+                                    class="ti-layers m-r-10"></i> All Categories</a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i>
                                     Favourite Users</a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
@@ -170,24 +173,16 @@
                             <h4 class="card-title m-t-30">Groups</h4>
                             <div class="list-group">
                                 <a href="javascript:void(0)" class="list-group-item"><i
-                                    class="ti-flag-alt-2 m-r-10"></i> Users
+                                    class="ti-flag-alt-2 m-r-10"></i> Wood
                                     <span class="badge badge-info float-right">1</span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i>
-                                    Posts
+                                    Metal
                                     <span class="badge badge-success float-right">4</span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i>
-                                    Categories
+                                    Papers
                                     <span class="badge badge-dark float-right">42</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Emails
-                                    <span class="badge badge-danger float-right">45</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Notifications
-                                    <span class="badge badge-danger float-right">100</span>
                                 </a>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
                                     Other
@@ -219,8 +214,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Column --> <!-- Column Users Details and Category-->
-
+                <!-- Column -->
             </div>
             <!-- ============================================================== -->
             <!-- End page Content -->
@@ -279,6 +273,79 @@
                 </div>
             </div>
         </div>
+        <!-- Create User Modal -->
+        <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Create
+                                New Category</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-danger"><i class="ti-bookmark-alt text-white"></i></button>
+                                <b-form-input type="text" v-model="newCategory.name" class="form-control" placeholder="Enter Name Here" minlength="6"
+                                              maxlength="30" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-dark"><i class="ti-more text-white"></i></button>
+                                <b-form-textarea type="text" v-model="newCategory.description" placeholder="Enter Description Here" maxlength="400" style="height: 150px;"></b-form-textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-success" v-show="newCategory.name" @click="storeCategory">
+                                <i class="ti-save"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit User Modal -->
+        <div class="modal fade" id="updatemodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id=""><i class="ti-marker-alt m-r-10"></i> Create
+                                Edit Category</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
+                                <b-form-input type="text" v-model="category.name" class="form-control" aria-label="name" minlength="10"
+                                              maxlength="30" required></b-form-input>
+                            </div>
+                            <div class="input-group mb-3">
+                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
+                                <b-form-textarea type="text" v-model="category.description" aria-label="no" maxlength="200"></b-form-textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetCategory()">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-success" v-show="category.name" v-on:click="updateCategory(category.id, category)">
+                                <i class="ti-save"></i> Update
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
@@ -299,18 +366,17 @@
 
 <script>
     export default {
-        props: ['auth_user_id'],
+        props: {},
         data() {
             return {
                 items: [],
                 fields: [
                     {key: 'index', label: '#', sortable: true, sortDirection: 'desc'},
-                    {key: 'about', label: 'About', sortable: true, sortDirection: 'desc'},
-                    {key: 'action', label: 'Action', sortable: true, sortDirection: 'desc'},
-                    {key: 'post_title', label: 'Post Title', sortable: true, sortDirection: 'desc'},
-                    {key: 'user_name', label: 'Username', sortable: true, sortDirection: 'desc'},
+                    {key: 'name', label: 'Name', sortable: true, sortDirection: 'desc'},
+                    {key: 'posts', label: '# Posts', sortable: true, sortDirection: 'desc'},
+                    {key: 'likes', label: '# Likes', sortable: true, sortDirection: 'desc'},
                     {key: 'created_at', label: 'Created Date', sortable: true, sortDirection: 'desc'},
-                    {key: 'delete', label: 'Delete'},
+                    {key: 'actions', label: 'Actions'},
                 ],
                 totalRows: 1,
                 currentPage: 1,
@@ -321,12 +387,19 @@
                 sortDirection: 'asc',
                 filter: null,
                 //DB
-                histories: [],
+                categories: [],
+                category: {},
+                newCategory: {
+                    name: '',
+                    description: '',
+                },
+                category_id: 0,
+                image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg',
             }
         },
         mounted: function () {
             console.log('Component fired.');
-            this.totalRows = this.histories.length;
+            this.totalRows = this.categories.length;
         },
         computed: {
             sortOptions() {
@@ -340,31 +413,48 @@
         },
 
         created: function () {
-            this.fetchHistories();
+            this.fetchCategories();
         },
         methods: {
-            fetchHistories: function () {
-                axios.get('../api/admin-dashboard/histories').then(response => {
-                    this.histories = response.data.histories;
-                    this.totalRows = this.histories.length;
+            fetchCategories: function () {
+                axios.get('../api/admin-dashboard/categories').then(response => {
+                    this.categories = response.data.categories;
+                    this.totalRows = this.categories.length;
                 });
             },
-            destroyHistrory: function (id, index) {
-                axios.delete('/api/admin-dashboard/histories/' + id).then(response => {
-                    this.newCategory = response.data.category;
-                    this.histories.splice(index, 1);
+            storeCategory: function () {
+                axios.post('../api/admin-dashboard/categories', this.newCategory).then(response => {
+                    this.newCategory = response.data.newCategory;
+                    this.categories.push(this.newCategory);
+                    // $('.CloseAddUserForm').click();
                 }).catch(error => {
                     console.log(error);
                 })
             },
-            deleteHistories: function () {
-                var id = this.auth_user_id;
-                axios.post('/api/admin-dashboard/histories/' + id).then(response => {
-                    this.histories = response.data.histories;
-                    this.totalRows = this.histories.length;
-                    // this.histories = {};
-                    // this.newCategory = response.data.category;
-                    this.histories.splice(index, 1);
+            destroyCategory: function (id, index) {
+                axios.delete('/api/admin-dashboard/categories/' + id).then(response => {
+                    this.newCategory = response.data.category;
+                    this.categories.splice(index, 1);
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            // To Show the category information in the modal
+            EditCategory: function (id) {
+                axios.get('/api/admin-dashboard/categories/' + id + '/edit').then(response => {
+                    this.category = response.data.category;
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            resetCategory: function () {
+                console.log(this.category);
+            },
+            updateCategory: function (id, category) {
+                axios.patch('/api/admin-dashboard/categories/' + id, category).then(response => {
+                    this.category = response.data.category;
+                    this.fetchCategories();
+                    console.log(this.category);
                 }).catch(error => {
                     console.log(error);
                 })

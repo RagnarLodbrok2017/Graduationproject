@@ -633,6 +633,20 @@
     $(document).ready(function () {
         $(".dropdown-toggle").dropdown();
         $('select').selectpicker();
+        // $(".like-content .btn-secondary").on('click', function () {
+        //     console.log('clicked');
+        //     $('.like-content .btn-secondary').css({
+        //         "color": "white",
+        //         "background-color" : "#ed2553",
+        //         "border": "none",
+        //     });
+        // });
+        // $(function(){
+        //     $(document).one('click', '.like-review', function(e) {
+        //         $(this).html('<i class="fa fa-heart" aria-hidden="true"></i> You liked this');
+        //         $(this).children('.fa-heart').addClass('animate-like');
+        //     });
+        // });
     });
 </script>
 </body>
