@@ -275,4 +275,15 @@ class PostController extends Controller
             return response()->json(['post' => $post]);
         }
     }
+
+
+
+//    User Panel POst Profile
+    public function AnyPostProfile($id){
+        if (!is_null($id)) {
+            $post = Post::where('id', $id)->with('comment', 'category', 'like', 'user', 'comment.user')->first();
+//            return view('AdminDashboard.users.users', $id);
+            return response()->json(['post' => $post]);
+        }
+    }
 }

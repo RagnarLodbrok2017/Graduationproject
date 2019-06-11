@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Category;
+use App\User;
 use File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -49,12 +50,16 @@ class PostController extends Controller
         return redirect('../admin-dashboard/posts');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   public function AnyPostProfile($id){
+       if (!is_null($id)) {
+//           $post = Post::findOrFail($id)->with('comment', 'category', 'like', 'user')->get();
+           $post_id = Post::findOrFail($id)->id;
+//            return view('AdminDashboard.users.users', $id);
+           return view('UserDashboard.master')->with(compact('post_id'));
+       }
+   }
+
+
     public function store(Request $request)
     {
         //

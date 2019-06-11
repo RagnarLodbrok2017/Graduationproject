@@ -28,3 +28,4 @@ Route::get('/admin-dashboard/user-profile/{id}', 'Api\UserController@UserProfile
 
 //UserPanel Routes
 Route::get('/dashboard/profile/{id}', 'Api\UserController@UserProfile');
+Route::get('/dashboard/post_profile/{id}', 'Api\PostController@AnyPostProfile');

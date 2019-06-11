@@ -46,6 +46,8 @@ Route::group(['middleware' => 'User'], function (){
     Route::get('/dashboard/profile', 'UserController@UserPanelProfile');
 //    Routes FavoriteController
     Route::resource('/dashboard/favourites/posts', 'FavouriteController');
+    //Post Profile
+    Route::get('/dashboard/post_profile/{id}', 'PostController@AnyPostProfile');
 });
 Route::get('/home', 'HomeController@index')->name('home')->middleware('User');
 

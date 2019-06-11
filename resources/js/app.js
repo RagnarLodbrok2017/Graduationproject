@@ -46,6 +46,7 @@ import HistoryComponent from "./components/AdminDashboard/History/History.vue";
 import HomeComponent from "./components/UserDashboard/Home.vue";
 import UserFavouriteComponent from "./components/UserDashboard/Favourite/Favourite.vue";
 import UserPanelProfileComponent from "./components/UserDashboard/Users/AnyUserProfile";
+import UserPanelPostProfileComponent from "./components/UserDashboard/Posts/Profile.vue";
 
 // const routes = [
 //     { path: '/user', component: User, name: 'UserList' },
@@ -66,6 +67,7 @@ const app = new Vue({
         "home-user-component": HomeComponent,
         "favourite-user-component": UserFavouriteComponent,
         "user-profile-component": UserPanelProfileComponent,
+        "post-userpanel-profile": UserPanelPostProfileComponent,
 
 
     }
