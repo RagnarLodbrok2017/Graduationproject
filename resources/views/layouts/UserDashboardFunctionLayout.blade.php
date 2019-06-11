@@ -240,11 +240,11 @@
                     <!-- ============================================================== -->
                     <!-- **************** Search  ***************************-->
                     <!-- ============================================================== -->
-                    <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark" href="javascript:void(0)" style="padding-top: 25px; line-height: 0px"><i class="ti-search"></i></a>
-                        <form class="app-search position-absolute">
-                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
-                        </form>
-                    </li>
+{{--                    <li class="nav-item search-box"><a class="nav-link waves-effect waves-dark" href="javascript:void(0)" style="padding-top: 25px; line-height: 0px"><i class="ti-search"></i></a>--}}
+{{--                        <form class="app-search position-absolute">--}}
+{{--                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>--}}
+{{--                        </form>--}}
+{{--                    </li>--}}
                 </ul>
                 <!-- ============================================================== -->
                 <!-- Right side toggle and nav items -->
@@ -437,14 +437,14 @@
                                     <p class=" m-b-0">{{ Auth::user()->email }}</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item" href="../admin-dashboard/profile"><i class="ti-user m-r-5 m-l-5"></i> My
+                            <a class="dropdown-item" href="../dashboard/profile"><i class="ti-user m-r-5 m-l-5"></i> My
                                 Profile</a>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My
                                 Activity</a>
                             <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
                                 Inbox</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../admin-dashboard/profile"><i class="ti-settings m-r-5 m-l-5"></i>
+                            <a class="dropdown-item" href="../dashboard/profile"><i class="ti-settings m-r-5 m-l-5"></i>
                                 Account Setting</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i

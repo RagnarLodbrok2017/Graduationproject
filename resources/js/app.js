@@ -44,6 +44,8 @@ import CategoryComponent from "./components/AdminDashboard/Category/Category.vue
 import HistoryComponent from "./components/AdminDashboard/History/History.vue";
 //import components of User panel
 import HomeComponent from "./components/UserDashboard/Home.vue";
+import UserFavouriteComponent from "./components/UserDashboard/Favourite/Favourite.vue";
+import UserPanelProfileComponent from "./components/UserDashboard/Users/AnyUserProfile";
 
 // const routes = [
 //     { path: '/user', component: User, name: 'UserList' },
@@ -62,6 +64,8 @@ const app = new Vue({
         "history-component": HistoryComponent,
     //    UserPanel Components
         "home-user-component": HomeComponent,
+        "favourite-user-component": UserFavouriteComponent,
+        "user-profile-component": UserPanelProfileComponent,
 
 
     }

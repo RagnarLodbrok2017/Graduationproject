@@ -103,6 +103,12 @@ class User extends Authenticatable
     public function like() {
         return $this->hasMany('App\Like','users_id');
     }
+    public function comment() {
+        return $this->hasMany('App\Comment','users_id');
+    }
+    public function favourite() {
+        return $this->hasMany('App\Favourite','users_id');
+    }
     public function history() {
         return $this->hasMany('App\History','users_id');
     }

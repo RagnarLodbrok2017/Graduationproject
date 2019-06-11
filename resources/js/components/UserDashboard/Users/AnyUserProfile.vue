@@ -212,16 +212,16 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-sm-12">Select Status</label>
-                                            <div class="col-sm-12">
-                                                <select class="form-control form-control-line" v-model="user.status">
-                                                    <option value="1">Active</option>
-                                                    <option value="2">Blocked</option>
-                                                    <option value="0">Banned</option>
-                                                </select>
-                                            </div>
-                                        </div>
+<!--                                        <div class="form-group">-->
+<!--                                            <label class="col-sm-12">Select Status</label>-->
+<!--                                            <div class="col-sm-12">-->
+<!--                                                <select class="form-control form-control-line" v-model="user.status">-->
+<!--                                                    <option value="1">Active</option>-->
+<!--                                                    <option value="2">Blocked</option>-->
+<!--                                                    <option value="0">Banned</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <div class="form-group">
                                             <label class="col-md-12">Image</label>
                                             <div class="col-md-12">

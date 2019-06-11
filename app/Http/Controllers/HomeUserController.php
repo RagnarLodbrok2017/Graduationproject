@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\History;
 use App\Like;
 use App\Post;
 use App\Category;
+use App\Favourite;
 use App\Sessions;
 use App\User;
 use File;
@@ -25,11 +27,103 @@ class HomeUserController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->with('user', 'category', 'like')->get();
+        $posts = Post::orderBy('created_at', 'desc')->with('user', 'category', 'like', 'comment')->get();
+//        dd($posts);
         $categories = Category::all();
         return response()->json(['posts' => $posts, 'categories' => $categories]);
     }
 
+
+    public function addComment(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $post = Post::findOrFail($request->post_id);
+            if ($post != null) {
+                $comment = new Comment();
+                $comment->post_id = $request->post_id;
+                $comment->subject = $request->subject;
+                $comment->users_id = Auth::user()->id;
+                $comment->save();
+
+//        Add History
+                $sessions = Sessions::first();
+                $user = Auth::user();
+                $history = new History();
+                $history->action = 'Add';
+                $history->about = 'You Added a Comment a Post';
+                $history->users_id = $user->id;
+                $history->user_name = $user->name;
+                $history->post_title = $post->title;
+                $history->save();
+                return response()->json(['comment' => $comment]);
+            }
+        }
+    }
+    public function savePost($id)
+    {
+        $post = Post::findOrFail($id);
+        if ($post != null) {
+            $favourite = new Favourite();
+            $favourite->post_id = $id;
+            $favourite->users_id = Auth::user()->id;
+            $favourite->save();
+
+//        Add History
+            $user = Auth::user();
+            $history = new History();
+            $history->action = 'Saved';
+            $history->about = 'You Saved a Post';
+            $history->users_id = $user->id;
+            $history->user_name = $user->name;
+            $history->post_title = $post->title;
+            $history->save();
+            return response()->json(['post' => $post]);
+        }
+    }
+    public function searchPost()
+    {
+        $search = \Request::get('q');
+        $posts = Post::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('email', 'LIKE', "%{$search}%")
+            ->get();
+//        $search = \Request::get('q');
+//        $search = $request->get('q');
+//        $posts = Post::where('title', 'like', '%' .$search. '%' )->get();
+//        Post::where('title', 'like', "%{$search}%")->get();
+//        if ($search = \Request::get('q')) {
+//            $posts = Post::where(function($query) use ($search){
+//                $query->where('title','LIKE',"%$search%")
+//                    ->orWhere('meta_title','LIKE',"%$search%")
+//                    ->orWhere('meta_keyword','LIKE',"%$search%");
+//            })->get();
+//        }else{
+//            $posts = Post::latest()->paginate(5);
+//        }
+//        return $posts;
+        return response()->json(['caris' => $posts]);
+    }
+
+    public function dislikePost($id)
+    {
+        $like = Like::findOrFail($id);
+        $post = Post::findOrFail($like->post_id);
+        $like->delete();
+        if ($post)
+        {
+            //        Add History
+            $sessions = Sessions::first();
+            $user = Auth::user();
+            $history = new History();
+            $history->action = 'DisLike';
+            $history->about = 'You made a disLikes on a Post';
+            $history->users_id = $user->id;
+            $history->user_name = $user->name;
+            $history->post_title = $post->title;
+            $history->save();
+            return response()->json(['post' => $post]);
+        }
+    }
 
     public function likePost($id)
     {
@@ -45,7 +139,7 @@ class HomeUserController extends Controller
             $sessions = Sessions::first();
             $user = Auth::user();
             $history = new History();
-            $history->action = 'Delete';
+            $history->action = 'Like';
             $history->about = 'You Likes a Post';
             $history->users_id = $user->id;
             $history->user_name = $user->name;
@@ -54,31 +148,7 @@ class HomeUserController extends Controller
             return response()->json(['post' => $post]);
         }
     }
-    public function dislikePost($id)
-    {
-        $like = Like::findOrFail($id);
-        $post = Post::findOrFail($like->post_id);
-        $like->delete();
-        if ($post)
-        {
-            //        Add History
-            $sessions = Sessions::first();
-            $user = Auth::user();
-            $history = new History();
-            $history->action = 'Delete';
-            $history->about = 'You made a disLikes on a Post';
-            $history->users_id = $user->id;
-            $history->user_name = $user->name;
-            $history->post_title = $post->title;
-            $history->save();
-            return response()->json(['post' => $post]);
-        }
-    }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
@@ -143,6 +213,7 @@ class HomeUserController extends Controller
 //    }
     public function store(Request $request)
     {
+//        dd(Auth::user()->id);
         \Log::info($request->all());
         if ($request->isMethod('post')) {
             $this->validate($request, [
@@ -160,7 +231,6 @@ class HomeUserController extends Controller
                 'status' => 'nullable|max:10',
                 'image_url' => 'nullable|min:10|max:400',
                 'video_url' => 'nullable|min:10|max:400',
-                'users_id' => 'required|min:1|integer|max:100',
             ]);
         }
         $post = new Post();
@@ -171,10 +241,21 @@ class HomeUserController extends Controller
             $imageName = $request->title.'.'.$UploadedImage->getClientOriginalExtension();
             $post->image = $imageName;
             $UploadedImage->move(public_path('uploads/posts/images'), $imageName);
-            $post->image_url = '../../../../../public/uploads/posts/images/images/';
+            $post->image_url = '../../../../../public/uploads/posts/images/';
         } else {
             $post->image = 'chair.jpg';
-            $post->image_url = '../../../../../public/uploads/posts/images/images/';
+            $post->image_url = '../../../../../public/uploads/posts/images/';
+        }
+        if ($request->hasFile('video')) {
+            $UploadedVideo = Input::file('video');
+            $videoName = $request->title.'.'.$UploadedVideo->getClientOriginalExtension();
+            $post->video = $videoName;
+            $UploadedVideo->move(public_path('uploads/posts/videos'), $videoName);
+            $post->video_url = '../../../../../public/uploads/posts/videos/';
+            $post->has_video = 1;
+        }
+        else {
+            $post->has_video = 0;
         }
 //        if ($request->hasFile('video')) {
 //            $UploadedVideo = Input::file('video');
@@ -186,12 +267,17 @@ class HomeUserController extends Controller
 //        } else {
 //            $post->has_video = 0;
 //        }
-        $post->status = $request->status;
+        if ($request->status){
+            $post->status = $request->status;
+        }
+        else{
+            $post->status = 1;
+        }
         $post->meta_keyword = $request->meta_keyword;
         $post->meta_title = $request->meta_title;
         $post->type = $request->type;
         $post->color = $request->color;
-        $post->users_id = $request->users_id;
+        $post->users_id = Auth::user()->id;
         if ($request->description != null) {
             $post->description = $request->description;
         }
@@ -207,14 +293,16 @@ class HomeUserController extends Controller
         $user = User::findOrFail($request->users_id);
         $history = new History();
         $history->action = 'Add';
-        $history->about = 'User added a Post';
+        $history->about = 'You added a Post';
         $history->users_id = $request->users_id;
         $history->post_id = $nPost->id;
         $history->post_title = $nPost->title;
         $history->user_name = $user->name;
         $history->save();
+//        return redirect('../dashboard');
+        return Redirect::back()->withErrors(['msg', 'The Message']);
 
-        return response()->json(['newPost' => $post]);
+//        return response()->json(['newPost' => $post]);
     }
 
     /**

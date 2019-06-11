@@ -49,6 +49,15 @@
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
                                 <h4 class="card-title">All Posts</h4>
+                                <ul class="navbar-nav float-left mr-auto">
+                                <li class="nav-item search-box" style="margin-top: -25px; margin-left: 30px;"><a class="nav-link waves-effect waves-dark" href="javascript:void(0)" style="padding-top: 25px; line-height: 0px"><i class="ti-search"></i></a>
+                                    <form class="app-search position-absolute">
+                                        <input type="search" class="form-control" placeholder="Search &amp; enter" v-model="search">
+                                        <a @click.prevent="searchPost" class="srh-btn" style="margin-right:30px;"><i class="ti-search"></i></a>
+                                        <a class="srh-btn"><i class="ti-close"></i></a>
+                                    </form>
+                                </li>
+                                </ul>
                                 <div class="ml-auto">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-dark" data-toggle="modal"
@@ -62,24 +71,124 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row el-element-overlay">
-                                <div class="col-lg-4 col-md-6"  v-for="post in posts">
+                            <div class="row el-element-overlay" v-if="showSearch === true">
+                                <div class="col-lg-4 col-md-6"  v-for="cari in caris">
+                                    <div class="card">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(cari.image)" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="path(cari.image)"><i class="icon-magnifier"></i></a></li>
+                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="SavePost(cari.id)"><i class="icon-link"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="d-flex no-block align-items-center m-b-15">
+                                                    <span><i class="ti-calendar"></i> {{ cari.created_at}}</span>
+                                                    <div class="ml-auto" v-b-tooltip title="Comments" variant="outline-success" @click="modalShow = !modalShow"
+                                                         v-on:click="copyPost(cari)">
+                                                        <a href="javascript:void(0)" class="link"><i class="ti-comments" ></i> {{cari.comment.length}} Comments</a>
+                                                    </div>
+                                                    <!--                                                    <b-modal v-model="modalShow" title="Comments">-->
+                                                    <!--                                                        <div class="list-group">-->
+                                                    <!--                                                            <button v-for="comment in copedPost.comment" type="button" class="list-group-item list-group-item-action">-->
+                                                    <!--                                                                <h6> Comment: </h6> {{comment.subject}}-->
+                                                    <!--                                                            </button>-->
+                                                    <!--                                                        </div>-->
+                                                    <!--                                                    </b-modal>-->
+                                                </div>
+                                                <h3 class="font-normal">{{ cari.title }}</h3>
+                                                <p><small style="color: #CDBFFA">{{cari.user.name}}</small> &nbsp; <small style="color: #F9B8C7">{{cari.user.type}}</small></p>
+                                                <p class="m-b-0 m-t-10">{{ cari.subtitle}}</p>
+                                                <!--                                                <button class="btn btn-primary btn-rounded waves-effect waves-light m-t-20">Like</button>-->
+                                                <!--                                                <button type="button" class="js-like-button like-btn">♥︎&nbsp; Like</button>-->
+                                                <!--                                                <p v-if="checkLike(cari)"></p>-->
+                                                <div class="like-content">
+                                                    <button v-if="!cari.like.length" v-on:click="LikePost(cari.id)" class="btn-secondary2 like-review">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
+                                                </div>
+                                                <div class="like-content" v-for="like in cari.like" v-if="cari.like.length">
+                                                    <button v-if="!cari.like.length" v-on:click="LikePost(cari.id)" class="btn-secondary2 like-review">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
+                                                    <button v-if="like.users_id === auth_user_id" v-on:click="DislikePost(like.id)" class="btn-secondary like-review">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i> Dislike </button>
+                                                    <!--                                                        <button v-if="!(like.users_id === auth_user_id)" v-on:click="LikePost(cari.id)" class="btn-secondary2 like-review">-->
+                                                    <!--                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
+                                                </div>
+                                                <div class="comment-content">
+                                                    <b-button class="btn-secondary like-review" data-toggle="modal"
+                                                              data-target="#createComment2" v-on:click="passId(cari.id)">
+                                                        <i class="fa fa-pen-square" aria-hidden="true"></i> Comment
+                                                    </b-button>
+                                                    <div class="modal fade" id="createComment2" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <form>
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"><i class="ti-marker-alt m-r-10"></i>
+                                                                            Enter your comment </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="POST">
+                                                                            <div class="form-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <div class="form-group">
+                                                                                            <input type="hidden" :value="cari.id" name="id" >
+                                                                                            <b-form-input type="text" v-model="comment.subject" class="form-control" placeholder="Enter Your Comment" maxlength="50"></b-form-input>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-actions m-t-40">
+                                                                                <button type="button" class="btn btn-success"  v-on:click="addComment(comment.subject)"  v-show="comment.subject">
+                                                                                    <i class="fa fa-check"></i> Add Comment
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20" style="float: right">Comment</button>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row el-element-overlay" v-if="showSearch === false">
+                                <div class="col-lg-4 col-md-6"  v-for="post in filteredPosts">
                                     <div class="card">
                                         <div class="el-card-item">
                                             <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(post.image)" alt="user" />
                                                 <div class="el-overlay">
                                                     <ul class="list-style-none el-info">
                                                         <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="path(post.image)"><i class="icon-magnifier"></i></a></li>
-                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="SavePost(post.id)"><i class="icon-link"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                             <div class="card-body">
                                                 <div class="d-flex no-block align-items-center m-b-15">
                                                     <span><i class="ti-calendar"></i> {{ post.created_at}}</span>
-                                                    <div class="ml-auto">
-                                                        <a href="javascript:void(0)" class="link"><i class="ti-comments"></i> 3 Comments</a>
+                                                    <div class="ml-auto" v-b-tooltip title="Comments" variant="outline-success" @click="modalShow = !modalShow"
+                                                         v-on:click="copyPost(post)">
+                                                        <a href="javascript:void(0)" class="link"><i class="ti-comments" ></i> {{post.comment.length}} Comments</a>
                                                     </div>
+<!--                                                    <b-modal v-model="modalShow" title="Comments">-->
+<!--                                                        <div class="list-group">-->
+<!--                                                            <button v-for="comment in copedPost.comment" type="button" class="list-group-item list-group-item-action">-->
+<!--                                                                <h6> Comment: </h6> {{comment.subject}}-->
+<!--                                                            </button>-->
+<!--                                                        </div>-->
+<!--                                                    </b-modal>-->
                                                 </div>
                                                 <h3 class="font-normal">{{ post.title }}</h3>
                                                 <p><small style="color: #CDBFFA">{{post.user.name}}</small> &nbsp; <small style="color: #F9B8C7">{{post.user.type}}</small></p>
@@ -100,9 +209,45 @@
 <!--                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
                                                 </div>
                                                 <div class="comment-content">
-                                                    <button class="btn-secondary like-review">
+                                                    <b-button class="btn-secondary like-review" data-toggle="modal"
+                                                              data-target="#createComment" v-on:click="passId(post.id)">
                                                         <i class="fa fa-pen-square" aria-hidden="true"></i> Comment
-                                                    </button>
+                                                    </b-button>
+                                                    <div class="modal fade" id="createComment" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <form>
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"><i class="ti-marker-alt m-r-10"></i>
+                                                                            Enter your comment </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="POST">
+                                                                            <div class="form-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <div class="form-group">
+                                                                                            <input type="hidden" :value="post.id" name="id" >
+                                                                                            <b-form-input type="text" v-model="comment.subject" class="form-control" placeholder="Enter Your Comment" maxlength="50"></b-form-input>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-actions m-t-40">
+                                                                                <button type="button" class="btn btn-success"  v-on:click="addComment(comment.subject)"  v-show="comment.subject">
+                                                                                    <i class="fa fa-check"></i> Add Comment
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
 <!--                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20" style="float: right">Comment</button>-->
                                             </div>
@@ -110,110 +255,6 @@
                                     </div>
                                 </div>
                             </div>
-<!--                            <b-row>-->
-<!--                                <b-col md="6" class="my-1">-->
-<!--                                    <b-form-group label-cols-sm="3" label="Filter" class="mb-0">-->
-<!--                                        <b-input-group>-->
-<!--                                            <b-form-input v-model="filter" placeholder="Type to Search"></b-form-input>-->
-<!--                                            <b-input-group-append>-->
-<!--                                                <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>-->
-<!--                                            </b-input-group-append>-->
-<!--                                        </b-input-group>-->
-<!--                                    </b-form-group>-->
-<!--                                </b-col>-->
-<!--                                <b-col md="6" class="my-1">-->
-<!--                                    <b-form-group label-cols-sm="3" label="Per page" class="mb-0">-->
-<!--                                        <b-form-select v-model="perPage" :options="pageOptions"></b-form-select>-->
-<!--                                    </b-form-group>-->
-<!--                                </b-col>-->
-<!--                            </b-row>-->
-<!--                            <div class="table-responsive">-->
-<!--                                &lt;!&ndash; Main table element &ndash;&gt;-->
-<!--                                <b-table-->
-<!--                                    show-empty-->
-<!--                                    class="table table-bordered nowrap display dataTable no-footer"-->
-<!--                                    stacked="md"-->
-<!--                                    :items="posts"-->
-<!--                                    :fields="fields"-->
-<!--                                    :current-page="currentPage"-->
-<!--                                    :per-page="perPage"-->
-<!--                                    :filter="filter"-->
-<!--                                    :sort-by.sync="sortBy"-->
-<!--                                    :sort-desc.sync="sortDesc"-->
-<!--                                    :sort-direction="sortDirection"-->
-<!--                                    @filtered="onFiltered"-->
-<!--                                >-->
-<!--                                    <template slot="index" slot-scope="row">-->
-<!--                                        {{ row.index+1 }}-->
-<!--                                    </template>-->
-<!--                                    <template slot="title" slot-scope="row">-->
-<!--                                        <a href="../"><strong>{{ row.value }}</strong></a>-->
-<!--                                    </template>-->
-
-<!--                                    <template slot="image" slot-scope="row">-->
-<!--                                        <img :src="path(row.value)" alt="" width="80px" height="80px" class="img img-circle">-->
-<!--                                    </template>-->
-<!--                                    <template slot="category" slot-scope="row">-->
-<!--                                        <p v-for="value in row.value">{{value.name}}</p>-->
-<!--                                    </template>-->
-<!--                                    <template slot="user" slot-scope="row">-->
-<!--                                        {{ row.value.name }}-->
-<!--                                    </template>-->
-<!--                                    <template slot="status" slot-scope="row">-->
-<!--                                        <span v-if="row.value === 0" class="label label-danger"> Banned</span>-->
-<!--                                        <span v-if="row.value === 1" class="label label-success"> Active </span>-->
-<!--                                        <span v-if="row.value === 2" class="label label-warning"> Pending </span>-->
-<!--                                    </template>-->
-<!--                                    <template slot="likes" slot-scope="row">-->
-<!--                                        1564-->
-<!--                                    </template>-->
-<!--                                    <template slot="comments" slot-scope="row">-->
-<!--                                        101-->
-<!--                                    </template>-->
-<!--                                    <template slot="created" slot-scope="row">-->
-<!--                                        {{ row.value }}-->
-<!--                                    </template>-->
-<!--                                    <template slot="actions" slot-scope="row">-->
-<!--                                        <b-button type="button"-->
-<!--                                                  class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"-->
-<!--                                                  v-on:click="destroyPost(row.item.id, row.index)"-->
-<!--                                                  data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i>-->
-<!--                                        </b-button>-->
-<!--                                        <b-button type="button"-->
-<!--                                                  class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"-->
-<!--                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditPost(row.item.id)">-->
-<!--                                            <i class="ti-pencil" aria-hidden="true"></i>-->
-<!--                                        </b-button>-->
-<!--                                        <b-button v-b-modal.UploadVideoModal class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn" alt="Upload Video">-->
-<!--                                            <i class="ti-upload" aria-hidden="true"></i>-->
-<!--                                        </b-button>-->
-<!--                                        <b-modal id="UploadVideoModal" title="Upload Video Modal">-->
-
-<!--                                            <form method="POST" action="./posts" enctype="multipart/form-data">-->
-<!--                                                <input type="hidden" name="_token" :value="csrf">-->
-<!--                                                <div class="form-group row">-->
-<!--                                                    <input type="file" name="video" class="upload" accept="video/*">-->
-<!--                                                    <input type="hidden" name="id" class="" v-model="row.item.id">-->
-<!--                                                </div>-->
-<!--                                                <button type="submit" class="btn btn-primary">-->
-<!--                                                    Save-->
-<!--                                                </button>-->
-<!--                                            </form>-->
-<!--                                        </b-modal>-->
-<!--                                    </template>-->
-<!--                                </b-table>-->
-<!--                                &lt;!&ndash;           Pagination         &ndash;&gt;-->
-<!--                                <b-row>-->
-<!--                                    <b-col md="6" class="my-1">-->
-<!--                                        <b-pagination-->
-<!--                                            v-model="currentPage"-->
-<!--                                            :total-rows="totalRows"-->
-<!--                                            :per-page="perPage"-->
-<!--                                            class="my-0"-->
-<!--                                        ></b-pagination>-->
-<!--                                    </b-col>-->
-<!--                                </b-row>-->
-<!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -310,7 +351,6 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form method="post" enctype="multipart/form-data">
                         <div class="modal-header">
                             <h5 class="modal-title"><i class="ti-marker-alt m-r-10"></i>Create new Post</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -318,20 +358,21 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="../dashboard/posts" method="POST" role="form" enctype="multipart/form-data">
+                                <input type="hidden" name="_token" :value="csrf">
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Post Title</label>
-                                                <b-form-input type="text" v-model="newPost.title" class="form-control" minlength="10" maxlength="50" required></b-form-input>
+                                                <b-form-input type="text" name="title" class="form-control" minlength="10" maxlength="50" required></b-form-input>
                                             </div>
                                         </div>
                                         <!--/span-->
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Sub title</label>
-                                                <b-form-input type="text" v-model="newPost.subtitle"  class="form-control" required></b-form-input>
+                                                <b-form-input type="text" name="subtitle"  class="form-control" required></b-form-input>
                                             </div>
                                         </div>
                                         <!--/span-->
@@ -342,25 +383,25 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="control-label">Category</label>
-                                                <select class="selectpicker" v-model="newPost.categoriesIds" multiple data-selected-text-format="count" data-width="100%" data-max-options="3">
+                                                <select class="selectpicker" name="categoriesIds[]" multiple data-selected-text-format="count" data-width="100%" data-max-options="3">
                                                     <option v-for="category in categories" :value="category.id">{{ category.name }}</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <!--/span-->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Status</label>
-                                                <br/>
-                                                <b-form-group>
-                                                    <b-form-radio-group
-                                                        v-model="newPost.status"
-                                                        :options="options"
-                                                        name="radio-inline"
-                                                    ></b-form-radio-group>
-                                                </b-form-group>
-                                            </div>
-                                        </div>
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label>Status</label>-->
+<!--                                                <br/>-->
+<!--                                                <b-form-group>-->
+<!--                                                    <b-form-radio-group-->
+<!--                                                        v-model="newPost.status"-->
+<!--                                                        :options="options"-->
+<!--                                                        name="radio-inline"-->
+<!--                                                    ></b-form-radio-group>-->
+<!--                                                </b-form-group>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
                                         <!--/span-->
                                     </div>
                                     <!--/row-->
@@ -370,9 +411,9 @@
                                                 <label>Meta Title</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" ><i class="ti-image"></i></span>
+                                                        <span class="input-group-text" ><i class="ti-search"></i></span>
                                                     </div>
-                                                    <b-form-input v-model="newPost.meta_title" type="text" aria-describedby="basic-addon1"></b-form-input>
+                                                    <b-form-input name="meta_title" type="text" aria-describedby="basic-addon1"></b-form-input>
                                                 </div>
                                             </div>
                                         </div>
@@ -382,9 +423,9 @@
                                                 <label>Meta Keyword</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" ><i class="ti-image"></i></span>
+                                                        <span class="input-group-text" ><i class="ti-search"></i></span>
                                                     </div>
-                                                    <b-form-input v-model="newPost.meta_keyword" type="text" aria-describedby="basic-addon1"></b-form-input>
+                                                    <b-form-input name="meta_keyword" type="text" aria-describedby="basic-addon1"></b-form-input>
                                                 </div>
                                             </div>
                                         </div>
@@ -394,7 +435,7 @@
                                     <div class="row">
                                         <div class="col-md-12 ">
                                             <div class="form-group">
-                                                <b-textarea class="form-control" v-model="newPost.description" rows="4"></b-textarea>
+                                                <b-textarea class="form-control" name="description" rows="4"></b-textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -408,7 +449,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" ><i class="ti-image"></i></span>
                                                     </div>
-                                                    <input type="file" v-on:change="onImageChange" class="upload" accept=".jpg, .png, .jpeg">
+                                                    <input type="file" class="upload" accept=".jpg, .png, .jpeg" name="image">
+<!--                                                    <input type="file" v-on:change="onImageChange" class="upload" accept=".jpg, .png, .jpeg">-->
                                                 </div>
                                             </div>
                                         </div>
@@ -420,7 +462,8 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text" ><i class="ti-image"></i></span>
                                                     </div>
-                                                    <!--                                                    <input type="file" :onchange="onVideoChange" class="upload" accept="video/*">-->
+                                                    <input type="file" class="upload" accept="video/*" name="video">
+<!--                                                    <input type="file" :onchange="onVideoChange" class="upload" accept="video/*">-->
                                                     <p>you can upload video after adding the post</p>
                                                 </div>
                                             </div>
@@ -437,7 +480,7 @@
                                                             <label for="" class="form-control"> About</label>
                                                         </td>
                                                         <td>
-                                                            <b-form-input type="text" v-model="newPost.about"></b-form-input>
+                                                            <b-form-input type="text" name="about"></b-form-input>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -445,7 +488,7 @@
                                                             <label for="" class="form-control"> Color </label>
                                                         </td>
                                                         <td>
-                                                            <b-form-input type="text" v-model="newPost.color"></b-form-input>
+                                                            <b-form-input type="text" name="color"></b-form-input>
                                                         </td>
                                                     </tr>
 
@@ -454,10 +497,10 @@
                                                             <label for="" class="form-control"> Type</label>
                                                         </td>
                                                         <td>
-                                                            <b-form-input type="text" v-model="newPost.type"></b-form-input>
+                                                            <b-form-input type="text" name="type"></b-form-input>
                                                         </td>
                                                     </tr>
-                                                    <input type="text" v-model="newPost.users_id" hidden>
+                                                    <b-form-input type="text" name="users_id" hidden></b-form-input>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -466,14 +509,14 @@
                                     <hr>
                                 </div>
                                 <div class="form-actions m-t-40">
-                                    <button type="button" class="btn btn-success" v-show="newPost.title && newPost.categoriesIds"
-                                            @click="storePost"><i class="fa fa-check"></i> Save
-                                    </button>
+                                    <button type="submit" class="btn btn-sucess">Submit Post</button>
+                                    <!--                                    <button type="button" class="btn btn-success" v-show="newPost.title && newPost.categoriesIds"-->
+<!--                                            @click="storePost"><i class="fa fa-check"></i> Save-->
+<!--                                    </button>-->
                                     <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
                         </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -786,12 +829,18 @@
 
                 csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
                 routeName: "{{route(''post.uploadVideoRoute')}}",
-
+                modalShow:false,
                 //DB
+                commentSubject:'',
                 liked : false,
                 image:'',
                 posts: [],
                 post: {},
+                copedPost: {},
+                comment: {
+                    subject:'',
+                    post_id:'',
+                },
                 user: {},
                 categories: [],
                 categoriesIds: [],
@@ -811,6 +860,10 @@
                     categoriesIds: [],
                 },
                 post_id: 0,
+                postId: '',
+                search:'',
+                showSearch : false,
+                caris:[],
                 // image_src: '../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg',
             }
         },
@@ -819,6 +872,11 @@
             this.totalRows = this.posts.length;
         },
         computed: {
+            filteredPosts: function() {
+                return this.posts.filter((post) => {
+                    return post.title.match(this.search);
+                });
+            },
             sortOptions() {
                 // Create an options list from our fields
                 return this.fields
@@ -836,11 +894,24 @@
             fetchPosts: function () {
                 axios.get('../dashboard/posts').then(response => {
                     this.posts = response.data.posts;
+                    console.log(this.posts);
                     this.categories = response.data.categories;
                     this.totalRows = this.posts.length;
                 });
             },
-            storePost(e) {
+            searchPost() {
+                axios.get('../dashboard/posts/search?q='+this.search).then(response => {
+                    this.caris = response.data;
+                    // this.caris = response.data.caris;
+                    // this.caris = response;
+                    this.search = '';
+                    this.showSearch = true;
+                    console.log("caris: " + this.caris);
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+                storePost(e) {
                 e.preventDefault();
                 let currentObj = this;
 
@@ -850,7 +921,7 @@
 
                 let formData = new FormData();
                 formData.append('image', this.image);
-                formData.append('image', this.video);
+                formData.append('video', this.video);
                 formData.append('users_id', this.auth_user_id);
                 formData.append('title', this.newPost.title);
                 formData.append('subtitle', this.newPost.subtitle);
@@ -868,13 +939,34 @@
                 // formData.append('categoriesIds', this.newPost.categoriesIds);
                 console.log(this.newPost.categoriesIds);
 
-                axios.post('../api/admin-dashboard/posts', formData, config)
+                axios.post('../dashboard/posts', formData, config)
                     .then(function (response) {
                         this.posts.push(this.newPost);
                     })
                     .catch(function (error) {
                         currentObj.output = error;
                     });
+            },
+            passId:function(id){
+                this.comment.post_id = id;
+            },
+            copyPost:function(post){
+                this.copedPost = {};
+                this.copedPost = post;
+            },
+            addComment: function (subject) {
+                // this.newPost.categoriesIds = this.newPost.categoriesIds;
+                this.comment.subject = subject;
+                axios.post('../dashboard/posts/comment', this.comment).then(response => {
+                    // this.newPost = response.data.newPost;
+                    console.log(this.comment);
+                    this.comment.subject = '';
+                    this.comment.post_id = '';
+                    // this.posts.push(this.newPost);
+                    // $('.CloseAddUserForm').click();
+                }).catch(error => {
+                    console.log(error);
+                })
             },
             storePost2: function () {
                 this.newPost.users_id = this.auth_user_id;
@@ -900,6 +992,14 @@
             },
             DislikePost: function (id) {
                 axios.post('/dashboard/posts/dislike/' + id).then(response => {
+                    // this.newPost = response.data.post;
+                    this.fetchPosts();
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            SavePost: function (id) {
+                axios.post('/dashboard/posts/favourite/' + id).then(response => {
                     // this.newPost = response.data.post;
                     this.fetchPosts();
                 }).catch(error => {
@@ -988,6 +1088,7 @@
             onVideoChange(e){
                 // this.video = e.target.files[0];
                 console.log(e.target);
+                this.image = e.target.files[1];
             },
         },
         components: {

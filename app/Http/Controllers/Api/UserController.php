@@ -95,15 +95,20 @@ class UserController extends Controller
                 'password' => 'max:30|min:8',
                 'email' => 'required|max:30|email|unique:users,email,'.$request->get('id'),
                 'type' => 'required',
-                'status' => 'required',
+                'country' => 'nullable',
+//                'status' => 'required',
             ]);
 //            if (strlen($request->password) !== 0)
             $user  = User::find($id);
             if (!is_null($user) && isset($user)) {
                 $user->name = $request->name;
+                $user->country = $request->country;
+                $user->facebook_link = $request->facebook_link;
                 $user->email = $request->email;
                 $user->type = $request->type;
-                $user->status = $request->status;
+                if ($request->status) {
+                    $user->status = $request->status;
+                }
                 if (strlen($request->password) !== 0)
                 {
                     $user->password = bcrypt($request->password);

@@ -2,39 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03849e5f-11a0-4537-8484-2b36eec9e7e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/UserAuthController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeUserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Like.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Category/Category.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Category/_Users.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/History/History.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/History/_Users.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/Posts.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/Profile.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/_Users.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Users/AnyUserProfile.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Users/Profile.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Users/Users.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Users/_Users.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/AdminDashboard/master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/UserDashboard/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Favourite.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Favourite/Favourite.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeUserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Post.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Post.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/chair2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/chair2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/AdminDashboardJs/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/AdminDashboardJs/js/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/AdminDashboardJs/js/sidebarmenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/AdminDashboardJs/js/sidebarmenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/Post Rec.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/Refewv wefff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/dwaaaaaaa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/dwaaaaaaadw.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/dwqqqqqqq.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/dwqqqqqqqq wdq.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/dwqqqqqqqq.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/efwwwwwww.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/posts/images/wqddddddd.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/AdminDashboard/History/History.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/AdminDashboard/History/History.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminDashboard/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminDashboard/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/AdminDashboardFunctionLayout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/AdminDashboardFunctionLayout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/UserDashboard/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/UserDashboard/Users/AnyUserProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/UserDashboard/Users/AnyUserProfile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,20 +60,41 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+            <state relative-caret-position="72">
+              <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/Profile.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1264">
+              <caret line="159" column="73" lean-forward="true" selection-start-line="159" selection-start-column="73" selection-end-line="159" selection-end-column="73" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/Posts.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6600">
+              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeUserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="68" column="43" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
+            <state relative-caret-position="437">
+              <caret line="100" column="44" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
               <folding>
                 <element signature="e#40#56#0#PHP" expanded="true" />
-                <element signature="e#783#1998#0#PHP" />
+                <element signature="e#810#1703#0#PHP" />
+                <element signature="e#1776#2518#0#PHP" />
+                <element signature="e#1708#2384#0#PHP" />
+                <element signature="e#2241#2985#0#PHP" />
               </folding>
             </state>
           </provider>
@@ -90,28 +103,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+            <state relative-caret-position="-265">
+              <caret line="45" column="51" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Home.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Users/Profile.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="96" column="133" selection-start-line="96" selection-start-column="133" selection-end-line="96" selection-end-column="133" />
-              <folding>
-                <element signature="n#style#0;n#small#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#5610#5616#0" expanded="true" />
-                <element signature="n#style#0;n#small#1;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#45581#47322#0" />
-                <element signature="e#47360#48009#0" />
-                <element signature="e#69983#70141#0" />
-              </folding>
+            <state relative-caret-position="-6304">
+              <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -119,21 +121,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="636" column="38" selection-start-line="636" selection-start-column="38" selection-end-line="636" selection-end-column="38" />
+            <state relative-caret-position="390">
+              <caret line="446" column="80" selection-start-line="446" selection-start-column="80" selection-end-line="446" selection-end-column="80" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-528">
-              <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+            <state relative-caret-position="264">
+              <caret line="50" column="32" lean-forward="true" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
               <folding>
-                <element signature="e#320#365#0" expanded="true" />
-                <element signature="e#1145#1217#0" expanded="true" />
+                <element signature="e#40#53#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/api.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2640">
+              <caret line="113" column="65" lean-forward="true" selection-start-line="113" selection-start-column="65" selection-end-line="113" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -149,15 +168,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.card</find>
-      <find>;</find>
-      <find>plot</find>
-      <find>map-</find>
-      <find>Design</find>
       <find>submit</find>
       <find>newUser</find>
       <find>User</find>
-      <find>name</find>
       <find>EditCategory</find>
       <find>updateCategory</find>
       <find>if ($this-&gt;write) {</find>
@@ -167,7 +180,6 @@
       <find>updateUser</find>
       <find>fetchUsers</find>
       <find>Product</find>
-      <find>post</find>
       <find>storePost</find>
       <find>chair</find>
       <find>store</find>
@@ -179,6 +191,13 @@
       <find>category</find>
       <find>src</find>
       <find>sidebartoggler</find>
+      <find>../../../../public/uploads/posts/images</find>
+      <find>length</find>
+      <find>type</find>
+      <find>name</find>
+      <find>post</find>
+      <find>users_id</find>
+      <find>showsearch</find>
     </findStrings>
     <replaceStrings>
       <replace>{{asset('images/welcomeimages/')}}</replace>
@@ -197,6 +216,9 @@
       <replace>newPost</replace>
       <replace>histories</replace>
       <replace>history</replace>
+      <replace>favourite.post</replace>
+      <replace>cari</replace>
+      <replace>showSearch</replace>
     </replaceStrings>
   </component>
   <component name="FrameworkCommandLineHistory">
@@ -210,14 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/js/main.js" />
-        <option value="$PROJECT_DIR$/public/css/AdminDashboardCss/css/bootstrapAndPlugins.css" />
-        <option value="$PROJECT_DIR$/public/css/AdminDashboardCss/css/masterStyle.css" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/AdminDashboardFunction.blade.php" />
-        <option value="$PROJECT_DIR$/public/libraries/AdminDashboardLibs/libs/sweetalert2/sweet-alert.init.js" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/AdminPanelMasterLayout.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/AdminDashboard/Users/Profile.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
         <option value="$PROJECT_DIR$/resources/js/components/AdminDashboard/Category/Users.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/CategoryController.php" />
@@ -229,7 +243,6 @@
         <option value="C:/wamp64/bin/php/php7.1.9/php.ini" />
         <option value="C:/wamp64/bin/php/php7.0.23/php.ini" />
         <option value="C:/wamp64/bin/php/php5.6.31/php.ini" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/AdminDashboard/Users/Users.vue" />
         <option value="$PROJECT_DIR$/public/css/AdminDashboardCss/css/style.css" />
         <option value="$PROJECT_DIR$/resources/js/components/AdminDashboard/Posts/Posts.vue" />
@@ -241,26 +254,35 @@
         <option value="$PROJECT_DIR$/resources/js/components/AdminDashboard/Category/History.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/PostController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Api/HistoryController.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/AdminDashboardFunctionLayout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/AdminDashboard/home.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/UserAuthController.php" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/AdminDashboard/users/users.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PostController.php" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/AdminDashboard/History/History.vue" />
         <option value="$PROJECT_DIR$/public/js/AdminDashboardJs/js/sidebarmenu.js" />
-        <option value="$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php" />
         <option value="$PROJECT_DIR$/public/js/AdminDashboardJs/js/dashboard.js" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/app/Post.php" />
         <option value="$PROJECT_DIR$/app/Like.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/UserDashboard/Home.vue" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/app/Providers/Comment.php" />
+        <option value="$PROJECT_DIR$/app/Comment.php" />
+        <option value="$PROJECT_DIR$/app/Providers/Saved.php" />
+        <option value="$PROJECT_DIR$/app/Saved.php" />
+        <option value="$PROJECT_DIR$/app/Post.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/Favourite.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/UserDashboard/Favourite/Favourite.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/FavouriteController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeUserController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/UserDashboard/Home.vue" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UserController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/UserDashboard/Users/AnyUserProfile.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php" />
       </list>
     </option>
   </component>
@@ -371,7 +393,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1346" />
@@ -424,7 +446,31 @@
               <item name="Graduationproject" type="b2602c69:ProjectViewProjectNode" />
               <item name="Graduationproject" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="UserDashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="Posts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduationproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graduationproject" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduationproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graduationproject" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="AdminDashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Graduationproject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graduationproject" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="AdminDashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Graduationproject" type="b2602c69:ProjectViewProjectNode" />
@@ -449,7 +495,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/components/UserDashboard/Favourite" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -459,16 +505,17 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\app" />
-      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\app\Http\Controllers" />
-      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\resources\js\components" />
-      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\resources\views\layouts" />
-      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\resources\views\UserDashboard" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\app" />
       <recent name="C:\Users\AhmedOrtega\Documents\GitHub\Graduationproject\resources\js\components\AdminDashboard" />
       <recent name="C:\Users\AhmedOrtega\Documents\GitHub\Graduationproject\resources\views\userdashboard" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\resources\js\components\UserDashboard\Favourite" />
+      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\app" />
+      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\app\Providers" />
+      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\app\Http\Controllers" />
+      <recent name="C:\Users\ahmed\Documents\GitHub\Graduationproject\resources\js\components" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -549,14 +596,16 @@
       <workItem from="1559773862571" duration="5202000" />
       <workItem from="1560093441843" duration="20000" />
       <workItem from="1560093493214" duration="22097000" />
+      <workItem from="1560182338784" duration="38173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="401678000" />
+    <option name="totallyTimeSpent" value="439851000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.26399395" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
@@ -585,62 +634,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Console/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="42" column="10" lean-forward="true" selection-start-line="42" selection-start-column="10" selection-end-line="42" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/History.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="13" column="56" selection-start-line="13" selection-start-column="56" selection-end-line="13" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/AdminDashboard/History/_Users.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -754,28 +747,11 @@
     <entry file="file://$PROJECT_DIR$/resources/views/UserDashboard/userdashboard.blade.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/AdminDashboard/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="29" lean-forward="true" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/UserDashboard/users/users.blade.php" />
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/UserAuthController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1176">
           <caret line="57" column="50" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="984">
-          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -797,13 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/Posts.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="26" selection-end-line="882" />
         </state>
       </provider>
     </entry>
@@ -854,42 +823,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/AdminDashboard/users/users.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/AdminDashboardJs/js/sidebarmenu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
-          <folding>
-            <element signature="e#23#63#0#PHP" expanded="true" />
-            <element signature="e#168#3969#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="22" column="88" lean-forward="true" selection-start-line="22" selection-start-column="88" selection-end-line="22" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Like.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -900,71 +837,209 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+    <entry file="file://$PROJECT_DIR$/app/Like.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-528">
-          <caret line="27" column="17" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+        <state relative-caret-position="144">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Comment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="107" column="5" lean-forward="true" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
           <folding>
-            <element signature="e#320#365#0" expanded="true" />
-            <element signature="e#1145#1217#0" expanded="true" />
+            <element signature="e#23#63#0#PHP" expanded="true" />
+            <element signature="e#168#3969#0#PHP" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="509">
-          <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+        <state relative-caret-position="568">
+          <caret line="77" column="28" lean-forward="true" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Favourite.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
+        <state relative-caret-position="216">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Favourite/Favourite.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="636" column="38" selection-start-line="636" selection-start-column="38" selection-end-line="636" selection-end-column="38" />
+        <state relative-caret-position="236">
+          <caret line="394" column="54" selection-start-line="394" selection-start-column="54" selection-end-line="394" selection-end-column="54" />
+          <folding>
+            <element signature="n#style#0;n#small#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#54643#56374#0" />
+            <element signature="e#56407#56465#0" />
+            <element signature="e#56502#56593#0" />
+            <element signature="e#56638#57273#0" />
+            <element signature="e#57998#58282#0" />
+            <element signature="e#58323#58610#0" />
+            <element signature="e#58976#59392#0" />
+            <element signature="e#60981#61079#0" />
+            <element signature="e#61106#61226#0" />
+            <element signature="e#61256#61440#0" />
+            <element signature="e#61470#61711#0" />
+            <element signature="e#61740#61985#0" />
+            <element signature="e#62015#62119#0" />
+            <element signature="e#62149#62302#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FavouriteController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="70" column="6" selection-start-line="70" selection-start-column="6" selection-end-line="70" selection-end-column="6" />
+          <folding>
+            <element signature="e#40#57#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Home.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="96" column="133" selection-start-line="96" selection-start-column="133" selection-end-line="96" selection-end-column="133" />
+        <state relative-caret-position="223">
+          <caret line="129" column="55" selection-start-line="129" selection-start-column="55" selection-end-line="129" selection-end-column="55" />
           <folding>
-            <element signature="n#style#0;n#small#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#form#0;n#li#0;n#ul#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#small#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#7816#7822#0" expanded="true" />
+            <element signature="n#style#0;n#small#1;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#11522#11529#1" expanded="true" />
             <element signature="e#5610#5616#0" expanded="true" />
             <element signature="n#style#0;n#small#1;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#45581#47322#0" />
-            <element signature="e#47360#48009#0" />
-            <element signature="e#69983#70141#0" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/AdminDashboard/users/users.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/AdminDashboard/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3753">
+          <caret line="12" column="53" lean-forward="true" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+          <folding>
+            <element signature="e#320#365#0" expanded="true" />
+            <element signature="e#1160#1232#0" expanded="true" />
+            <element signature="e#1677#1741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/UserDashboardFunctionLayout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="446" column="80" selection-start-line="446" selection-start-column="80" selection-end-line="446" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Users/Profile.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6304">
+          <caret line="4" column="74" selection-start-line="4" selection-start-column="74" selection-end-line="4" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
+        <state relative-caret-position="-265">
+          <caret line="45" column="51" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="50" column="32" lean-forward="true" selection-start-line="50" selection-start-column="32" selection-end-line="50" selection-end-column="32" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Api/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2640">
+          <caret line="113" column="65" lean-forward="true" selection-start-line="113" selection-start-column="65" selection-end-line="113" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeUserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="68" column="43" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
+        <state relative-caret-position="437">
+          <caret line="100" column="44" selection-start-line="100" selection-start-column="44" selection-end-line="100" selection-end-column="44" />
           <folding>
             <element signature="e#40#56#0#PHP" expanded="true" />
-            <element signature="e#783#1998#0#PHP" />
+            <element signature="e#810#1703#0#PHP" />
+            <element signature="e#1776#2518#0#PHP" />
+            <element signature="e#1708#2384#0#PHP" />
+            <element signature="e#2241#2985#0#PHP" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Users/AnyUserProfile.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="328" lean-forward="true" selection-start-line="328" selection-end-line="328" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/UserDashboard/master.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/Posts.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6600">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/UserDashboard/Posts/Profile.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1264">
+          <caret line="159" column="73" lean-forward="true" selection-start-line="159" selection-start-column="73" selection-end-line="159" selection-end-column="73" />
         </state>
       </provider>
     </entry>

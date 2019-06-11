@@ -24,3 +24,7 @@ Route::post('/admin-dashboard/histories/{id}', 'Api\HistoryController@deleteHist
 Route::get('/admin-dashboard/posts/{id}', 'Api\PostController@uploadVideo');
 Route::get('/admin-dashboard/profile/{id}', 'Api\UserController@UserProfile');
 Route::get('/admin-dashboard/user-profile/{id}', 'Api\UserController@UserProfile');
+
+
+//UserPanel Routes
+Route::get('/dashboard/profile/{id}', 'Api\UserController@UserProfile');
