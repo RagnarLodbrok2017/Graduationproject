@@ -6216,6 +6216,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['auth_user_id'],
@@ -6433,8 +6471,11 @@ __webpack_require__.r(__webpack_exports__);
         // this.newPost = response.data.newPost;
         console.log(_this4.comment);
         _this4.comment.subject = '';
-        _this4.comment.post_id = ''; // this.posts.push(this.newPost);
+        _this4.comment.post_id = '';
+
+        _this4.fetchPosts(); // this.posts.push(this.newPost);
         // $('.CloseAddUserForm').click();
+
       }).catch(function (error) {
         console.log(error);
       });
@@ -6484,39 +6525,67 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    checkLike: function checkLike(post) {
+    checkLikeLoop: function checkLikeLoop(post) {
       var _this9 = this;
 
+      var likedPost = false;
       post.like.map(function (like) {
         if (like.users_id === _this9.auth_user_id) {
+          // console.log("Yes");
+          // return true;
+          likedPost = true; // console.log(post.title);
+        }
+      }); // console.log(post.title +' ::::: '+ this.liked);
+
+      if (likedPost) {
+        // console.log(post.title);
+        return true;
+      } else {
+        return false;
+      } // this.liked = false;
+
+    },
+    testFunction: function testFunction(id) {
+      if (id === 0) {
+        console.log("Yes");
+        return true; // this.liked = true;
+      } else {
+        return false;
+      }
+    },
+    checkLike: function checkLike(post) {
+      var _this10 = this;
+
+      post.like.map(function (like) {
+        if (like.users_id === _this10.auth_user_id) {
           console.log("Yes");
-          _this9.liked = true;
+          _this10.liked = true;
         } else {
-          _this9.liked = false;
+          _this10.liked = false;
         } // return like.users_id === this.auth_user_id;
 
       });
     },
     destroyPost: function destroyPost(id, index) {
-      var _this10 = this;
+      var _this11 = this;
 
       axios.delete('/api/admin-dashboard/posts/' + id).then(function (response) {
-        _this10.newPost = response.data.post;
+        _this11.newPost = response.data.post;
 
-        _this10.posts.splice(index, 1);
+        _this11.posts.splice(index, 1);
       }).catch(function (error) {
         console.log(error);
       });
     },
     // To Show the post information in the modal
     EditPost: function EditPost(id) {
-      var _this11 = this;
+      var _this12 = this;
 
       axios.get('/api/admin-dashboard/posts/' + id + '/edit').then(function (response) {
-        _this11.post = response.data.post[0];
-        _this11.categoriesIds = response.data.categoriesIds;
-        _this11.user = _this11.post.user;
-        console.log(_this11.user);
+        _this12.post = response.data.post[0];
+        _this12.categoriesIds = response.data.categoriesIds;
+        _this12.user = _this12.post.user;
+        console.log(_this12.user);
       }).catch(function (error) {
         console.log(error);
       });
@@ -6525,13 +6594,13 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.post);
     },
     updatePost: function updatePost(id, post) {
-      var _this12 = this;
+      var _this13 = this;
 
       console.log(post);
       axios.patch('/api/admin-dashboard/posts/' + id, post).then(function (response) {
-        _this12.post = response.data.post;
+        _this13.post = response.data.post;
 
-        _this12.fetchPosts();
+        _this13.fetchPosts();
       }).catch(function (error) {
         console.log(error);
       });
@@ -6547,29 +6616,32 @@ __webpack_require__.r(__webpack_exports__);
     path2: function path2(image) {
       return __webpack_require__("./public/images/AdminDashboardImages/images/gallery sync recursive ^\\.\\/.*$")("./" + image);
     },
+    path3: function path3(image) {
+      return __webpack_require__("./public/images/AdminDashboardImages/images/users sync recursive ^\\.\\/.*$")("./" + image);
+    },
     onFileChange: function onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.image(files[0]);
     },
     imageChanged: function imageChanged(e) {
-      var _this13 = this;
-
-      var fileReader = new FileReader();
-      fileReader.readAsDataURL(e.target.files[0]);
-
-      fileReader.onload = function (e) {
-        _this13.image = e.target.result;
-      };
-    },
-    fileChanged: function fileChanged(e) {
       var _this14 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this14.post.video = e.target.result;
+        _this14.image = e.target.result;
+      };
+    },
+    fileChanged: function fileChanged(e) {
+      var _this15 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this15.post.video = e.target.result;
       };
     },
     onImageChange: function onImageChange(e) {
@@ -6744,12 +6816,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['post_id'],
   data: function data() {
     return {
       //DB
-      post: {},
+      post: {
+        user: {
+          name: {}
+        }
+      },
       category: {
         name: ''
       },
@@ -6780,6 +6857,9 @@ __webpack_require__.r(__webpack_exports__);
     path: function path(image) {
       return __webpack_require__("./public/uploads/posts/images sync recursive ^\\.\\/.*$")("./" + image);
     },
+    // pathVideos(video) {
+    //     return require('../../../../../public/uploads/posts/videos/' + video)
+    // },
     path2: function path2(image) {
       return __webpack_require__("./public/images/AdminDashboardImages/images/users sync recursive ^\\.\\/.*$")("./" + image);
     },
@@ -33869,7 +33949,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.delete-alert[data-v-23217920] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-23217920] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-23217920] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-23217920] {\n    padding: 20px 0;\n    float: right;\n}\ntable tr td span[data-v-23217920] {\n    text-transform: capitalize;\n}\n.btn-pure[data-v-23217920] {\n    background-color: transparent;\n    color: #000;\n    border: 0;\n}\ntable tbody tr td[data-v-23217920] {\n    line-height: 79px;\n}\n.modal-content[data-v-23217920] {\n    width: 81vw;\n    margin: 44px 214px;\n}\n.modal-dialog[data-v-23217920] {\n    margin: 0;\n}\n/*Like and comment Buttons */\n.like-content .btn-secondary[data-v-23217920],\n.like-content .btn-secondary2[data-v-23217920],\n.comment-content .btn-secondary[data-v-23217920]\n{\n     display: block;\n     text-align: center;\n     border-radius: 3px;\n     margin-top: 20px;\n     padding: 8px 15px;\n     font-size: 14px;\n     cursor: pointer;\n     border: none;\n     outline: none;\n     color: #ffffff;\n     text-decoration: none;\n     transition: 0.3s ease;\n}\n.like-content .btn-secondary[data-v-23217920]{\n    float: left;\n    /*background: #ed2553;*/\n    background: white;\n    color: #ed2553;\n    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);\n    border: 1px solid #ed2553;\n}\n.like-content .btn-secondary2[data-v-23217920]{\n    float: left;\n    background: #ed2553;\n    color: white;\n    border: none;\n}\n.comment-content .btn-secondary[data-v-23217920]{\n    float: right;\n    background: #1A5099;\n    box-shadow: 0 10px 20px -8px rgb(115, 77, 240);\n}\n.like-content .btn-secondary[data-v-23217920]:hover {\n    -webkit-transform: translateY(-3px);\n            transform: translateY(-3px);\n}\n.like-content .btn-secondary .fa[data-v-23217920] {\n    margin-right: 5px;\n}\n.animate-like[data-v-23217920] {\n    -webkit-animation-name: likeAnimation-data-v-23217920;\n            animation-name: likeAnimation-data-v-23217920;\n    -webkit-animation-iteration-count: 1;\n            animation-iteration-count: 1;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    -webkit-animation-duration: 0.65s;\n            animation-duration: 0.65s;\n}\n@-webkit-keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n@keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n.changeSizeOfCardToSmall[data-v-23217920]{\n    min-height: 263px;\n}\n.changeSizeOfCardToBig[data-v-23217920]{\n    min-height: 415px;\n}\n.changeSizeOfCardToBigger[data-v-23217920]{\n    min-height: 491px;\n}\n\n", ""]);
+exports.push([module.i, "\n.delete-alert[data-v-23217920] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-23217920] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-23217920] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-23217920] {\n    padding: 20px 0;\n    float: right;\n}\ntable tr td span[data-v-23217920] {\n    text-transform: capitalize;\n}\n.btn-pure[data-v-23217920] {\n    background-color: transparent;\n    color: #000;\n    border: 0;\n}\ntable tbody tr td[data-v-23217920] {\n    line-height: 79px;\n}\n.modal-content[data-v-23217920] {\n    width: 81vw;\n    margin: 44px 214px;\n}\n.modal-dialog[data-v-23217920] {\n    margin: 0;\n}\n/*Like and comment Buttons */\n.like-content .btn-secondary[data-v-23217920],\n.like-content .btn-secondary2[data-v-23217920],\n.comment-content .btn-secondary[data-v-23217920]\n{\n     display: block;\n     text-align: center;\n     border-radius: 3px;\n     margin-top: 20px;\n     padding: 8px 15px;\n     font-size: 14px;\n     cursor: pointer;\n     border: none;\n     outline: none;\n     color: #ffffff;\n     text-decoration: none;\n     transition: 0.3s ease;\n}\n.like-content .btn-secondary[data-v-23217920]{\n    float: left;\n    /*background: #ed2553;*/\n    background: white;\n    color: #ed2553;\n    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);\n    border: 1px solid #ed2553;\n}\n.like-content .btn-secondary2[data-v-23217920]{\n    float: left;\n    background: #ed2553;\n    color: white;\n    border: none;\n}\n.comment-content .btn-secondary[data-v-23217920]{\n    float: right;\n    background: #1A5099;\n    box-shadow: 0 10px 20px -8px rgb(115, 77, 240);\n}\n.like-content .btn-secondary[data-v-23217920]:hover {\n    -webkit-transform: translateY(-3px);\n            transform: translateY(-3px);\n}\n.like-content .btn-secondary .fa[data-v-23217920] {\n    margin-right: 5px;\n}\n.animate-like[data-v-23217920] {\n    -webkit-animation-name: likeAnimation-data-v-23217920;\n            animation-name: likeAnimation-data-v-23217920;\n    -webkit-animation-iteration-count: 1;\n            animation-iteration-count: 1;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    -webkit-animation-duration: 0.65s;\n            animation-duration: 0.65s;\n}\n@-webkit-keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n@keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n.changeSizeOfCardToSmall[data-v-23217920]{\n    min-height: 263px;\n}\n.changeSizeOfCardToBig[data-v-23217920]{\n    min-height: 415px;\n}\n.changeSizeOfCardToBigger[data-v-23217920]{\n    min-height: 491px;\n}\n.el-element-overlay .el-card-item .el-overlay[data-v-23217920]{\n    height: 500px;\n}\n.comments-dev[data-v-23217920]{\n    overflow: hidden;\n    padding: 0;\n    padding-top: 11px;\n}\n.comments-dev .media[data-v-23217920]{\n    float: left;\n}\n.comments-dev .media .media-heading[data-v-23217920]{\n    font-size : 14px;\n    padding-left: 13px;\n}\n.comments-dev .media .anchor-time[data-v-23217920]{\n    padding-left: 14px;\n    font-size :11px;\n}\n.el-element-overlay .Post[data-v-23217920]{\n    border-bottom: 20px solid #eef5f9;\n    border-radius: 2px;\n    margin: 30px 0 20px 0;\n}\n.modal-comment[data-v-23217920]{\n    width: 40vw;\n    margin: 72px 386px\n}\n", ""]);
 
 // exports
 
@@ -74434,7 +74514,7 @@ var render = function() {
                       "div",
                       { staticClass: "row el-element-overlay" },
                       _vm._l(_vm.caris, function(cari) {
-                        return _c("div", { staticClass: "col-lg-4 col-md-6" }, [
+                        return _c("div", { staticClass: "col-lg-6 col-md-6" }, [
                           _c("div", { staticClass: "card" }, [
                             _c("div", { staticClass: "el-card-item" }, [
                               _c(
@@ -74945,507 +75025,682 @@ var render = function() {
                       "div",
                       { staticClass: "row el-element-overlay" },
                       _vm._l(_vm.filteredPosts, function(post) {
-                        return _c("div", { staticClass: "col-lg-4 col-md-6" }, [
-                          _c("div", { staticClass: "card" }, [
-                            _c("div", { staticClass: "el-card-item" }, [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "el-card-avatar el-overlay-1 changeSizeOfCardToSmall"
-                                },
-                                [
-                                  _c("img", {
-                                    attrs: {
-                                      src: _vm.path(post.image),
-                                      alt: "user"
-                                    }
-                                  }),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "el-overlay" }, [
+                        return _c(
+                          "div",
+                          { staticClass: "col-lg-12 col-md-6 Post" },
+                          [
+                            _c("div", { staticClass: "card" }, [
+                              _c("div", { staticClass: "el-card-item" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "el-card-avatar el-overlay-1 changeSizeOfCardToSmall"
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: {
+                                        src: _vm.path(post.image),
+                                        alt: "user"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "el-overlay" }, [
+                                      _c(
+                                        "ul",
+                                        {
+                                          staticClass: "list-style-none el-info"
+                                        },
+                                        [
+                                          _c("li", { staticClass: "el-item" }, [
+                                            _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn default btn-outline image-popup-vertical-fit el-link",
+                                                attrs: {
+                                                  href:
+                                                    "./dashboard/post_profile/" +
+                                                    post.id
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "icon-magnifier"
+                                                })
+                                              ]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c("li", { staticClass: "el-item" }, [
+                                            _c(
+                                              "a",
+                                              {
+                                                staticClass:
+                                                  "btn default btn-outline el-link",
+                                                attrs: {
+                                                  href: "javascript:void(0);"
+                                                },
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.SavePost(post.id)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "icon-link"
+                                                })
+                                              ]
+                                            )
+                                          ])
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "card-body" },
+                                  [
                                     _c(
-                                      "ul",
+                                      "div",
                                       {
-                                        staticClass: "list-style-none el-info"
+                                        staticClass:
+                                          "d-flex no-block align-items-center m-b-15"
                                       },
                                       [
-                                        _c("li", { staticClass: "el-item" }, [
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass:
-                                                "btn default btn-outline image-popup-vertical-fit el-link",
-                                              attrs: {
-                                                href: _vm.path(post.image)
-                                              }
-                                            },
-                                            [
-                                              _c("i", {
-                                                staticClass: "icon-magnifier"
-                                              })
-                                            ]
-                                          )
+                                        _c("span", [
+                                          _c("i", {
+                                            staticClass: "ti-calendar"
+                                          }),
+                                          _vm._v(" " + _vm._s(post.created_at))
                                         ]),
                                         _vm._v(" "),
-                                        _c("li", { staticClass: "el-item" }, [
-                                          _c(
-                                            "a",
+                                        _c(
+                                          "div",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "b-tooltip",
+                                                rawName: "v-b-tooltip"
+                                              }
+                                            ],
+                                            staticClass: "ml-auto",
+                                            attrs: {
+                                              title: "Comments",
+                                              variant: "outline-success"
+                                            },
+                                            on: {
+                                              click: [
+                                                function($event) {
+                                                  _vm.modalShow = !_vm.modalShow
+                                                },
+                                                function($event) {
+                                                  return _vm.copyPost(post)
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "a",
+                                              {
+                                                staticClass: "link",
+                                                attrs: {
+                                                  href: "javascript:void(0)"
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "ti-comments"
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(
+                                                      post.comment.length
+                                                    ) +
+                                                    " Comments"
+                                                )
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("h3", { staticClass: "font-normal" }, [
+                                      _vm._v(_vm._s(post.title))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", [
+                                      _c(
+                                        "small",
+                                        { staticStyle: { color: "#CDBFFA" } },
+                                        [_vm._v(_vm._s(post.user.name))]
+                                      ),
+                                      _vm._v(
+                                        "  \n                                                    "
+                                      ),
+                                      post.user.type === "admin"
+                                        ? _c(
+                                            "small",
+                                            {
+                                              staticStyle: { color: "#F9B8C7" }
+                                            },
+                                            [_vm._v(_vm._s(post.user.type))]
+                                          )
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("p", { staticClass: "m-b-0 m-t-10" }, [
+                                      _vm._v(_vm._s(post.subtitle))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "like-content" }, [
+                                      !_vm.checkLikeLoop(post)
+                                        ? _c(
+                                            "button",
                                             {
                                               staticClass:
-                                                "btn default btn-outline el-link",
-                                              attrs: {
-                                                href: "javascript:void(0);"
-                                              },
+                                                "btn-secondary2 like-review",
                                               on: {
                                                 click: function($event) {
-                                                  return _vm.SavePost(post.id)
+                                                  return _vm.LikePost(post.id)
                                                 }
                                               }
                                             },
                                             [
                                               _c("i", {
-                                                staticClass: "icon-link"
-                                              })
-                                            ]
-                                          )
-                                        ])
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "card-body" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass:
-                                        "d-flex no-block align-items-center m-b-15"
-                                    },
-                                    [
-                                      _c("span", [
-                                        _c("i", { staticClass: "ti-calendar" }),
-                                        _vm._v(" " + _vm._s(post.created_at))
-                                      ]),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          directives: [
-                                            {
-                                              name: "b-tooltip",
-                                              rawName: "v-b-tooltip"
-                                            }
-                                          ],
-                                          staticClass: "ml-auto",
-                                          attrs: {
-                                            title: "Comments",
-                                            variant: "outline-success"
-                                          },
-                                          on: {
-                                            click: [
-                                              function($event) {
-                                                _vm.modalShow = !_vm.modalShow
-                                              },
-                                              function($event) {
-                                                return _vm.copyPost(post)
-                                              }
-                                            ]
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "a",
-                                            {
-                                              staticClass: "link",
-                                              attrs: {
-                                                href: "javascript:void(0)"
-                                              }
-                                            },
-                                            [
-                                              _c("i", {
-                                                staticClass: "ti-comments"
+                                                staticClass: "fa fa-heart",
+                                                attrs: { "aria-hidden": "true" }
                                               }),
-                                              _vm._v(
-                                                " " +
-                                                  _vm._s(post.comment.length) +
-                                                  " Comments"
-                                              )
+                                              _vm._v(" Like")
                                             ]
                                           )
+                                        : _vm._e()
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(post.like, function(like) {
+                                      return _c(
+                                        "div",
+                                        { staticClass: "like-content" },
+                                        [
+                                          like.users_id === _vm.auth_user_id
+                                            ? _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn-secondary like-review",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.DislikePost(
+                                                        like.id
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fa fa-heart",
+                                                    attrs: {
+                                                      "aria-hidden": "true"
+                                                    }
+                                                  }),
+                                                  _vm._v(" Dislike ")
+                                                ]
+                                              )
+                                            : _vm._e()
                                         ]
                                       )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("h3", { staticClass: "font-normal" }, [
-                                    _vm._v(_vm._s(post.title))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", [
+                                    }),
+                                    _vm._v(" "),
                                     _c(
-                                      "small",
-                                      { staticStyle: { color: "#CDBFFA" } },
-                                      [_vm._v(_vm._s(post.user.name))]
-                                    ),
-                                    _vm._v("   "),
-                                    _c(
-                                      "small",
-                                      { staticStyle: { color: "#F9B8C7" } },
-                                      [_vm._v(_vm._s(post.user.type))]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("p", { staticClass: "m-b-0 m-t-10" }, [
-                                    _vm._v(_vm._s(post.subtitle))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "like-content" }, [
-                                    !post.like.length
-                                      ? _c(
-                                          "button",
+                                      "div",
+                                      { staticClass: "comment-content" },
+                                      [
+                                        _c(
+                                          "b-button",
                                           {
                                             staticClass:
-                                              "btn-secondary2 like-review",
+                                              "btn-secondary like-review",
+                                            attrs: {
+                                              "data-toggle": "modal",
+                                              "data-target": "#createComment"
+                                            },
                                             on: {
                                               click: function($event) {
-                                                return _vm.LikePost(post.id)
+                                                return _vm.passId(post.id)
                                               }
                                             }
                                           },
                                           [
                                             _c("i", {
-                                              staticClass: "fa fa-heart",
+                                              staticClass: "fa fa-pen-square",
                                               attrs: { "aria-hidden": "true" }
                                             }),
-                                            _vm._v(" Like")
+                                            _vm._v(
+                                              " Comment\n                                                    "
+                                            )
                                           ]
-                                        )
-                                      : _vm._e()
-                                  ]),
-                                  _vm._v(" "),
-                                  _vm._l(post.like, function(like) {
-                                    return post.like.length
-                                      ? _c(
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
                                           "div",
-                                          { staticClass: "like-content" },
+                                          {
+                                            staticClass:
+                                              "modal fade animated bounceInDown",
+                                            attrs: {
+                                              id: "createComment",
+                                              tabindex: "-1",
+                                              role: "dialog",
+                                              "aria-labelledby":
+                                                "createModalLabel"
+                                            }
+                                          },
                                           [
-                                            !post.like.length
-                                              ? _c(
-                                                  "button",
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "modal-dialog",
+                                                attrs: { role: "document" }
+                                              },
+                                              [
+                                                _c(
+                                                  "div",
                                                   {
                                                     staticClass:
-                                                      "btn-secondary2 like-review",
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.LikePost(
-                                                          post.id
-                                                        )
-                                                      }
-                                                    }
+                                                      "modal-content modal-comment"
                                                   },
                                                   [
-                                                    _c("i", {
-                                                      staticClass:
-                                                        "fa fa-heart",
-                                                      attrs: {
-                                                        "aria-hidden": "true"
-                                                      }
-                                                    }),
-                                                    _vm._v(" Like")
+                                                    _c("form", [
+                                                      _vm._m(4, true),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "modal-body"
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "form",
+                                                            {
+                                                              attrs: {
+                                                                method: "POST"
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "form-body"
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "div",
+                                                                    {
+                                                                      staticClass:
+                                                                        "row"
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "div",
+                                                                        {
+                                                                          staticClass:
+                                                                            "col-12"
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "div",
+                                                                            {
+                                                                              staticClass:
+                                                                                "form-group"
+                                                                            },
+                                                                            [
+                                                                              _c(
+                                                                                "input",
+                                                                                {
+                                                                                  attrs: {
+                                                                                    type:
+                                                                                      "hidden",
+                                                                                    name:
+                                                                                      "id"
+                                                                                  },
+                                                                                  domProps: {
+                                                                                    value:
+                                                                                      post.id
+                                                                                  }
+                                                                                }
+                                                                              ),
+                                                                              _vm._v(
+                                                                                " "
+                                                                              ),
+                                                                              _c(
+                                                                                "b-form-input",
+                                                                                {
+                                                                                  staticClass:
+                                                                                    "form-control",
+                                                                                  attrs: {
+                                                                                    type:
+                                                                                      "text",
+                                                                                    placeholder:
+                                                                                      "Enter Your Comment",
+                                                                                    maxlength:
+                                                                                      "50"
+                                                                                  },
+                                                                                  model: {
+                                                                                    value:
+                                                                                      _vm
+                                                                                        .comment
+                                                                                        .subject,
+                                                                                    callback: function(
+                                                                                      $$v
+                                                                                    ) {
+                                                                                      _vm.$set(
+                                                                                        _vm.comment,
+                                                                                        "subject",
+                                                                                        $$v
+                                                                                      )
+                                                                                    },
+                                                                                    expression:
+                                                                                      "comment.subject"
+                                                                                  }
+                                                                                }
+                                                                              )
+                                                                            ],
+                                                                            1
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "form-actions m-t-40"
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "button",
+                                                                    {
+                                                                      directives: [
+                                                                        {
+                                                                          name:
+                                                                            "show",
+                                                                          rawName:
+                                                                            "v-show",
+                                                                          value:
+                                                                            _vm
+                                                                              .comment
+                                                                              .subject,
+                                                                          expression:
+                                                                            "comment.subject"
+                                                                        }
+                                                                      ],
+                                                                      staticClass:
+                                                                        "btn btn-success",
+                                                                      attrs: {
+                                                                        type:
+                                                                          "button",
+                                                                        "data-dismiss":
+                                                                          "modal"
+                                                                      },
+                                                                      on: {
+                                                                        click: function(
+                                                                          $event
+                                                                        ) {
+                                                                          return _vm.addComment(
+                                                                            _vm
+                                                                              .comment
+                                                                              .subject
+                                                                          )
+                                                                        }
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c("i", {
+                                                                        staticClass:
+                                                                          "fa fa-check"
+                                                                      }),
+                                                                      _vm._v(
+                                                                        " Add Comment\n                                                                                "
+                                                                      )
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "button",
+                                                                    {
+                                                                      staticClass:
+                                                                        "btn btn-dark",
+                                                                      attrs: {
+                                                                        type:
+                                                                          "button",
+                                                                        "data-dismiss":
+                                                                          "modal"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        "Cancel"
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          )
+                                                        ]
+                                                      )
+                                                    ])
                                                   ]
                                                 )
-                                              : _vm._e(),
-                                            _vm._v(" "),
-                                            like.users_id === _vm.auth_user_id
-                                              ? _c(
-                                                  "button",
-                                                  {
-                                                    staticClass:
-                                                      "btn-secondary like-review",
-                                                    on: {
-                                                      click: function($event) {
-                                                        return _vm.DislikePost(
-                                                          like.id
-                                                        )
-                                                      }
-                                                    }
-                                                  },
-                                                  [
-                                                    _c("i", {
-                                                      staticClass:
-                                                        "fa fa-heart",
-                                                      attrs: {
-                                                        "aria-hidden": "true"
-                                                      }
-                                                    }),
-                                                    _vm._v(" Dislike ")
-                                                  ]
-                                                )
-                                              : _vm._e()
+                                              ]
+                                            )
                                           ]
                                         )
-                                      : _vm._e()
-                                  }),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "comment-content" },
-                                    [
-                                      _c(
-                                        "b-button",
-                                        {
-                                          staticClass:
-                                            "btn-secondary like-review",
-                                          attrs: {
-                                            "data-toggle": "modal",
-                                            "data-target": "#createComment"
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.passId(post.id)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-pen-square",
-                                            attrs: { "aria-hidden": "true" }
-                                          }),
-                                          _vm._v(
-                                            " Comment\n                                                    "
-                                          )
-                                        ]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "modal fade",
-                                          attrs: {
-                                            id: "createComment",
-                                            tabindex: "-1",
-                                            role: "dialog",
-                                            "aria-labelledby":
-                                              "createModalLabel"
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "div",
-                                            {
-                                              staticClass: "modal-dialog",
-                                              attrs: { role: "document" }
-                                            },
-                                            [
-                                              _c(
-                                                "div",
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "comments-dev col-12" },
+                                      [
+                                        _c(
+                                          "ul",
+                                          { staticClass: "list-group" },
+                                          [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "list-group-item list-group-item-action active",
+                                                attrs: { type: "button" }
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                                            Comments:\n                                                        "
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _vm._l(post.comment, function(
+                                              comment
+                                            ) {
+                                              return _c(
+                                                "li",
                                                 {
-                                                  staticClass: "modal-content"
+                                                  staticClass:
+                                                    "list-group-item list-group-item-action",
+                                                  attrs: { href: "#" }
                                                 },
                                                 [
-                                                  _c("form", [
-                                                    _vm._m(4, true),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "div",
-                                                      {
+                                                  _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "post-footer-comment-wrapper"
+                                                    },
+                                                    [
+                                                      _c("div", {
                                                         staticClass:
-                                                          "modal-body"
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "form",
-                                                          {
-                                                            attrs: {
-                                                              method: "POST"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "form-body"
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "div",
-                                                                  {
-                                                                    staticClass:
-                                                                      "row"
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "div",
-                                                                      {
-                                                                        staticClass:
-                                                                          "col-12"
-                                                                      },
-                                                                      [
-                                                                        _c(
-                                                                          "div",
-                                                                          {
-                                                                            staticClass:
-                                                                              "form-group"
-                                                                          },
-                                                                          [
-                                                                            _c(
-                                                                              "input",
-                                                                              {
-                                                                                attrs: {
-                                                                                  type:
-                                                                                    "hidden",
-                                                                                  name:
-                                                                                    "id"
-                                                                                },
-                                                                                domProps: {
-                                                                                  value:
-                                                                                    post.id
-                                                                                }
-                                                                              }
-                                                                            ),
-                                                                            _vm._v(
-                                                                              " "
-                                                                            ),
-                                                                            _c(
-                                                                              "b-form-input",
-                                                                              {
-                                                                                staticClass:
-                                                                                  "form-control",
-                                                                                attrs: {
-                                                                                  type:
-                                                                                    "text",
-                                                                                  placeholder:
-                                                                                    "Enter Your Comment",
-                                                                                  maxlength:
-                                                                                    "50"
-                                                                                },
-                                                                                model: {
-                                                                                  value:
-                                                                                    _vm
-                                                                                      .comment
-                                                                                      .subject,
-                                                                                  callback: function(
-                                                                                    $$v
-                                                                                  ) {
-                                                                                    _vm.$set(
-                                                                                      _vm.comment,
-                                                                                      "subject",
-                                                                                      $$v
-                                                                                    )
-                                                                                  },
-                                                                                  expression:
-                                                                                    "comment.subject"
-                                                                                }
-                                                                              }
-                                                                            )
-                                                                          ],
-                                                                          1
-                                                                        )
-                                                                      ]
-                                                                    )
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "form-actions m-t-40"
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    directives: [
-                                                                      {
-                                                                        name:
-                                                                          "show",
-                                                                        rawName:
-                                                                          "v-show",
-                                                                        value:
-                                                                          _vm
-                                                                            .comment
-                                                                            .subject,
-                                                                        expression:
-                                                                          "comment.subject"
+                                                          "comment-form"
+                                                      }),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "div",
+                                                        {
+                                                          staticClass: "comment"
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "div",
+                                                            {
+                                                              staticClass:
+                                                                "media"
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "media-left"
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "a",
+                                                                    {
+                                                                      attrs: {
+                                                                        href:
+                                                                          "#"
                                                                       }
-                                                                    ],
-                                                                    staticClass:
-                                                                      "btn btn-success",
-                                                                    attrs: {
-                                                                      type:
-                                                                        "button"
                                                                     },
-                                                                    on: {
-                                                                      click: function(
-                                                                        $event
-                                                                      ) {
-                                                                        return _vm.addComment(
-                                                                          _vm
-                                                                            .comment
-                                                                            .subject
-                                                                        )
-                                                                      }
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _c("i", {
+                                                                    [
+                                                                      _c(
+                                                                        "img",
+                                                                        {
+                                                                          staticClass:
+                                                                            "media-object photo-profile img-circle",
+                                                                          attrs: {
+                                                                            src: _vm.path3(
+                                                                              comment
+                                                                                .user
+                                                                                .photo
+                                                                            ),
+                                                                            width:
+                                                                              "32",
+                                                                            height:
+                                                                              "32",
+                                                                            alt:
+                                                                              "..."
+                                                                          }
+                                                                        }
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ]
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "div",
+                                                                {
+                                                                  staticClass:
+                                                                    "media-body"
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "a",
+                                                                    {
                                                                       staticClass:
-                                                                        "fa fa-check"
-                                                                    }),
-                                                                    _vm._v(
-                                                                      " Add Comment\n                                                                                "
-                                                                    )
-                                                                  ]
-                                                                ),
-                                                                _vm._v(" "),
-                                                                _c(
-                                                                  "button",
-                                                                  {
-                                                                    staticClass:
-                                                                      "btn btn-dark",
-                                                                    attrs: {
-                                                                      type:
-                                                                        "button",
-                                                                      "data-dismiss":
-                                                                        "modal"
-                                                                    }
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      "Cancel"
-                                                                    )
-                                                                  ]
-                                                                )
-                                                              ]
-                                                            )
-                                                          ]
-                                                        )
-                                                      ]
-                                                    )
-                                                  ])
+                                                                        "anchor-username",
+                                                                      attrs: {
+                                                                        href:
+                                                                          "#"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "h4",
+                                                                        {
+                                                                          staticClass:
+                                                                            "media-heading"
+                                                                        },
+                                                                        [
+                                                                          _vm._v(
+                                                                            _vm._s(
+                                                                              comment
+                                                                                .user
+                                                                                .name
+                                                                            )
+                                                                          )
+                                                                        ]
+                                                                      )
+                                                                    ]
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "a",
+                                                                    {
+                                                                      staticClass:
+                                                                        "anchor-time",
+                                                                      attrs: {
+                                                                        href:
+                                                                          "#"
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        _vm._s(
+                                                                          comment.created_at
+                                                                        )
+                                                                      )
+                                                                    ]
+                                                                  )
+                                                                ]
+                                                              )
+                                                            ]
+                                                          )
+                                                        ]
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "p",
+                                                    {
+                                                      staticStyle: {
+                                                        float: "right"
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(comment.subject)
+                                                      )
+                                                    ]
+                                                  )
                                                 ]
                                               )
-                                            ]
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                2
-                              )
+                                            })
+                                          ],
+                                          2
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  2
+                                )
+                              ])
                             ])
-                          ])
-                        ])
+                          ]
+                        )
                       }),
                       0
                     )
@@ -77467,7 +77722,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "page-breadcrumb" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-5 align-self-center" }, [
-          _c("h4", { staticClass: "page-title" }, [_vm._v("Product Details")]),
+          _c("h4", { staticClass: "page-title" }, [_vm._v("Post Details")]),
           _vm._v(" "),
           _c("div", { staticClass: "d-flex align-items-center" }, [
             _c("nav", { attrs: { "aria-label": "breadcrumb" } }, [
@@ -95129,6 +95384,7 @@ var map = {
 	"./6.jpg": "./public/images/AdminDashboardImages/images/users/6.jpg",
 	"./7.jpg": "./public/images/AdminDashboardImages/images/users/7.jpg",
 	"./8.jpg": "./public/images/AdminDashboardImages/images/users/8.jpg",
+	"./avatar.jpg": "./public/images/AdminDashboardImages/images/users/avatar.jpg",
 	"./d1.jpg": "./public/images/AdminDashboardImages/images/users/d1.jpg",
 	"./d2.jpg": "./public/images/AdminDashboardImages/images/users/d2.jpg",
 	"./d3.jpg": "./public/images/AdminDashboardImages/images/users/d3.jpg",
@@ -95290,6 +95546,17 @@ module.exports = "/images/8.jpg?a606f50af639878203cd69cebaa622c8";
 
 /***/ }),
 
+/***/ "./public/images/AdminDashboardImages/images/users/avatar.jpg":
+/*!********************************************************************!*\
+  !*** ./public/images/AdminDashboardImages/images/users/avatar.jpg ***!
+  \********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/avatar.jpg?f33d9178c143ca4dace3dc4e7b8bd49e";
+
+/***/ }),
+
 /***/ "./public/images/AdminDashboardImages/images/users/d1.jpg":
 /*!****************************************************************!*\
   !*** ./public/images/AdminDashboardImages/images/users/d1.jpg ***!
@@ -95359,7 +95626,8 @@ var map = {
 	"./Recycling bomb.png": "./public/uploads/posts/images/Recycling bomb.png",
 	"./chair.jpg": "./public/uploads/posts/images/chair.jpg",
 	"./chair2.jpg": "./public/uploads/posts/images/chair2.jpg",
-	"./dwqqqqqqqqqqqqqq.jpg": "./public/uploads/posts/images/dwqqqqqqqqqqqqqq.jpg"
+	"./dwqqqqqqqqqqqqqq.jpg": "./public/uploads/posts/images/dwqqqqqqqqqqqqqq.jpg",
+	"./recycle the metal.jpg": "./public/uploads/posts/images/recycle the metal.jpg"
 };
 
 
@@ -95458,6 +95726,17 @@ module.exports = "/images/chair2.jpg?3d4269f8830ae730c6615ef498b40adb";
 /***/ (function(module, exports) {
 
 module.exports = "/images/dwqqqqqqqqqqqqqq.jpg?dccfb82743c9afcf42c2e947e34ccb45";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/recycle the metal.jpg":
+/*!***********************************************************!*\
+  !*** ./public/uploads/posts/images/recycle the metal.jpg ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/recycle the metal.jpg?6d995aeb2f9efe22e580737777887df5";
 
 /***/ }),
 

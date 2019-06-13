@@ -72,7 +72,7 @@
                                 </div>
                             </div>
                             <div class="row el-element-overlay" v-if="showSearch === true">
-                                <div class="col-lg-4 col-md-6"  v-for="cari in caris">
+                                <div class="col-lg-6 col-md-6"  v-for="cari in caris">
                                     <div class="card">
                                         <div class="el-card-item">
                                             <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(cari.image)" alt="user" />
@@ -164,13 +164,13 @@
                                 </div>
                             </div>
                             <div class="row el-element-overlay" v-if="showSearch === false">
-                                <div class="col-lg-4 col-md-6"  v-for="post in filteredPosts">
+                                <div class="col-lg-12 col-md-6 Post"  v-for="post in filteredPosts" style>
                                     <div class="card">
                                         <div class="el-card-item">
                                             <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(post.image)" alt="user" />
                                                 <div class="el-overlay">
                                                     <ul class="list-style-none el-info">
-                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="path(post.image)"><i class="icon-magnifier"></i></a></li>
+                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="'./dashboard/post_profile/'+post.id"><i class="icon-magnifier"></i></a></li>
                                                         <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="SavePost(post.id)"><i class="icon-link"></i></a></li>
                                                     </ul>
                                                 </div>
@@ -191,31 +191,35 @@
 <!--                                                    </b-modal>-->
                                                 </div>
                                                 <h3 class="font-normal">{{ post.title }}</h3>
-                                                <p><small style="color: #CDBFFA">{{post.user.name}}</small> &nbsp; <small style="color: #F9B8C7">{{post.user.type}}</small></p>
+                                                <p><small style="color: #CDBFFA">{{post.user.name}}</small> &nbsp;
+                                                    <small style="color: #F9B8C7" v-if="post.user.type === 'admin'">{{post.user.type}}</small></p>
                                                 <p class="m-b-0 m-t-10">{{ post.subtitle}}</p>
 <!--                                                <button class="btn btn-primary btn-rounded waves-effect waves-light m-t-20">Like</button>-->
 <!--                                                <button type="button" class="js-like-button like-btn">♥︎&nbsp; Like</button>-->
 <!--                                                <p v-if="checkLike(post)"></p>-->
                                                 <div class="like-content">
-                                                    <button v-if="!post.like.length" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
+<!--                                                    <button v-if="!post.like.length" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">-->
+<!--                                                    <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
+                                                <button v-if="!checkLikeLoop(post)" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
                                                 </div>
-                                                <div class="like-content" v-for="like in post.like" v-if="post.like.length">
-                                                    <button v-if="!post.like.length" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
-                                                        <button v-if="like.users_id === auth_user_id" v-on:click="DislikePost(like.id)" class="btn-secondary like-review">
+                                                <div class="like-content" v-for="like in post.like">
+<!--                                                    <button v-if="post.like.length && like.users_id !== auth_user_id" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">-->
+<!--                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
+                                                    <button v-if="like.users_id === auth_user_id" v-on:click="DislikePost(like.id)" class="btn-secondary like-review">
                                                         <i class="fa fa-heart" aria-hidden="true"></i> Dislike </button>
 <!--                                                        <button v-if="!(like.users_id === auth_user_id)" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">-->
 <!--                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
                                                 </div>
+
                                                 <div class="comment-content">
                                                     <b-button class="btn-secondary like-review" data-toggle="modal"
                                                               data-target="#createComment" v-on:click="passId(post.id)">
                                                         <i class="fa fa-pen-square" aria-hidden="true"></i> Comment
                                                     </b-button>
-                                                    <div class="modal fade" id="createComment" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+                                                    <div class="modal fade animated bounceInDown" id="createComment" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
                                                         <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
+                                                            <div class="modal-content modal-comment">
                                                                 <form>
                                                                     <div class="modal-header">
                                                                         <h5 class="modal-title"><i class="ti-marker-alt m-r-10"></i>
@@ -237,7 +241,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-actions m-t-40">
-                                                                                <button type="button" class="btn btn-success"  v-on:click="addComment(comment.subject)"  v-show="comment.subject">
+                                                                                <button type="button" class="btn btn-success" data-dismiss="modal" v-on:click="addComment(comment.subject)"  v-show="comment.subject">
                                                                                     <i class="fa fa-check"></i> Add Comment
                                                                                 </button>
                                                                                 <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
@@ -248,6 +252,40 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+
+                                                <div class="comments-dev col-12">
+                                                    <ul class="list-group">
+                                                        <button type="button" class="list-group-item list-group-item-action active">
+                                                            Comments:
+                                                        </button>
+                                                        <li href="#" class="list-group-item list-group-item-action" v-for="comment in post.comment">
+                                                            <div class="post-footer-comment-wrapper">
+                                                                <div class="comment-form">
+
+                                                                </div>
+                                                                <div class="comment">
+                                                                    <div class="media">
+                                                                        <div class="media-left">
+                                                                            <a href="#">
+                                                                                <img class="media-object photo-profile img-circle" :src="path3(comment.user.photo)" width="32" height="32" alt="...">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <a href="#" class="anchor-username"><h4 class="media-heading">{{comment.user.name}}</h4></a>
+                                                                            <a href="#" class="anchor-time">{{comment.created_at}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p style="float:right">{{comment.subject}}</p>
+                                                        </li>
+                                                    </ul>
+<!--                                                    <div class="comments" v-for="comment in post.comment">-->
+<!--                                                    <p><small style="color: #CDBFFA; float: left; font-size:14px">{{ comment.user.name }}</small> &nbsp;-->
+<!--                                                        <small style="color: #F9B8C7; float: right">{{ comment.subject}}</small>-->
+<!--                                                    </p>-->
+<!--                                                    </div>-->
                                                 </div>
 <!--                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20" style="float: right">Comment</button>-->
                                             </div>
@@ -917,7 +955,7 @@
 
                 const config = {
                     headers: { 'content-type': 'multipart/form-data' }
-                }
+                };
 
                 let formData = new FormData();
                 formData.append('image', this.image);
@@ -962,6 +1000,7 @@
                     console.log(this.comment);
                     this.comment.subject = '';
                     this.comment.post_id = '';
+                    this.fetchPosts();
                     // this.posts.push(this.newPost);
                     // $('.CloseAddUserForm').click();
                 }).catch(error => {
@@ -1005,6 +1044,36 @@
                 }).catch(error => {
                     console.log(error);
                 })
+            },
+            checkLikeLoop: function(post){
+                let likedPost= false;
+                post.like.map((like) => {
+                    if (like.users_id === this.auth_user_id){
+                        // console.log("Yes");
+                        // return true;
+                        likedPost= true;
+                        // console.log(post.title);
+                    }
+                });
+                // console.log(post.title +' ::::: '+ this.liked);
+                if (likedPost)
+                {
+                    // console.log(post.title);
+                    return true;
+                } else{
+                    return false;
+                }
+                // this.liked = false;
+            },
+            testFunction: function(id){
+                    if (id === 0){
+                        console.log("Yes");
+                        return true;
+                        // this.liked = true;
+                    }
+                    else {
+                        return false;
+                    }
             },
             checkLike: function(post){
                 post.like.map((like) => {
@@ -1059,6 +1128,9 @@
             },
             path2(image) {
                 return require('../../../../public/images/AdminDashboardImages/images/gallery/' + image)
+            },
+            path3(image) {
+                return require('../../../../public/images/AdminDashboardImages/images/users/' + image)
             },
             onFileChange(e) {
                 var files = e.target.files || e.dataTransfer.files;
@@ -1208,5 +1280,32 @@
     .changeSizeOfCardToBigger{
         min-height: 491px;
     }
-
+    .el-element-overlay .el-card-item .el-overlay{
+        height: 500px;
+    }
+    .comments-dev{
+        overflow: hidden;
+        padding: 0;
+        padding-top: 11px;
+    }
+    .comments-dev .media{
+        float: left;
+    }
+    .comments-dev .media .media-heading{
+        font-size : 14px;
+        padding-left: 13px;
+    }
+    .comments-dev .media .anchor-time{
+        padding-left: 14px;
+        font-size :11px;
+    }
+    .el-element-overlay .Post{
+        border-bottom: 20px solid #eef5f9;
+        border-radius: 2px;
+        margin: 30px 0 20px 0;
+    }
+    .modal-comment{
+        width: 40vw;
+        margin: 72px 386px
+    }
 </style>

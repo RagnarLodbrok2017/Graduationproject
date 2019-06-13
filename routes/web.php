@@ -23,7 +23,7 @@ Route::get('/', function () {
 // User Auth Routes
 Route::get('login', [ 'as' => 'login', 'uses' => 'Auth\UserAuthController@loginPage']);
 Route::post('login', [ 'as' => 'login', 'uses' => 'Auth\UserAuthController@login']);
-Route::get('register', [ 'as' => 'register', 'uses' => 'Auth\UserAuthController@loginPage']);
+Route::get('register', [ 'as' => 'register', 'uses' => 'Auth\UserAuthController@registerPage']);
 Route::post('register', [ 'as' => 'register', 'uses' => 'Auth\UserAuthController@register']);
 Route::post('logout', [ 'as' => 'logout', 'uses' => 'Auth\UserAuthController@logout']);
 // Auth User Panel

@@ -550,7 +550,8 @@ html[dir=rtl] .dz-hidden-input {
     overflow: hidden;
     position: relative;
     text-align: center;
-    cursor: default
+    cursor: default;
+    height: 500px;
 }
 
 .el-element-overlay .el-card-item .el-overlay-1 img {

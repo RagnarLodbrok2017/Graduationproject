@@ -27,7 +27,7 @@ class HomeUserController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->with('user', 'category', 'like', 'comment')->get();
+        $posts = Post::orderBy('created_at', 'desc')->with('user', 'category', 'like', 'comment.user')->get();
 //        dd($posts);
         $categories = Category::all();
         return response()->json(['posts' => $posts, 'categories' => $categories]);

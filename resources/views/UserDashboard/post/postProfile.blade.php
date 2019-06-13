@@ -1,6 +1,6 @@
-<template>
-    <!-- Page wrapper  -->
-    <!-- ============================================================== -->
+@extends('layouts.UserDashboardFunctionLayout')
+
+@section('content')
     <div class="page">
         <!-- ============================================================== -->
         <!-- Bread crumb and right sidebar toggle -->
@@ -104,9 +104,9 @@
                                             <tr v-for="(comment ,index) in post.comment">
                                                 <td width="390">
                                                     <a class="nav-link text-muted waves-effect waves-dark pro-pic" style="padding-top: 15px; line-height: 0px;float: left"><img
-                                                        :src="path2('1.jpg')" alt="user"
-                                                        class="rounded-circle"
-                                                        width="31"></a>
+                                                            :src="path2('1.jpg')" alt="user"
+                                                            class="rounded-circle"
+                                                            width="31"></a>
                                                     {{comment.user.name}}
                                                 </td>
                                                 <td style="margin-top:20px; "> {{comment.subject}} </td>
@@ -140,98 +140,10 @@
         <!-- End footer -->
         <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Page wrapper  -->
-    <!-- ============================================================== -->
-</template>
 
+@endsection
 <script>
-    export default {
-        props: ['post_id'],
-        data() {
-            return {
-                //DB
-                post: {
-                    user:{
-                        name:{}
-                    }
-                },
-                category: {
-                    name:''
-                },
-                user: {
-                    name:''
-                },
-                id: '',
-            }
-        },
-        mounted: function () {
-            console.log('Component fired.');
-        },
-        computed: {
-        },
-
-        created: function () {
-            this.getPost();
-        },
-        methods: {
-            getPost: function () {
-                this.id = this.post_id;
-                console.log(this.id);
-                axios.get('../../api/dashboard/post_profile/'+this.id).then(response => {
-                    this.post = response.data.post;
-                    console.log(this.post);
-                });
-            },
-            path(image) {
-                return require('../../../../../public/uploads/posts/images/' + image)
-            },
-            // pathVideos(video) {
-            //     return require('../../../../../public/uploads/posts/videos/' + video)
-            // },
-            path2(image) {
-                return require('../../../../../public/images/AdminDashboardImages/images/users/' + image)
-            },
-            onFiltered(filteredItems) {
-                // Trigger pagination to update the number of buttons/pages due to filtering
-                this.totalRows = filteredItems.length;
-                this.currentPage = 1;
-            }
-        },
-    }
 </script>
-<style scoped>
-    .delete-alert {
-        /*background-color: red;*/
-        position: absolute;
-        z-index: 1;
-        top: 20%;
-        left: 25%;
-    }
+<script>
 
-    .alert-head {
-        padding-bottom: 20px;
-        padding-top: 10px;
-        border-bottom: 1px solid #cccccc;
-    }
-
-    .alert-body {
-        padding: 20px 0 10px 0;
-        border-bottom: 1px solid #cccccc;
-    }
-
-    .alert-footer {
-        padding: 20px 0;
-        float: right;
-    }
-
-    table tr td span {
-        text-transform: capitalize;
-    }
-
-    .btn-pure {
-        background-color: transparent;
-        color: #000;
-        border: 0;
-    }
-</style>
+</script>
