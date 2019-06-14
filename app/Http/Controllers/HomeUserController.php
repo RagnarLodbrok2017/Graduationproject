@@ -149,6 +149,28 @@ class HomeUserController extends Controller
         }
     }
 
+    public function deleteComment($id)
+    {
+        $comment = Comment::findOrFail($id);
+
+        if ($comment)
+        {
+            $post = Post::findOrFail($comment->post_id);
+            //        Add History
+            $sessions = Sessions::first();
+            $user = Auth::user();
+            $history = new History();
+            $history->action = 'Delete';
+            $history->about = 'You Deleted a comment on a Post';
+            $history->users_id = $user->id;
+            $history->user_name = $user->name;
+            $history->post_title = $post->title;
+            $comment->delete();
+            $history->save();
+            return response()->json(['comment' => $comment]);
+        }
+    }
+
     public function create()
     {
         //
@@ -257,24 +279,21 @@ class HomeUserController extends Controller
         else {
             $post->has_video = 0;
         }
-//        if ($request->hasFile('video')) {
-//            $UploadedVideo = Input::file('video');
-//            $videoName = $request->title . '.' . $UploadedVideo->getClientOriginalExtension();
-//            $UploadedVideo->move(public_path('uploads/posts/videos'), $videoName);
-//            $post->video = $videoName;
-//            $post->video_url = '../../../../../public/uploads/posts/videos/';
-//            $post->has_video = 0;
-//        } else {
-//            $post->has_video = 0;
-//        }
         if ($request->status){
             $post->status = $request->status;
         }
         else{
             $post->status = 1;
         }
-        $post->meta_keyword = $request->meta_keyword;
-        $post->meta_title = $request->meta_title;
+        if ($request->meta_title){
+            $post->meta_title = $request->meta_title;
+            $post->meta_keyword = $request->meta_keyword;
+        }
+        else{
+            $post->meta_title = $request->title;
+            $post->meta_keyword = $request->title;
+        }
+
         $post->type = $request->type;
         $post->color = $request->color;
         $post->users_id = Auth::user()->id;
@@ -300,7 +319,7 @@ class HomeUserController extends Controller
         $history->user_name = $user->name;
         $history->save();
 //        return redirect('../dashboard');
-        return Redirect::back()->withErrors(['msg', 'The Message']);
+        return Redirect::intended('../../dashboard')->with(['msg', 'The Message']);
 
 //        return response()->json(['newPost' => $post]);
     }

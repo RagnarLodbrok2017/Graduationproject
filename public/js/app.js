@@ -6254,6 +6254,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['auth_user_id'],
@@ -6515,22 +6528,32 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    SavePost: function SavePost(id) {
+    DeleteComment: function DeleteComment(id) {
       var _this8 = this;
 
-      axios.post('/dashboard/posts/favourite/' + id).then(function (response) {
+      axios.post('/dashboard/posts/deletecomment/' + id).then(function (response) {
         // this.newPost = response.data.post;
         _this8.fetchPosts();
       }).catch(function (error) {
         console.log(error);
       });
     },
-    checkLikeLoop: function checkLikeLoop(post) {
+    SavePost: function SavePost(id) {
       var _this9 = this;
+
+      axios.post('/dashboard/posts/favourite/' + id).then(function (response) {
+        // this.newPost = response.data.post;
+        _this9.fetchPosts();
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    checkLikeLoop: function checkLikeLoop(post) {
+      var _this10 = this;
 
       var likedPost = false;
       post.like.map(function (like) {
-        if (like.users_id === _this9.auth_user_id) {
+        if (like.users_id === _this10.auth_user_id) {
           // console.log("Yes");
           // return true;
           likedPost = true; // console.log(post.title);
@@ -6545,47 +6568,39 @@ __webpack_require__.r(__webpack_exports__);
       } // this.liked = false;
 
     },
-    testFunction: function testFunction(id) {
-      if (id === 0) {
-        console.log("Yes");
-        return true; // this.liked = true;
-      } else {
-        return false;
-      }
-    },
     checkLike: function checkLike(post) {
-      var _this10 = this;
+      var _this11 = this;
 
       post.like.map(function (like) {
-        if (like.users_id === _this10.auth_user_id) {
+        if (like.users_id === _this11.auth_user_id) {
           console.log("Yes");
-          _this10.liked = true;
+          _this11.liked = true;
         } else {
-          _this10.liked = false;
+          _this11.liked = false;
         } // return like.users_id === this.auth_user_id;
 
       });
     },
     destroyPost: function destroyPost(id, index) {
-      var _this11 = this;
+      var _this12 = this;
 
       axios.delete('/api/admin-dashboard/posts/' + id).then(function (response) {
-        _this11.newPost = response.data.post;
+        _this12.newPost = response.data.post;
 
-        _this11.posts.splice(index, 1);
+        _this12.posts.splice(index, 1);
       }).catch(function (error) {
         console.log(error);
       });
     },
     // To Show the post information in the modal
     EditPost: function EditPost(id) {
-      var _this12 = this;
+      var _this13 = this;
 
       axios.get('/api/admin-dashboard/posts/' + id + '/edit').then(function (response) {
-        _this12.post = response.data.post[0];
-        _this12.categoriesIds = response.data.categoriesIds;
-        _this12.user = _this12.post.user;
-        console.log(_this12.user);
+        _this13.post = response.data.post[0];
+        _this13.categoriesIds = response.data.categoriesIds;
+        _this13.user = _this13.post.user;
+        console.log(_this13.user);
       }).catch(function (error) {
         console.log(error);
       });
@@ -6594,13 +6609,13 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.post);
     },
     updatePost: function updatePost(id, post) {
-      var _this13 = this;
+      var _this14 = this;
 
       console.log(post);
       axios.patch('/api/admin-dashboard/posts/' + id, post).then(function (response) {
-        _this13.post = response.data.post;
+        _this14.post = response.data.post;
 
-        _this13.fetchPosts();
+        _this14.fetchPosts();
       }).catch(function (error) {
         console.log(error);
       });
@@ -6625,23 +6640,23 @@ __webpack_require__.r(__webpack_exports__);
       this.image(files[0]);
     },
     imageChanged: function imageChanged(e) {
-      var _this14 = this;
-
-      var fileReader = new FileReader();
-      fileReader.readAsDataURL(e.target.files[0]);
-
-      fileReader.onload = function (e) {
-        _this14.image = e.target.result;
-      };
-    },
-    fileChanged: function fileChanged(e) {
       var _this15 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this15.post.video = e.target.result;
+        _this15.image = e.target.result;
+      };
+    },
+    fileChanged: function fileChanged(e) {
+      var _this16 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this16.post.video = e.target.result;
       };
     },
     onImageChange: function onImageChange(e) {
@@ -7170,6 +7185,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['User', 'Posts'],
   data: function data() {
@@ -7208,23 +7224,34 @@ __webpack_require__.r(__webpack_exports__);
         console.log(_this.user);
       });
     },
-    destroyUser: function destroyUser(id, index) {
+    DeletePost: function DeletePost(id, index) {
       var _this2 = this;
 
-      axios.delete('/api/admin-dashboard/users/' + id).then(function (response) {
-        _this2.newUser = response.data.user;
+      axios.delete('/api/admin-dashboard/posts/' + id).then(function (response) {
+        _this2.newPost = response.data.post;
 
-        _this2.users.splice(index, 1);
+        _this2.posts.splice(index, 1);
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    destroyUser: function destroyUser(id, index) {
+      var _this3 = this;
+
+      axios.delete('/api/admin-dashboard/users/' + id).then(function (response) {
+        _this3.newUser = response.data.user;
+
+        _this3.users.splice(index, 1);
       }).catch(function (error) {
         console.log(error);
       });
     },
     // To Show the user information in the modal
     EditUser: function EditUser(id) {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get('/api/admin-dashboard/users/' + id + '/edit').then(function (response) {
-        _this3.user = response.data.user;
+        _this4.user = response.data.user;
       }).catch(function (error) {
         console.log(error);
       });
@@ -7233,11 +7260,11 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.user);
     },
     updateUser: function updateUser(id, user) {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.patch('/api/admin-dashboard/users/' + id, user).then(function (response) {
-        _this4.user = response.data.user;
-        console.log(_this4.user);
+        _this5.user = response.data.user;
+        console.log(_this5.user);
       }).catch(function (error) {
         console.log(error);
       });
@@ -33949,7 +33976,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.delete-alert[data-v-23217920] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-23217920] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-23217920] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-23217920] {\n    padding: 20px 0;\n    float: right;\n}\ntable tr td span[data-v-23217920] {\n    text-transform: capitalize;\n}\n.btn-pure[data-v-23217920] {\n    background-color: transparent;\n    color: #000;\n    border: 0;\n}\ntable tbody tr td[data-v-23217920] {\n    line-height: 79px;\n}\n.modal-content[data-v-23217920] {\n    width: 81vw;\n    margin: 44px 214px;\n}\n.modal-dialog[data-v-23217920] {\n    margin: 0;\n}\n/*Like and comment Buttons */\n.like-content .btn-secondary[data-v-23217920],\n.like-content .btn-secondary2[data-v-23217920],\n.comment-content .btn-secondary[data-v-23217920]\n{\n     display: block;\n     text-align: center;\n     border-radius: 3px;\n     margin-top: 20px;\n     padding: 8px 15px;\n     font-size: 14px;\n     cursor: pointer;\n     border: none;\n     outline: none;\n     color: #ffffff;\n     text-decoration: none;\n     transition: 0.3s ease;\n}\n.like-content .btn-secondary[data-v-23217920]{\n    float: left;\n    /*background: #ed2553;*/\n    background: white;\n    color: #ed2553;\n    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);\n    border: 1px solid #ed2553;\n}\n.like-content .btn-secondary2[data-v-23217920]{\n    float: left;\n    background: #ed2553;\n    color: white;\n    border: none;\n}\n.comment-content .btn-secondary[data-v-23217920]{\n    float: right;\n    background: #1A5099;\n    box-shadow: 0 10px 20px -8px rgb(115, 77, 240);\n}\n.like-content .btn-secondary[data-v-23217920]:hover {\n    -webkit-transform: translateY(-3px);\n            transform: translateY(-3px);\n}\n.like-content .btn-secondary .fa[data-v-23217920] {\n    margin-right: 5px;\n}\n.animate-like[data-v-23217920] {\n    -webkit-animation-name: likeAnimation-data-v-23217920;\n            animation-name: likeAnimation-data-v-23217920;\n    -webkit-animation-iteration-count: 1;\n            animation-iteration-count: 1;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    -webkit-animation-duration: 0.65s;\n            animation-duration: 0.65s;\n}\n@-webkit-keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n@keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n.changeSizeOfCardToSmall[data-v-23217920]{\n    min-height: 263px;\n}\n.changeSizeOfCardToBig[data-v-23217920]{\n    min-height: 415px;\n}\n.changeSizeOfCardToBigger[data-v-23217920]{\n    min-height: 491px;\n}\n.el-element-overlay .el-card-item .el-overlay[data-v-23217920]{\n    height: 500px;\n}\n.comments-dev[data-v-23217920]{\n    overflow: hidden;\n    padding: 0;\n    padding-top: 11px;\n}\n.comments-dev .media[data-v-23217920]{\n    float: left;\n}\n.comments-dev .media .media-heading[data-v-23217920]{\n    font-size : 14px;\n    padding-left: 13px;\n}\n.comments-dev .media .anchor-time[data-v-23217920]{\n    padding-left: 14px;\n    font-size :11px;\n}\n.el-element-overlay .Post[data-v-23217920]{\n    border-bottom: 20px solid #eef5f9;\n    border-radius: 2px;\n    margin: 30px 0 20px 0;\n}\n.modal-comment[data-v-23217920]{\n    width: 40vw;\n    margin: 72px 386px\n}\n", ""]);
+exports.push([module.i, "\n.delete-alert[data-v-23217920] {\n    /*background-color: red;*/\n    position: absolute;\n    z-index: 1;\n    top: 20%;\n    left: 25%;\n}\n.alert-head[data-v-23217920] {\n    padding-bottom: 20px;\n    padding-top: 10px;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-body[data-v-23217920] {\n    padding: 20px 0 10px 0;\n    border-bottom: 1px solid #cccccc;\n}\n.alert-footer[data-v-23217920] {\n    padding: 20px 0;\n    float: right;\n}\ntable tr td span[data-v-23217920] {\n    text-transform: capitalize;\n}\n.btn-pure[data-v-23217920] {\n    background-color: transparent;\n    color: #000;\n    border: 0;\n}\ntable tbody tr td[data-v-23217920] {\n    line-height: 79px;\n}\n.modal-content[data-v-23217920] {\n    width: 81vw;\n    margin: 44px 214px;\n}\n.modal-dialog[data-v-23217920] {\n    margin: 0;\n}\n/*Like and comment Buttons */\n.like-content .btn-secondary[data-v-23217920],\n.like-content .btn-secondary2[data-v-23217920],\n.comment-content .btn-secondary[data-v-23217920]\n{\n     display: block;\n     text-align: center;\n     border-radius: 3px;\n     margin-top: 20px;\n     padding: 8px 15px;\n     font-size: 14px;\n     cursor: pointer;\n     border: none;\n     outline: none;\n     color: #ffffff;\n     text-decoration: none;\n     transition: 0.3s ease;\n}\n.like-content .btn-secondary[data-v-23217920]{\n    float: left;\n    /*background: #ed2553;*/\n    background: white;\n    color: #ed2553;\n    box-shadow: 0 10px 20px -8px rgb(240, 75, 113);\n    border: 1px solid #ed2553;\n}\n.like-content .btn-secondary2[data-v-23217920]{\n    float: left;\n    background: #ed2553;\n    color: white;\n    border: none;\n}\n.comment-content .btn-secondary[data-v-23217920]{\n    float: right;\n    background: #1A5099;\n    box-shadow: 0 10px 20px -8px rgb(115, 77, 240);\n}\n.like-content .btn-secondary[data-v-23217920]:hover {\n    -webkit-transform: translateY(-3px);\n            transform: translateY(-3px);\n}\n.like-content .btn-secondary .fa[data-v-23217920] {\n    margin-right: 5px;\n}\n.animate-like[data-v-23217920] {\n    -webkit-animation-name: likeAnimation-data-v-23217920;\n            animation-name: likeAnimation-data-v-23217920;\n    -webkit-animation-iteration-count: 1;\n            animation-iteration-count: 1;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    -webkit-animation-duration: 0.65s;\n            animation-duration: 0.65s;\n}\n@-webkit-keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n@keyframes likeAnimation-data-v-23217920 {\n0%   { -webkit-transform: scale(30); transform: scale(30);\n}\n100% { -webkit-transform: scale(1); transform: scale(1);\n}\n}\n.changeSizeOfCardToSmall[data-v-23217920]{\n    min-height: 263px;\n}\n.changeSizeOfCardToBig[data-v-23217920]{\n    min-height: 415px;\n}\n.changeSizeOfCardToBigger[data-v-23217920]{\n    min-height: 491px;\n}\n.el-element-overlay .el-card-item .el-overlay[data-v-23217920]{\n    height: 500px;\n}\n.comments-dev[data-v-23217920]{\n    overflow: hidden;\n    padding: 0;\n    padding-top: 11px;\n}\n.comments-dev .media[data-v-23217920]{\n    float: left;\n}\n.comments-dev .media .media-heading[data-v-23217920]{\n    font-size : 14px;\n    padding-left: 13px;\n}\n.comments-dev .media .anchor-time[data-v-23217920]{\n    padding-left: 14px;\n    font-size :11px;\n}\n.el-element-overlay .Post[data-v-23217920]{\n    border-bottom: 20px solid #eef5f9;\n    border-radius: 2px;\n    margin: 30px 0 20px 0;\n}\n.modal-comment[data-v-23217920]{\n    width: 40vw;\n    margin: 72px 386px\n}\n.deleteComment[data-v-23217920] {\n    float: right;\n}\n.deleteComment .like-review[data-v-23217920]{\n    padding: 5px;\n    margin: 0 0 0 15px;\n}\n", ""]);
 
 // exports
 
@@ -75674,6 +75701,45 @@ var render = function() {
                                                   ),
                                                   _vm._v(" "),
                                                   _c(
+                                                    "div",
+                                                    {
+                                                      staticClass:
+                                                        "like-content deleteComment"
+                                                    },
+                                                    [
+                                                      comment.users_id ===
+                                                      _vm.auth_user_id
+                                                        ? _c(
+                                                            "button",
+                                                            {
+                                                              staticClass:
+                                                                "btn-secondary like-review",
+                                                              on: {
+                                                                click: function(
+                                                                  $event
+                                                                ) {
+                                                                  return _vm.DeleteComment(
+                                                                    comment.id
+                                                                  )
+                                                                }
+                                                              }
+                                                            },
+                                                            [
+                                                              _c("i", {
+                                                                staticClass:
+                                                                  "fa fa-trash",
+                                                                attrs: {
+                                                                  "aria-hidden":
+                                                                    "true"
+                                                                }
+                                                              })
+                                                            ]
+                                                          )
+                                                        : _vm._e()
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
                                                     "p",
                                                     {
                                                       staticStyle: {
@@ -75832,54 +75898,6 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "row" }, [
-                        _c("div", { staticClass: "col-md-6" }, [
-                          _c("div", { staticClass: "form-group" }, [
-                            _c("label", [_vm._v("Meta Title")]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "input-group mb-3" },
-                              [
-                                _vm._m(7),
-                                _vm._v(" "),
-                                _c("b-form-input", {
-                                  attrs: {
-                                    name: "meta_title",
-                                    type: "text",
-                                    "aria-describedby": "basic-addon1"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-6" }, [
-                          _c("div", { staticClass: "form-group" }, [
-                            _c("label", [_vm._v("Meta Keyword")]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "input-group mb-3" },
-                              [
-                                _vm._m(8),
-                                _vm._v(" "),
-                                _c("b-form-input", {
-                                  attrs: {
-                                    name: "meta_keyword",
-                                    type: "text",
-                                    "aria-describedby": "basic-addon1"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
                       _c("h5", { staticClass: "card-title m-t-40" }, [
                         _vm._v("Post Description")
                       ]),
@@ -75900,7 +75918,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(9),
+                      _vm._m(7),
                       _vm._v(" "),
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "col-md-12" }, [
@@ -75919,7 +75937,7 @@ var render = function() {
                                   "tbody",
                                   [
                                     _c("tr", [
-                                      _vm._m(10),
+                                      _vm._m(8),
                                       _vm._v(" "),
                                       _c(
                                         "td",
@@ -75936,7 +75954,7 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("tr", [
-                                      _vm._m(11),
+                                      _vm._m(9),
                                       _vm._v(" "),
                                       _c(
                                         "td",
@@ -75953,7 +75971,7 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("tr", [
-                                      _vm._m(12),
+                                      _vm._m(10),
                                       _vm._v(" "),
                                       _c(
                                         "td",
@@ -75988,7 +76006,7 @@ var render = function() {
                       _c("hr")
                     ]),
                     _vm._v(" "),
-                    _vm._m(13)
+                    _vm._m(11)
                   ]
                 )
               ])
@@ -76017,7 +76035,7 @@ var render = function() {
           [
             _c("div", { staticClass: "modal-content" }, [
               _c("form", [
-                _vm._m(14),
+                _vm._m(12),
                 _vm._v(" "),
                 _c("div", { staticClass: "modal-body" }, [
                   _c("form", { attrs: { enctype: "multipart/form-data" } }, [
@@ -76176,7 +76194,7 @@ var render = function() {
                               "div",
                               { staticClass: "input-group mb-3" },
                               [
-                                _vm._m(15),
+                                _vm._m(13),
                                 _vm._v(" "),
                                 _c("b-form-input", {
                                   attrs: {
@@ -76206,7 +76224,7 @@ var render = function() {
                               "div",
                               { staticClass: "input-group mb-3" },
                               [
-                                _vm._m(16),
+                                _vm._m(14),
                                 _vm._v(" "),
                                 _c("b-form-input", {
                                   attrs: {
@@ -76321,7 +76339,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _vm._m(17)
+                                  _vm._m(15)
                                 ]
                               )
                             ])
@@ -76380,7 +76398,7 @@ var render = function() {
                                     }
                                   }),
                                   _vm._v(" "),
-                                  _vm._m(18)
+                                  _vm._m(16)
                                 ]
                               )
                             ])
@@ -76437,7 +76455,7 @@ var render = function() {
                               [
                                 _c("tbody", [
                                   _c("tr", [
-                                    _vm._m(19),
+                                    _vm._m(17),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -76479,7 +76497,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("tr", [
-                                    _vm._m(20),
+                                    _vm._m(18),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -76500,7 +76518,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("tr", [
-                                    _vm._m(21),
+                                    _vm._m(19),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -76521,7 +76539,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("tr", [
-                                    _vm._m(22),
+                                    _vm._m(20),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -76543,7 +76561,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("tr"),
                                   _c("tr", [
-                                    _vm._m(23),
+                                    _vm._m(21),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -76568,7 +76586,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("tr", [
-                                    _vm._m(24),
+                                    _vm._m(22),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -76593,7 +76611,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("tr", [
-                                    _vm._m(25),
+                                    _vm._m(23),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -76618,7 +76636,7 @@ var render = function() {
                                   ]),
                                   _vm._v(" "),
                                   _c("tr", [
-                                    _vm._m(26),
+                                    _vm._m(24),
                                     _vm._v(" "),
                                     _c(
                                       "td",
@@ -77156,26 +77174,6 @@ var staticRenderFns = [
         },
         [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" }, [
-        _c("i", { staticClass: "ti-search" })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" }, [
-        _c("i", { staticClass: "ti-search" })
-      ])
     ])
   },
   function() {
@@ -78282,7 +78280,7 @@ var render = function() {
                           _c(
                             "div",
                             { staticClass: "profiletimeline m-t-0" },
-                            _vm._l(_vm.posts, function(post) {
+                            _vm._l(_vm.posts, function(post, index) {
                               return _c("div", { staticClass: "sl-item" }, [
                                 _vm._m(6, true),
                                 _vm._v(" "),
@@ -78326,7 +78324,9 @@ var render = function() {
                                           _vm._v(" "),
                                           _c("p", [
                                             _vm._v(
-                                              " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. "
+                                              " " +
+                                                _vm._s(post.description) +
+                                                " "
                                             )
                                           ]),
                                           _vm._v(" "),
@@ -78335,16 +78335,78 @@ var render = function() {
                                             {
                                               staticClass: "btn btn-success",
                                               attrs: {
-                                                href: "javascript:void(0)"
+                                                href:
+                                                  "../../../dashboard/post_profile/" +
+                                                  post.id
                                               }
                                             },
                                             [_vm._v(" Show Post")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "a",
+                                            {
+                                              staticClass: "btn btn-danger",
+                                              attrs: {
+                                                href: "javascript:void(0)"
+                                              },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.DeletePost(
+                                                    post.id,
+                                                    index
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [_vm._v(" Delete Post")]
                                           )
                                         ]
                                       )
                                     ]),
                                     _vm._v(" "),
-                                    _vm._m(7, true)
+                                    _c(
+                                      "div",
+                                      { staticClass: "like-comm m-t-20" },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass: "link m-r-10",
+                                            attrs: {
+                                              href: "javascript:void(0)"
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              _vm._s(post.comment.length) +
+                                                " comment"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass: "link m-r-10",
+                                            attrs: {
+                                              href: "javascript:void(0)"
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass:
+                                                "fa fa-heart text-danger"
+                                            }),
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(post.like.length) +
+                                                " love"
+                                            )
+                                          ]
+                                        )
+                                      ]
+                                    )
                                   ])
                                 ]),
                                 _vm._v(" "),
@@ -78852,24 +78914,6 @@ var staticRenderFns = [
           alt: "user"
         }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "like-comm m-t-20" }, [
-      _c(
-        "a",
-        { staticClass: "link m-r-10", attrs: { href: "javascript:void(0)" } },
-        [_vm._v("2 comment")]
-      ),
-      _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "link m-r-10", attrs: { href: "javascript:void(0)" } },
-        [_c("i", { staticClass: "fa fa-heart text-danger" }), _vm._v(" 5 Love")]
-      )
     ])
   }
 ]
@@ -95621,13 +95665,14 @@ module.exports = "/images/giphy.gif?7dbd276d17ae4258382d77500bba4b2e";
 
 var map = {
 	"./Printer Papers.png": "./public/uploads/posts/images/Printer Papers.png",
+	"./Recycliing test.jpg": "./public/uploads/posts/images/Recycliing test.jpg",
+	"./Recycling Cans.jpg": "./public/uploads/posts/images/Recycling Cans.jpg",
+	"./Recycling Cards.jpg": "./public/uploads/posts/images/Recycling Cards.jpg",
 	"./Recycling Chair.jpg": "./public/uploads/posts/images/Recycling Chair.jpg",
 	"./Recycling Papers.jpg": "./public/uploads/posts/images/Recycling Papers.jpg",
 	"./Recycling bomb.png": "./public/uploads/posts/images/Recycling bomb.png",
 	"./chair.jpg": "./public/uploads/posts/images/chair.jpg",
-	"./chair2.jpg": "./public/uploads/posts/images/chair2.jpg",
-	"./dwqqqqqqqqqqqqqq.jpg": "./public/uploads/posts/images/dwqqqqqqqqqqqqqq.jpg",
-	"./recycle the metal.jpg": "./public/uploads/posts/images/recycle the metal.jpg"
+	"./chair2.jpg": "./public/uploads/posts/images/chair2.jpg"
 };
 
 
@@ -95660,6 +95705,39 @@ webpackContext.id = "./public/uploads/posts/images sync recursive ^\\.\\/.*$";
 /***/ (function(module, exports) {
 
 module.exports = "/images/Printer Papers.png?161a157963a10284b62f7576986c90cd";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/Recycliing test.jpg":
+/*!*********************************************************!*\
+  !*** ./public/uploads/posts/images/Recycliing test.jpg ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Recycliing test.jpg?e08214feb82cbd2d4110411d107ccfce";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/Recycling Cans.jpg":
+/*!********************************************************!*\
+  !*** ./public/uploads/posts/images/Recycling Cans.jpg ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Recycling Cans.jpg?54bc2a5eff63e7885a9667f16dd4ddac";
+
+/***/ }),
+
+/***/ "./public/uploads/posts/images/Recycling Cards.jpg":
+/*!*********************************************************!*\
+  !*** ./public/uploads/posts/images/Recycling Cards.jpg ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Recycling Cards.jpg?b5c8c1116550b23cd11b230814a44317";
 
 /***/ }),
 
@@ -95715,28 +95793,6 @@ module.exports = "/images/chair.jpg?df136b8118006b8157df81699b68147e";
 /***/ (function(module, exports) {
 
 module.exports = "/images/chair2.jpg?3d4269f8830ae730c6615ef498b40adb";
-
-/***/ }),
-
-/***/ "./public/uploads/posts/images/dwqqqqqqqqqqqqqq.jpg":
-/*!**********************************************************!*\
-  !*** ./public/uploads/posts/images/dwqqqqqqqqqqqqqq.jpg ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/dwqqqqqqqqqqqqqq.jpg?dccfb82743c9afcf42c2e947e34ccb45";
-
-/***/ }),
-
-/***/ "./public/uploads/posts/images/recycle the metal.jpg":
-/*!***********************************************************!*\
-  !*** ./public/uploads/posts/images/recycle the metal.jpg ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/recycle the metal.jpg?6d995aeb2f9efe22e580737777887df5";
 
 /***/ }),
 

@@ -53,9 +53,11 @@ class PostController extends Controller
    public function AnyPostProfile($id){
        if (!is_null($id)) {
 //           $post = Post::findOrFail($id)->with('comment', 'category', 'like', 'user')->get();
-           $post_id = Post::findOrFail($id)->id;
+//           $post_id = Post::findOrFail($id)->id;
+//           $post = Post::findOrFail($id);
 //            return view('AdminDashboard.users.users', $id);
-           return view('UserDashboard.master')->with(compact('post_id'));
+           $post = Post::where('id', $id)->with('comment', 'category', 'like', 'user', 'comment.user')->first();
+           return view('UserDashboard.post.postProfile')->with(compact('post'));
        }
    }
 

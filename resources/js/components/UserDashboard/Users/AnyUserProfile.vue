@@ -239,7 +239,7 @@
                             <div class="tab-pane fade show" id="next-month" role="tabpanel" aria-labelledby="posts-tab" v-if="posts">
                                 <div class="card-body">
                                     <div class="profiletimeline m-t-0">
-                                        <div class="sl-item" v-for="post in posts">
+                                        <div class="sl-item" v-for="(post,index) in posts">
                                             <div class="sl-left"> <img src="../../../../../public/images/AdminDashboardImages/images/users/2.jpg" alt="user" class="rounded-circle" /> </div>
                                             <div class="sl-right">
                                                 <div> <a href="javascript:void(0)" class="link">{{ user.name }}</a> <span class="sl-date">{{post.created_at}}</span>
@@ -247,9 +247,10 @@
                                                         <div class="col-md-3 col-xs-12"><img :src="path(post.image)" alt="user" class="img-fluid rounded" /></div>
                                                         <div class="col-md-9 col-xs-12">
                                                             <h6>{{ post.title }}</h6>
-                                                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. </p> <a href="javascript:void(0)" class="btn btn-success"> Show Post</a></div>
+                                                            <p> {{post.description}} </p> <a :href="'../../../dashboard/post_profile/'+post.id" class="btn btn-success"> Show Post</a>
+                                                        <a href="javascript:void(0)" class="btn btn-danger" v-on:click="DeletePost(post.id, index)"> Delete Post</a></div>
                                                     </div>
-                                                    <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">2 comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> 5 Love</a> </div>
+                                                    <div class="like-comm m-t-20"> <a href="javascript:void(0)" class="link m-r-10">{{post.comment.length}} comment</a> <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart text-danger"></i> {{post.like.length}} love</a> </div>
                                                 </div>
                                             </div>
                                             <hr>
@@ -325,6 +326,14 @@
                     this.user = response.data.user;
                     console.log(this.user);
                 });
+            },
+            DeletePost: function (id, index) {
+                axios.delete('/api/admin-dashboard/posts/' + id).then(response => {
+                    this.newPost = response.data.post;
+                    this.posts.splice(index, 1);
+                }).catch(error => {
+                    console.log(error);
+                })
             },
 
             destroyUser: function (id, index) {

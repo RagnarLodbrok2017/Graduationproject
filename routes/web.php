@@ -39,6 +39,7 @@ Route::group(['middleware' => 'User'], function (){
     Route::resource('/dashboard/posts', 'HomeUserController');
     Route::post('/dashboard/posts/like/{id}', 'HomeUserController@likePost');
     Route::post('/dashboard/posts/dislike/{id}', 'HomeUserController@dislikePost');
+    Route::post('/dashboard/posts/deletecomment/{id}', 'HomeUserController@deleteComment');
     Route::post('/dashboard/posts/comment', 'HomeUserController@addComment');
     Route::get('/dashboard/posts/search', 'HomeUserController@searchPost');
     Route::post('/dashboard/posts/favourite/{id}', 'HomeUserController@savePost');
@@ -59,6 +60,7 @@ Route::get('/admin-dashboard/register', 'Auth\AdminAuthController@registerPage')
 Route::post('/admin-dashboard/login', 'Auth\AdminAuthController@login')->name('AdminLogin');
 Route::post('/admin-dashboard/register', 'Auth\AdminAuthController@register')->name('AdminRegister');
 Route::get('/admin-dashboard/logout', 'Auth\AdminAuthController@logout')->name('AdminLogout');
+Route::get('/dashboard/logout', 'Auth\UserAuthController@logout')->name('AdminLogout');
 Route::group(['middleware' => 'Admin'], function (){
     Route::resource('/admin-dashboard/users', 'UserController');
     Route::resource('/admin-dashboard/posts', 'PostController');

@@ -54,7 +54,7 @@ class UserController extends Controller
 //        }
         if (!is_null($id)) {
             $user = User::findOrFail($id);
-            $posts = $user->post()->get();
+            $posts = $user->post()->with('like', 'comment')->get();
 //            return view('AdminDashboard.users.users', $id);
             return view('UserDashboard.master')->with(compact('user', 'posts'));
         }

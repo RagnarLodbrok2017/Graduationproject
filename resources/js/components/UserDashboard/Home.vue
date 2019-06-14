@@ -278,6 +278,10 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="like-content deleteComment">
+                                                                <button v-if="comment.users_id === auth_user_id" v-on:click="DeleteComment(comment.id)" class="btn-secondary like-review">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                            </div>
                                                             <p style="float:right">{{comment.subject}}</p>
                                                         </li>
                                                     </ul>
@@ -443,32 +447,32 @@
                                         <!--/span-->
                                     </div>
                                     <!--/row-->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Meta Title</label>
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" ><i class="ti-search"></i></span>
-                                                    </div>
-                                                    <b-form-input name="meta_title" type="text" aria-describedby="basic-addon1"></b-form-input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Meta Keyword</label>
-                                                <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" ><i class="ti-search"></i></span>
-                                                    </div>
-                                                    <b-form-input name="meta_keyword" type="text" aria-describedby="basic-addon1"></b-form-input>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--/span-->
-                                    </div>
+<!--                                    <div class="row">-->
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label>Meta Title</label>-->
+<!--                                                <div class="input-group mb-3">-->
+<!--                                                    <div class="input-group-prepend">-->
+<!--                                                        <span class="input-group-text" ><i class="ti-search"></i></span>-->
+<!--                                                    </div>-->
+<!--                                                    <b-form-input name="meta_title" type="text" aria-describedby="basic-addon1"></b-form-input>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash;/span&ndash;&gt;-->
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label>Meta Keyword</label>-->
+<!--                                                <div class="input-group mb-3">-->
+<!--                                                    <div class="input-group-prepend">-->
+<!--                                                        <span class="input-group-text" ><i class="ti-search"></i></span>-->
+<!--                                                    </div>-->
+<!--                                                    <b-form-input name="meta_keyword" type="text" aria-describedby="basic-addon1"></b-form-input>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash;/span&ndash;&gt;-->
+<!--                                    </div>-->
                                     <h5 class="card-title m-t-40">Post Description</h5>
                                     <div class="row">
                                         <div class="col-md-12 ">
@@ -546,6 +550,15 @@
                                     </div>
                                     <hr>
                                 </div>
+<!--                                <div class="row">-->
+<!--                                    <div class="col-12">-->
+<!--                                        @if (session('status'))-->
+<!--                                        <div class="alert alert-success">-->
+<!--                                            {{ session('status') }}-->
+<!--                                        </div>-->
+<!--                                        @endif-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="form-actions m-t-40">
                                     <button type="submit" class="btn btn-sucess">Submit Post</button>
                                     <!--                                    <button type="button" class="btn btn-success" v-show="newPost.title && newPost.categoriesIds"-->
@@ -1037,6 +1050,14 @@
                     console.log(error);
                 })
             },
+            DeleteComment: function (id) {
+                axios.post('/dashboard/posts/deletecomment/' + id).then(response => {
+                    // this.newPost = response.data.post;
+                    this.fetchPosts();
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
             SavePost: function (id) {
                 axios.post('/dashboard/posts/favourite/' + id).then(response => {
                     // this.newPost = response.data.post;
@@ -1064,16 +1085,6 @@
                     return false;
                 }
                 // this.liked = false;
-            },
-            testFunction: function(id){
-                    if (id === 0){
-                        console.log("Yes");
-                        return true;
-                        // this.liked = true;
-                    }
-                    else {
-                        return false;
-                    }
             },
             checkLike: function(post){
                 post.like.map((like) => {
@@ -1307,5 +1318,12 @@
     .modal-comment{
         width: 40vw;
         margin: 72px 386px
+    }
+    .deleteComment {
+        float: right;
+    }
+    .deleteComment .like-review{
+        padding: 5px;
+        margin: 0 0 0 15px;
     }
 </style>

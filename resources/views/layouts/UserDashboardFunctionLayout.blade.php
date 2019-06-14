@@ -437,21 +437,21 @@
                                     <p class=" m-b-0">{{ Auth::user()->email }}</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item" href="../dashboard/profile"><i class="ti-user m-r-5 m-l-5"></i> My
+                            <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-user m-r-5 m-l-5"></i> My
                                 Profile</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My
+                            <a class="dropdown-item" href="../../../dashboard/histroy"><i class="ti-wallet m-r-5 m-l-5"></i> My
                                 Activity</a>
-                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i>
-                                Inbox</a>
+                            <a class="dropdown-item" href="../../../dashboard/saved"><i class="ti-email m-r-5 m-l-5"></i>
+                                Saved</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="../dashboard/profile"><i class="ti-settings m-r-5 m-l-5"></i>
+                            <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-settings m-r-5 m-l-5"></i>
                                 Account Setting</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i
                                     class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
                             <div class="dropdown-divider"></div>
                             <div class="p-l-30 p-10"><a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-success btn-rounded">Super Admin</a></div>
+                                                        class="btn btn-sm btn-success btn-rounded">{{ Auth::user()->type }}</a></div>
                         </div>
                     </li>
                     <!-- ============================================================== -->
@@ -491,11 +491,11 @@
                                     <span class="op-5 user-email">{{ Auth::user()->email }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
-                                    <a class="dropdown-item" href="../../admin-dashboard/profile"><i class="ti-user mr-1 ml-1"></i>My Profile</a>
-                                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet mr-1 ml-1"></i> My Activity</a>
-                                    <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email mr-1 ml-1"></i> Inbox</a>
+                                    <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-user mr-1 ml-1"></i>My Profile</a>
+                                    <a class="dropdown-item" href="../../../dashboard/history"><i class="ti-wallet mr-1 ml-1"></i> My Activity</a>
+                                    <a class="dropdown-item" href="../../../dashboard/saved"><i class="ti-email mr-1 ml-1"></i> Saved</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="../../admin-dashboard/profile"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
+                                    <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('AdminLogout') }}"><i class="fa fa-power-off mr-1 ml-1"></i> Logout</a>
                                 </div>
@@ -504,50 +504,34 @@
                         <!-- End User Profile-->
                     </li>
                     <!-- Links-->
-                    <li class="nav-small-cap"><i class="mdi mdi-dots-horizontal"></i> <span
-                            class="hide-menu">C . R . M</span></li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                                class="mdi mdi-account-multiple"></i><span class="hide-menu">Users </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="javascript:void(0)" class="sidebar-link"><i class="mdi mdi-account-plus"></i><span
-                                        class="hide-menu"> Add User </span></a>
-                            </li>
-                            <li class="sidebar-item"><a href="../../admin-dashboard/users" class="sidebar-link"><i
-                                        class="mdi mdi-account-multiple"></i><span
-                                        class="hide-menu">  View Users </span></a></li>
-                        </ul>
+                    <li class="nav-small-cap"><i class="mdi mdi-home"></i> <span
+                            class="hide-menu">Recycler Links</span></li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="../../../dashboard"><i
+                                class="mdi mdi-home"></i><span class="hide-menu">Home</span></a>
                     </li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                                class="mdi mdi-file-image"></i><span class="hide-menu">Posts </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="../../admin-dashboard/posts" class="sidebar-link"><i
-                                        class="mdi mdi-database-plus"></i><span class="hide-menu"> Add Post</span></a>
-                            </li>
-                            <li class="sidebar-item"><a href="../../admin-dashboard/posts" class="sidebar-link"><i
-                                        class="mdi mdi-book-open"></i><span class="hide-menu"> Post Detail </span></a>
-                            </li>
-                        </ul>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="../../../dashboard/saved"><i
+                                class="mdi mdi-book-open"></i><span class="hide-menu">Saved</span></a>
                     </li>
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i
-                                class="mdi mdi-access-point"></i><span class="hide-menu">Category </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level">
-                            <li class="sidebar-item"><a href="../../admin-dashboard/categories" class="sidebar-link"><i
-                                        class="mdi mdi-database-plus"></i><span class="hide-menu"> Add Category</span></a>
-                            </li>
-                            <li class="sidebar-item"><a href="../../admin-dashboard/categories" class="sidebar-link"><i
-                                        class="mdi mdi-book-open"></i><span class="hide-menu"> Category Detail </span></a>
-                            </li>
-                        </ul>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                href="../../../dashboard/categories"><i
+                                class="mdi mdi-calendar-today"></i><span class="hide-menu">Category</span></a>
                     </li>
+{{--                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i--}}
+{{--                                class="mdi mdi-access-point"></i><span class="hide-menu">Category </span></a>--}}
+{{--                        <ul aria-expanded="false" class="collapse  first-level">--}}
+{{--                            <li class="sidebar-item"><a href="../../admin-dashboard/categories" class="sidebar-link"><i--}}
+{{--                                        class="mdi mdi-database-plus"></i><span class="hide-menu"> Add Category</span></a>--}}
+{{--                            </li>--}}
+{{--                            <li class="sidebar-item"><a href="../../admin-dashboard/categories" class="sidebar-link"><i--}}
+{{--                                        class="mdi mdi-book-open"></i><span class="hide-menu"> Category Detail </span></a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="javascript:void(0)" aria-expanded="false"><i
                                 class="mdi mdi-message-alert"></i><span class="hide-menu">Notifications</span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="../../admin-dashboard/histories" aria-expanded="false"><i
-                                class="mdi mdi-book"></i><span class="hide-menu">History</span></a></li>
-                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="javascript:void(0)" aria-expanded="false"><i
-                                class="mdi mdi-email"></i><span class="hide-menu">Emails</span></a></li>
 
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                 href="javascript:void(0)" aria-expanded="false"><i
