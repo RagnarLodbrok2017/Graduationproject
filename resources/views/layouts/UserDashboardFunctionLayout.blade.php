@@ -439,10 +439,10 @@
                             </div>
                             <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-user m-r-5 m-l-5"></i> My
                                 Profile</a>
-                            <a class="dropdown-item" href="../../../dashboard/histroy"><i class="ti-wallet m-r-5 m-l-5"></i> My
+                            <a class="dropdown-item" href="../../../dashboard/histories"><i class="ti-wallet m-r-5 m-l-5"></i> My
                                 Activity</a>
-                            <a class="dropdown-item" href="../../../dashboard/saved"><i class="ti-email m-r-5 m-l-5"></i>
-                                Saved</a>
+                            <a class="dropdown-item" href="../../../dashboard/favourites"><i class="ti-heart m-r-5 m-l-5"></i>
+                                Favourites</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-settings m-r-5 m-l-5"></i>
                                 Account Setting</a>
@@ -492,8 +492,8 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="Userdd">
                                     <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-user mr-1 ml-1"></i>My Profile</a>
-                                    <a class="dropdown-item" href="../../../dashboard/history"><i class="ti-wallet mr-1 ml-1"></i> My Activity</a>
-                                    <a class="dropdown-item" href="../../../dashboard/saved"><i class="ti-email mr-1 ml-1"></i> Saved</a>
+                                    <a class="dropdown-item" href="../../../dashboard/histories"><i class="ti-wallet mr-1 ml-1"></i> My Activity</a>
+                                    <a class="dropdown-item" href="../../../dashboard/favourites"><i class="ti-heart mr-1 ml-1"></i> Favourites Posts</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="../../../dashboard/profile"><i class="ti-settings mr-1 ml-1"></i> Account Setting</a>
                                     <div class="dropdown-divider"></div>
@@ -511,11 +511,15 @@
                                 class="mdi mdi-home"></i><span class="hide-menu">Home</span></a>
                     </li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="../../../dashboard/saved"><i
-                                class="mdi mdi-book-open"></i><span class="hide-menu">Saved</span></a>
+                                                href="../../../dashboard/favourites"><i
+                                class="mdi mdi-heart"></i><span class="hide-menu">Favourite Posts</span></a>
                     </li>
                     <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                href="../../../dashboard/categories"><i
+                                                href="../../../dashboard/histories"><i
+                                class="mdi mdi-history"></i><span class="hide-menu">Histories</span></a>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                     href="../../../dashboard/categories"><i
                                 class="mdi mdi-calendar-today"></i><span class="hide-menu">Category</span></a>
                     </li>
 {{--                    <li class="sidebar-item"><a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i--}}

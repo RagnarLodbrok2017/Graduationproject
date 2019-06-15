@@ -43,7 +43,7 @@
             <!-- ============================================================== -->
             <div class="row">
                 <!-- Column  Categories Table -->
-                <div class="col-lg-8 col-xl-9 col-md-9 UsersTableClass">
+                <div class="col-lg-12 col-xl-12 col-md-12 UsersTableClass">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
@@ -55,10 +55,6 @@
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-danger" v-on:click="deleteHistories()">
                                             Delete all Histories
-                                        </button>
-                                        <button type="button" class="btn btn-outline-dark ml-3 WideTable"
-                                                data-toggle="modal" data-target="">
-                                            <i class="ti-angle-double-right WideButtonArrow"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -104,6 +100,8 @@
                                     <template slot="action" slot-scope="row">
                                         <span v-if="row.value === 'Delete'" class="badge badge-danger"> {{ row.value }}</span>
                                         <span v-if="row.value === 'Add'" class="badge badge-info"> {{ row.value }}</span>
+                                        <span v-if="row.value === 'Like'" class="badge badge-success"> {{ row.value }}</span>
+                                        <span v-if="row.value === 'Saved'" class="badge badge-success"> {{ row.value }}</span>
                                     </template>
                                     <template slot="post_title" slot-scope="row">
                                         {{ row.value }}
@@ -133,89 +131,6 @@
                                         ></b-pagination>
                                     </b-col>
                                 </b-row>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <!-- Column Users Details and Category-->
-                <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
-                    <div class="card">
-                        <div class="border-bottom p-15">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Sharemodel"
-                                    style="width: 100%">
-                                <i class="ti-share m-r-10"></i> Share With
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ti-search"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Search Contacts Here..."
-                                           aria-label="Amount (to the nearest dollar)">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-info">Ok</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="list-group m-t-30">
-                                <a href="javascript:void(0)" class="list-group-item active"><i
-                                    class="ti-layers m-r-10"></i> All Histories</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i>
-                                    Favourite Users</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
-                                    Recently Created</a>
-                            </div>
-                            <h4 class="card-title m-t-30">Groups</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item"><i
-                                    class="ti-flag-alt-2 m-r-10"></i> Users
-                                    <span class="badge badge-info float-right">1</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i>
-                                    Posts
-                                    <span class="badge badge-success float-right">4</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i>
-                                    Categories
-                                    <span class="badge badge-dark float-right">42</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Emails
-                                    <span class="badge badge-danger float-right">45</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Notifications
-                                    <span class="badge badge-danger float-right">100</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Other
-                                    <span class="badge badge-danger float-right">204</span>
-                                </a>
-                            </div>
-                            <h4 class="card-title m-t-30">More</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-warning text-white m-r-10"><i class="ti-export"></i></span>
-                                    Export Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-success m-r-10"><i class="ti-share-alt"></i></span> Restore
-                                    Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-primary m-r-10"><i class="ti-layers-alt"></i></span>
-                                    Duplicate Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-danger m-r-10"><i class="ti-trash"></i></span> Delete All
-                                    Users
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -314,7 +229,7 @@
                 ],
                 totalRows: 1,
                 currentPage: 1,
-                perPage: 10,
+                perPage: 20,
                 pageOptions: [10, 25, 50, 100],
                 sortBy: null,
                 sortDesc: false,
@@ -340,9 +255,15 @@
         },
 
         created: function () {
-            this.fetchHistories();
+            this.fetchMyHistories();
         },
         methods: {
+            fetchMyHistories: function () {
+                axios.get('../api/dashboard/histories/'+ this.auth_user_id).then(response => {
+                    this.histories = response.data.histories;
+                    this.totalRows = this.histories.length;
+                });
+            },
             fetchHistories: function () {
                 axios.get('../api/admin-dashboard/histories').then(response => {
                     this.histories = response.data.histories;

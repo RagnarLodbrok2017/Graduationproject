@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Category;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return response()->json(['categories' => $categories = Category::all()]);
+        $categories = Category::with('post', 'post')->get();
+        $posts_number = Post::all()->count();
+        return response()->json(['categories' => $categories, 'posts_number' => $posts_number]);
     }
 
     /**

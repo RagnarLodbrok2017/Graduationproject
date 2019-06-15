@@ -47,6 +47,8 @@ import HomeComponent from "./components/UserDashboard/Home.vue";
 import UserFavouriteComponent from "./components/UserDashboard/Favourite/Favourite.vue";
 import UserPanelProfileComponent from "./components/UserDashboard/Users/AnyUserProfile";
 import UserPanelPostProfileComponent from "./components/UserDashboard/Posts/Profile.vue";
+import UserPanelHistoryComponent from "./components/UserDashboard/History/History.vue";
+import UserPanelCategoryComponent from "./components/UserDashboard/Category/Category.vue";
 
 // const routes = [
 //     { path: '/user', component: User, name: 'UserList' },
@@ -68,6 +70,8 @@ const app = new Vue({
         "favourite-user-component": UserFavouriteComponent,
         "user-profile-component": UserPanelProfileComponent,
         "post-userpanel-profile": UserPanelPostProfileComponent,
+        "userpanel-history-component": UserPanelHistoryComponent,
+        "userpanel-category-component": UserPanelCategoryComponent,
 
 
     }

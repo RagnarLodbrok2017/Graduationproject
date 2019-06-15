@@ -3,36 +3,6 @@
     <!-- ============================================================== -->
     <div class="page">
         <!-- ============================================================== -->
-        <!-- Bread crumb and right sidebar toggle -->
-        <!-- ============================================================== -->
-
-<!--        <div class="page-breadcrumb">-->
-<!--            <div class="row">-->
-<!--                <div class="col-5 align-self-center">-->
-<!--                    <h4 class="page-title">All Posts</h4>-->
-<!--                    <div class="d-flex align-items-center">-->
-<!--                        <nav aria-label="breadcrumb">-->
-<!--                            <ol class="breadcrumb">-->
-<!--                                <li class="breadcrumb-item"><a href="#">Home</a></li>-->
-<!--                                <li class="breadcrumb-item active" aria-current="page">Library</li>-->
-<!--                            </ol>-->
-<!--                        </nav>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-7 align-self-center">-->
-<!--                    <div class="d-flex no-block justify-content-end align-items-center">-->
-<!--                        <div class="m-r-10">-->
-<!--                            <div class="lastmonth"></div>-->
-<!--                        </div>-->
-<!--                        <div class="">-->
-<!--                            <small>LAST MONTH</small>-->
-<!--                            <h4 class="text-info m-b-0 font-medium">3,552</h4>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-        <!-- ============================================================== -->
         <!-- End Bread crumb and right sidebar toggle -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
@@ -60,106 +30,14 @@
                                 </ul>
                                 <div class="ml-auto">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-dark" data-toggle="modal"
-                                                data-target="#createmodel">
-                                            Create New Post
-                                        </button>
+<!--                                        <button type="button" class="btn btn-dark" data-toggle="modal"-->
+<!--                                                data-target="#createmodel">-->
+<!--                                            Create New Post-->
+<!--                                        </button>-->
                                         <button type="button" class="btn btn-outline-dark ml-3 WideTable"
                                                 data-toggle="modal" data-target="">
                                             <i class="ti-angle-double-right WideButtonArrow"></i>
                                         </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row el-element-overlay" v-if="showSearch === true">
-                                <div class="col-lg-6 col-md-6"  v-for="cari in caris">
-                                    <div class="card">
-                                        <div class="el-card-item">
-                                            <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(cari.image)" alt="user" />
-                                                <div class="el-overlay">
-                                                    <ul class="list-style-none el-info">
-                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="path(cari.image)"><i class="icon-magnifier"></i></a></li>
-                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="SavePost(cari.id)"><i class="icon-link"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="d-flex no-block align-items-center m-b-15">
-                                                    <span><i class="ti-calendar"></i> {{ cari.created_at}}</span>
-                                                    <div class="ml-auto" v-b-tooltip title="Comments" variant="outline-success" @click="modalShow = !modalShow"
-                                                         v-on:click="copyPost(cari)">
-                                                        <a href="javascript:void(0)" class="link"><i class="ti-comments" ></i> {{cari.comment.length}} Comments</a>
-                                                    </div>
-                                                    <!--                                                    <b-modal v-model="modalShow" title="Comments">-->
-                                                    <!--                                                        <div class="list-group">-->
-                                                    <!--                                                            <button v-for="comment in copedPost.comment" type="button" class="list-group-item list-group-item-action">-->
-                                                    <!--                                                                <h6> Comment: </h6> {{comment.subject}}-->
-                                                    <!--                                                            </button>-->
-                                                    <!--                                                        </div>-->
-                                                    <!--                                                    </b-modal>-->
-                                                </div>
-                                                <h3 class="font-normal">{{ cari.title }}</h3>
-                                                <p><small style="color: #CDBFFA">{{cari.user.name}}</small> &nbsp; <small style="color: #F9B8C7">{{cari.user.type}}</small></p>
-                                                <p class="m-b-0 m-t-10">{{ cari.subtitle}}</p>
-                                                <!--                                                <button class="btn btn-primary btn-rounded waves-effect waves-light m-t-20">Like</button>-->
-                                                <!--                                                <button type="button" class="js-like-button like-btn">♥︎&nbsp; Like</button>-->
-                                                <!--                                                <p v-if="checkLike(cari)"></p>-->
-                                                <div class="like-content">
-                                                    <button v-if="!cari.like.length" v-on:click="LikePost(cari.id)" class="btn-secondary2 like-review">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
-                                                </div>
-                                                <div class="like-content" v-for="like in cari.like" v-if="cari.like.length">
-                                                    <button v-if="!cari.like.length" v-on:click="LikePost(cari.id)" class="btn-secondary2 like-review">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
-                                                    <button v-if="like.users_id === auth_user_id" v-on:click="DislikePost(like.id)" class="btn-secondary like-review">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i> Dislike </button>
-                                                    <!--                                                        <button v-if="!(like.users_id === auth_user_id)" v-on:click="LikePost(cari.id)" class="btn-secondary2 like-review">-->
-                                                    <!--                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
-                                                </div>
-                                                <div class="comment-content">
-                                                    <b-button class="btn-secondary like-review" data-toggle="modal"
-                                                              data-target="#createComment2" v-on:click="passId(cari.id)">
-                                                        <i class="fa fa-pen-square" aria-hidden="true"></i> Comment
-                                                    </b-button>
-                                                    <div class="modal fade" id="createComment2" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <form>
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title"><i class="ti-marker-alt m-r-10"></i>
-                                                                            Enter your comment </h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                            <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <form method="POST">
-                                                                            <div class="form-body">
-                                                                                <div class="row">
-                                                                                    <div class="col-12">
-                                                                                        <div class="form-group">
-                                                                                            <input type="hidden" :value="cari.id" name="id" >
-                                                                                            <b-form-input type="text" v-model="comment.subject" class="form-control" placeholder="Enter Your Comment" maxlength="50"></b-form-input>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-actions m-t-40">
-                                                                                <button type="button" class="btn btn-success"  v-on:click="addComment(comment.subject)"  v-show="comment.subject">
-                                                                                    <i class="fa fa-check"></i> Add Comment
-                                                                                </button>
-                                                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!--                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20" style="float: right">Comment</button>-->
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -170,8 +48,9 @@
                                             <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(post.image)" alt="user" />
                                                 <div class="el-overlay">
                                                     <ul class="list-style-none el-info">
-                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="'./dashboard/post_profile/'+post.id"><i class="icon-magnifier"></i></a></li>
-                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="SavePost(post.id)"><i class="icon-link"></i></a></li>
+                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="'./dashboard/post_profile/'+post.id" v-b-tooltip title="Post Page" variant="outline-success">
+                                                            <i class="icon-magnifier"></i></a></li>
+                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="SavePost(post.id)" v-b-tooltip title="Save Post" variant="outline-success"><i class="icon-link"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -297,16 +176,148 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row el-element-overlay" v-if="showCategory === true">
+                                <div class="col-lg-12 col-md-6 Post"  v-for="post in posts" style>
+                                    <div class="card">
+                                        <div class="el-card-item">
+                                            <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(post.image)" alt="user" />
+                                                <div class="el-overlay">
+                                                    <ul class="list-style-none el-info">
+                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="'./dashboard/post_profile/'+post.id"><i class="icon-magnifier"></i></a></li>
+                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="SavePost(post.id)"><i class="icon-link"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="d-flex no-block align-items-center m-b-15">
+                                                    <span><i class="ti-calendar"></i> {{ post.created_at}}</span>
+                                                    <div class="ml-auto" v-b-tooltip title="Comments" variant="outline-success" @click="modalShow = !modalShow"
+                                                         v-on:click="copyPost(post)">
+                                                        <a href="javascript:void(0)" class="link"><i class="ti-comments" ></i> {{post.comment.length}} Comments</a>
+                                                    </div>
+<!--                                                    <b-modal v-model="modalShow" title="Comments">-->
+<!--                                                        <div class="list-group">-->
+<!--                                                            <button v-for="comment in copedPost.comment" type="button" class="list-group-item list-group-item-action">-->
+<!--                                                                <h6> Comment: </h6> {{comment.subject}}-->
+<!--                                                            </button>-->
+<!--                                                        </div>-->
+<!--                                                    </b-modal>-->
+                                                </div>
+                                                <h3 class="font-normal">{{ post.title }}</h3>
+                                                <p><small style="color: #CDBFFA">{{post.user.name}}</small> &nbsp;
+                                                    <small style="color: #F9B8C7" v-if="post.user.type === 'admin'">{{post.user.type}}</small></p>
+                                                <p class="m-b-0 m-t-10">{{ post.subtitle}}</p>
+<!--                                                <button class="btn btn-primary btn-rounded waves-effect waves-light m-t-20">Like</button>-->
+<!--                                                <button type="button" class="js-like-button like-btn">♥︎&nbsp; Like</button>-->
+<!--                                                <p v-if="checkLike(post)"></p>-->
+                                                <div class="like-content">
+<!--                                                    <button v-if="!post.like.length" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">-->
+<!--                                                    <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
+                                                <button v-if="!checkLikeLoop(post)" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i> Like</button>
+                                                </div>
+                                                <div class="like-content" v-for="like in post.like">
+<!--                                                    <button v-if="post.like.length && like.users_id !== auth_user_id" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">-->
+<!--                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
+                                                    <button v-if="like.users_id === auth_user_id" v-on:click="DislikePost(like.id)" class="btn-secondary like-review">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i> Dislike </button>
+<!--                                                        <button v-if="!(like.users_id === auth_user_id)" v-on:click="LikePost(post.id)" class="btn-secondary2 like-review">-->
+<!--                                                        <i class="fa fa-heart" aria-hidden="true"></i> Like</button>-->
+                                                </div>
+
+                                                <div class="comment-content">
+                                                    <b-button class="btn-secondary like-review" data-toggle="modal"
+                                                              data-target="#createComment3" v-on:click="passId(post.id)">
+                                                        <i class="fa fa-pen-square" aria-hidden="true"></i> Comment
+                                                    </b-button>
+                                                    <div class="modal fade animated bounceInDown" id="createComment3" tabindex="-1" role="dialog" aria-labelledby="createModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content modal-comment">
+                                                                <form>
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title"><i class="ti-marker-alt m-r-10"></i>
+                                                                            Enter your comment </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form method="POST">
+                                                                            <div class="form-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <div class="form-group">
+                                                                                            <input type="hidden" :value="post.id" name="id" >
+                                                                                            <b-form-input type="text" v-model="comment.subject" class="form-control" placeholder="Enter Your Comment" maxlength="50"></b-form-input>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-actions m-t-40">
+                                                                                <button type="button" class="btn btn-success" data-dismiss="modal" v-on:click="addComment(comment.subject)"  v-show="comment.subject">
+                                                                                    <i class="fa fa-check"></i> Add Comment
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-dark" data-dismiss="modal">Cancel</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="comments-dev col-12">
+                                                    <ul class="list-group">
+                                                        <button type="button" class="list-group-item list-group-item-action active">
+                                                            Comments:
+                                                        </button>
+                                                        <li href="#" class="list-group-item list-group-item-action" v-for="comment in post.comment">
+                                                            <div class="post-footer-comment-wrapper">
+                                                                <div class="comment-form">
+
+                                                                </div>
+                                                                <div class="comment">
+                                                                    <div class="media">
+                                                                        <div class="media-left">
+                                                                            <a href="#">
+                                                                                <img class="media-object photo-profile img-circle" :src="path3(comment.user.photo)" width="32" height="32" alt="...">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <a href="#" class="anchor-username"><h4 class="media-heading">{{comment.user.name}}</h4></a>
+                                                                            <a href="#" class="anchor-time">{{comment.created_at}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="like-content deleteComment">
+                                                                <button v-if="comment.users_id === auth_user_id" v-on:click="DeleteComment(comment.id)" class="btn-secondary like-review">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                            </div>
+                                                            <p style="float:right">{{comment.subject}}</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
                     <div class="card">
                         <div class="border-bottom p-15">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Sharemodel"
-                                    style="width: 100%">
-                                <i class="ti-share m-r-10"></i> Share With
+                            <button type="button" class="btn btn-info" data-toggle="modal"
+                                    data-target="#createmodel" style="width: 100%">
+                                Create New Post
                             </button>
+<!--                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Sharemodel"-->
+<!--                                    style="width: 100%">-->
+<!--                                <i class="ti-share m-r-10"></i> Share With-->
+<!--                            </button>-->
                         </div>
                         <div class="card-body">
                             <form>
@@ -314,43 +325,27 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ti-search"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Search Contacts Here..."
-                                           aria-label="Amount (to the nearest dollar)">
+                                    <input type="search" v-model="search" class="form-control" placeholder="Search Posts Here..."
+                                           aria-label="">
                                     <div class="input-group-append">
-                                        <button class="btn btn-info">Ok</button>
+                                        <button class="btn btn-info" @click.prevent>Ok</button>
                                     </div>
                                 </div>
                             </form>
                             <div class="list-group m-t-30">
                                 <a href="javascript:void(0)" class="list-group-item active"><i
                                     class="ti-layers m-r-10"></i> All Histories</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i>
-                                    Favourite Users</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
+                                <a href="../../../../dashboard/histories" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
                                     Recently Created</a>
                             </div>
-                            <h4 class="card-title m-t-30">Groups</h4>
+                            <h4 class="card-title m-t-30">Categories</h4>
                             <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item"><i
-                                    class="ti-flag-alt-2 m-r-10"></i> Users
-                                    <span class="badge badge-info float-right">1</span>
+                                <div v-for="(category, index) in categories">
+                                <a href="javascript:void(0)" class="list-group-item" v-on:click="fetchPostsByCategory(category.id)"><i
+                                    class="ti-flag-alt-2 m-r-10"></i> {{ category.name }}
+                                    <span class="badge badge-info float-right">{{ category.post.length }}</span>
                                 </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i>
-                                    Posts
-                                    <span class="badge badge-success float-right">4</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i>
-                                    Categories
-                                    <span class="badge badge-dark float-right">42</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Emails
-                                    <span class="badge badge-danger float-right">45</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Notifications
-                                    <span class="badge badge-danger float-right">100</span>
-                                </a>
+                                </div>
                                 <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
                                     Other
                                     <span class="badge badge-danger float-right">204</span>
@@ -389,7 +384,7 @@
             <!-- ============================================================== -->
         </div>
         <!-- Create User Modal -->
-        <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
+        <div class="modal fade animated bounceInDown " id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -914,6 +909,8 @@
                 postId: '',
                 search:'',
                 showSearch : false,
+                showCategory : false,
+                categoryId: 0,
                 caris:[],
                 // image_src: '../../../../public/images/AdminDashboardImages/images/gallery/chair.jpg',
             }
@@ -928,6 +925,14 @@
                     return post.title.match(this.search);
                 });
             },
+            // filteredPostsByCategory: function() {
+            //     return this.posts.filter((post) => {
+            //         return (post.category.map(function(category){
+            //             this.showCategory = true;
+            //             return category.id === this.categoryId;
+            //         }))
+            //     });
+            // },
             sortOptions() {
                 // Create an options list from our fields
                 return this.fields
@@ -945,9 +950,18 @@
             fetchPosts: function () {
                 axios.get('../dashboard/posts').then(response => {
                     this.posts = response.data.posts;
-                    console.log(this.posts);
+                    // console.log(this.posts);
                     this.categories = response.data.categories;
                     this.totalRows = this.posts.length;
+                });
+            },
+            fetchPostsByCategory: function (id) {
+                axios.get('../dashboard/posts/category/'+ id).then(response => {
+                    this.posts = response.data.posts;
+                    // this.categories = response.data.categories;
+                    // this.totalRows = this.posts.length;
+                    this.showSearch = true;
+                    this.showCategory = true;
                 });
             },
             searchPost() {

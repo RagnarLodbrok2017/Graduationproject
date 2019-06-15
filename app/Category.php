@@ -30,7 +30,7 @@ class Category extends Model
     protected $fillable = [
         'name',	'description',	'created_at',	'updated_at'
     ];
-    public function category() {
+    public function post() {
         return $this->belongsToMany('App\Post', 'post_category');
     }
 }

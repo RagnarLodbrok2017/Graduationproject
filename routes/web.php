@@ -35,8 +35,15 @@ Route::group(['middleware' => 'User'], function (){
     Route::get('/dashboard/favourites', function () {
         return view('UserDashboard.master');
     });
+    Route::get('/dashboard/histories', function () {
+        return view('UserDashboard.master');
+    });
+    Route::get('/dashboard/categories', function () {
+        return view('UserDashboard.master');
+    });
 //    Routes HomeUserController
     Route::resource('/dashboard/posts', 'HomeUserController');
+    Route::get('/dashboard/posts/category/{id}', 'HomeUserController@getPostsByCategoryId');
     Route::post('/dashboard/posts/like/{id}', 'HomeUserController@likePost');
     Route::post('/dashboard/posts/dislike/{id}', 'HomeUserController@dislikePost');
     Route::post('/dashboard/posts/deletecomment/{id}', 'HomeUserController@deleteComment');

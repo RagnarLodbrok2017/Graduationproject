@@ -31,7 +31,7 @@ class FavouriteController extends Controller
 //        $favourites = Favourite::join('post', 'favourite.post_id', '=', 'post.id')
 //                ->join('users', 'favourite.users_id', '=', 'users.id')->get();
 //        dd($posts);
-        $favourites = Favourite::where('users_id' , Auth::user()->id)->orderBy('created_at', 'desc')->with('user', 'post','post.like', 'post.comment')->get();
+        $favourites = Favourite::where('users_id' , Auth::user()->id)->orderBy('created_at', 'desc')->with('user', 'post','post.like', 'post.comment','post.comment.user')->get();
 //        dd($favourites);
 //        dd($favourites);
 //        $posts = Post::whereIn('id', $favourites)->with('user', 'category', 'like', 'comment')->get();

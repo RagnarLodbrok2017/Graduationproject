@@ -12,7 +12,7 @@
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="../../../../dashboard">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Post</li>
                             </ol>
                         </nav>
@@ -23,8 +23,8 @@
                         <div class="m-r-10">
                             <div class="lastmonth"></div>
                         </div>
-                        <div class=""><small>LAST MONTH</small>
-                            <h4 class="text-info m-b-0 font-medium">165 Like</h4></div>
+                        <div class=""><small>Num Likes</small>
+                            <h4 class="text-info m-b-0 font-medium">{{ $post->like->count()}} Like</h4></div>
                     </div>
                 </div>
             </div>

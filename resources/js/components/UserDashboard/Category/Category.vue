@@ -43,23 +43,55 @@
             <!-- ============================================================== -->
             <div class="row">
                 <!-- Column  Categories Table -->
-                <div class="col-lg-8 col-xl-9 col-md-9 UsersTableClass">
+                <!-- Row -->
+                <div class="col-lg-12">
+                    <!-- Row -->
+                    <div class="row">
+                        <!-- Column -->
+                        <div class="col-sm-12 col-md-6">
+                            <div class="card bg-success">
+                                <div class="card-body text-white">
+                                    <div class="d-flex flex-row">
+                                        <div class="align-self-center display-6"><i class="ti-wallet"></i></div>
+                                        <div class="p-10 align-self-center">
+                                            <h4 class="m-b-0">Total Categories</h4>
+                                            <span>Published</span>
+                                        </div>
+                                        <div class="ml-auto align-self-center">
+                                            <h2 class="font-medium m-b-0">{{ categories.length }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Column -->
+                        <!-- Column -->
+                        <div class="col-sm-12 col-md-6">
+                            <div class="card bg-cyan">
+                                <div class="card-body text-white">
+                                    <div class="d-flex flex-row">
+                                        <div class="display-6 align-self-center"><i class="ti-calendar"></i></div>
+                                        <div class="p-10 align-self-center">
+                                            <h4 class="m-b-0">Total Posts</h4>
+                                            <span>Published</span>
+                                        </div>
+                                        <div class="ml-auto align-self-center">
+                                            <h2 class="font-medium m-b-0">{{ posts_number }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Column -->
+                    </div>
+                    <!-- Row -->
+                </div>
+                <!-- End Row -->
+                <div class="col-lg-12 col-xl-12 col-md-12 UsersTableClass">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
                                 <h4 class="card-title">All Categories</h4>
-                                <div class="ml-auto">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-dark" data-toggle="modal"
-                                                data-target="#createmodel">
-                                            Create New Category
-                                        </button>
-                                        <button type="button" class="btn btn-outline-dark ml-3 WideTable"
-                                                data-toggle="modal" data-target="">
-                                            <i class="ti-angle-double-right WideButtonArrow"></i>
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                             <b-row>
                                 <b-col md="6" class="my-1">
@@ -99,29 +131,10 @@
                                     <template slot="name" slot-scope="row">
                                         {{ row.value }}
                                     </template>
-                                    <template slot="posts" slot-scope="row">
-                                        100
-                                        <span v-if="row.value === 0" class="badge badge-danger"> {{ row.value }}</span>
-                                        <span v-if="row.value >= 100 && row.value < 1000" class="badge badge-warning"> {{ row.value }}</span>
-                                        <span v-if="row.value >= 1000" class="badge badge-info"> {{ row.value }}</span>
-                                    </template>
-                                    <template slot="likes" slot-scope="row">
-                                        1203
-                                        {{ row.value }}
-                                    </template>
-                                    <template slot="created" slot-scope="row">
-                                        {{ row.value }}
-                                    </template>
-                                    <template slot="actions" slot-scope="row">
-                                        <b-button type="button"
-                                                  class="btn btn-sm btn-icon btn-pure btn-outline deleteUserButton"
-                                                  v-on:click="destroyCategory(row.item.id, row.index)"
-                                                  data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i>
-                                        </b-button>
-                                        <b-button type="button"
-                                                  class="btn btn-sm btn-icon btn-pure btn-outline edit-row-btn"
-                                                  data-toggle="modal" data-original-title="Edit" data-target="#updatemodel" v-on:click="EditCategory(row.item.id)">
-                                            <i class="ti-pencil" aria-hidden="true"></i></b-button>
+                                    <template slot="post" slot-scope="row">
+                                        <span v-if="row.item.post.length === 0" class="badge badge-danger"> {{ row.item.post.length }}</span>
+                                        <span v-if="row.item.post.length > 0 && row.item.post.length < 100" class="badge badge-warning"> {{ row.item.post.length }}</span>
+                                        <span v-if="row.item.post.length >= 100" class="badge badge-info"> {{ row.item.post.length }}</span>
                                     </template>
                                 </b-table>
                                 <!--           Pagination         -->
@@ -140,211 +153,11 @@
                     </div>
                 </div>
                 <!-- Column -->
-                <!-- Column Users Details and Category-->
-                <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
-                    <div class="card">
-                        <div class="border-bottom p-15">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Sharemodel"
-                                    style="width: 100%">
-                                <i class="ti-share m-r-10"></i> Share With
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ti-search"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Search Contacts Here..."
-                                           aria-label="Amount (to the nearest dollar)">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-info">Ok</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="list-group m-t-30">
-                                <a href="javascript:void(0)" class="list-group-item active"><i
-                                    class="ti-layers m-r-10"></i> All Categories</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i>
-                                    Favourite Users</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
-                                    Recently Created</a>
-                            </div>
-                            <h4 class="card-title m-t-30">Groups</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item"><i
-                                    class="ti-flag-alt-2 m-r-10"></i> Wood
-                                    <span class="badge badge-info float-right">1</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i>
-                                    Metal
-                                    <span class="badge badge-success float-right">4</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i>
-                                    Papers
-                                    <span class="badge badge-dark float-right">42</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Other
-                                    <span class="badge badge-danger float-right">204</span>
-                                </a>
-                            </div>
-                            <h4 class="card-title m-t-30">More</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-warning text-white m-r-10"><i class="ti-export"></i></span>
-                                    Export Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-success m-r-10"><i class="ti-share-alt"></i></span> Restore
-                                    Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-primary m-r-10"><i class="ti-layers-alt"></i></span>
-                                    Duplicate Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-danger m-r-10"><i class="ti-trash"></i></span> Delete All
-                                    Users
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
+
             </div>
             <!-- ============================================================== -->
             <!-- End page Content -->
             <!-- ============================================================== -->
-        </div>
-        <!-- Share Modal -->
-        <div class="modal fade" id="Sharemodel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"><i class="mdi mdi-auto-fix m-r-10"></i> Share
-                                With</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <input type="text" class="form-control" placeholder="Enter Category Name Here"
-                                       aria-label="name">
-                            </div>
-                            <div class="row">
-                                <div class="col-3 text-center">
-                                    <a href="#Whatsapp" class="text-success">
-                                        <i class="display-6 mdi mdi-whatsapp"></i><br><span
-                                        class="text-muted">Whatsapp</span>
-                                    </a>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <a href="#Facebook" class="text-info">
-                                        <i class="display-6 mdi mdi-facebook"></i><br><span
-                                        class="text-muted">Facebook</span>
-                                    </a>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <a href="#Instagram" class="text-danger">
-                                        <i class="display-6 mdi mdi-instagram"></i><br><span class="text-muted">Instagram</span>
-                                    </a>
-                                </div>
-                                <div class="col-3 text-center">
-                                    <a href="#Skype" class="text-cyan">
-                                        <i class="display-6 mdi mdi-skype"></i><br><span class="text-muted">Skype</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-success"><i class="fas fa-paper-plane"></i> Send
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Create User Modal -->
-        <div class="modal fade" id="createmodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="createModalLabel"><i class="ti-marker-alt m-r-10"></i> Create
-                                New Category</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-danger"><i class="ti-bookmark-alt text-white"></i></button>
-                                <b-form-input type="text" v-model="newCategory.name" class="form-control" placeholder="Enter Name Here" minlength="6"
-                                              maxlength="30" required></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-dark"><i class="ti-more text-white"></i></button>
-                                <b-form-textarea type="text" v-model="newCategory.description" placeholder="Enter Description Here" maxlength="400" style="height: 150px;"></b-form-textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal">
-                                Close
-                            </button>
-                            <button type="button" class="btn btn-success" v-show="newCategory.name" @click="storeCategory">
-                                <i class="ti-save"></i> Save
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Edit User Modal -->
-        <div class="modal fade" id="updatemodel" tabindex="-1" role="dialog" aria-labelledby="createModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <form>
-                        <div class="modal-header">
-                            <h5 class="modal-title" id=""><i class="ti-marker-alt m-r-10"></i> Create
-                                Edit Category</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-user text-white"></i></button>
-                                <b-form-input type="text" v-model="category.name" class="form-control" aria-label="name" minlength="10"
-                                              maxlength="30" required></b-form-input>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-info"><i class="ti-more text-white"></i></button>
-                                <b-form-textarea type="text" v-model="category.description" aria-label="no" maxlength="200"></b-form-textarea>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary CloseAddUserForm" data-dismiss="modal" v-on:click="resetCategory()">
-                                Cancel
-                            </button>
-                            <button type="button" class="btn btn-success" v-show="category.name" v-on:click="updateCategory(category.id, category)">
-                                <i class="ti-save"></i> Update
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
@@ -373,10 +186,7 @@
                 fields: [
                     {key: 'index', label: '#', sortable: true, sortDirection: 'desc'},
                     {key: 'name', label: 'Name', sortable: true, sortDirection: 'desc'},
-                    {key: 'posts', label: '# Posts', sortable: true, sortDirection: 'desc'},
-                    {key: 'likes', label: '# Likes', sortable: true, sortDirection: 'desc'},
-                    {key: 'created_at', label: 'Created Date', sortable: true, sortDirection: 'desc'},
-                    {key: 'actions', label: 'Actions'},
+                    {key: 'post', label: 'Number of Posts', sortable: true, sortDirection: 'desc'},
                 ],
                 totalRows: 1,
                 currentPage: 1,
@@ -388,11 +198,8 @@
                 filter: null,
                 //DB
                 categories: [],
+                posts_number : 0,
                 category: {},
-                newCategory: {
-                    name: '',
-                    description: '',
-                },
                 category_id: 0,
                 image_src: '../../../../../public/images/AdminDashboardImages/images/users/1.jpg',
             }
@@ -419,46 +226,11 @@
             fetchCategories: function () {
                 axios.get('../api/admin-dashboard/categories').then(response => {
                     this.categories = response.data.categories;
+                    this.posts_number = response.data.posts_number;
                     this.totalRows = this.categories.length;
                 });
             },
-            storeCategory: function () {
-                axios.post('../api/admin-dashboard/categories', this.newCategory).then(response => {
-                    this.newCategory = response.data.newCategory;
-                    this.categories.push(this.newCategory);
-                    // $('.CloseAddUserForm').click();
-                }).catch(error => {
-                    console.log(error);
-                })
-            },
-            destroyCategory: function (id, index) {
-                axios.delete('/api/admin-dashboard/categories/' + id).then(response => {
-                    this.newCategory = response.data.category;
-                    this.categories.splice(index, 1);
-                }).catch(error => {
-                    console.log(error);
-                })
-            },
-            // To Show the category information in the modal
-            EditCategory: function (id) {
-                axios.get('/api/admin-dashboard/categories/' + id + '/edit').then(response => {
-                    this.category = response.data.category;
-                }).catch(error => {
-                    console.log(error);
-                })
-            },
-            resetCategory: function () {
-                console.log(this.category);
-            },
-            updateCategory: function (id, category) {
-                axios.patch('/api/admin-dashboard/categories/' + id, category).then(response => {
-                    this.category = response.data.category;
-                    this.fetchCategories();
-                    console.log(this.category);
-                }).catch(error => {
-                    console.log(error);
-                })
-            },
+
             onFiltered(filteredItems) {
                 // Trigger pagination to update the number of buttons/pages due to filtering
                 this.totalRows = filteredItems.length;

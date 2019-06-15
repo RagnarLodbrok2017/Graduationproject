@@ -42,8 +42,53 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
+                <!-- Row -->
+                <div class="col-lg-12">
+                    <!-- Row -->
+                    <div class="row">
+                        <!-- Column -->
+                        <div class="col-sm-12 col-md-6">
+                            <div class="card bg-success">
+                                <div class="card-body text-white">
+                                    <div class="d-flex flex-row">
+                                        <div class="align-self-center display-6"><i class="ti-wallet"></i></div>
+                                        <div class="p-10 align-self-center">
+                                            <h4 class="m-b-0">Total Categories</h4>
+                                            <span>Published</span>
+                                        </div>
+                                        <div class="ml-auto align-self-center">
+                                            <h2 class="font-medium m-b-0">{{ categories.length }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Column -->
+                        <!-- Column -->
+                        <div class="col-sm-12 col-md-6">
+                            <div class="card bg-cyan">
+                                <div class="card-body text-white">
+                                    <div class="d-flex flex-row">
+                                        <div class="display-6 align-self-center"><i class="ti-calendar"></i></div>
+                                        <div class="p-10 align-self-center">
+                                            <h4 class="m-b-0">Total Posts</h4>
+                                            <span>Published</span>
+                                        </div>
+                                        <div class="ml-auto align-self-center">
+                                            <h2 class="font-medium m-b-0">{{ posts_number }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Column -->
+                    </div>
+                    <!-- Row -->
+                </div>
+                <!-- End Row -->
+
                 <!-- Column  Categories Table -->
-                <div class="col-lg-8 col-xl-9 col-md-9 UsersTableClass">
+                <div class="col-lg-12 col-xl-12 col-md-12 UsersTableClass">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
@@ -100,14 +145,9 @@
                                         {{ row.value }}
                                     </template>
                                     <template slot="posts" slot-scope="row">
-                                        100
-                                        <span v-if="row.value === 0" class="badge badge-danger"> {{ row.value }}</span>
-                                        <span v-if="row.value >= 100 && row.value < 1000" class="badge badge-warning"> {{ row.value }}</span>
-                                        <span v-if="row.value >= 1000" class="badge badge-info"> {{ row.value }}</span>
-                                    </template>
-                                    <template slot="likes" slot-scope="row">
-                                        1203
-                                        {{ row.value }}
+                                        <span v-if="row.item.post.length === 0" class="badge badge-danger"> {{ row.item.post.length }}</span>
+                                        <span v-if="row.item.post.length > 0 && row.item.post.length < 100" class="badge badge-warning"> {{ row.item.post.length }}</span>
+                                        <span v-if="row.item.post.length >= 100" class="badge badge-info"> {{ row.item.post.length }}</span>
                                     </template>
                                     <template slot="created" slot-scope="row">
                                         {{ row.value }}
@@ -139,82 +179,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Column -->
-                <!-- Column Users Details and Category-->
-                <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
-                    <div class="card">
-                        <div class="border-bottom p-15">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Sharemodel"
-                                    style="width: 100%">
-                                <i class="ti-share m-r-10"></i> Share With
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ti-search"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Search Contacts Here..."
-                                           aria-label="Amount (to the nearest dollar)">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-info">Ok</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="list-group m-t-30">
-                                <a href="javascript:void(0)" class="list-group-item active"><i
-                                    class="ti-layers m-r-10"></i> All Categories</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i>
-                                    Favourite Users</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
-                                    Recently Created</a>
-                            </div>
-                            <h4 class="card-title m-t-30">Groups</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item"><i
-                                    class="ti-flag-alt-2 m-r-10"></i> Wood
-                                    <span class="badge badge-info float-right">1</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i>
-                                    Metal
-                                    <span class="badge badge-success float-right">4</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i>
-                                    Papers
-                                    <span class="badge badge-dark float-right">42</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Other
-                                    <span class="badge badge-danger float-right">204</span>
-                                </a>
-                            </div>
-                            <h4 class="card-title m-t-30">More</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-warning text-white m-r-10"><i class="ti-export"></i></span>
-                                    Export Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-success m-r-10"><i class="ti-share-alt"></i></span> Restore
-                                    Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-primary m-r-10"><i class="ti-layers-alt"></i></span>
-                                    Duplicate Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-danger m-r-10"><i class="ti-trash"></i></span> Delete All
-                                    Users
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
             </div>
             <!-- ============================================================== -->
             <!-- End page Content -->
@@ -374,7 +338,6 @@
                     {key: 'index', label: '#', sortable: true, sortDirection: 'desc'},
                     {key: 'name', label: 'Name', sortable: true, sortDirection: 'desc'},
                     {key: 'posts', label: '# Posts', sortable: true, sortDirection: 'desc'},
-                    {key: 'likes', label: '# Likes', sortable: true, sortDirection: 'desc'},
                     {key: 'created_at', label: 'Created Date', sortable: true, sortDirection: 'desc'},
                     {key: 'actions', label: 'Actions'},
                 ],
@@ -389,6 +352,7 @@
                 //DB
                 categories: [],
                 category: {},
+                posts_number : 0,
                 newCategory: {
                     name: '',
                     description: '',
@@ -420,6 +384,7 @@
                 axios.get('../api/admin-dashboard/categories').then(response => {
                     this.categories = response.data.categories;
                     this.totalRows = this.categories.length;
+                    this.posts_number = response.data.posts_number;
                 });
             },
             storeCategory: function () {

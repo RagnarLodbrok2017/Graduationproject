@@ -11,29 +11,25 @@
             <!-- ============================================================== -->
             <div class="row">
                 <!-- Column  Users Table -->
-                <div class="col-lg-8 col-xl-9 col-md-9 UsersTableClass">
+                <div class="col-lg-12 col-xl-12 col-md-12 UsersTableClass">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex no-block align-items-center m-b-30">
                                 <h4 class="card-title">All Saved and Favourite Posts</h4>
-                                <div class="ml-auto">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-outline-dark ml-3 WideTable"
-                                                data-toggle="modal" data-target="">
-                                            <i class="ti-angle-double-right WideButtonArrow"></i>
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                             <div class="row el-element-overlay">
-                                <div class="col-lg-4 col-md-6"  v-for="(favourite, index) in favourites">
+                                <div class="col-lg-6 col-md-6"  v-for="(favourite, index) in favourites">
                                     <div class="card">
                                         <div class="el-card-item">
                                             <div class="el-card-avatar el-overlay-1 changeSizeOfCardToSmall"> <img :src="path(favourite.post.image)" alt="user" />
                                                 <div class="el-overlay">
                                                     <ul class="list-style-none el-info">
-                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="path(favourite.post.image)"><i class="icon-magnifier"></i></a></li>
-                                                        <li class="el-item"><a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="DeleteSavedPost(favourite.id, index)"><i class="icon-trash"></i></a></li>
+                                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" :href="'../../../dashboard/post_profile/'+favourite.post.id"><i class="icon-magnifier"></i></a></li>
+                                                        <li class="el-item">
+                                                            <a class="btn default btn-outline el-link" href="javascript:void(0);" v-on:click="DeleteSavedPost(favourite.id, index)">
+                                                                <i class="icon-trash"></i>
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -111,6 +107,44 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="comments-dev col-12">
+                                                    <ul class="list-group">
+                                                        <button type="button" class="list-group-item list-group-item-action active">
+                                                            Comments:
+                                                        </button>
+                                                        <li href="#" class="list-group-item list-group-item-action" v-for="comment in favourite.post.comment">
+                                                            <div class="post-footer-comment-wrapper">
+                                                                <div class="comment-form">
+
+                                                                </div>
+                                                                <div class="comment">
+                                                                    <div class="media">
+                                                                        <div class="media-left">
+                                                                            <a href="#">
+                                                                                <img class="media-object photo-profile img-circle" :src="path3(comment.user.photo)" width="32" height="32" alt="...">
+                                                                            </a>
+                                                                        </div>
+                                                                        <div class="media-body">
+                                                                            <a href="#" class="anchor-username"><h4 class="media-heading">{{comment.user.name}}</h4></a>
+                                                                            <a href="#" class="anchor-time">{{comment.created_at}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="like-content deleteComment">
+                                                                <button v-if="comment.users_id === auth_user_id" v-on:click="DeleteComment(comment.id)" class="btn-secondary like-review">
+                                                                    <i class="fa fa-trash" aria-hidden="true"></i></button>
+                                                            </div>
+                                                            <p style="float:right">{{comment.subject}}</p>
+                                                        </li>
+                                                    </ul>
+                                                    <!--                                                    <div class="comments" v-for="comment in post.comment">-->
+                                                    <!--                                                    <p><small style="color: #CDBFFA; float: left; font-size:14px">{{ comment.user.name }}</small> &nbsp;-->
+                                                    <!--                                                        <small style="color: #F9B8C7; float: right">{{ comment.subject}}</small>-->
+                                                    <!--                                                    </p>-->
+                                                    <!--                                                    </div>-->
+                                                </div>
+
 <!--                                                <button class="btn btn-success btn-rounded waves-effect waves-light m-t-20" style="float: right">Comment</button>-->
                                             </div>
                                         </div>
@@ -120,89 +154,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-xl-3 col-md-3 ShareModel animated bounceInRight">
-                    <div class="card">
-                        <div class="border-bottom p-15">
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#Sharemodel"
-                                    style="width: 100%">
-                                <i class="ti-share m-r-10"></i> Share With
-                            </button>
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ti-search"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" placeholder="Search Contacts Here..."
-                                           aria-label="Amount (to the nearest dollar)">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-info">Ok</button>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="list-group m-t-30">
-                                <a href="javascript:void(0)" class="list-group-item active"><i
-                                    class="ti-layers m-r-10"></i> All Histories</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-star m-r-10"></i>
-                                    Favourite Users</a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-bookmark m-r-10"></i>
-                                    Recently Created</a>
-                            </div>
-                            <h4 class="card-title m-t-30">Groups</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item"><i
-                                    class="ti-flag-alt-2 m-r-10"></i> Users
-                                    <span class="badge badge-info float-right">1</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-notepad m-r-10"></i>
-                                    Posts
-                                    <span class="badge badge-success float-right">4</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-target m-r-10"></i>
-                                    Categories
-                                    <span class="badge badge-dark float-right">42</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Emails
-                                    <span class="badge badge-danger float-right">45</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Notifications
-                                    <span class="badge badge-danger float-right">100</span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item"><i class="ti-comments m-r-10"></i>
-                                    Other
-                                    <span class="badge badge-danger float-right">204</span>
-                                </a>
-                            </div>
-                            <h4 class="card-title m-t-30">More</h4>
-                            <div class="list-group">
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-info m-r-10"><i class="ti-import"></i></span> Import Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-warning text-white m-r-10"><i class="ti-export"></i></span>
-                                    Export Categories
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-success m-r-10"><i class="ti-share-alt"></i></span> Restore
-                                    Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-primary m-r-10"><i class="ti-layers-alt"></i></span>
-                                    Duplicate Users
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item">
-                                    <span class="badge badge-danger m-r-10"><i class="ti-trash"></i></span> Delete All
-                                    Users
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Column -->
-                <!-- Column -->
+
             </div>
             <!-- ============================================================== -->
             <!-- End page Content -->
@@ -357,8 +309,17 @@
                     console.log(this.comment);
                     this.comment.subject = '';
                     this.comment.post_id = '';
+                    this.fetchPosts();
                     // this.posts.push(this.newPost);
                     // $('.CloseAddUserForm').click();
+                }).catch(error => {
+                    console.log(error);
+                })
+            },
+            DeleteComment: function (id) {
+                axios.post('/dashboard/posts/deletecomment/' + id).then(response => {
+                    // this.newPost = response.data.post;
+                    this.fetchPosts();
                 }).catch(error => {
                     console.log(error);
                 })
@@ -406,6 +367,9 @@
             },
             path2(image) {
                 return require('../../../../../public/images/AdminDashboardImages/images/gallery/' + image)
+            },
+            path3(image) {
+                return require('../../../../../public/images/AdminDashboardImages/images/users/' + image)
             },
             onFileChange(e) {
                 var files = e.target.files || e.dataTransfer.files;
@@ -554,6 +518,38 @@
     }
     .changeSizeOfCardToBigger{
         min-height: 491px;
+    }
+    .comments-dev{
+        overflow: hidden;
+        padding: 0;
+        padding-top: 11px;
+    }
+    .comments-dev .media{
+        float: left;
+    }
+    .comments-dev .media .media-heading{
+        font-size : 14px;
+        padding-left: 13px;
+    }
+    .comments-dev .media .anchor-time{
+        padding-left: 14px;
+        font-size :11px;
+    }
+    .el-element-overlay .Post{
+        border-bottom: 20px solid #eef5f9;
+        border-radius: 2px;
+        margin: 30px 0 20px 0;
+    }
+    .modal-comment{
+        width: 40vw;
+        margin: 72px 386px
+    }
+    .deleteComment {
+        float: right;
+    }
+    .deleteComment .like-review{
+        padding: 5px;
+        margin: 0 0 0 15px;
     }
 
 </style>

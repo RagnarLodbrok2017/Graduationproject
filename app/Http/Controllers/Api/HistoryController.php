@@ -23,6 +23,13 @@ class HistoryController extends Controller
         return response()->json(['histories' => $histories]);
     }
 
+    public function GetmyHistories($id)
+    {
+        $user_id = $id;
+        $histories = History::where('users_id', $user_id)->get();
+        return response()->json(['histories' => $histories]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

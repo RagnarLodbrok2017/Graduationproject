@@ -29,7 +29,16 @@ class HomeUserController extends Controller
     {
         $posts = Post::orderBy('created_at', 'desc')->with('user', 'category', 'like', 'comment.user')->get();
 //        dd($posts);
-        $categories = Category::all();
+        $categories = Category::with('post')->get();
+        return response()->json(['posts' => $posts, 'categories' => $categories]);
+    }
+
+
+    public function getPostsByCategoryId($id)
+    {
+        $category = Category::with(['post'])->where('id', $id)->first();
+        $posts = $category->post()->orderBy('created_at', 'desc')->with('user', 'category', 'like', 'comment.user')->get();
+        $categories = Category::with('post')->get();
         return response()->json(['posts' => $posts, 'categories' => $categories]);
     }
 
