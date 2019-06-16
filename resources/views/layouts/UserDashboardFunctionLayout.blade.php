@@ -33,7 +33,23 @@
     <link href="{{asset('css/AdminDashboardCss/css/weathericons.css')}}" rel="stylesheet">
     <link href="{{asset('css/AdminDashboardCss/css/bootstrapAndPlugins.css')}}" rel="stylesheet">
     <!-- <link href="../../dist/css/notimportant.css" rel="stylesheet"> -->
-    <link href="{{asset('css/AdminDashboardCss/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('StyleUserPanel.css')}}" rel="stylesheet">
+{{--    <style>--}}
+{{--        #main-wrapper .topbar .top-navbar .navbar-header {--}}
+{{--            background: #fff !important;--}}
+{{--        }--}}
+
+{{--        #main-wrapper .topbar .navbar-collapse,--}}
+{{--        #main-wrapper .topbar {--}}
+{{--            background: #fff--}}
+{{--        }--}}
+
+{{--        #main-wrapper .left-sidebar,--}}
+{{--        #main-wrapper .left-sidebar ul {--}}
+{{--            background: #fff;--}}
+{{--            overflow: auto;--}}
+{{--        }--}}
+{{--    </style>--}}
 
 </head>
 
@@ -105,7 +121,7 @@
                     <li class="nav-item dropdown mega-dropdown"><a
                             class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            <span class="d-none d-md-block">Rules <i class="fa fa-angle-down"></i></span>
+                            <span class="d-none d-md-block">How it Works <i class="fa fa-angle-down"></i></span>
                             <span class="d-block d-md-none"><i class="mdi mdi-dialpad font-24"></i></span>
                         </a>
                         <div class="dropdown-menu animated bounceInDown">
@@ -143,7 +159,7 @@
                                     <!-- End CAROUSEL -->
                                 </div>
                                 <div class="col-lg-3 m-b-30">
-                                    <h4 class="m-b-20">Rights</h4>
+                                    <h4 class="m-b-20">Steps</h4>
                                     <!-- Accordian -->
                                     <div id="accordion">
                                         <div class="card m-b-5">
@@ -152,14 +168,15 @@
                                                     <button class="btn btn-link" data-toggle="collapse"
                                                             data-target="#collapseOne" aria-expanded="true"
                                                             aria-controls="collapseOne">
-                                                        Rule #1
+                                                        Posts
                                                     </button>
                                                 </h5>
                                             </div>
                                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                                                  data-parent="#accordion">
                                                 <div class="card-body">
-                                                    This is the Admin Panel You can control all the website
+                                                    You can make any Post and Publish to public.
+                                                    and You can Delete it from Your Profile -> Posts -> Delete Post
                                                 </div>
                                             </div>
                                         </div>
@@ -169,15 +186,14 @@
                                                     <button class="btn btn-link collapsed" data-toggle="collapse"
                                                             data-target="#collapseTwo" aria-expanded="false"
                                                             aria-controls="collapseTwo">
-                                                        Collapsible Group Item #2
+                                                        Comments
                                                     </button>
                                                 </h5>
                                             </div>
                                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                                                  data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                    terry.
+                                                   You can make a comment and everyone can see your comment.
                                                 </div>
                                             </div>
                                         </div>
@@ -187,15 +203,14 @@
                                                     <button class="btn btn-link collapsed" data-toggle="collapse"
                                                             data-target="#collapseThree" aria-expanded="false"
                                                             aria-controls="collapseThree">
-                                                        Collapsible Group Item #3
+                                                        Save Post
                                                     </button>
                                                 </h5>
                                             </div>
                                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                                  data-parent="#accordion">
                                                 <div class="card-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-                                                    terry.
+                                                    You can save a favourite Post and no one can see your saved posts.
                                                 </div>
                                             </div>
                                         </div>
@@ -219,14 +234,14 @@
                                     </form>
                                 </div>
                                 <div class="col-lg-3 col-xlg-4 m-b-30">
-                                    <h4 class="m-b-20">List style</h4>
+                                    <h4 class="m-b-20">Rules to ban</h4>
                                     <!-- List style -->
-                                    <ul class="list-style-none">
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> You can give link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Give link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i>Another Give link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i> Forth link</a></li>
-                                        <li><a href="javascript:void(0)"><i class="fa fa-check text-success"></i>Another fifth link</a></li>
+                                    <ul class="list-style-none" style="font-size: 15px">
+                                        <li><div style="margin-bottom: 10px"><i class="fa fa-check text-success"></i> undesired Posts</div></li>
+                                        <li><div style="margin-bottom: 10px"><i class="fa fa-check text-success"></i> Fake Comments</div></li>
+                                        <li><div style="margin-bottom: 10px"><i class="fa fa-check text-success"></i> Attacking Websites</div></li>
+                                        <li><div style="margin-bottom: 10px"><i class="fa fa-check text-success"></i> False Reports</div></li>
+                                        <li><div style="margin-bottom: 10px"><i class="fa fa-check text-success"></i> False Mails</div></li>
                                     </ul>
                                 </div>
                             </div>
@@ -577,7 +592,7 @@
 <script src="{{asset('libraries/AdminDashboardLibs/libs/bootstrap-multiselect/bootstrap-select.min.js')}}"></script>
 
 <link href="{{asset('css/AdminDashboardCss/css/bootstrapAndPlugins.css')}}" rel="stylesheet">
-<link href="{{asset('css/AdminDashboardCss/css/style.css')}}" rel="stylesheet">
+<link href="{{asset('css/AdminDashboardCss/css/StyleUserPanel.css')}}" rel="stylesheet">
 
 <!-- ============================================================== -->
 <!-- All Jquery -->

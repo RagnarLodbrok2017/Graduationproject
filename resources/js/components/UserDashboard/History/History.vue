@@ -38,6 +38,50 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Row -->
+                    <div class="row">
+                        <!-- Column -->
+                        <div class="col-sm-12 col-md-6">
+                            <div class="card bg-success">
+                                <div class="card-body text-white">
+                                    <div class="d-flex flex-row">
+                                        <div class="align-self-center display-6"><i class="ti-wallet"></i></div>
+                                        <div class="p-10 align-self-center">
+                                            <h4 class="m-b-0">Total Histories</h4>
+                                            <span>Made</span>
+                                        </div>
+                                        <div class="ml-auto align-self-center">
+                                            <h2 class="font-medium m-b-0">{{ histories.length }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Column -->
+                        <!-- Column -->
+                        <div class="col-sm-12 col-md-6">
+                            <div class="card bg-cyan">
+                                <div class="card-body text-white">
+                                    <div class="d-flex flex-row">
+                                        <div class="display-6 align-self-center"><i class="ti-calendar"></i></div>
+                                        <div class="p-10 align-self-center">
+                                            <h4 class="m-b-0">Total Likes</h4>
+                                            <span>Likes</span>
+                                        </div>
+                                        <div class="ml-auto align-self-center">
+                                            <h2 class="font-medium m-b-0">1</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Column -->
+                    </div>
+                    <!-- Row -->
+                </div>
+            </div>
             <!-- ============================================================== -->
             <!-- Start Page Content -->
             <!-- ============================================================== -->

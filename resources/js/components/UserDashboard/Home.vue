@@ -9,6 +9,52 @@
         <!-- Container fluid  -->
         <!-- ============================================================== -->
         <div class="container-fluid">
+
+            <!-- Row -->
+            <div class="col-lg-12 animated fadeIn">
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-sm-12 col-md-6">
+                        <div class="card bg-success">
+                            <div class="card-body text-white">
+                                <div class="d-flex flex-row">
+                                    <div class="align-self-center display-6"><i class="ti-wallet"></i></div>
+                                    <div class="p-10 align-self-center">
+                                        <h4 class="m-b-0">Total Posts</h4>
+                                        <span>Published</span>
+                                    </div>
+                                    <div class="ml-auto align-self-center">
+                                        <h2 class="font-medium m-b-0">{{ posts.length }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-sm-12 col-md-6">
+                        <div class="card bg-cyan">
+                            <div class="card-body text-white">
+                                <div class="d-flex flex-row">
+                                    <div class="display-6 align-self-center"><i class="ti-calendar"></i></div>
+                                    <div class="p-10 align-self-center">
+                                        <h4 class="m-b-0">Total Categories</h4>
+                                        <span>Published</span>
+                                    </div>
+                                    <div class="ml-auto align-self-center">
+                                        <h2 class="font-medium m-b-0">{{ categories.length }}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+            </div>
+            <!-- End Row -->
+
             <!-- ============================================================== -->
             <!-- Start Page Content -->
             <!-- ============================================================== -->
@@ -135,7 +181,7 @@
 
                                                 <div class="comments-dev col-12">
                                                     <ul class="list-group">
-                                                        <button type="button" class="list-group-item list-group-item-action active">
+                                                        <button type="button" class="list-group-item list-group-item-action active btn-dark">
                                                             Comments:
                                                         </button>
                                                         <li href="#" class="list-group-item list-group-item-action" v-for="comment in post.comment">
@@ -395,7 +441,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="../dashboard/posts" method="POST" role="form" enctype="multipart/form-data">
+                            <form action="../dashboard" method="POST" role="form" enctype="multipart/form-data">
                                 <input type="hidden" name="_token" :value="csrf">
                                 <div class="form-body">
                                     <div class="row">
@@ -425,54 +471,13 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <!--/span-->
-<!--                                        <div class="col-md-6">-->
-<!--                                            <div class="form-group">-->
-<!--                                                <label>Status</label>-->
-<!--                                                <br/>-->
-<!--                                                <b-form-group>-->
-<!--                                                    <b-form-radio-group-->
-<!--                                                        v-model="newPost.status"-->
-<!--                                                        :options="options"-->
-<!--                                                        name="radio-inline"-->
-<!--                                                    ></b-form-radio-group>-->
-<!--                                                </b-form-group>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-                                        <!--/span-->
                                     </div>
                                     <!--/row-->
-<!--                                    <div class="row">-->
-<!--                                        <div class="col-md-6">-->
-<!--                                            <div class="form-group">-->
-<!--                                                <label>Meta Title</label>-->
-<!--                                                <div class="input-group mb-3">-->
-<!--                                                    <div class="input-group-prepend">-->
-<!--                                                        <span class="input-group-text" ><i class="ti-search"></i></span>-->
-<!--                                                    </div>-->
-<!--                                                    <b-form-input name="meta_title" type="text" aria-describedby="basic-addon1"></b-form-input>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        &lt;!&ndash;/span&ndash;&gt;-->
-<!--                                        <div class="col-md-6">-->
-<!--                                            <div class="form-group">-->
-<!--                                                <label>Meta Keyword</label>-->
-<!--                                                <div class="input-group mb-3">-->
-<!--                                                    <div class="input-group-prepend">-->
-<!--                                                        <span class="input-group-text" ><i class="ti-search"></i></span>-->
-<!--                                                    </div>-->
-<!--                                                    <b-form-input name="meta_keyword" type="text" aria-describedby="basic-addon1"></b-form-input>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                        &lt;!&ndash;/span&ndash;&gt;-->
-<!--                                    </div>-->
                                     <h5 class="card-title m-t-40">Post Description</h5>
                                     <div class="row">
                                         <div class="col-md-12 ">
                                             <div class="form-group">
-                                                <b-textarea class="form-control" name="description" rows="4"></b-textarea>
+                                                <b-textarea class="form-control" name="description" rows="4" required></b-textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -501,7 +506,7 @@
                                                     </div>
                                                     <input type="file" class="upload" accept="video/*" name="video">
 <!--                                                    <input type="file" :onchange="onVideoChange" class="upload" accept="video/*">-->
-                                                    <p>you can upload video after adding the post</p>
+<!--                                                    <p>you can upload video after adding the post</p>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -537,7 +542,7 @@
                                                             <b-form-input type="text" name="type"></b-form-input>
                                                         </td>
                                                     </tr>
-                                                    <b-form-input type="text" name="users_id" hidden></b-form-input>
+                                                    <b-form-input type="text" :value="auth_user_id" name="users_id" hidden></b-form-input>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -1276,7 +1281,7 @@
     }
     .comment-content .btn-secondary{
         float: right;
-        background: #1A5099;
+        background: rgba(8, 15, 44, 0.84);
         box-shadow: 0 10px 20px -8px rgb(115, 77, 240);
     }
     .like-content .btn-secondary:hover {

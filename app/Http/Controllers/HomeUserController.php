@@ -245,11 +245,11 @@ class HomeUserController extends Controller
     public function store(Request $request)
     {
 //        dd(Auth::user()->id);
-        \Log::info($request->all());
+//        \Log::info($request->all());
         if ($request->isMethod('post')) {
             $this->validate($request, [
                 'title' => 'required|max:30|min:6|max:40|unique:post',
-                'description' => 'nullable|min:10|max:400',
+                'description' => 'min:10|max:400',
 //                'image' => 'required|min:10|max:400',
 //                'video' => 'nullable|min:10|max:400',
                 'image' => 'mimes:jpeg,bmp,png,jpg',
@@ -327,8 +327,11 @@ class HomeUserController extends Controller
         $history->post_title = $nPost->title;
         $history->user_name = $user->name;
         $history->save();
-//        return redirect('../dashboard');
-        return Redirect::intended('../../dashboard')->with(['msg', 'The Message']);
+        return redirect()->back();
+//        return view('UserDashboard.master');
+//        return redirect('../../home');
+//        return Redirect::intended('../../dashboard')->with(['msg', 'The Message']);
+//        return Redirect('../../dashboard');
 
 //        return response()->json(['newPost' => $post]);
     }
@@ -366,7 +369,7 @@ class HomeUserController extends Controller
         if ($request->isMethod('patch')) {
             $this->validate($request, [
                 'title' => 'required|max:30|min:6|max:40|unique:post',
-                'description' => 'nullable|min:10|max:400',
+                'description' => 'nullable|min:10|max:600',
                 'image' => 'required|min:10|max:400',
                 'video' => 'nullable|min:10|max:400',
                 'about' => 'nullable|min:10|max:400',

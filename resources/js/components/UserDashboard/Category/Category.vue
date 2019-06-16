@@ -42,7 +42,6 @@
             <!-- Start Page Content -->
             <!-- ============================================================== -->
             <div class="row">
-                <!-- Column  Categories Table -->
                 <!-- Row -->
                 <div class="col-lg-12">
                     <!-- Row -->
@@ -87,6 +86,8 @@
                     <!-- Row -->
                 </div>
                 <!-- End Row -->
+                <!-- Column  Categories Table -->
+
                 <div class="col-lg-12 col-xl-12 col-md-12 UsersTableClass">
                     <div class="card">
                         <div class="card-body">

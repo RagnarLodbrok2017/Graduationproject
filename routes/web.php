@@ -43,6 +43,7 @@ Route::group(['middleware' => 'User'], function (){
     });
 //    Routes HomeUserController
     Route::resource('/dashboard/posts', 'HomeUserController');
+    Route::post('/dashboard', 'HomeUserController@store');
     Route::get('/dashboard/posts/category/{id}', 'HomeUserController@getPostsByCategoryId');
     Route::post('/dashboard/posts/like/{id}', 'HomeUserController@likePost');
     Route::post('/dashboard/posts/dislike/{id}', 'HomeUserController@dislikePost');
@@ -67,7 +68,7 @@ Route::get('/admin-dashboard/register', 'Auth\AdminAuthController@registerPage')
 Route::post('/admin-dashboard/login', 'Auth\AdminAuthController@login')->name('AdminLogin');
 Route::post('/admin-dashboard/register', 'Auth\AdminAuthController@register')->name('AdminRegister');
 Route::get('/admin-dashboard/logout', 'Auth\AdminAuthController@logout')->name('AdminLogout');
-Route::get('/dashboard/logout', 'Auth\UserAuthController@logout')->name('AdminLogout');
+//Route::get('/dashboard/logout', 'Auth\UserAuthController@logout')->name('AdminLogout');
 Route::group(['middleware' => 'Admin'], function (){
     Route::resource('/admin-dashboard/users', 'UserController');
     Route::resource('/admin-dashboard/posts', 'PostController');
